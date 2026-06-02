@@ -53,18 +53,6 @@
       .nav-phone { display: none; }
     }
 
-    /* ── STICKY URGENCY BAR ── */
-    .sticky-bar {
-      position: fixed; top: 60px; left: 0; right: 0; z-index: 190;
-      background: var(--gold); color: var(--deep);
-      text-align: center; padding: 0.5rem 1rem;
-      font-size: 0.8rem; font-weight: 600;
-      display: none; align-items: center; justify-content: center; gap: 1rem;
-      transform: translateY(-100%); transition: transform 0.4s ease;
-    }
-    .sticky-bar.show { transform: translateY(0); display: flex; }
-    .sticky-bar a { color: var(--deep); font-weight: 700; text-decoration: underline; }
-
     /* ── HERO ── */
     .hero {
       min-height: 100vh; position: relative;
@@ -356,13 +344,6 @@
       <a href="#register" class="btn-nav">Reserve My Seat</a>
     </div>
   </nav>
-
-  <!-- STICKY URGENCY BAR -->
-  <div class="sticky-bar" id="stickyBar">
-    <div class="dot-live"></div>
-    Next retreat: Aug 8–11 · Backwaters · Only 12 seats left &nbsp;
-    <a href="#register">Reserve Now →</a>
-  </div>
 
   <!-- 1. HERO — Hook -->
   <section class="hero" id="home">
@@ -782,20 +763,7 @@
       g.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = `${i * 0.1}s`; });
     });
 
-    // Sticky urgency bar
-    const bar = document.getElementById('stickyBar');
-    let shown = false;
     window.addEventListener('scroll', () => {
-      const past = window.scrollY > window.innerHeight * 0.85;
-      if (past && !shown) {
-        bar.style.display = 'flex';
-        requestAnimationFrame(() => bar.classList.add('show'));
-        shown = true;
-      } else if (!past && shown) {
-        bar.classList.remove('show');
-        setTimeout(() => { bar.style.display = 'none'; }, 400);
-        shown = false;
-      }
       document.getElementById('navbar').style.background = window.scrollY > 60 ? 'rgba(5,18,12,0.98)' : 'rgba(10,28,20,0.95)';
     });
 
