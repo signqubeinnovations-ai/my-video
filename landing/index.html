@@ -652,6 +652,24 @@
       .trust-bar { gap: 1.2rem; }
       .trust-divider { display: none; }
     }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 9999;
+      display: flex; align-items: center; gap: 0.6rem;
+      background: #25D366; color: #fff;
+      padding: 0.72rem 1.3rem; border-radius: 50px;
+      text-decoration: none; font-size: 0.85rem; font-weight: 600;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(37,211,102,0.55); color: #fff; }
+    .wa-float svg { flex-shrink: 0; }
+    @media (max-width: 600px) {
+      .wa-float { bottom: 1.2rem; right: 1.2rem; padding: 0.65rem 1rem; font-size: 0.8rem; }
+      .wa-float .wa-label { display: none; }
+      .wa-float { padding: 0.75rem; border-radius: 50%; }
+    }
   </style>
 </head>
 <body>
@@ -676,19 +694,20 @@
   <!-- HERO -->
   <section class="hero" id="home">
     <div class="hero-content">
-      <div class="hero-eyebrow">Destination Advanced Meditation Programs</div>
+      <div class="hero-eyebrow">Art of Living · Advanced Meditation Programs</div>
       <h1>
-        Soulful Escape to<br/>
-        <em>Render Inside</em>
+        Your mind hasn't rested<br/>
+        <em>in years.</em>
       </h1>
       <p class="hero-sub">
-        Deep silence programs in India's most sacred and lush natural sanctuaries —
-        Kerala's misty highlands, ancient backwaters, and forest temples.
-        Curated by sincere seekers, for sincere seekers.
+        Most people don't realise how deep the fatigue goes — until they stop.
+        Escape Within creates the conditions for real inner silence, guided by
+        Gurudev Sri Sri Ravishankar's most powerful practices, in India's most
+        sacred natural sanctuaries.
       </p>
       <div class="hero-actions">
         <a href="#upcoming" class="btn-primary">See Upcoming Programs</a>
-        <a href="#about" class="btn-outline">Our Story</a>
+        <a href="#register" class="btn-outline">Reserve Your Seat</a>
       </div>
     </div>
     <div class="hero-scroll">
@@ -740,35 +759,35 @@
         </div>
         <div class="about-text reveal">
           <div class="section-header">
-            <p class="section-label">Our Foundation</p>
-            <h2 class="section-title">Rooted in<br/><em>Gurudev's wisdom</em></h2>
+            <p class="section-label">Why Seekers Choose This</p>
+            <h2 class="section-title">Not just a retreat —<br/><em>a reset.</em></h2>
           </div>
           <p>
-            <strong>Gurudev Sri Sri Ravishankar</strong> — spiritual master, humanitarian, and founder of the Art of Living Foundation — has brought the ancient science of breath, meditation and silence to over 500 million people across 180 countries. His teachings are the living root of everything we do.
+            Most meditation programs give you techniques and send you home. Life resumes. The peace fades. Within weeks, you're back to where you started.
           </p>
           <p>
-            Escape Within is organised by a group of sincere Art of Living volunteers, inspired by Gurudev's vision: that every human being deserves access to their innermost peace. Our silence retreats are built entirely on his advanced meditation programs, held in nature's most sacred settings across India.
+            Escape Within is built differently. Rooted in <strong>Gurudev Sri Sri Ravishankar's</strong> most advanced practices — the same teachings that have transformed over 500 million lives in 180 countries — every retreat is a full immersion in a small group, in a sacred natural setting, with the kind of depth that changes you from the inside out.
           </p>
           <div class="about-pillars">
             <div class="pillar">
               <div class="pillar-icon">🌬</div>
               <div>
-                <h4>Sudarshan Kriya</h4>
-                <p>Gurudev's signature rhythmic breathing technique — a powerful tool to cleanse stress, awaken prana, and open the doorway to effortless meditation.</p>
+                <h4>Sudarshan Kriya — Release what therapy can't reach</h4>
+                <p>Stress isn't just in your thoughts — it lives in your nervous system. Gurudev's signature rhythmic breath technique systematically releases accumulated tension at a cellular level. Most participants feel a shift they can't fully explain — lighter, clearer, genuinely calm — from the very first session.</p>
               </div>
             </div>
             <div class="pillar">
               <div class="pillar-icon">🪷</div>
               <div>
-                <h4>Advanced Meditation Program</h4>
-                <p>A deep dive beyond the basics — extended Mauna (silence), Yoga Nidra, advanced Kriya, and guided inner inquiry led by experienced Art of Living teachers.</p>
+                <h4>Advanced Meditation Program — The depth apps can't give you</h4>
+                <p>10-minute morning routines are a start. Our AMPs are 3–7 days of complete inner immersion — extended Mauna (silence), Yoga Nidra, deep Kriya sequences, and guided inquiry. When the external world goes quiet and the practice deepens, something extraordinary becomes available to you.</p>
               </div>
             </div>
             <div class="pillar">
               <div class="pillar-icon">🙏</div>
               <div>
-                <h4>Sahaj Samadhi</h4>
-                <p>Gurudev's effortless mantra-based meditation — allowing the mind to settle into its natural state of stillness, joy, and expanded awareness.</p>
+                <h4>Sahaj Samadhi — What meditation is supposed to feel like</h4>
+                <p>Most people think meditation means concentrating harder. Sahaj is the opposite — an effortless settling of the mind into its own natural stillness. Mantra-based, gentle, profoundly transformative. Many participants describe the first session as "finally arriving home."</p>
               </div>
             </div>
           </div>
@@ -1469,6 +1488,16 @@
       }
     });
   </script>
+
+  <!-- WHATSAPP FLOAT BUTTON -->
+  <!-- Replace +91XXXXXXXXXX with your actual WhatsApp number (country code + number, no spaces or +) -->
+  <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20%F0%9F%99%8F%20I%E2%80%99m%20interested%20in%20the%20Escape%20Within%20meditation%20retreats.%20Can%20you%20share%20more%20details%3F"
+     class="wa-float" target="_blank" rel="noopener noreferrer">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+    <span class="wa-label">Chat on WhatsApp</span>
+  </a>
 
 </body>
 </html>
