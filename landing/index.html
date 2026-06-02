@@ -694,6 +694,64 @@
     @media (max-width: 960px) { .usp-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 600px) { .usp-grid { grid-template-columns: 1fr; } }
 
+    /* ── FEATURED COURSE ── */
+    .featured-course {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; border-radius: 20px; overflow: hidden;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+      border: 1px solid rgba(201,150,58,0.15);
+    }
+    .featured-course-img {
+      position: relative; min-height: 420px;
+    }
+    .featured-course-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .featured-badge {
+      position: absolute; top: 1.4rem; left: 1.4rem;
+      background: var(--gold); color: var(--deep);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 30px;
+    }
+    .featured-course-body {
+      background: var(--deep); padding: 3rem 2.5rem;
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+    }
+    .featured-eyebrow {
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+      color: var(--gold); text-transform: uppercase;
+    }
+    .featured-title {
+      font-family: 'Playfair Display', serif; font-size: 1.9rem;
+      font-weight: 400; color: var(--white); line-height: 1.2;
+    }
+    .featured-location {
+      font-size: 0.85rem; color: rgba(255,255,255,0.55);
+    }
+    .featured-desc {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.08rem;
+      font-style: italic; color: rgba(255,255,255,0.75); line-height: 1.8;
+    }
+    .featured-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .ftag {
+      background: rgba(201,150,58,0.12); border: 1px solid rgba(201,150,58,0.25);
+      color: var(--gold-lt); font-size: 0.75rem; padding: 0.3rem 0.8rem;
+      border-radius: 20px; letter-spacing: 0.04em;
+    }
+    .featured-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;
+      padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .featured-seats { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+    .featured-seats strong { color: var(--gold-lt); }
+    @media (max-width: 860px) {
+      .featured-course { grid-template-columns: 1fr; }
+      .featured-course-img { min-height: 260px; }
+      .featured-course-body { padding: 2rem 1.5rem; }
+    }
+
     /* ── INNER JOURNEY ── */
     .journey-section { background: var(--ivory); }
     .journey-steps {
@@ -970,6 +1028,31 @@
         <h2 class="section-title">Your next <em>inner journey</em></h2>
         <p class="section-sub">Small groups. Immersive settings. Guided by experienced Art of Living teachers and volunteers.</p>
       </div>
+
+      <!-- FEATURED NEXT PROGRAM -->
+      <div class="featured-course reveal">
+        <div class="featured-course-img">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kerala_backwaters.jpg?width=1200" alt="Alleppey Kerala backwaters" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1200&q=80';this.onerror=null;"/>
+          <div class="featured-badge">Next Program</div>
+        </div>
+        <div class="featured-course-body">
+          <p class="featured-eyebrow">📅 August 8 – 11, 2026 &nbsp;·&nbsp; 3 Nights</p>
+          <h2 class="featured-title">Backwaters Stillness Program</h2>
+          <p class="featured-location">📍 Alleppey, Kerala — Houseboat Silence</p>
+          <p class="featured-desc">Silence on water. Kerala's legendary backwaters — coconut groves drifting past, open skies at dusk, and the gentle sound of the river holding your practice. A unique 3-night immersion unlike any retreat you have been on before.</p>
+          <div class="featured-tags">
+            <span class="ftag">🌿 Nature Immersion</span>
+            <span class="ftag">🤫 Mauna Practice</span>
+            <span class="ftag">🪷 Guided Kriya</span>
+            <span class="ftag">🍽 Sattvic Meals</span>
+          </div>
+          <div class="featured-footer">
+            <div class="featured-seats">Only <strong>12 seats</strong> — filling fast</div>
+            <a href="#register" class="btn-primary">Reserve Your Seat</a>
+          </div>
+        </div>
+      </div>
+
       <div class="courses-grid">
 
         <div class="course-card reveal">
