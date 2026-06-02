@@ -86,6 +86,42 @@
       background: radial-gradient(ellipse at center bottom, rgba(201,150,58,0.10) 0%, transparent 70%);
       pointer-events: none;
     }
+
+    /* ── HERO AMBIENT LIGHT ── */
+    .hero-light {
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 55%; height: 90%;
+      pointer-events: none; z-index: 1;
+      background: radial-gradient(ellipse at 50% 100%,
+        rgba(232,184,96,0.22) 0%,
+        rgba(201,150,58,0.10) 28%,
+        rgba(180,130,50,0.04) 55%,
+        transparent 75%
+      );
+      animation: ambientRise 5s ease-in-out infinite;
+    }
+    .hero-light-core {
+      position: absolute;
+      bottom: -10%; left: 50%;
+      transform: translateX(-50%);
+      width: 22%; height: 75%;
+      pointer-events: none; z-index: 1;
+      background: radial-gradient(ellipse at 50% 100%,
+        rgba(255,220,130,0.18) 0%,
+        rgba(232,184,96,0.07) 45%,
+        transparent 75%
+      );
+      animation: ambientRise 5s ease-in-out infinite;
+      animation-delay: 0.3s;
+    }
+    @keyframes ambientRise {
+      0%   { transform: translateX(-50%) translateY(10%);  opacity: 0; }
+      15%  { opacity: 1; }
+      60%  { opacity: 0.85; }
+      100% { transform: translateX(-50%) translateY(-55%); opacity: 0; }
+    }
     .hero-figure {
       position: absolute;
       bottom: 0; left: 50%; transform: translateX(-50%);
@@ -693,6 +729,8 @@
 
   <!-- HERO -->
   <section class="hero" id="home">
+    <div class="hero-light"></div>
+    <div class="hero-light-core"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">Art of Living · Advanced Meditation Programs</div>
       <h1>
