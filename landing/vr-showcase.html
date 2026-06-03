@@ -3,388 +3,321 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="An immersive VR journey through the life, wisdom, and world of Gurudev Sri Sri Ravishankar. Experience guided meditation, sacred ashram spaces, and live satsangs — all in virtual reality.">
-<meta property="og:title" content="A Life of Harmony — VR Journey with Gurudev Sri Sri Ravishankar">
-<meta property="og:description" content="Step inside. Breathe. Transform. An immersive VR exhibition open to the public.">
-<meta property="og:type" content="website">
-<title>A Life of Harmony — VR Journey with Gurudev Sri Sri Ravishankar</title>
+<meta name="description" content="Four worlds. One headset. Step inside the life, wisdom, and presence of Gurudev Sri Sri Ravishankar — an immersive VR exhibition.">
+<title>A Life of Harmony — Immersive VR Experience</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --dark:#050810;
-  --dark2:#090f20;
+  --dark:#05080f;
   --gold:#C9A227;
   --gold-lt:#E8C848;
-  --gold-dim:rgba(201,162,39,.12);
   --cream:#F5EFE0;
-  --saffron:#D4622A;
-  --jade:#2D7D5B;
-  --pad:clamp(5rem,10vw,9rem);
-  --wrap:1240px;
+  --lavender:#8B95C9;
+  --jade:#2D8A62;
+  --saffron:#D46028;
 }
 html{scroll-behavior:smooth}
-body{background:var(--dark);color:var(--cream);font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
-img{max-width:100%;display:block}
+body{background:var(--dark);color:var(--cream);font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.6}
 
 /* ── NAV ── */
 #nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   padding:1.4rem 3rem;
   display:flex;justify-content:space-between;align-items:center;
-  transition:background .5s,backdrop-filter .5s,border-color .5s;
-  border-bottom:1px solid transparent;
+  transition:background .5s,backdrop-filter .5s;
 }
-#nav.scrolled{
-  background:rgba(5,8,16,.88);
-  backdrop-filter:blur(14px);
-  border-color:rgba(201,162,39,.12);
+#nav.scrolled{background:rgba(5,8,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,162,39,.1)}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;
+  letter-spacing:.08em;color:var(--gold);text-decoration:none;
 }
-.nav-brand{
-  font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;
-  letter-spacing:.1em;color:var(--gold);text-decoration:none;
+.nav-pills{display:flex;gap:1px}
+.nav-pill{
+  padding:.45rem 1rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(245,239,224,.45);text-decoration:none;border:1px solid transparent;
+  border-radius:1px;transition:color .3s,border-color .3s;
 }
-.nav-brand span{display:block;font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,162,39,.55);font-style:normal;margin-top:.1rem}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{color:rgba(245,239,224,.6);text-decoration:none;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;transition:color .3s}
-.nav-links a:hover{color:var(--gold)}
+.nav-pill:hover{color:var(--gold);border-color:rgba(201,162,39,.3)}
 .nav-cta{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.55rem 1.5rem;border:1px solid rgba(201,162,39,.4);
-  color:var(--gold);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
-  text-decoration:none;border-radius:1px;transition:background .3s,border-color .3s;
+  padding:.5rem 1.4rem;background:var(--gold);color:var(--dark);
+  font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;border-radius:1px;transition:background .3s;
 }
-.nav-cta:hover{background:var(--gold-dim);border-color:var(--gold)}
+.nav-cta:hover{background:var(--gold-lt)}
 
 /* ── HERO ── */
 .hero{
   height:100vh;min-height:700px;position:relative;
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;
 }
-#hero-img{
+#hero-bg{
   position:absolute;inset:0;
-  background:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat;
-  transform:scale(1.06);
-  will-change:transform;
+  background:url('https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?auto=format&fit=crop&w=1920&q=85') center/cover;
+  transform:scale(1.06);will-change:transform;
 }
-#hero-img::after{
+#hero-bg::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(5,8,16,.2) 0%,rgba(5,8,16,.5) 55%,rgba(5,8,16,.95) 100%);
+  background:linear-gradient(to bottom,rgba(5,8,15,.3) 0%,rgba(5,8,15,.55) 55%,rgba(5,8,15,1) 100%);
 }
-canvas#particles{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.55}
-.hero-content{position:relative;z-index:2;max-width:940px;padding:2rem 1.5rem}
+canvas#stars{position:absolute;inset:0;z-index:1;pointer-events:none}
+.hero-body{position:relative;z-index:2;max-width:860px;padding:2rem 1.5rem}
 .hero-pre{
-  font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1.75rem;
-  opacity:0;animation:fadeUp .9s .4s forwards;
+  font-size:.7rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:2rem;opacity:0;animation:fadeUp .9s .5s forwards;
 }
 .hero-title{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(3.2rem,9vw,7.5rem);font-weight:300;line-height:1.05;
-  color:var(--cream);margin-bottom:1.5rem;
-  opacity:0;animation:fadeUp .9s .6s forwards;
+  font-size:clamp(3rem,9vw,7.5rem);font-weight:300;line-height:1.03;
+  color:var(--cream);margin-bottom:1.8rem;
+  opacity:0;animation:fadeUp .9s .7s forwards;
 }
 .hero-title i{font-style:italic;color:var(--gold)}
 .hero-sub{
-  font-size:clamp(.95rem,1.8vw,1.15rem);font-weight:300;
-  color:rgba(245,239,224,.75);max-width:560px;margin:0 auto 3rem;
-  opacity:0;animation:fadeUp .9s .8s forwards;
+  font-size:clamp(.95rem,1.8vw,1.1rem);font-weight:300;
+  color:rgba(245,239,224,.7);max-width:540px;margin:0 auto 3rem;
+  opacity:0;animation:fadeUp .9s .9s forwards;
 }
-.hero-btn{
-  display:inline-block;padding:1rem 2.75rem;
-  background:var(--gold);color:var(--dark);
-  font-weight:600;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
-  text-decoration:none;border-radius:1px;
-  transition:background .3s,transform .3s;
-  opacity:0;animation:fadeUp .9s 1s forwards;
+.hero-pillars{
+  display:flex;gap:3px;justify-content:center;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .9s 1.1s forwards;
 }
-.hero-btn:hover{background:var(--gold-lt);transform:translateY(-3px)}
+.hero-pillar{
+  padding:.55rem 1.4rem;
+  border:1px solid rgba(201,162,39,.25);
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,224,.5);
+  border-radius:1px;
+}
+.hero-pillar span{color:var(--gold);margin-right:.4em}
 .hero-scroll{
   position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
   display:flex;flex-direction:column;align-items:center;gap:.6rem;
-  color:rgba(245,239,224,.35);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
-  opacity:0;animation:fadeIn 1s 1.6s forwards;
+  color:rgba(245,239,224,.3);font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;
+  opacity:0;animation:fadeIn 1.2s 1.8s forwards;
 }
-.scroll-bar{width:1px;height:44px;background:linear-gradient(to bottom,rgba(201,162,39,.7),transparent);animation:scrollPulse 2s ease-in-out infinite}
+.scroll-rod{width:1px;height:42px;background:linear-gradient(to bottom,rgba(201,162,39,.6),transparent);animation:rodPulse 2s ease-in-out infinite}
 
-/* ── SECTION HELPERS ── */
-.section-label{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.6rem);font-weight:300;color:var(--cream);line-height:1.2}
-.section-body{color:rgba(245,239,224,.7);font-size:1.05rem;line-height:1.85}
-.gold-line{width:52px;height:1px;background:var(--gold);margin:1.5rem 0}
-.gold-line.center{margin-left:auto;margin-right:auto}
-
-/* ── GURUDEV INTRO ── */
-.intro{background:var(--dark2);padding:var(--pad) 2rem}
-.intro-inner{
-  max-width:var(--wrap);margin:0 auto;
-  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
-}
-.intro-visual{position:relative}
-.intro-img{
-  width:100%;height:520px;object-fit:cover;
-  border-radius:3px;filter:brightness(.88) saturate(.85);
-}
-.intro-frame{
-  position:absolute;inset:0;border:1px solid rgba(201,162,39,.25);
-  border-radius:3px;pointer-events:none;
-  background:linear-gradient(135deg,rgba(201,162,39,.06),transparent);
-}
-.intro-badge{
-  position:absolute;bottom:2rem;left:-1.5rem;
-  background:var(--saffron);color:#fff;
-  padding:.7rem 1.4rem;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  border-radius:1px;
-}
-.intro-text .section-body{margin-top:1.25rem}
-.intro-text p+p{margin-top:.9rem}
-
-/* ── EXPERIENCES ── */
-.experiences{padding:var(--pad) 2rem;max-width:var(--wrap);margin:0 auto}
-.exp-header{text-align:center;margin-bottom:4rem}
-.exp-header .section-title{margin-bottom:.75rem}
-.exp-header p{max-width:560px;margin:.75rem auto 0;color:rgba(245,239,224,.6);font-size:1rem}
-.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
-.exp-card{
-  position:relative;height:520px;overflow:hidden;cursor:default;
-}
-.exp-card img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform .9s cubic-bezier(.25,.46,.45,.94),filter .9s;
-  filter:brightness(.65) saturate(.7);
-}
-.exp-card:hover img{transform:scale(1.07);filter:brightness(.8) saturate(.9)}
-.exp-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(5,8,16,.96) 0%,rgba(5,8,16,.35) 55%,rgba(5,8,16,.1) 100%);
-  transition:background .5s;
-}
-.exp-card:hover .exp-overlay{background:linear-gradient(to top,rgba(5,8,16,1) 0%,rgba(5,8,16,.45) 60%,rgba(5,8,16,.15) 100%)}
-.exp-body{
-  position:absolute;bottom:0;left:0;right:0;padding:2.5rem;
-  transform:translateY(.6rem);transition:transform .5s cubic-bezier(.25,.46,.45,.94);
-}
-.exp-card:hover .exp-body{transform:translateY(0)}
-.exp-num{font-size:.68rem;letter-spacing:.25em;color:var(--gold);margin-bottom:.6rem;text-transform:uppercase}
-.exp-card h3{
-  font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;
-  color:var(--cream);margin-bottom:.75rem;line-height:1.25;
-}
-.exp-card p{
-  color:rgba(245,239,224,.7);font-size:.92rem;line-height:1.65;
-  max-width:380px;
-  opacity:0;transform:translateY(.5rem);
-  transition:opacity .4s .1s,transform .4s .1s;
-}
-.exp-card:hover p{opacity:1;transform:translateY(0)}
-.exp-icon{
-  display:inline-block;width:36px;height:1px;background:var(--gold);
-  margin-bottom:1rem;opacity:0;transition:opacity .3s .15s,width .4s .15s;
-}
-.exp-card:hover .exp-icon{opacity:1;width:36px}
-
-/* ── QUOTE BREAK ── */
-.quote-break{
-  position:relative;padding:clamp(5.5rem,11vw,9rem) 2rem;
-  text-align:center;overflow:hidden;
-}
-.qb-bg{
-  position:absolute;inset:0;
-  background:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80') center 40%/cover no-repeat;
-  background-attachment:fixed;
-}
-.qb-bg::after{content:'';position:absolute;inset:0;background:rgba(5,8,16,.78)}
-.qb-inner{position:relative;z-index:2;max-width:860px;margin:0 auto}
-.qb-mark{
-  font-family:'Cormorant Garamond',serif;font-size:8rem;line-height:.55;
-  color:var(--gold);opacity:.3;display:block;margin-bottom:1.5rem;
-}
-.qb-text{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.5rem,3.5vw,2.4rem);font-weight:300;font-style:italic;
-  color:var(--cream);line-height:1.55;margin-bottom:2rem;
-}
-.qb-attr{font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
-
-/* ── GALLERY ── */
-.gallery{padding:var(--pad) 2rem;max-width:var(--wrap);margin:0 auto}
-.gal-header{margin-bottom:3rem;text-align:center}
-.gal-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-auto-rows:220px;
-  gap:6px;
-}
-.gal-item{position:relative;overflow:hidden;border-radius:2px}
-.gal-item:nth-child(1){grid-column:span 2;grid-row:span 2}
-.gal-item img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform .7s cubic-bezier(.25,.46,.45,.94),filter .7s;
-  filter:brightness(.75) saturate(.8);
-}
-.gal-item:hover img{transform:scale(1.06);filter:brightness(.9) saturate(1)}
-.gal-label{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:.85rem 1.25rem;
-  background:linear-gradient(to top,rgba(5,8,16,.75),transparent);
-  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);
-  opacity:0;transition:opacity .4s;
-}
-.gal-item:hover .gal-label{opacity:1}
-
-/* ── MOMENTS (horizontal scroll strip) ── */
-.moments{
-  padding:3rem 0;
-  border-top:1px solid rgba(201,162,39,.08);
+/* ── INTRO BAND ── */
+.intro-band{
+  padding:5rem 3rem;
+  display:flex;align-items:center;justify-content:center;
   border-bottom:1px solid rgba(201,162,39,.08);
+  background:rgba(9,12,24,.6);
+}
+.intro-band-inner{
+  max-width:900px;text-align:center;
+}
+.intro-band h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:300;
+  color:var(--cream);line-height:1.4;margin-bottom:1.25rem;
+}
+.intro-band p{color:rgba(245,239,224,.6);font-size:1rem;max-width:660px;margin:0 auto}
+.intro-divider{
+  display:flex;align-items:center;gap:1.5rem;justify-content:center;margin:2rem 0;
+}
+.intro-divider span{width:40px;height:1px;background:rgba(201,162,39,.3)}
+.intro-divider em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--gold)}
+
+/* ── PILLAR SECTIONS ── */
+.pillar{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;
   overflow:hidden;
 }
-.moments-track{
-  display:flex;gap:1rem;
-  animation:ticker 40s linear infinite;
-  width:max-content;
+.p-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  transition:transform .1s linear;
+  will-change:transform;
 }
-.moments:hover .moments-track{animation-play-state:paused}
-.moment-img{
-  width:260px;height:160px;object-fit:cover;
-  border-radius:2px;flex-shrink:0;
-  filter:brightness(.7) saturate(.7) sepia(.15);
-  transition:filter .4s;
+.p-content{
+  position:relative;z-index:2;
+  max-width:600px;padding:7rem 4rem 7rem;
 }
-.moment-img:hover{filter:brightness(.9) saturate(1) sepia(0)}
+.p-content.left{margin-right:auto}
+.p-content.right{margin-left:auto}
 
-/* ── IMPACT ── */
-.impact{
-  padding:var(--pad) 2rem;
-  background:linear-gradient(135deg,rgba(9,15,32,.9),rgba(5,8,16,1));
-  border-top:1px solid rgba(201,162,39,.1);
-  border-bottom:1px solid rgba(201,162,39,.1);
+/* gradient direction per pillar */
+.pillar.p-left .p-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(5,8,15,.97) 0%,rgba(5,8,15,.75) 55%,rgba(5,8,15,.1) 100%);
 }
-.impact-inner{max-width:var(--wrap);margin:0 auto}
-.impact-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:3rem;margin-top:4rem;
-  border-top:1px solid rgba(201,162,39,.12);padding-top:4rem;
+.pillar.p-right .p-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to left,rgba(5,8,15,.97) 0%,rgba(5,8,15,.75) 55%,rgba(5,8,15,.1) 100%);
 }
-.impact-stat{text-align:center}
-.impact-num{
+
+.p-num{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(3.2rem,6vw,5.5rem);font-weight:300;
-  color:var(--gold);line-height:1;margin-bottom:.5rem;
+  font-size:clamp(6rem,12vw,11rem);font-weight:300;line-height:1;
+  position:absolute;top:3rem;
+  opacity:.07;color:var(--cream);pointer-events:none;
+  user-select:none;
 }
-.impact-lbl{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,239,224,.5);margin-bottom:.4rem}
-.impact-desc{font-size:.9rem;color:rgba(245,239,224,.4)}
+.p-content.left .p-num{left:3.5rem}
+.p-content.right .p-num{right:3.5rem}
 
-/* ── SECOND QUOTE ── */
-.quote2{padding:var(--pad) 2rem;max-width:820px;margin:0 auto;text-align:center}
-.quote2 .qb-text{display:block;margin-bottom:0}
-.q2-line{width:48px;height:1px;background:var(--gold);margin:1.75rem auto}
-
-/* ── EXPERIENCES DETAIL (horizontal) ── */
-.exp-detail{padding:var(--pad) 2rem;background:var(--dark2)}
-.ed-inner{max-width:var(--wrap);margin:0 auto}
-.ed-header{text-align:center;margin-bottom:4.5rem}
-.ed-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
-.ed-card{
-  background:rgba(201,162,39,.04);
-  border:1px solid rgba(201,162,39,.1);
-  border-radius:3px;padding:2rem 1.75rem;
-  transition:border-color .3s,background .3s;
+.p-tag{
+  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  margin-bottom:1rem;display:flex;align-items:center;gap:.75rem;
 }
-.ed-card:hover{border-color:rgba(201,162,39,.3);background:rgba(201,162,39,.07)}
-.ed-icon{font-size:2rem;margin-bottom:1rem}
-.ed-num{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
-.ed-card h4{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--cream);margin-bottom:.75rem}
-.ed-card p{font-size:.88rem;color:rgba(245,239,224,.6);line-height:1.7}
+.p-tag::before{content:'';display:inline-block;width:28px;height:1px;background:currentColor}
+
+.p-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4.5vw,3.5rem);font-weight:300;line-height:1.2;
+  color:var(--cream);margin-bottom:1rem;
+}
+.p-lead{
+  font-size:.95rem;color:rgba(245,239,224,.55);
+  margin-bottom:2.5rem;line-height:1.75;
+  max-width:480px;
+}
+
+/* Scene descriptions */
+.scenes{display:flex;flex-direction:column;gap:1.5rem}
+.scene{display:grid;grid-template-columns:56px 1fr;gap:.5rem 1rem;align-start:start}
+.s-sense{
+  font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:.25rem 0;color:rgba(245,239,224,.35);
+  white-space:nowrap;padding-top:.18rem;
+}
+.s-text{font-size:.95rem;color:rgba(245,239,224,.78);line-height:1.7}
+.s-accent{border-top:1px solid rgba(201,162,39,.12);padding-top:1.5rem;margin-top:.5rem}
+
+/* ── DIVIDER QUOTE ── */
+.dq{
+  position:relative;padding:clamp(5rem,10vw,8rem) 2rem;text-align:center;overflow:hidden;
+}
+.dq-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  background-attachment:fixed;
+}
+.dq-bg::after{content:'';position:absolute;inset:0;background:rgba(5,8,15,.8)}
+.dq-inner{position:relative;z-index:2;max-width:820px;margin:0 auto}
+.dq-mark{
+  font-family:'Cormorant Garamond',serif;font-size:6rem;line-height:.55;
+  color:var(--gold);opacity:.25;display:block;margin-bottom:1.25rem;
+}
+.dq-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,3vw,2.2rem);font-weight:300;font-style:italic;
+  color:var(--cream);line-height:1.6;margin-bottom:1.5rem;
+}
+.dq-attr{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+
+/* ── IMPACT STRIP ── */
+.impact-strip{
+  border-top:1px solid rgba(201,162,39,.08);
+  border-bottom:1px solid rgba(201,162,39,.08);
+  display:grid;grid-template-columns:repeat(3,1fr);
+  divide-by:1px solid rgba(201,162,39,.08);
+}
+.impact-cell{
+  padding:4rem 2rem;text-align:center;
+  border-right:1px solid rgba(201,162,39,.08);
+}
+.impact-cell:last-child{border-right:none}
+.impact-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,5vw,4.5rem);font-weight:300;color:var(--gold);
+  line-height:1;margin-bottom:.4rem;
+}
+.impact-l{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,239,224,.4);margin-bottom:.3rem}
+.impact-d{font-size:.88rem;color:rgba(245,239,224,.35)}
+
+/* ── RUNNING STRIP ── */
+.strip{overflow:hidden;padding:2rem 0;background:rgba(9,12,24,.5)}
+.strip-track{display:flex;gap:6px;animation:ticker 50s linear infinite;width:max-content}
+.strip:hover .strip-track{animation-play-state:paused}
+.strip-img{width:280px;height:170px;object-fit:cover;flex-shrink:0;border-radius:2px;filter:brightness(.6) saturate(.7)}
+.strip-img:hover{filter:brightness(.85) saturate(1);transition:filter .4s}
 
 /* ── CTA ── */
 .cta{
-  position:relative;padding:clamp(6rem,12vw,11rem) 2rem;
-  text-align:center;overflow:hidden;
+  position:relative;min-height:80vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;padding:4rem 2rem;
 }
 .cta-bg{
   position:absolute;inset:0;
-  background:url('https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&fit=crop&w=1920&q=85') center 60%/cover no-repeat;
+  background:url('https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1920&q=80') center/cover;
 }
 .cta-bg::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(5,8,16,.7),rgba(5,8,16,.88));
+  background:linear-gradient(to bottom,rgba(5,8,15,.75),rgba(5,8,15,.9));
 }
-.cta-inner{position:relative;z-index:2;max-width:700px;margin:0 auto}
-.cta-pre{font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.cta-inner{position:relative;z-index:2;max-width:680px}
+.cta-pre{font-size:.7rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
 .cta-title{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:300;
-  color:var(--cream);line-height:1.15;margin-bottom:1.5rem;
+  font-size:clamp(2.5rem,6vw,5rem);font-weight:300;
+  color:var(--cream);line-height:1.1;margin-bottom:1.25rem;
 }
-.cta-sub{color:rgba(245,239,224,.7);font-size:1.05rem;margin-bottom:3rem;max-width:520px;margin-left:auto;margin-right:auto}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn-gold{
-  display:inline-block;padding:.95rem 2.75rem;
-  background:var(--gold);color:var(--dark);
-  font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
-  text-decoration:none;border-radius:1px;
-  transition:background .3s,transform .3s;
+.cta-title i{font-style:italic;color:var(--gold)}
+.cta-sub{color:rgba(245,239,224,.6);font-size:1rem;margin-bottom:3rem;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.75}
+.cta-row{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.btn-g{
+  padding:.9rem 2.5rem;background:var(--gold);color:var(--dark);
+  font-weight:500;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;border-radius:1px;transition:background .3s,transform .3s;
 }
-.btn-gold:hover{background:var(--gold-lt);transform:translateY(-3px)}
-.btn-outline{
-  display:inline-block;padding:.95rem 2.75rem;
-  border:1px solid rgba(201,162,39,.45);color:var(--cream);
-  font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
-  text-decoration:none;border-radius:1px;
-  transition:border-color .3s,color .3s;
+.btn-g:hover{background:var(--gold-lt);transform:translateY(-2px)}
+.btn-o{
+  padding:.9rem 2.5rem;border:1px solid rgba(201,162,39,.4);color:rgba(245,239,224,.75);
+  font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;border-radius:1px;transition:border-color .3s,color .3s;
 }
-.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-o:hover{border-color:var(--gold);color:var(--gold)}
 
 /* ── FOOTER ── */
 footer{
-  padding:2.5rem 3rem;
-  border-top:1px solid rgba(201,162,39,.1);
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:1rem;
+  padding:2.5rem 3rem;border-top:1px solid rgba(201,162,39,.08);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
 }
-.ft-brand{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--gold)}
-.ft-copy{font-size:.78rem;color:rgba(245,239,224,.3);letter-spacing:.05em}
+.ft-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold)}
+.ft-note{font-size:.75rem;color:rgba(245,239,224,.25);letter-spacing:.04em}
 
 /* ── REVEAL ── */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .85s cubic-bezier(.25,.46,.45,.94),transform .85s cubic-bezier(.25,.46,.45,.94)}
-.reveal.on{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+.r{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.25,.46,.45,.94),transform .9s cubic-bezier(.25,.46,.45,.94)}
+.r.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d4{transition-delay:.4s}.d5{transition-delay:.55s}.d6{transition-delay:.7s}
 
-/* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+/* ── KEYFRAMES ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes scrollPulse{0%,100%{opacity:.9;transform:scaleY(1) translateY(0)}50%{opacity:.2;transform:scaleY(.6) translateY(4px)}}
+@keyframes rodPulse{0%,100%{opacity:.8}50%{opacity:.2;transform:scaleY(.5)}}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* ── RESPONSIVE ── */
-@media(max-width:1024px){
-  .exp-grid{grid-template-columns:1fr;gap:3px}
-  .exp-card{height:420px}
-  .intro-inner{grid-template-columns:1fr;gap:3rem}
-  .ed-cards{grid-template-columns:1fr 1fr;gap:1rem}
-}
-@media(max-width:768px){
+@media(max-width:900px){
   #nav{padding:1.2rem 1.5rem}
-  .nav-links,.nav-cta{display:none}
-  .exp-card{height:380px}
-  .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
-  .gal-item:nth-child(1){grid-column:span 2}
-  .impact-grid{grid-template-columns:1fr;gap:2.5rem;padding-top:3rem;margin-top:3rem}
-  .ed-cards{grid-template-columns:1fr}
-  .qb-bg{background-attachment:scroll}
+  .nav-pills,.nav-cta{display:none}
+  .p-content{padding:6rem 2rem 4rem;max-width:100%}
+  .pillar.p-left .p-bg::after,
+  .pillar.p-right .p-bg::after{
+    background:linear-gradient(to top,rgba(5,8,15,1) 0%,rgba(5,8,15,.8) 50%,rgba(5,8,15,.3) 100%);
+  }
+  .pillar{align-items:flex-end;min-height:90vh}
+  .p-num{display:none}
+  .impact-strip{grid-template-columns:1fr}
+  .impact-cell{border-right:none;border-bottom:1px solid rgba(201,162,39,.08);padding:2.5rem 2rem}
+  .impact-cell:last-child{border-bottom:none}
   footer{flex-direction:column;text-align:center;padding:2rem 1.5rem}
 }
-@media(max-width:480px){
-  .gal-grid{grid-template-columns:1fr;grid-auto-rows:200px}
-  .gal-item:nth-child(1){grid-column:span 1;grid-row:span 1}
+@media(max-width:600px){
+  .hero-pillars{flex-direction:column;align-items:center}
+  .intro-band{padding:4rem 1.5rem}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .reveal{opacity:1;transform:none}
+  .r{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -392,345 +325,342 @@ footer{
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-brand">A Life of Harmony <span>An Immersive VR Experience</span></a>
-  <ul class="nav-links">
-    <li><a href="#experiences">Experiences</a></li>
-    <li><a href="#gallery">Glimpses</a></li>
-    <li><a href="#impact">Impact</a></li>
-  </ul>
-  <a href="#visit" class="nav-cta">Reserve Your Visit</a>
+  <a href="#" class="nav-logo">A Life of Harmony</a>
+  <div class="nav-pills">
+    <a href="#journey" class="nav-pill"><span style="color:var(--gold)">01</span> Life Journey</a>
+    <a href="#meditation" class="nav-pill"><span style="color:var(--lavender)">02</span> Meditation</a>
+    <a href="#ashram" class="nav-pill"><span style="color:var(--jade)">03</span> Ashram</a>
+    <a href="#satsang" class="nav-pill"><span style="color:var(--saffron)">04</span> Satsang</a>
+  </div>
+  <a href="#visit" class="nav-cta">Visit the Exhibition</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div id="hero-img"></div>
-  <canvas id="particles"></canvas>
-  <div class="hero-content">
-    <p class="hero-pre">An Immersive Virtual Reality Exhibition</p>
-    <h1 class="hero-title">
-      Step Into<br><i>a Life of</i><br>Harmony
-    </h1>
-    <p class="hero-sub">Journey through the remarkable world of Gurudev Sri Sri Ravishankar — his wisdom, his presence, his peace — brought alive in virtual reality.</p>
-    <a href="#experiences" class="hero-btn">Begin the Journey</a>
+  <div id="hero-bg"></div>
+  <canvas id="stars"></canvas>
+  <div class="hero-body">
+    <p class="hero-pre">Immersive Virtual Reality Exhibition</p>
+    <h1 class="hero-title">Four Worlds.<br>One <i>Presence.</i></h1>
+    <p class="hero-sub">Put on the headset. Step into the life, wisdom, and world of Gurudev Sri Sri Ravishankar — and come out different.</p>
+    <div class="hero-pillars">
+      <div class="hero-pillar"><span style="color:var(--gold)">01</span> Life Journey</div>
+      <div class="hero-pillar"><span style="color:var(--lavender)">02</span> Guided Meditation</div>
+      <div class="hero-pillar"><span style="color:var(--jade)">03</span> Ashram Tour</div>
+      <div class="hero-pillar"><span style="color:var(--saffron)">04</span> Live Satsang</div>
+    </div>
   </div>
   <div class="hero-scroll">
-    <div class="scroll-bar"></div>
-    <span>Discover</span>
+    <div class="scroll-rod"></div>
+    <span>Enter</span>
   </div>
 </section>
 
-<!-- GURUDEV INTRO -->
-<section style="background:var(--dark2)">
-  <div class="intro">
-    <div class="intro-inner">
-      <div class="intro-visual reveal">
-        <img class="intro-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&h=580&q=82" alt="Gurudev — A Life of Wisdom">
-        <div class="intro-frame"></div>
-        <span class="intro-badge">Art of Living Foundation</span>
-      </div>
-      <div class="intro-text">
-        <p class="section-label reveal">Gurudev Sri Sri Ravishankar</p>
-        <h2 class="section-title reveal">A Teacher.<br>A Humanitarian.<br>A Beacon of Peace.</h2>
-        <div class="gold-line reveal d1"></div>
-        <div class="section-body">
-          <p class="reveal d1">For over four decades, Gurudev Sri Sri Ravishankar has walked the world teaching one simple truth — that joy, peace, and love are your nature. Not something to search for, but something to uncover.</p>
-          <p class="reveal d2">Founder of the Art of Living Foundation, his programs have touched hundreds of millions across every continent, every faith, every language.</p>
-          <p class="reveal d3">This VR experience brings you into his world — his journey, his guidance, his presence — so you may discover a little of that peace for yourself.</p>
-        </div>
-      </div>
+<!-- INTRO BAND -->
+<div class="intro-band">
+  <div class="intro-band-inner">
+    <h2 class="r">A Virtual Reality experience unlike anything you've encountered — built around one of the most extraordinary lives of our time.</h2>
+    <div class="intro-divider r d1">
+      <span></span>
+      <em>Gurudev Sri Sri Ravishankar</em>
+      <span></span>
     </div>
-  </div>
-</section>
-
-<!-- FOUR EXPERIENCES -->
-<section id="experiences">
-  <div class="experiences">
-    <div class="exp-header">
-      <p class="section-label reveal">Four Doorways</p>
-      <h2 class="section-title reveal">What Awaits You Inside</h2>
-      <p class="reveal d1">Each world is crafted for wonder, stillness, and transformation. Put on the headset. Let the outside fall away.</p>
-    </div>
-    <div class="exp-grid">
-
-      <div class="exp-card reveal">
-        <img src="https://images.unsplash.com/photo-1519810755548-39cd217da494?auto=format&fit=crop&w=950&h=580&q=82" alt="Life Journey">
-        <div class="exp-overlay"></div>
-        <div class="exp-body">
-          <p class="exp-num">01 — Life Journey</p>
-          <span class="exp-icon"></span>
-          <h3>Gurudev's Life Journey</h3>
-          <p>From a childhood in Tamil Nadu to the Himalayan heights, from intimate gatherings to arenas of thousands — walk the path of an extraordinary life through a branching, cinematic story only you can navigate.</p>
-        </div>
-      </div>
-
-      <div class="exp-card reveal d2">
-        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=950&h=580&q=82" alt="Guided Meditation">
-        <div class="exp-overlay"></div>
-        <div class="exp-body">
-          <p class="exp-num">02 — Meditation</p>
-          <span class="exp-icon"></span>
-          <h3>Immersive Guided Meditation</h3>
-          <p>In virtual reality there are no distractions. Only the breath, the stillness, and Gurudev's voice. Be guided through Sudarshan Kriya into a deep, enveloping silence you may never have touched before.</p>
-        </div>
-      </div>
-
-      <div class="exp-card reveal">
-        <img src="https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?auto=format&fit=crop&w=950&h=580&q=82" alt="Ashram Tours">
-        <div class="exp-overlay"></div>
-        <div class="exp-body">
-          <p class="exp-num">03 — Ashram</p>
-          <span class="exp-icon"></span>
-          <h3>Sacred Ashram Tours</h3>
-          <p>Wander the verdant, flower-scented pathways of the Art of Living International Centre. Step inside meditation halls, join morning prayers, and feel the gentle energy of a place where thousands come to rest.</p>
-        </div>
-      </div>
-
-      <div class="exp-card reveal d2">
-        <img src="https://images.unsplash.com/photo-1540575467537-b52dbfdcc71e?auto=format&fit=crop&w=950&h=580&q=82" alt="Live Satsangs">
-        <div class="exp-overlay"></div>
-        <div class="exp-body">
-          <p class="exp-num">04 — Satsang</p>
-          <span class="exp-icon"></span>
-          <h3>Live Satsangs with Gurudev</h3>
-          <p>Be in the front row. The music rises, laughter fills the air, and then — a silence deeper than you expected. Join a satsang with Gurudev in full 360° immersion, surrounded by thousands of joyful souls.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- QUOTE BREAK -->
-<div class="quote-break">
-  <div class="qb-bg"></div>
-  <div class="qb-inner reveal">
-    <span class="qb-mark">"</span>
-    <p class="qb-text">The breath is the link between the inner world and the outer world. When you know how to handle the breath, you can handle every situation in life.</p>
-    <p class="qb-attr">— Gurudev Sri Sri Ravishankar</p>
+    <p class="r d2">Founder of the Art of Living Foundation · Teacher to hundreds of millions · A man who walks the world asking us to breathe, smile, and look within. This exhibition brings his world to yours — in four immersive chapters.</p>
   </div>
 </div>
 
-<!-- GALLERY -->
-<section id="gallery">
-  <div class="gallery">
-    <div class="gal-header">
-      <p class="section-label reveal">Visual Glimpses</p>
-      <h2 class="section-title reveal">The Worlds You Will Enter</h2>
-    </div>
-    <div class="gal-grid">
-      <div class="gal-item reveal">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=82" alt="Himalayan Landscape">
-        <div class="gal-label">Himalayan Landscapes</div>
+<!-- ══════════════════════════════════════
+     PILLAR 01 — LIFE JOURNEY
+════════════════════════════════════════ -->
+<section class="pillar p-left" id="journey">
+  <div class="p-bg" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=85')"></div>
+  <div class="p-content left">
+    <div class="p-num">01</div>
+    <p class="p-tag r" style="color:var(--gold)">Life Journey</p>
+    <h2 class="p-title r d1">Walk the Path of<br>an Extraordinary Life</h2>
+    <p class="p-lead r d2">A branching cinematic story spanning seven decades. Every choice you make reveals a new chapter — and a new part of yourself.</p>
+    <div class="scenes r d3">
+      <div class="scene">
+        <span class="s-sense">Sight</span>
+        <p class="s-text">You stand in a quiet courtyard in Tamil Nadu, 1956. The light is the honey-gold of early morning. A young child sits cross-legged beneath a neem tree, eyes closed, completely still — already carrying something ancient.</p>
       </div>
-      <div class="gal-item reveal d1">
-        <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=600&q=82" alt="Meditation">
-        <div class="gal-label">Inner Stillness</div>
+      <div class="scene">
+        <span class="s-sense">Feel</span>
+        <p class="s-text">The cold of the Himalayas wraps around you at 12,000 feet. Dawn touches the peaks first — a slow blush of pink across impossibly still snow — as a young seeker watches in silence, searching for the source of everything.</p>
       </div>
-      <div class="gal-item reveal d2">
-        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=82" alt="Satsang">
-        <div class="gal-label">Satsang & Joy</div>
+      <div class="scene">
+        <span class="s-sense">Witness</span>
+        <p class="s-text">A circle of twenty people on a river bank, 1982. You see the first Sudarshan Kriya breathing session ever held. You are there for the moment a practice is born that will one day circle the globe.</p>
       </div>
-      <div class="gal-item reveal d1">
-        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=82" alt="Yoga & Breath">
-        <div class="gal-label">Breath & Yoga</div>
-      </div>
-      <div class="gal-item reveal d2">
-        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=82" alt="Sacred Nature">
-        <div class="gal-label">Sacred Nature</div>
+      <div class="scene s-accent">
+        <span class="s-sense">Scale</span>
+        <p class="s-text">Three million faces fill an open field. Gurudev speaks. Then — a silence deeper than you've ever felt — three million people exhale together. You are in the middle of it.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MOMENTS STRIP -->
-<div class="moments">
-  <div class="moments-track" id="strip">
-    <img class="moment-img" src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=400&h=240&q=75" alt="">
-    <img class="moment-img" src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?auto=format&fit=crop&w=400&h=240&q=75" alt="">
-    <img class="moment-img" src="https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?auto=format&fit=crop&w=400&h=240&q=75" alt="">
-    <img class="moment-img" src="https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=400&h=240&q=75" alt="">
-    <img class="moment-img" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=400&h=240&q=75" alt="">
-    <img class="moment-img" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&h=240&q=75" alt="">
-    <img class="moment-img" src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=400&h=240&q=75" alt="">
+<!-- ══════════════════════════════════════
+     QUOTE BREAK 1
+════════════════════════════════════════ -->
+<div class="dq">
+  <div class="dq-bg" style="background-image:url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1920&q=80')"></div>
+  <div class="dq-inner r">
+    <span class="dq-mark">"</span>
+    <p class="dq-text">When you know how to handle the breath, you can handle every situation in life. The breath is the link between the inner world and the outer world.</p>
+    <p class="dq-attr">— Gurudev Sri Sri Ravishankar</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PILLAR 02 — GUIDED MEDITATION
+════════════════════════════════════════ -->
+<section class="pillar p-right" id="meditation">
+  <div class="p-bg" style="background-image:url('https://images.unsplash.com/photo-1534796636912-3b952d9a9f4f?auto=format&fit=crop&w=1920&q=85')"></div>
+  <div class="p-content right">
+    <div class="p-num" style="right:3.5rem">02</div>
+    <p class="p-tag r" style="color:var(--lavender)">Guided Meditation</p>
+    <h2 class="p-title r d1">Breathe Into<br>Absolute Stillness</h2>
+    <p class="p-lead r d2">In virtual reality, the outside world falls completely away. There are no distractions. Only the breath, Gurudev's voice, and the vast quiet within you.</p>
+    <div class="scenes r d3">
+      <div class="scene">
+        <span class="s-sense" style="color:var(--lavender)">Sight</span>
+        <p class="s-text">The room around you dissolves. Stars emerge — not a ceiling of stars, but a universe of them — surrounding you in every direction. You are floating in something enormous and perfectly calm.</p>
+      </div>
+      <div class="scene">
+        <span class="s-sense" style="color:var(--lavender)">Sound</span>
+        <p class="s-text">Gurudev's voice arrives — not from a speaker, not from a direction, but from everywhere at once. Gentle. Unhurried. He says: <em style="color:rgba(245,239,224,.85);font-style:italic">"Take a long, deep breath in…"</em> And something in you lets go.</p>
+      </div>
+      <div class="scene">
+        <span class="s-sense" style="color:var(--lavender)">Feel</span>
+        <p class="s-text">With each breath, pulses of soft light move through the space around you — saffron on the inhale, deep violet on the exhale. Your body follows without being asked. The breath breathes you.</p>
+      </div>
+      <div class="scene s-accent">
+        <span class="s-sense" style="color:var(--lavender)">Arrive</span>
+        <p class="s-text">The boundary between you and the surrounding stillness becomes unclear. You are not watching the stars anymore. You are somewhere beyond thought — resting in what Gurudev has always said is already there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     QUOTE BREAK 2
+════════════════════════════════════════ -->
+<div class="dq">
+  <div class="dq-bg" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80')"></div>
+  <div class="dq-inner r">
+    <span class="dq-mark">"</span>
+    <p class="dq-text">Meditation is not something you do. It is something that happens — when you stop doing everything else and simply be.</p>
+    <p class="dq-attr">— Gurudev Sri Sri Ravishankar</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PILLAR 03 — ASHRAM TOUR
+════════════════════════════════════════ -->
+<section class="pillar p-left" id="ashram">
+  <div class="p-bg" style="background-image:url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=85')"></div>
+  <div class="p-content left">
+    <div class="p-num">03</div>
+    <p class="p-tag r" style="color:var(--jade)">Ashram Tour</p>
+    <h2 class="p-title r d1">A Sanctuary<br>Without Walls</h2>
+    <p class="p-lead r d2">The Art of Living International Centre in Bengaluru is one of the most peaceful places on Earth. Now it comes to you — in every detail, from every angle.</p>
+    <div class="scenes r d3">
+      <div class="scene">
+        <span class="s-sense" style="color:var(--jade)">Sight</span>
+        <p class="s-text">Morning mist moves slowly across a lotus pond. The water is entirely still. A white egret lifts off without a sound. Everywhere: green. Layered greens — bamboo, banyan, bougainvillea — glowing in the first light.</p>
+      </div>
+      <div class="scene">
+        <span class="s-sense" style="color:var(--jade)">Sound</span>
+        <p class="s-text">Temple bells from somewhere unseen. A soft chant rising — then swelling — then gently settling like water. You turn 360° and see only trees, paths, devotees in white moving with unhurried peace.</p>
+      </div>
+      <div class="scene">
+        <span class="s-sense" style="color:var(--jade)">Enter</span>
+        <p class="s-text">The doors of the Vishalakshi Mantap open before you. Light pours through the dome in long golden columns. Hundreds sit in silence. The air is dense with intention — you feel it land on your skin.</p>
+      </div>
+      <div class="scene s-accent">
+        <span class="s-sense" style="color:var(--jade)">Stay</span>
+        <p class="s-text">You sit on the steps at sunset. A peacock crosses the path. No one rushes. This is what the ashram gives everyone who comes — permission to stop. To breathe. To simply be where you are.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     QUOTE BREAK 3
+════════════════════════════════════════ -->
+<div class="dq">
+  <div class="dq-bg" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80')"></div>
+  <div class="dq-inner r">
+    <span class="dq-mark">"</span>
+    <p class="dq-text">You are not just a body and a mind. You are a field of unbounded awareness — infinite peace, infinite joy, infinite love. This is your nature.</p>
+    <p class="dq-attr">— Gurudev Sri Sri Ravishankar</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PILLAR 04 — LIVE SATSANG
+════════════════════════════════════════ -->
+<section class="pillar p-right" id="satsang">
+  <div class="p-bg" style="background-image:url('https://images.unsplash.com/photo-1540575467537-b52dbfdcc71e?auto=format&fit=crop&w=1920&q=85')"></div>
+  <div class="p-content right">
+    <div class="p-num">04</div>
+    <p class="p-tag r" style="color:var(--saffron)">Live Satsang</p>
+    <h2 class="p-title r d1">Feel the Joy<br>of Ten Thousand Souls</h2>
+    <p class="p-lead r d2">A satsang with Gurudev is something felt more than described. Music, laughter, devotion, and a silence that somehow holds them all. The front row comes to you.</p>
+    <div class="scenes r d3">
+      <div class="scene">
+        <span class="s-sense" style="color:var(--saffron)">Sound</span>
+        <p class="s-text">Tablas, harmonium, voices — the bhajan begins and the sound wraps around you from every direction. It builds. Your whole chest resonates. Ten thousand people are singing and you are among them — surrounded, held, moved.</p>
+      </div>
+      <div class="scene">
+        <span class="s-sense" style="color:var(--saffron)">Sight</span>
+        <p class="s-text">A sea of candle flames stretches to the horizon. Faces lit gold from below — eyes closed, smiling, tears running freely. Joy and grief looking identical. You turn and see the same scene in every direction, endless and alive.</p>
+      </div>
+      <div class="scene">
+        <span class="s-sense" style="color:var(--saffron)">Presence</span>
+        <p class="s-text">Gurudev speaks. His voice is unhurried, playful, then suddenly profound. The crowd erupts in laughter, then falls into the deepest collective silence you have ever been part of. Something lands in you — you'll feel it for days.</p>
+      </div>
+      <div class="scene s-accent">
+        <span class="s-sense" style="color:var(--saffron)">After</span>
+        <p class="s-text">The satsang ends. People rise slowly — no one is in a hurry. Someone near you is weeping and smiling at the same time. You understand. You take the headset off. The room is the same. You are not.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT STRIP -->
+<div class="impact-strip">
+  <div class="impact-cell">
+    <p class="impact-n r" data-count="180" data-suffix="+">0</p>
+    <p class="impact-l r d1">Countries</p>
+    <p class="impact-d r d2">where Art of Living is present</p>
+  </div>
+  <div class="impact-cell">
+    <p class="impact-n r" data-count="500" data-suffix="M+">0</p>
+    <p class="impact-l r d1">Lives Touched</p>
+    <p class="impact-d r d2">through programs, teachings & service</p>
+  </div>
+  <div class="impact-cell">
+    <p class="impact-n r" data-count="44" data-suffix="">0</p>
+    <p class="impact-l r d1">Years of Giving</p>
+    <p class="impact-d r d2">an unbroken journey of compassion</p>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div class="strip">
+  <div class="strip-track" id="track">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1519810755548-39cd217da494?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=400&h=220&q=70" alt="">
     <!-- duplicate for seamless loop -->
-    <img class="moment-img" src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=400&h=240&q=75" alt="">
-    <img class="moment-img" src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?auto=format&fit=crop&w=400&h=240&q=75" alt="">
-    <img class="moment-img" src="https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?auto=format&fit=crop&w=400&h=240&q=75" alt="">
-    <img class="moment-img" src="https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=400&h=240&q=75" alt="">
-    <img class="moment-img" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=400&h=240&q=75" alt="">
-    <img class="moment-img" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&h=240&q=75" alt="">
-    <img class="moment-img" src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=400&h=240&q=75" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1519810755548-39cd217da494?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=400&h=220&q=70" alt="">
   </div>
-</div>
-
-<!-- IMPACT -->
-<section class="impact" id="impact">
-  <div class="impact-inner">
-    <div style="text-align:center">
-      <p class="section-label reveal">The Reach of One Life</p>
-      <h2 class="section-title reveal">A Legacy That Spans the World</h2>
-      <p class="reveal d1" style="max-width:560px;margin:.75rem auto 0;color:rgba(245,239,224,.6);font-size:1rem">Gurudev's work through the Art of Living Foundation represents one of the most far-reaching humanitarian and spiritual movements of our time.</p>
-    </div>
-    <div class="impact-grid">
-      <div class="impact-stat reveal">
-        <p class="impact-num" data-count="180" data-suffix="+">0</p>
-        <p class="impact-lbl">Countries</p>
-        <p class="impact-desc">Art of Living's global presence</p>
-      </div>
-      <div class="impact-stat reveal d2">
-        <p class="impact-num" data-count="500" data-suffix="M+">0</p>
-        <p class="impact-lbl">Lives Touched</p>
-        <p class="impact-desc">Through programs, teachings & service</p>
-      </div>
-      <div class="impact-stat reveal d4">
-        <p class="impact-num" data-count="44" data-suffix="">0</p>
-        <p class="impact-lbl">Years of Giving</p>
-        <p class="impact-desc">An unbroken journey of compassion</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE DETAIL CARDS -->
-<section class="exp-detail">
-  <div class="ed-inner">
-    <div class="ed-header">
-      <p class="section-label reveal">Inside Each World</p>
-      <h2 class="section-title reveal">What You Will Feel</h2>
-    </div>
-    <div class="ed-cards">
-      <div class="ed-card reveal">
-        <div class="ed-icon">✦</div>
-        <p class="ed-num">Life Journey</p>
-        <h4>Walk an extraordinary path</h4>
-        <p>The story of Gurudev unfolds around you — ancient India, formative teachers, world stages, and intimate moments — all in a branching narrative only you control.</p>
-      </div>
-      <div class="ed-card reveal d1">
-        <div class="ed-icon">◎</div>
-        <p class="ed-num">Guided Meditation</p>
-        <h4>Breathe into stillness</h4>
-        <p>Gentle breathing, Gurudev's voice, and immersive soundscapes draw you into a meditative depth that words cannot describe and screens cannot replicate.</p>
-      </div>
-      <div class="ed-card reveal d2">
-        <div class="ed-icon">⬡</div>
-        <p class="ed-num">Ashram Tour</p>
-        <h4>A sanctuary without walls</h4>
-        <p>Explore the lush grounds of the Art of Living International Centre — sacred spaces, morning puja, the simple joy of belonging — available to all, from anywhere.</p>
-      </div>
-      <div class="ed-card reveal d3">
-        <div class="ed-icon">❋</div>
-        <p class="ed-num">Live Satsang</p>
-        <h4>Feel the collective joy</h4>
-        <p>Music, laughter, devotion, silence. Being in a satsang with Gurudev is an experience felt more than understood. Now the front row comes to you.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECOND QUOTE -->
-<div class="quote2">
-  <div class="q2-line reveal"></div>
-  <blockquote class="qb-text reveal">"You are not just a body and a mind. You are a field of unbounded awareness — infinite peace, infinite joy, infinite love."</blockquote>
-  <p class="reveal d1" style="font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-top:1rem">— Gurudev Sri Sri Ravishankar</p>
-  <div class="q2-line reveal d2"></div>
 </div>
 
 <!-- CTA -->
 <section class="cta" id="visit">
   <div class="cta-bg"></div>
   <div class="cta-inner">
-    <p class="cta-pre reveal">Come. Experience. Transform.</p>
-    <h2 class="cta-title reveal">Your Journey<br><i style="font-family:'Cormorant Garamond',serif">Begins Here</i></h2>
-    <p class="cta-sub reveal">The exhibition is open to the public at Art of Living centres. All you need is 45 minutes and a willingness to be still.</p>
-    <div class="cta-btns reveal d1">
-      <a href="mailto:signqubeinnovations@gmail.com?subject=VR Experience Booking" class="btn-gold">Reserve Your Experience</a>
-      <a href="https://www.artofliving.org" target="_blank" rel="noopener" class="btn-outline">Art of Living →</a>
+    <p class="cta-pre r">The Exhibition is Open</p>
+    <h2 class="cta-title r d1">Your Journey<br>Begins <i>Here</i></h2>
+    <p class="cta-sub r d2">All four experiences are open to the public at Art of Living centres. You need no prior knowledge, no meditation practice. Just 45 minutes and a willingness to be still.</p>
+    <div class="cta-row r d3">
+      <a href="mailto:signqubeinnovations@gmail.com?subject=VR Experience — Book a Visit" class="btn-g">Reserve Your Experience</a>
+      <a href="https://www.artofliving.org" target="_blank" rel="noopener" class="btn-o">Art of Living →</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <span class="ft-brand">A Life of Harmony</span>
-  <span class="ft-copy" style="color:rgba(245,239,224,.35);font-size:.8rem">In collaboration with the Art of Living Foundation</span>
-  <span class="ft-copy">© 2025 Signqube Innovations</span>
+  <span class="ft-logo">A Life of Harmony</span>
+  <span class="ft-note">In collaboration with the Art of Living Foundation</span>
+  <span class="ft-note">© 2025 Signqube Innovations</span>
 </footer>
 
 <script>
-// NAV scroll state
+// Nav scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), {passive:true});
 
 // Hero parallax
-const heroImg = document.getElementById('hero-img');
+const heroBg = document.getElementById('hero-bg');
 window.addEventListener('scroll', () => {
-  if (scrollY < innerHeight) heroImg.style.transform = `scale(1.06) translateY(${scrollY * 0.22}px)`;
+  if (scrollY < innerHeight) heroBg.style.transform = `scale(1.06) translateY(${scrollY * 0.2}px)`;
 }, {passive:true});
 
-// Particles
+// Stars particle canvas
 (function(){
-  const canvas = document.getElementById('particles');
-  const ctx = canvas.getContext('2d');
+  const c = document.getElementById('stars');
+  const ctx = c.getContext('2d');
   let w, h, pts;
-  function resize(){
-    w = canvas.width  = canvas.offsetWidth;
-    h = canvas.height = canvas.offsetHeight;
-  }
   function init(){
-    pts = Array.from({length:88}, () => ({
-      x: Math.random() * (w||1),
-      y: Math.random() * (h||1),
-      r: Math.random() * 1.8 + .3,
-      vx: (Math.random() - .5) * .25,
-      vy: (Math.random() - .5) * .25,
-      alpha: Math.random() * .5 + .15,
+    w = c.width = c.offsetWidth;
+    h = c.height = c.offsetHeight;
+    pts = Array.from({length:80}, () => ({
+      x: Math.random()*w, y: Math.random()*h,
+      r: Math.random()*1.6+.2,
+      vx: (Math.random()-.5)*.2, vy: (Math.random()-.5)*.2,
+      a: Math.random()*.5+.1,
     }));
   }
   function frame(){
-    ctx.clearRect(0, 0, w, h);
+    ctx.clearRect(0,0,w,h);
     pts.forEach(p => {
       p.x += p.vx; p.y += p.vy;
-      if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
-      if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+      if(p.x<0)p.x=w; if(p.x>w)p.x=0;
+      if(p.y<0)p.y=h; if(p.y>h)p.y=0;
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.r > 1.4
-        ? `rgba(212,98,42,${p.alpha})`
-        : `rgba(255,255,255,${p.alpha * .7})`;
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle = p.r>1.2 ? `rgba(212,96,40,${p.a})` : `rgba(255,255,255,${p.a*.6})`;
       ctx.fill();
     });
     requestAnimationFrame(frame);
   }
-  new ResizeObserver(() => { resize(); init(); }).observe(canvas);
-  resize(); init(); frame();
+  new ResizeObserver(init).observe(c);
+  init(); frame();
 })();
 
 // Scroll reveal
 const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
-}, {threshold: 0.08, rootMargin: '0px 0px -30px 0px'});
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+}, {threshold:.08, rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.r').forEach(el => io.observe(el));
 
 // Count-up
 function countUp(el, target, suffix, ms){
   const t0 = performance.now();
   (function tick(now){
-    const p = Math.min((now - t0) / ms, 1);
-    const ease = 1 - Math.pow(1 - p, 3);
-    el.textContent = Math.round(ease * target).toLocaleString() + (p >= 1 ? suffix : '');
-    if (p < 1) requestAnimationFrame(tick);
+    const p = Math.min((now-t0)/ms, 1);
+    const e = 1-Math.pow(1-p,3);
+    el.textContent = Math.round(e*target).toLocaleString() + (p>=1 ? suffix : '');
+    if(p<1) requestAnimationFrame(tick);
   })(t0);
 }
-const cntIo = new IntersectionObserver(entries => {
+const cio = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting){
+    if(e.isIntersecting){
       const el = e.target;
-      countUp(el, +el.dataset.count, el.dataset.suffix ?? '+', 2200);
-      cntIo.unobserve(el);
+      countUp(el, +el.dataset.count, el.dataset.suffix||'+', 2200);
+      cio.unobserve(el);
     }
   });
-}, {threshold: .5});
-document.querySelectorAll('[data-count]').forEach(el => cntIo.observe(el));
+}, {threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
 </script>
 </body>
 </html>
