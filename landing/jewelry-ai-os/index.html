@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuraOS — Jewellery AI Automation OS | Sell More, Work Less</title>
+  <meta name="description" content="AuraOS is the AI automation operating system built for jewellery brands. Automate sales, marketing, catalogues, try-on, pricing and inventory to grow revenue 24/7." />
+  <meta name="theme-color" content="#0c0a08" />
+  <meta property="og:title" content="AuraOS — The Jewellery AI Automation OS" />
+  <meta property="og:description" content="One AI brain that runs your jewellery sales, marketing, catalogue and operations — so you grow revenue while you sleep." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0c0a08;
+      --bg-2:      #14110d;
+      --panel:     #1a1611;
+      --panel-2:   #221d16;
+      --line:      rgba(201, 162, 88, 0.18);
+      --gold:      #c9a258;
+      --gold-lt:   #e7c989;
+      --gold-deep: #a07c34;
+      --champ:     #f4e3c1;
+      --cream:     #f6efe2;
+      --muted:     #b8ab93;
+      --soft:      #8a8070;
+      --rose:      #d8a7a0;
+      --white:     #ffffff;
+      --radius:    18px;
+      --maxw:      1180px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--cream);
+      background: var(--bg);
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    .gold-text {
+      background: linear-gradient(120deg, var(--gold-lt), var(--gold) 45%, var(--gold-deep));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold-lt); font-weight: 600;
+    }
+    .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--gold); opacity: 0.6; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 15px 30px; border-radius: 100px; font-weight: 600;
+      font-size: 0.95rem; cursor: pointer; border: 1px solid transparent;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+      white-space: nowrap;
+    }
+    .btn-gold {
+      background: linear-gradient(120deg, var(--gold-lt), var(--gold-deep));
+      color: #2a1f0a; box-shadow: 0 10px 30px rgba(201,162,88,.25);
+    }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(201,162,88,.4); }
+    .btn-ghost { border-color: var(--line); color: var(--cream); background: rgba(255,255,255,.02); }
+    .btn-ghost:hover { border-color: var(--gold); transform: translateY(-3px); }
+
+    section { position: relative; }
+    .pad { padding: 110px 0; }
+    .center { text-align: center; }
+
+    .section-head { max-width: 720px; margin: 0 auto 64px; text-align: center; }
+    .section-head h2 { font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.05; margin: 18px 0 18px; font-weight: 600; }
+    .section-head p { color: var(--muted); font-size: 1.08rem; }
+
+    /* ---------- NAV ---------- */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      transition: background .4s ease, border-color .4s ease, padding .4s ease;
+      border-bottom: 1px solid transparent; padding: 18px 0;
+    }
+    header.scrolled {
+      background: rgba(12,10,8,.82); backdrop-filter: blur(14px);
+      border-bottom-color: var(--line); padding: 12px 0;
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 11px; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; letter-spacing: .02em; }
+    .logo .mark {
+      width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--gold-lt), var(--gold-deep));
+      color: #1a1206; font-weight: 800; font-family: 'Inter', sans-serif; font-size: 1rem;
+      box-shadow: 0 4px 14px rgba(201,162,88,.4);
+    }
+    .nav-links { display: flex; align-items: center; gap: 34px; }
+    .nav-links a { font-size: .92rem; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--gold-lt); }
+    .nav-cta { padding: 11px 22px; font-size: .88rem; }
+    .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: 0; }
+    .burger span { width: 24px; height: 2px; background: var(--cream); border-radius: 2px; transition: .3s; }
+
+    /* ---------- HERO ---------- */
+    .hero { position: relative; padding: 180px 0 110px; overflow: hidden; }
+    .hero-glow {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(620px 420px at 78% 12%, rgba(201,162,88,.22), transparent 60%),
+        radial-gradient(700px 500px at 12% 90%, rgba(216,167,160,.10), transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0; opacity: .35;
+      background-image:
+        linear-gradient(rgba(201,162,88,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,162,88,.05) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
+    }
+    .hero .wrap { position: relative; z-index: 2; }
+    .hero-inner { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; }
+    .hero h1 { font-size: clamp(2.8rem, 6.4vw, 5rem); line-height: 1.0; font-weight: 600; margin: 22px 0 24px; letter-spacing: -.5px; }
+    .hero p.lead { font-size: 1.18rem; color: var(--muted); max-width: 540px; margin-bottom: 36px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+    .hero-trust { display: flex; gap: 30px; flex-wrap: wrap; }
+    .hero-trust div { font-size: .85rem; color: var(--soft); }
+    .hero-trust b { display: block; font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--gold-lt); font-weight: 700; line-height: 1; margin-bottom: 4px; }
+
+    /* hero visual card */
+    .hero-card {
+      position: relative; background: linear-gradient(160deg, var(--panel-2), var(--panel));
+      border: 1px solid var(--line); border-radius: 24px; padding: 26px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.5);
+    }
+    .hero-card::before {
+      content: ""; position: absolute; inset: 0; border-radius: 24px; padding: 1px;
+      background: linear-gradient(140deg, rgba(231,201,137,.5), transparent 40%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+    }
+    .chat-head { display: flex; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+    .chat-head .avt { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg,var(--gold-lt),var(--gold-deep)); display:grid; place-items:center; color:#1a1206; font-weight:800; }
+    .chat-head .nm { font-weight: 600; font-size: .95rem; }
+    .chat-head .st { font-size: .72rem; color: #6fbf8e; display:flex; align-items:center; gap:5px; }
+    .chat-head .st::before { content:""; width:7px;height:7px;border-radius:50%;background:#6fbf8e; box-shadow:0 0 8px #6fbf8e; }
+    .bubble { padding: 11px 15px; border-radius: 14px; font-size: .9rem; margin-bottom: 10px; max-width: 86%; line-height:1.45; }
+    .bubble.them { background: var(--panel); border:1px solid var(--line); border-bottom-left-radius: 4px; }
+    .bubble.me { background: linear-gradient(120deg, var(--gold-deep), var(--gold)); color:#221806; margin-left:auto; border-bottom-right-radius:4px; font-weight:500; }
+    .bubble .tag { display:inline-block; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-lt); margin-bottom:4px; font-weight:700; }
+    .typing { display:flex; gap:4px; padding:12px 15px; }
+    .typing span { width:7px;height:7px;border-radius:50%;background:var(--soft); animation: blink 1.2s infinite; }
+    .typing span:nth-child(2){animation-delay:.2s} .typing span:nth-child(3){animation-delay:.4s}
+    @keyframes blink { 0%,60%,100%{opacity:.3} 30%{opacity:1} }
+
+    /* floating stat chips */
+    .chip {
+      position:absolute; background: rgba(26,22,17,.9); backdrop-filter: blur(8px);
+      border:1px solid var(--line); border-radius:14px; padding:12px 16px; font-size:.78rem;
+      box-shadow:0 16px 40px rgba(0,0,0,.45); display:flex; align-items:center; gap:10px;
+    }
+    .chip b { font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--gold-lt); }
+    .chip.a { top:-22px; left:-30px; } .chip.b { bottom:-26px; right:-24px; }
+
+    /* ---------- LOGO / TRUST STRIP ---------- */
+    .strip { border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:26px 0; background: var(--bg-2); }
+    .strip-inner { display:flex; align-items:center; gap:14px; justify-content:center; flex-wrap:wrap; }
+    .strip span { font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; color:var(--soft); margin-right:8px; }
+    .strip .pill { font-size:.82rem; color:var(--muted); border:1px solid var(--line); padding:8px 16px; border-radius:100px; }
+
+    /* ---------- POSSIBILITIES MARQUEE ---------- */
+    .marquee { overflow:hidden; padding:30px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+    .marquee-track { display:flex; gap:14px; width:max-content; animation: scroll 38s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .mq {
+      display:flex; align-items:center; gap:10px; padding:12px 22px; border-radius:100px;
+      border:1px solid var(--line); background: var(--panel); font-size:.92rem; color:var(--cream); white-space:nowrap;
+    }
+    .mq i { color:var(--gold-lt); font-style:normal; }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    /* ---------- MODULES GRID ---------- */
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .card {
+      background: linear-gradient(165deg, var(--panel-2), var(--panel));
+      border:1px solid var(--line); border-radius: var(--radius); padding:30px;
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+      position:relative; overflow:hidden;
+    }
+    .card::after {
+      content:""; position:absolute; top:0; left:0; right:0; height:2px;
+      background: linear-gradient(90deg, var(--gold-lt), transparent);
+      transform: scaleX(0); transform-origin:left; transition: transform .4s ease;
+    }
+    .card:hover { transform: translateY(-6px); border-color: rgba(201,162,88,.5); box-shadow:0 24px 50px rgba(0,0,0,.4); }
+    .card:hover::after { transform: scaleX(1); }
+    .ic {
+      width:54px; height:54px; border-radius:14px; display:grid; place-items:center;
+      background: radial-gradient(circle at 30% 30%, rgba(231,201,137,.22), rgba(201,162,88,.06));
+      border:1px solid var(--line); font-size:1.5rem; margin-bottom:20px;
+    }
+    .card h3 { font-size:1.5rem; font-weight:600; margin-bottom:10px; }
+    .card p { color:var(--muted); font-size:.94rem; }
+    .card .impact { display:inline-block; margin-top:16px; font-size:.76rem; font-weight:600; letter-spacing:.04em; color:var(--gold-lt); background:rgba(201,162,88,.1); padding:6px 12px; border-radius:8px; }
+
+    /* ---------- FLOW / HOW IT WORKS ---------- */
+    .flow { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; counter-reset: step; }
+    .step { position:relative; padding:30px 24px; border:1px solid var(--line); border-radius:var(--radius); background:var(--panel); }
+    .step .n {
+      counter-increment: step; font-family:'Cormorant Garamond',serif; font-size:2.6rem; font-weight:700;
+      color:transparent; -webkit-text-stroke:1.4px var(--gold); line-height:1; margin-bottom:14px; display:block;
+    }
+    .step h3 { font-size:1.35rem; margin-bottom:8px; font-weight:600; }
+    .step p { color:var(--muted); font-size:.9rem; }
+
+    /* ---------- IMPACT / STATS ---------- */
+    .impact-band { background: linear-gradient(160deg, var(--bg-2), var(--bg)); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .stat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center; }
+    .stat b { font-family:'Cormorant Garamond',serif; font-size:clamp(2.6rem,5vw,3.6rem); font-weight:700; line-height:1; display:block; }
+    .stat span { color:var(--muted); font-size:.92rem; margin-top:8px; display:block; }
+
+    /* ---------- SPLIT (who it's for) ---------- */
+    .split { display:grid; grid-template-columns: 1fr 1fr; gap:54px; align-items:center; }
+    .audience { display:grid; gap:14px; }
+    .aud { display:flex; gap:16px; align-items:flex-start; padding:18px 20px; border:1px solid var(--line); border-radius:14px; background:var(--panel); transition:border-color .3s; }
+    .aud:hover { border-color: rgba(201,162,88,.5); }
+    .aud .e { font-size:1.6rem; }
+    .aud h4 { font-family:'Inter',sans-serif; font-size:1rem; font-weight:600; margin-bottom:3px; }
+    .aud p { font-size:.86rem; color:var(--muted); }
+    ul.checks { list-style:none; display:grid; gap:14px; margin-top:26px; }
+    ul.checks li { display:flex; gap:12px; align-items:flex-start; color:var(--cream); font-size:1rem; }
+    ul.checks li::before { content:"✦"; color:var(--gold-lt); flex-shrink:0; margin-top:2px; }
+
+    /* ---------- PRICING ---------- */
+    .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch; }
+    .plan { background: var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:34px 30px; display:flex; flex-direction:column; }
+    .plan.feat { background: linear-gradient(170deg, var(--panel-2), var(--panel)); border-color: rgba(201,162,88,.5); box-shadow:0 24px 60px rgba(0,0,0,.4); position:relative; }
+    .plan.feat .badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:linear-gradient(120deg,var(--gold-lt),var(--gold-deep)); color:#221806; font-size:.68rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; padding:6px 16px; border-radius:100px; }
+    .plan h3 { font-family:'Inter',sans-serif; font-size:1rem; letter-spacing:.05em; text-transform:uppercase; color:var(--gold-lt); font-weight:600; }
+    .plan .pr { font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:700; margin:14px 0 4px; }
+    .plan .pr small { font-size:1rem; color:var(--soft); font-family:'Inter',sans-serif; font-weight:400; }
+    .plan .desc { color:var(--muted); font-size:.88rem; margin-bottom:22px; min-height:42px; }
+    .plan ul { list-style:none; display:grid; gap:12px; margin-bottom:28px; flex:1; }
+    .plan ul li { font-size:.9rem; color:var(--cream); display:flex; gap:10px; }
+    .plan ul li::before { content:"✓"; color:var(--gold-lt); font-weight:700; }
+    .plan .btn { width:100%; justify-content:center; }
+
+    /* ---------- FAQ ---------- */
+    .faq { max-width:820px; margin:0 auto; display:grid; gap:14px; }
+    .q { border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden; }
+    .q summary { cursor:pointer; padding:22px 26px; font-size:1.1rem; font-weight:500; display:flex; justify-content:space-between; align-items:center; list-style:none; font-family:'Cormorant Garamond',serif; }
+    .q summary::-webkit-details-marker { display:none; }
+    .q summary::after { content:"+"; color:var(--gold-lt); font-size:1.5rem; transition:transform .3s; }
+    .q[open] summary::after { transform:rotate(45deg); }
+    .q p { padding:0 26px 24px; color:var(--muted); font-size:.95rem; }
+
+    /* ---------- CTA ---------- */
+    .cta-band { position:relative; overflow:hidden; }
+    .cta-box {
+      position:relative; z-index:2; text-align:center; max-width:760px; margin:0 auto;
+      background: linear-gradient(165deg, var(--panel-2), var(--panel));
+      border:1px solid var(--line); border-radius:28px; padding:64px 40px;
+      box-shadow:0 40px 90px rgba(0,0,0,.5);
+    }
+    .cta-box::before { content:""; position:absolute; inset:0; border-radius:28px; padding:1px; background:linear-gradient(140deg, rgba(231,201,137,.6), transparent 50%); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; }
+    .cta-box h2 { font-size:clamp(2.2rem,5vw,3.2rem); margin-bottom:18px; font-weight:600; }
+    .cta-box p { color:var(--muted); font-size:1.1rem; margin-bottom:32px; }
+    .cta-glow { position:absolute; inset:0; z-index:0; background: radial-gradient(600px 300px at 50% 0%, rgba(201,162,88,.18), transparent 60%); }
+
+    /* ---------- FOOTER ---------- */
+    footer { border-top:1px solid var(--line); padding:60px 0 36px; background:var(--bg-2); }
+    .foot-grid { display:grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap:40px; margin-bottom:46px; }
+    .foot-grid p { color:var(--soft); font-size:.9rem; max-width:300px; margin-top:14px; }
+    .foot-col h5 { font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-lt); margin-bottom:16px; }
+    .foot-col a { display:block; color:var(--muted); font-size:.9rem; margin-bottom:10px; transition:color .2s; }
+    .foot-col a:hover { color:var(--gold-lt); }
+    .foot-bottom { border-top:1px solid var(--line); padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; color:var(--soft); font-size:.82rem; }
+
+    /* reveal animation */
+    .reveal { opacity:0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity:1; transform:none; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 960px) {
+      .hero-inner, .split { grid-template-columns: 1fr; }
+      .hero-visual { order:-1; max-width:440px; margin:0 auto 20px; }
+      .grid, .flow, .stat-grid, .price-grid { grid-template-columns: repeat(2,1fr); }
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px) {
+      .pad { padding:74px 0; }
+      .nav-links { display:none; }
+      .burger { display:flex; }
+      .grid, .flow, .stat-grid, .price-grid, .foot-grid { grid-template-columns: 1fr; }
+      .hero { padding-top:140px; }
+      .chip.a { left:0; } .chip.b { right:0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header id="hdr">
+    <div class="wrap nav">
+      <a href="#top" class="logo"><span class="mark">A</span> Aura<span class="gold-text">OS</span></a>
+      <nav class="nav-links">
+        <a href="#modules">Modules</a>
+        <a href="#how">How it works</a>
+        <a href="#impact">Results</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a href="#contact" class="btn btn-gold nav-cta">Book a Demo</a>
+      <button class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-glow"></div>
+    <div class="hero-grid"></div>
+    <div class="wrap">
+      <div class="hero-inner">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">The Jewellery AI Automation OS</span>
+          <h1>Run your jewellery business on <span class="gold-text">autopilot.</span></h1>
+          <p class="lead">AuraOS is one AI brain that runs your sales conversations, marketing, catalogue, pricing and follow-ups — converting every enquiry into revenue, 24 hours a day.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-gold">Book a Free Demo →</a>
+            <a href="#modules" class="btn btn-ghost">Explore the OS</a>
+          </div>
+          <div class="hero-trust">
+            <div><b>+38%</b>Average revenue lift</div>
+            <div><b>24/7</b>AI sales concierge</div>
+            <div><b>9×</b>Faster catalogue</div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="hero-card">
+            <div class="chip a"><b>₹2.4L</b> recovered this week</div>
+            <div class="chip b"><b>92%</b> replies in &lt;10s</div>
+            <div class="chat-head">
+              <div class="avt">A</div>
+              <div>
+                <div class="nm">AuraOS Concierge</div>
+                <div class="st">Online · AI Assistant</div>
+              </div>
+            </div>
+            <div class="bubble them"><span class="tag">Customer · WhatsApp</span>Do you have a diamond mangalsutra under ₹50k? 💍</div>
+            <div class="bubble me">Absolutely! Here are 3 BIS-hallmarked picks in your budget with today's gold rate locked in. Want me to reserve one for a store visit?</div>
+            <div class="bubble them">Yes, the second one. Can I get an EMI option?</div>
+            <div class="bubble me">Done ✅ Reserved + EMI pre-approved. I've sent the invoice & a try-on link. Anything else?</div>
+            <div class="typing"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="strip">
+    <div class="wrap strip-inner">
+      <span>Plugs into</span>
+      <div class="pill">WhatsApp Business</div>
+      <div class="pill">Instagram &amp; Meta</div>
+      <div class="pill">Shopify / WooCommerce</div>
+      <div class="pill">Tally &amp; Zoho</div>
+      <div class="pill">Razorpay / UPI</div>
+      <div class="pill">Google &amp; Live Gold Rates</div>
+    </div>
+  </div>
+
+  <!-- POSSIBILITIES MARQUEE -->
+  <section class="pad" style="padding-bottom:40px;">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Possibilities</span>
+      <h2>Everything AI can do for a <span class="gold-text">jewellery brand</span></h2>
+      <p>From the first DM to the repeat purchase — every touchpoint becomes faster, smarter and more profitable.</p>
+    </div>
+  </section>
+  <div class="marquee">
+    <div class="marquee-track" id="mqtrack">
+      <!-- duplicated by JS for seamless loop -->
+      <div class="mq"><i>◆</i> AI Sales Concierge</div>
+      <div class="mq"><i>◆</i> Virtual Try-On</div>
+      <div class="mq"><i>◆</i> Auto Catalogue Studio</div>
+      <div class="mq"><i>◆</i> Live Gold-Rate Pricing</div>
+      <div class="mq"><i>◆</i> Personalised Recommendations</div>
+      <div class="mq"><i>◆</i> Abandoned-Cart Recovery</div>
+      <div class="mq"><i>◆</i> Festival Campaign Automation</div>
+      <div class="mq"><i>◆</i> Visual &amp; Voice Search</div>
+      <div class="mq"><i>◆</i> Demand Forecasting</div>
+      <div class="mq"><i>◆</i> Loyalty &amp; CRM 360</div>
+      <div class="mq"><i>◆</i> AI Design Studio</div>
+      <div class="mq"><i>◆</i> Review &amp; Reputation Engine</div>
+    </div>
+  </div>
+
+  <!-- MODULES -->
+  <section class="pad" id="modules">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Areas of Automation</span>
+        <h2>Twelve modules. <span class="gold-text">One operating system.</span></h2>
+        <p>Switch on what you need today and add more as you grow. Every module is built to do one thing — turn attention into revenue.</p>
+      </div>
+      <div class="grid">
+        <div class="card reveal">
+          <div class="ic">💬</div>
+          <h3>AI Sales Concierge</h3>
+          <p>A 24/7 assistant on WhatsApp, Instagram &amp; your site that answers questions, shares curated pieces, books store visits and closes sales in any language.</p>
+          <span class="impact">↑ up to 3× more enquiries converted</span>
+        </div>
+        <div class="card reveal">
+          <div class="ic">💎</div>
+          <h3>Virtual Try-On &amp; AR</h3>
+          <p>Customers try rings, necklaces and earrings on themselves from a photo or live camera — building confidence and cutting returns.</p>
+          <span class="impact">↓ 30% returns · ↑ confident buyers</span>
+        </div>
+        <div class="card reveal">
+          <div class="ic">📸</div>
+          <h3>Auto Catalogue Studio</h3>
+          <p>Turn raw product photos into studio-grade images, model shots, reels and SEO descriptions automatically — a full catalogue in minutes.</p>
+          <span class="impact">9× faster product listing</span>
+        </div>
+        <div class="card reveal">
+          <div class="ic">✨</div>
+          <h3>Personalised Recommendations</h3>
+          <p>AI learns each shopper's taste, occasion and budget to suggest the perfect next piece — driving upsell and cross-sell on every visit.</p>
+          <span class="impact">↑ 25% average order value</span>
+        </div>
+        <div class="card reveal">
+          <div class="ic">📈</div>
+          <h3>Live Gold-Rate Pricing</h3>
+          <p>Prices, quotations and making-charges update automatically with daily metal rates — accurate quotes sent in seconds, zero manual maths.</p>
+          <span class="impact">Real-time accurate quotes</span>
+        </div>
+        <div class="card reveal">
+          <div class="ic">🛒</div>
+          <h3>Cart &amp; Lead Recovery</h3>
+          <p>Auto-detects drop-offs and idle enquiries, then nudges with the right offer at the right moment to win back lost sales.</p>
+          <span class="impact">Recover 15–20% of lost orders</span>
+        </div>
+        <div class="card reveal">
+          <div class="ic">🎯</div>
+          <h3>Campaign &amp; Ads Automation</h3>
+          <p>AI plans, writes and schedules festival, wedding-season and offer campaigns across Meta, Google &amp; broadcast — and optimises spend.</p>
+          <span class="impact">↓ ad cost · ↑ ROAS</span>
+        </div>
+        <div class="card reveal">
+          <div class="ic">🔍</div>
+          <h3>Visual &amp; Voice Search</h3>
+          <p>Shoppers upload an inspiration photo or just speak — and instantly find matching pieces from your inventory.</p>
+          <span class="impact">Frictionless discovery</span>
+        </div>
+        <div class="card reveal">
+          <div class="ic">📦</div>
+          <h3>Inventory &amp; Demand Forecasting</h3>
+          <p>Predicts best-sellers by season and region so you stock what sells, free up locked capital and never miss a trend.</p>
+          <span class="impact">↓ dead stock · ↑ turnover</span>
+        </div>
+        <div class="card reveal">
+          <div class="ic">🤝</div>
+          <h3>CRM 360 &amp; Loyalty</h3>
+          <p>A single profile for every customer with automated birthday, anniversary &amp; festival reminders and loyalty rewards that bring them back.</p>
+          <span class="impact">↑ repeat purchase rate</span>
+        </div>
+        <div class="card reveal">
+          <div class="ic">🎨</div>
+          <h3>AI Design Studio</h3>
+          <p>Describe an idea and generate custom design concepts &amp; CAD-ready renders — co-create bespoke pieces with clients on the spot.</p>
+          <span class="impact">Win high-margin custom orders</span>
+        </div>
+        <div class="card reveal">
+          <div class="ic">⭐</div>
+          <h3>Reviews &amp; Reputation</h3>
+          <p>Automatically requests reviews after purchase, replies to feedback and surfaces your best stories — building trust that sells.</p>
+          <span class="impact">More 5★ trust signals</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="pad" id="how" style="background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">How it works</span>
+        <h2>Live in days, <span class="gold-text">not months</span></h2>
+        <p>No rip-and-replace. AuraOS layers on top of the tools you already use and starts driving sales from week one.</p>
+      </div>
+      <div class="flow">
+        <div class="step reveal"><span class="n">01</span><h3>Connect</h3><p>Link WhatsApp, Instagram, your store, billing &amp; inventory in a few clicks. We import your catalogue automatically.</p></div>
+        <div class="step reveal"><span class="n">02</span><h3>Train</h3><p>AuraOS learns your products, pricing, brand voice and policies — becoming a true extension of your team.</p></div>
+        <div class="step reveal"><span class="n">03</span><h3>Automate</h3><p>The AI starts replying, recommending, quoting, following up and recovering carts across every channel, 24/7.</p></div>
+        <div class="step reveal"><span class="n">04</span><h3>Optimise</h3><p>A live dashboard shows revenue, conversion &amp; trends — and the AI keeps improving what works.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="pad impact-band" id="impact">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Revenue Impact</span>
+        <h2>Built to grow the number <span class="gold-text">that matters</span></h2>
+        <p>Indicative outcomes jewellery brands target with an AI-automation OS layered across sales and marketing.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat reveal"><b class="gold-text" data-count="38" data-suffix="%">0%</b><span>Average revenue lift in 90 days</span></div>
+        <div class="stat reveal"><b class="gold-text" data-count="3" data-suffix="×">0×</b><span>More enquiries converted to sales</span></div>
+        <div class="stat reveal"><b class="gold-text" data-count="70" data-suffix="%">0%</b><span>Of routine work automated</span></div>
+        <div class="stat reveal"><b class="gold-text" data-count="24" data-suffix="/7">0</b><span>Always-on selling, every channel</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="pad">
+    <div class="wrap split">
+      <div class="reveal">
+        <span class="eyebrow">Who it's for</span>
+        <h2 style="font-size:clamp(2rem,4.5vw,3rem); font-weight:600; margin:16px 0 14px;">One OS for every kind of <span class="gold-text">jewellery business</span></h2>
+        <p style="color:var(--muted); font-size:1.05rem;">Whether you run a single showroom or a national D2C brand, AuraOS adapts to how you sell.</p>
+        <ul class="checks">
+          <li>No coding or tech team required</li>
+          <li>Works in English &amp; regional languages</li>
+          <li>BIS hallmark, GST &amp; compliance friendly</li>
+          <li>Your data stays private &amp; secure</li>
+        </ul>
+      </div>
+      <div class="audience reveal">
+        <div class="aud"><span class="e">🏬</span><div><h4>Retail Showrooms</h4><p>Turn walk-in energy into round-the-clock online sales and store-visit bookings.</p></div></div>
+        <div class="aud"><span class="e">🛍️</span><div><h4>D2C &amp; Online Brands</h4><p>Scale conversations, content and conversions without scaling headcount.</p></div></div>
+        <div class="aud"><span class="e">🏭</span><div><h4>Wholesalers &amp; Manufacturers</h4><p>Automate B2B catalogues, quotations and reorder follow-ups.</p></div></div>
+        <div class="aud"><span class="e">💠</span><div><h4>Bespoke &amp; Designer Studios</h4><p>Co-create custom pieces with AI design and win high-margin orders.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pad" id="pricing" style="background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2>Start small. <span class="gold-text">Scale as you sell.</span></h2>
+        <p>Transparent plans designed to pay for themselves with the first recovered orders. Custom enterprise rollouts available.</p>
+      </div>
+      <div class="price-grid">
+        <div class="plan reveal">
+          <h3>Starter</h3>
+          <div class="pr">₹14,999<small>/mo</small></div>
+          <p class="desc">For single showrooms going digital.</p>
+          <ul>
+            <li>AI Sales Concierge (WhatsApp)</li>
+            <li>Auto Catalogue Studio</li>
+            <li>Live gold-rate quotes</li>
+            <li>Basic CRM &amp; follow-ups</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost">Get Started</a>
+        </div>
+        <div class="plan feat reveal">
+          <span class="badge">Most Popular</span>
+          <h3>Growth</h3>
+          <div class="pr">₹34,999<small>/mo</small></div>
+          <p class="desc">For brands serious about scaling revenue.</p>
+          <ul>
+            <li>Everything in Starter</li>
+            <li>Instagram + Web + Multi-channel</li>
+            <li>Virtual Try-On &amp; recommendations</li>
+            <li>Cart recovery &amp; campaign automation</li>
+            <li>Revenue intelligence dashboard</li>
+          </ul>
+          <a href="#contact" class="btn btn-gold">Book a Demo</a>
+        </div>
+        <div class="plan reveal">
+          <h3>Enterprise</h3>
+          <div class="pr">Custom</div>
+          <p class="desc">For multi-store chains &amp; manufacturers.</p>
+          <ul>
+            <li>All modules, unlimited channels</li>
+            <li>AI Design Studio &amp; B2B flows</li>
+            <li>Custom integrations &amp; ERP sync</li>
+            <li>Dedicated success manager</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost">Talk to Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="pad" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>Good questions, <span class="gold-text">clear answers</span></h2>
+      </div>
+      <div class="faq">
+        <details class="q reveal"><summary>Will the AI sound like my brand?</summary><p>Yes. AuraOS is trained on your products, pricing, tone and policies, so every reply feels like it comes from your best salesperson — in the customer's preferred language.</p></details>
+        <details class="q reveal"><summary>Do I need to replace my current systems?</summary><p>No. AuraOS layers on top of WhatsApp, Instagram, your website, billing and inventory. You keep your tools — we make them work together intelligently.</p></details>
+        <details class="q reveal"><summary>How fast can we go live?</summary><p>Most brands are live within days. We import your catalogue, connect your channels and train the AI, then go live with you supervising before it runs autonomously.</p></details>
+        <details class="q reveal"><summary>Is my data and my customers' data safe?</summary><p>Absolutely. Your data is encrypted, isolated to your account, never sold, and handled in line with privacy best practices and applicable regulations.</p></details>
+        <details class="q reveal"><summary>What if a customer wants a human?</summary><p>The AI seamlessly hands off to your team with full context whenever needed — and your staff can jump into any conversation at any time.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pad cta-band" id="contact">
+    <div class="cta-glow"></div>
+    <div class="wrap">
+      <div class="cta-box reveal">
+        <span class="eyebrow" style="justify-content:center;">Let's grow your revenue</span>
+        <h2 style="margin-top:18px;">See AuraOS run <span class="gold-text">your</span> jewellery brand</h2>
+        <p>Book a free, no-obligation demo. We'll map your sales journey and show you exactly where AI automation adds revenue.</p>
+        <div class="hero-actions" style="justify-content:center;">
+          <a href="mailto:signqubeinnovations@gmail.com?subject=AuraOS%20Demo%20Request" class="btn btn-gold">Book a Free Demo →</a>
+          <a href="https://wa.me/?text=Hi%20SignQube%2C%20I%27d%20like%20a%20demo%20of%20AuraOS" class="btn btn-ghost">Chat on WhatsApp</a>
+        </div>
+        <p style="margin-top:24px; font-size:.9rem;">Or email us at <a href="mailto:signqubeinnovations@gmail.com" class="gold-text" style="font-weight:600;">signqubeinnovations@gmail.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a href="#top" class="logo"><span class="mark">A</span> Aura<span class="gold-text">OS</span></a>
+          <p>The AI automation operating system for jewellery brands. Sell more, work less, grow revenue — on autopilot.</p>
+          <p style="margin-top:10px;">By <strong style="color:var(--cream);">SignQube Innovations</strong></p>
+        </div>
+        <div class="foot-col">
+          <h5>Product</h5>
+          <a href="#modules">Modules</a>
+          <a href="#how">How it works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#impact">Results</a>
+        </div>
+        <div class="foot-col">
+          <h5>Use Cases</h5>
+          <a href="#">Retail Showrooms</a>
+          <a href="#">D2C Brands</a>
+          <a href="#">Wholesalers</a>
+          <a href="#">Designer Studios</a>
+        </div>
+        <div class="foot-col">
+          <h5>Get in touch</h5>
+          <a href="mailto:signqubeinnovations@gmail.com">Email us</a>
+          <a href="#contact">Book a demo</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="yr"></span> SignQube Innovations · AuraOS. All rights reserved.</span>
+        <span>Crafted for jewellery brands that want to grow.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // sticky header
+    const hdr = document.getElementById('hdr');
+    const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 20);
+    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+
+    // mobile menu (simple toggle of nav links)
+    document.getElementById('burger').addEventListener('click', () => {
+      const links = document.querySelector('.nav-links');
+      const open = links.style.display === 'flex';
+      links.style.display = open ? '' : 'flex';
+      links.style.position = 'absolute'; links.style.top = '64px'; links.style.right = '24px';
+      links.style.flexDirection = 'column'; links.style.background = 'rgba(12,10,8,.96)';
+      links.style.padding = open ? '' : '18px 22px'; links.style.borderRadius = '14px';
+      links.style.border = open ? '' : '1px solid rgba(201,162,88,.18)';
+    });
+
+    // seamless marquee: duplicate track contents
+    const track = document.getElementById('mqtrack');
+    track.innerHTML += track.innerHTML;
+
+    // reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // count-up stats
+    const animateCount = (el) => {
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      let cur = 0; const dur = 1400; const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        cur = Math.round(target * eased);
+        el.textContent = cur + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const statIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); statIO.unobserve(e.target); } });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(el => statIO.observe(el));
+  </script>
+</body>
+</html>
