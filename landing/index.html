@@ -1606,9 +1606,18 @@ Stillness is not something you create —<br/>
     // Form submit
     function handleSubmit(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('.form-submit');
-      btn.textContent = '✓ Request Sent! We\'ll be in touch within 24 hrs.';
-      btn.style.background = '#4a7a5e';
+      const f = e.target;
+      const name  = (f.querySelector('#fname').value + ' ' + f.querySelector('#lname').value).trim();
+      const email = f.querySelector('#email').value;
+      const phone = f.querySelector('#phone').value;
+      const prog  = f.querySelector('#program').value || 'Not selected';
+      const aol   = f.querySelector('#aol').value || 'Not specified';
+      const msg   = f.querySelector('#message').value;
+      const text  = `🙏 New Retreat Registration\n\n👤 Name: ${name}\n📧 Email: ${email}\n📱 Phone: ${phone}\n🏕 Program: ${prog}\n🧘 AoL Course: ${aol}${msg ? '\n💬 Message: ' + msg : ''}`;
+      window.open('https://wa.me/918113013556?text=' + encodeURIComponent(text), '_blank');
+      const btn = f.querySelector('.form-submit');
+      btn.textContent = '✓ Sent via WhatsApp!';
+      btn.style.background = '#25D366';
       btn.disabled = true;
     }
 
