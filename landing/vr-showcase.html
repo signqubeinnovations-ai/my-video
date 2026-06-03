@@ -356,6 +356,147 @@ footer{
   </div>
 </section>
 
+<!-- ══════════════════════════════════════
+     META QUEST 3S — SCROLL ANIMATION
+════════════════════════════════════════ -->
+<section id="qs" style="height:240vh;position:relative">
+  <div id="qs-sticky" style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--dark)">
+
+    <!-- ambient glow rings -->
+    <div id="qs-ring1" style="position:absolute;border-radius:50%;pointer-events:none;width:500px;height:500px;background:radial-gradient(circle,rgba(60,100,255,0) 0%,transparent 70%);opacity:0"></div>
+    <div id="qs-ring2" style="position:absolute;border-radius:50%;pointer-events:none;width:700px;height:700px;border:1px solid rgba(100,140,255,0);transition:none"></div>
+
+    <!-- top label -->
+    <p id="qs-pre" style="font-size:.68rem;letter-spacing:.38em;text-transform:uppercase;color:rgba(201,162,39,0);margin-bottom:1.75rem;transition:none;position:relative;z-index:2">Experience Inside</p>
+
+    <!-- headset 3D wrapper -->
+    <div style="perspective:1400px;perspective-origin:50% 48%">
+      <div id="qs-turn" style="transform:rotateY(0deg) translateY(50px) scale(.78);opacity:0;transition:none;will-change:transform,opacity;position:relative;z-index:2">
+
+        <svg viewBox="0 0 560 320" width="560" height="320" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+          <defs>
+            <!-- lens gradients (updated by JS) -->
+            <radialGradient id="lg" cx="42%" cy="38%" r="60%">
+              <stop id="lg0" offset="0%" stop-color="#1a1a38"/>
+              <stop id="lg1" offset="100%" stop-color="#08080f"/>
+            </radialGradient>
+            <radialGradient id="rg" cx="42%" cy="38%" r="60%">
+              <stop id="rg0" offset="0%" stop-color="#1a1a38"/>
+              <stop id="rg1" offset="100%" stop-color="#08080f"/>
+            </radialGradient>
+            <!-- body gradient -->
+            <linearGradient id="bdg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2e2e4a"/>
+              <stop offset="100%" stop-color="#15152A"/>
+            </linearGradient>
+            <!-- drop shadow -->
+            <filter id="fshadow" x="-25%" y="-25%" width="150%" height="150%">
+              <feDropShadow dx="0" dy="12" stdDeviation="22" flood-color="rgba(0,0,0,.65)"/>
+            </filter>
+            <!-- lens glow filter -->
+            <filter id="lglow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur id="lgb" stdDeviation="0" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- body -->
+          <rect x="28" y="38" width="504" height="244" rx="42" fill="url(#bdg)" filter="url(#fshadow)"/>
+          <!-- front face panel -->
+          <rect x="42" y="52" width="476" height="216" rx="32" fill="#1E1E36"/>
+          <!-- top edge highlight -->
+          <path d="M82 52 Q280 43 478 52" stroke="rgba(255,255,255,.06)" stroke-width="1.5" fill="none"/>
+
+          <!-- ── LEFT LENS ── -->
+          <ellipse cx="186" cy="160" rx="90" ry="80" fill="#111120"/>
+          <ellipse id="ll" cx="186" cy="160" rx="74" ry="66" fill="url(#lg)" filter="url(#lglow)"/>
+          <!-- lens glass sheen -->
+          <ellipse cx="162" cy="142" rx="22" ry="12" fill="rgba(180,210,255,.04)" transform="rotate(-18,162,142)"/>
+          <ellipse cx="152" cy="136" rx="9" ry="5" fill="rgba(200,225,255,.05)" transform="rotate(-18,152,136)"/>
+          <!-- outer ring -->
+          <ellipse cx="186" cy="160" rx="90" ry="80" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+
+          <!-- ── RIGHT LENS ── -->
+          <ellipse cx="374" cy="160" rx="90" ry="80" fill="#111120"/>
+          <ellipse id="rl" cx="374" cy="160" rx="74" ry="66" fill="url(#rg)" filter="url(#lglow)"/>
+          <!-- lens glass sheen -->
+          <ellipse cx="350" cy="142" rx="22" ry="12" fill="rgba(180,210,255,.04)" transform="rotate(-18,350,142)"/>
+          <ellipse cx="340" cy="136" rx="9" ry="5" fill="rgba(200,225,255,.05)" transform="rotate(-18,340,136)"/>
+          <ellipse cx="374" cy="160" rx="90" ry="80" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+
+          <!-- lens bridge -->
+          <rect x="276" y="146" width="28" height="28" rx="5" fill="#181830"/>
+
+          <!-- ── CAMERA BAR ── -->
+          <rect x="178" y="54" width="204" height="14" rx="7" fill="#161628"/>
+          <!-- 3 cameras -->
+          <circle cx="232" cy="61" r="5.5" fill="#0d0d1a"/>
+          <circle id="c1" cx="232" cy="61" r="2.5" fill="#1e1e30"/>
+          <circle cx="280" cy="61" r="5.5" fill="#0d0d1a"/>
+          <circle id="c2" cx="280" cy="61" r="2.5" fill="#1e1e30"/>
+          <circle cx="328" cy="61" r="5.5" fill="#0d0d1a"/>
+          <circle id="c3" cx="328" cy="61" r="2.5" fill="#1e1e30"/>
+          <!-- depth sensor -->
+          <rect x="155" y="57" width="16" height="8" rx="4" fill="#181828"/>
+          <rect x="389" y="57" width="16" height="8" rx="4" fill="#181828"/>
+
+          <!-- ── SIDE SENSOR STRIPS ── -->
+          <rect x="42" y="96" width="7" height="88" rx="3.5" fill="#18182E"/>
+          <rect x="43" y="102" width="5" height="14" rx="2.5" fill="#24243C"/>
+          <rect x="43" y="124" width="5" height="14" rx="2.5" fill="#24243C"/>
+          <rect x="43" y="146" width="5" height="14" rx="2.5" fill="#24243C"/>
+
+          <rect x="511" y="96" width="7" height="88" rx="3.5" fill="#18182E"/>
+          <rect x="512" y="102" width="5" height="14" rx="2.5" fill="#24243C"/>
+          <rect x="512" y="124" width="5" height="14" rx="2.5" fill="#24243C"/>
+          <rect x="512" y="146" width="5" height="14" rx="2.5" fill="#24243C"/>
+
+          <!-- ── SIDE STRAPS ── -->
+          <path d="M28 118 C4 130 0 158 4 180 C8 202 20 218 28 222" stroke="#12121F" stroke-width="16" fill="none" stroke-linecap="round"/>
+          <path d="M28 118 C4 130 0 158 4 180 C8 202 20 218 28 222" stroke="#22223A" stroke-width="11" fill="none" stroke-linecap="round"/>
+          <path d="M28 118 C4 130 0 158 4 180 C8 202 20 218 28 222" stroke="#282840" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+          <path d="M532 118 C556 130 560 158 556 180 C552 202 540 218 532 222" stroke="#12121F" stroke-width="16" fill="none" stroke-linecap="round"/>
+          <path d="M532 118 C556 130 560 158 556 180 C552 202 540 218 532 222" stroke="#22223A" stroke-width="11" fill="none" stroke-linecap="round"/>
+          <path d="M532 118 C556 130 560 158 556 180 C552 202 540 218 532 222" stroke="#282840" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+          <!-- ── TOP HEAD STRAP ── -->
+          <path d="M148 40 Q280 4 412 40" stroke="#12121F" stroke-width="14" fill="none" stroke-linecap="round"/>
+          <path d="M148 40 Q280 4 412 40" stroke="#22223A" stroke-width="9" fill="none" stroke-linecap="round"/>
+          <path d="M148 40 Q280 4 412 40" stroke="#2A2A44" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+          <!-- power button -->
+          <rect x="510" y="170" width="9" height="26" rx="4.5" fill="#1E1E32"/>
+          <!-- volume buttons -->
+          <rect x="510" y="130" width="9" height="16" rx="4.5" fill="#1E1E32"/>
+          <rect x="510" y="150" width="9" height="14" rx="4.5" fill="#1E1E32"/>
+
+          <!-- USB-C port -->
+          <rect x="256" y="279" width="48" height="7" rx="3.5" fill="#18182A"/>
+
+          <!-- bottom mics -->
+          <circle cx="216" cy="278" r="2.5" fill="#18182E"/>
+          <circle cx="280" cy="278" r="2.5" fill="#18182E"/>
+          <circle cx="344" cy="278" r="2.5" fill="#18182E"/>
+
+        </svg>
+      </div>
+    </div>
+
+    <!-- bottom label -->
+    <div id="qs-label" style="text-align:center;margin-top:2rem;opacity:0;transition:none;position:relative;z-index:2">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:var(--cream);letter-spacing:.04em">Meta Quest 3S</p>
+      <p style="font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(201,162,39,.65);margin-top:.5rem">Your Window Into Every Experience</p>
+    </div>
+
+    <!-- scroll cue -->
+    <div id="qs-hint" style="position:absolute;bottom:2.5rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(245,239,224,.22);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;transition:none">
+      <div style="width:1px;height:36px;background:linear-gradient(to bottom,rgba(201,162,39,.5),transparent);animation:rodPulse 2s ease-in-out infinite"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+</section>
+
 <!-- INTRO BAND -->
 <div class="intro-band">
   <div class="intro-band-inner">
@@ -661,6 +802,102 @@ const cio = new IntersectionObserver(entries => {
   });
 }, {threshold:.5});
 document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+// ── META QUEST 3S SCROLL ANIMATION ──
+(function(){
+  const section = document.getElementById('qs');
+  const turn    = document.getElementById('qs-turn');
+  const ring1   = document.getElementById('qs-ring1');
+  const ring2   = document.getElementById('qs-ring2');
+  const pre     = document.getElementById('qs-pre');
+  const label   = document.getElementById('qs-label');
+  const hint    = document.getElementById('qs-hint');
+  const ll      = document.getElementById('ll');
+  const rl      = document.getElementById('rl');
+  const c1      = document.getElementById('c1');
+  const c2      = document.getElementById('c2');
+  const c3      = document.getElementById('c3');
+  const lg0     = document.getElementById('lg0');
+  const lg1     = document.getElementById('lg1');
+  const rg0     = document.getElementById('rg0');
+  const rg1     = document.getElementById('rg1');
+  const lgb     = document.getElementById('lgb');
+
+  function clamp(v,a,b){ return Math.max(a,Math.min(b,v)) }
+  function remap(v,a,b,c,d){ return c+(d-c)*clamp((v-a)/(b-a),0,1) }
+  function lerp(a,b,t){ return a+(b-a)*t }
+
+  let raf = null;
+  function tick(){
+    const rect = section.getBoundingClientRect();
+    const sh   = section.offsetHeight;
+    const p    = clamp(-rect.top / (sh - innerHeight), 0, 1);
+
+    /* ── PHASE 1 (0→0.22): rise in ── */
+    const opacity = remap(p, 0, 0.18, 0, 1);
+    const scale   = remap(p, 0, 0.22, 0.76, 1);
+    const ty      = remap(p, 0, 0.22, 52, 0);
+
+    /* ── PHASE 2 (0.18→0.7): gentle 3D rock ── */
+    const rockRaw = Math.sin(remap(p, 0.18, 0.72, 0, Math.PI * 2));
+    const rotY    = rockRaw * 11;
+
+    /* ── PHASE 3 (0.42→0.78): lenses power on ── */
+    const glow = remap(p, 0.42, 0.76, 0, 1);
+    const r = Math.round(lerp(10, 28, glow));
+    const g = Math.round(lerp(10, 80, glow));
+    const b = Math.round(lerp(22, 180, glow));
+    const glowStr = `rgb(${r},${g},${b})`;
+    const glowBright = `rgb(${r+20},${g+40},${b+60})`;
+
+    // update SVG gradient stops
+    lg0.setAttribute('stop-color', glowBright);
+    lg1.setAttribute('stop-color', glowStr);
+    rg0.setAttribute('stop-color', glowBright);
+    rg1.setAttribute('stop-color', glowStr);
+
+    // lens blur glow
+    const blurAmount = glow * 7;
+    lgb.setAttribute('stdDeviation', blurAmount);
+
+    // lens drop-shadow glow
+    const ds = `drop-shadow(0 0 ${Math.round(glow*24)}px rgba(70,130,255,${glow*.7})) drop-shadow(0 0 ${Math.round(glow*48)}px rgba(50,100,220,${glow*.3}))`;
+    ll.style.filter = ds;
+    rl.style.filter = ds;
+
+    // camera dots — green active
+    const camAlpha = remap(p, 0.52, 0.72, 0, 1);
+    const camCol = `rgba(80,210,120,${camAlpha})`;
+    c1.setAttribute('fill', camCol);
+    c2.setAttribute('fill', camCol);
+    c3.setAttribute('fill', camCol);
+
+    /* ── ambient glow ring ── */
+    const ra = glow * 0.14;
+    ring1.style.opacity   = ra > 0 ? 1 : 0;
+    ring1.style.background = `radial-gradient(circle,rgba(60,110,255,${ra}) 0%,rgba(40,80,200,${ra*.4}) 45%,transparent 70%)`;
+    ring2.style.borderColor = `rgba(100,150,255,${glow*.12})`;
+
+    /* ── PHASE 4 (0.68→0.92): labels ── */
+    const la = remap(p, 0.66, 0.90, 0, 1);
+    pre.style.color   = `rgba(201,162,39,${la})`;
+    label.style.opacity = la;
+
+    /* ── scroll hint fades once scrolling starts ── */
+    hint.style.opacity = remap(p, 0, 0.08, 0.7, 0);
+
+    // apply transforms
+    turn.style.opacity   = opacity;
+    turn.style.transform = `translateY(${ty}px) scale(${scale}) rotateY(${rotY}deg)`;
+
+    raf = null;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!raf) raf = requestAnimationFrame(tick);
+  }, {passive:true});
+  tick();
+})();
 </script>
 </body>
 </html>
