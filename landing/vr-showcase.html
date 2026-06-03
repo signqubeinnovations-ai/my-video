@@ -373,113 +373,41 @@ footer{
     <div style="perspective:1400px;perspective-origin:50% 48%">
       <div id="qs-turn" style="transform:rotateY(0deg) translateY(50px) scale(.78);opacity:0;transition:none;will-change:transform,opacity;position:relative;z-index:2">
 
-        <svg viewBox="0 0 560 320" width="560" height="320" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
-          <defs>
-            <!-- lens gradients (updated by JS) -->
-            <radialGradient id="lg" cx="42%" cy="38%" r="60%">
-              <stop id="lg0" offset="0%" stop-color="#1a1a38"/>
-              <stop id="lg1" offset="100%" stop-color="#08080f"/>
-            </radialGradient>
-            <radialGradient id="rg" cx="42%" cy="38%" r="60%">
-              <stop id="rg0" offset="0%" stop-color="#1a1a38"/>
-              <stop id="rg1" offset="100%" stop-color="#08080f"/>
-            </radialGradient>
-            <!-- body gradient -->
-            <linearGradient id="bdg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#2e2e4a"/>
-              <stop offset="100%" stop-color="#15152A"/>
-            </linearGradient>
-            <!-- drop shadow -->
-            <filter id="fshadow" x="-25%" y="-25%" width="150%" height="150%">
-              <feDropShadow dx="0" dy="12" stdDeviation="22" flood-color="rgba(0,0,0,.65)"/>
-            </filter>
-            <!-- lens glow filter -->
-            <filter id="lglow" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur id="lgb" stdDeviation="0" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
+        <!-- real product image with lens glow overlays -->
+        <div id="qs-img-wrap" style="position:relative;display:inline-block;line-height:0">
 
-          <!-- body -->
-          <rect x="28" y="38" width="504" height="244" rx="42" fill="url(#bdg)" filter="url(#fshadow)"/>
-          <!-- front face panel -->
-          <rect x="42" y="52" width="476" height="216" rx="32" fill="#1E1E36"/>
-          <!-- top edge highlight -->
-          <path d="M82 52 Q280 43 478 52" stroke="rgba(255,255,255,.06)" stroke-width="1.5" fill="none"/>
+          <img id="qs-img"
+               src="https://www.designinfo.in/wp-content/uploads/2022/09/Meta-Quest-3S-Advanced-All-in-One-VR-Headset-128GB-11-485x485.webp"
+               width="460" height="460"
+               style="display:block;mix-blend-mode:darken;filter:brightness(1.08) contrast(1.2) saturate(.75);border-radius:6px;max-width:90vw"
+               alt="Meta Quest 3S headset">
 
-          <!-- ── LEFT LENS ── -->
-          <ellipse cx="186" cy="160" rx="90" ry="80" fill="#111120"/>
-          <ellipse id="ll" cx="186" cy="160" rx="74" ry="66" fill="url(#lg)" filter="url(#lglow)"/>
-          <!-- lens glass sheen -->
-          <ellipse cx="162" cy="142" rx="22" ry="12" fill="rgba(180,210,255,.04)" transform="rotate(-18,162,142)"/>
-          <ellipse cx="152" cy="136" rx="9" ry="5" fill="rgba(200,225,255,.05)" transform="rotate(-18,152,136)"/>
-          <!-- outer ring -->
-          <ellipse cx="186" cy="160" rx="90" ry="80" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+          <!-- left lens glow — positioned over left lens area -->
+          <div id="qs-ll" style="
+            position:absolute;top:30%;left:10%;
+            width:34%;padding-bottom:34%;
+            border-radius:50%;pointer-events:none;
+            mix-blend-mode:screen;
+            background:radial-gradient(circle,rgba(70,130,255,0) 20%,transparent 70%);
+          "></div>
 
-          <!-- ── RIGHT LENS ── -->
-          <ellipse cx="374" cy="160" rx="90" ry="80" fill="#111120"/>
-          <ellipse id="rl" cx="374" cy="160" rx="74" ry="66" fill="url(#rg)" filter="url(#lglow)"/>
-          <!-- lens glass sheen -->
-          <ellipse cx="350" cy="142" rx="22" ry="12" fill="rgba(180,210,255,.04)" transform="rotate(-18,350,142)"/>
-          <ellipse cx="340" cy="136" rx="9" ry="5" fill="rgba(200,225,255,.05)" transform="rotate(-18,340,136)"/>
-          <ellipse cx="374" cy="160" rx="90" ry="80" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+          <!-- right lens glow — positioned over right lens area -->
+          <div id="qs-rl" style="
+            position:absolute;top:30%;right:10%;
+            width:34%;padding-bottom:34%;
+            border-radius:50%;pointer-events:none;
+            mix-blend-mode:screen;
+            background:radial-gradient(circle,rgba(70,130,255,0) 20%,transparent 70%);
+          "></div>
 
-          <!-- lens bridge -->
-          <rect x="276" y="146" width="28" height="28" rx="5" fill="#181830"/>
+          <!-- outer bloom ring -->
+          <div id="qs-bloom" style="
+            position:absolute;inset:-18%;
+            border-radius:50%;pointer-events:none;
+            background:radial-gradient(circle,rgba(50,100,255,0) 40%,transparent 70%);
+          "></div>
 
-          <!-- ── CAMERA BAR ── -->
-          <rect x="178" y="54" width="204" height="14" rx="7" fill="#161628"/>
-          <!-- 3 cameras -->
-          <circle cx="232" cy="61" r="5.5" fill="#0d0d1a"/>
-          <circle id="c1" cx="232" cy="61" r="2.5" fill="#1e1e30"/>
-          <circle cx="280" cy="61" r="5.5" fill="#0d0d1a"/>
-          <circle id="c2" cx="280" cy="61" r="2.5" fill="#1e1e30"/>
-          <circle cx="328" cy="61" r="5.5" fill="#0d0d1a"/>
-          <circle id="c3" cx="328" cy="61" r="2.5" fill="#1e1e30"/>
-          <!-- depth sensor -->
-          <rect x="155" y="57" width="16" height="8" rx="4" fill="#181828"/>
-          <rect x="389" y="57" width="16" height="8" rx="4" fill="#181828"/>
-
-          <!-- ── SIDE SENSOR STRIPS ── -->
-          <rect x="42" y="96" width="7" height="88" rx="3.5" fill="#18182E"/>
-          <rect x="43" y="102" width="5" height="14" rx="2.5" fill="#24243C"/>
-          <rect x="43" y="124" width="5" height="14" rx="2.5" fill="#24243C"/>
-          <rect x="43" y="146" width="5" height="14" rx="2.5" fill="#24243C"/>
-
-          <rect x="511" y="96" width="7" height="88" rx="3.5" fill="#18182E"/>
-          <rect x="512" y="102" width="5" height="14" rx="2.5" fill="#24243C"/>
-          <rect x="512" y="124" width="5" height="14" rx="2.5" fill="#24243C"/>
-          <rect x="512" y="146" width="5" height="14" rx="2.5" fill="#24243C"/>
-
-          <!-- ── SIDE STRAPS ── -->
-          <path d="M28 118 C4 130 0 158 4 180 C8 202 20 218 28 222" stroke="#12121F" stroke-width="16" fill="none" stroke-linecap="round"/>
-          <path d="M28 118 C4 130 0 158 4 180 C8 202 20 218 28 222" stroke="#22223A" stroke-width="11" fill="none" stroke-linecap="round"/>
-          <path d="M28 118 C4 130 0 158 4 180 C8 202 20 218 28 222" stroke="#282840" stroke-width="6" fill="none" stroke-linecap="round"/>
-
-          <path d="M532 118 C556 130 560 158 556 180 C552 202 540 218 532 222" stroke="#12121F" stroke-width="16" fill="none" stroke-linecap="round"/>
-          <path d="M532 118 C556 130 560 158 556 180 C552 202 540 218 532 222" stroke="#22223A" stroke-width="11" fill="none" stroke-linecap="round"/>
-          <path d="M532 118 C556 130 560 158 556 180 C552 202 540 218 532 222" stroke="#282840" stroke-width="6" fill="none" stroke-linecap="round"/>
-
-          <!-- ── TOP HEAD STRAP ── -->
-          <path d="M148 40 Q280 4 412 40" stroke="#12121F" stroke-width="14" fill="none" stroke-linecap="round"/>
-          <path d="M148 40 Q280 4 412 40" stroke="#22223A" stroke-width="9" fill="none" stroke-linecap="round"/>
-          <path d="M148 40 Q280 4 412 40" stroke="#2A2A44" stroke-width="4" fill="none" stroke-linecap="round"/>
-
-          <!-- power button -->
-          <rect x="510" y="170" width="9" height="26" rx="4.5" fill="#1E1E32"/>
-          <!-- volume buttons -->
-          <rect x="510" y="130" width="9" height="16" rx="4.5" fill="#1E1E32"/>
-          <rect x="510" y="150" width="9" height="14" rx="4.5" fill="#1E1E32"/>
-
-          <!-- USB-C port -->
-          <rect x="256" y="279" width="48" height="7" rx="3.5" fill="#18182A"/>
-
-          <!-- bottom mics -->
-          <circle cx="216" cy="278" r="2.5" fill="#18182E"/>
-          <circle cx="280" cy="278" r="2.5" fill="#18182E"/>
-          <circle cx="344" cy="278" r="2.5" fill="#18182E"/>
-
-        </svg>
+        </div>
       </div>
     </div>
 
@@ -812,20 +740,13 @@ document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
   const pre     = document.getElementById('qs-pre');
   const label   = document.getElementById('qs-label');
   const hint    = document.getElementById('qs-hint');
-  const ll      = document.getElementById('ll');
-  const rl      = document.getElementById('rl');
-  const c1      = document.getElementById('c1');
-  const c2      = document.getElementById('c2');
-  const c3      = document.getElementById('c3');
-  const lg0     = document.getElementById('lg0');
-  const lg1     = document.getElementById('lg1');
-  const rg0     = document.getElementById('rg0');
-  const rg1     = document.getElementById('rg1');
-  const lgb     = document.getElementById('lgb');
+  const img     = document.getElementById('qs-img');
+  const llDiv   = document.getElementById('qs-ll');
+  const rlDiv   = document.getElementById('qs-rl');
+  const bloom   = document.getElementById('qs-bloom');
 
   function clamp(v,a,b){ return Math.max(a,Math.min(b,v)) }
   function remap(v,a,b,c,d){ return c+(d-c)*clamp((v-a)/(b-a),0,1) }
-  function lerp(a,b,t){ return a+(b-a)*t }
 
   let raf = null;
   function tick(){
@@ -833,62 +754,50 @@ document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
     const sh   = section.offsetHeight;
     const p    = clamp(-rect.top / (sh - innerHeight), 0, 1);
 
-    /* ── PHASE 1 (0→0.22): rise in ── */
+    /* PHASE 1 (0→0.22): rise in */
     const opacity = remap(p, 0, 0.18, 0, 1);
-    const scale   = remap(p, 0, 0.22, 0.76, 1);
-    const ty      = remap(p, 0, 0.22, 52, 0);
+    const scale   = remap(p, 0, 0.22, 0.78, 1);
+    const ty      = remap(p, 0, 0.22, 55, 0);
 
-    /* ── PHASE 2 (0.18→0.7): gentle 3D rock ── */
-    const rockRaw = Math.sin(remap(p, 0.18, 0.72, 0, Math.PI * 2));
-    const rotY    = rockRaw * 11;
+    /* PHASE 2 (0.18→0.72): gentle 3D rock — sine sweep */
+    const rotY = Math.sin(remap(p, 0.18, 0.72, 0, Math.PI * 2)) * 12;
 
-    /* ── PHASE 3 (0.42→0.78): lenses power on ── */
-    const glow = remap(p, 0.42, 0.76, 0, 1);
-    const r = Math.round(lerp(10, 28, glow));
-    const g = Math.round(lerp(10, 80, glow));
-    const b = Math.round(lerp(22, 180, glow));
-    const glowStr = `rgb(${r},${g},${b})`;
-    const glowBright = `rgb(${r+20},${g+40},${b+60})`;
+    /* PHASE 3 (0.42→0.80): lens & ambient glow */
+    const glow = remap(p, 0.42, 0.78, 0, 1);
 
-    // update SVG gradient stops
-    lg0.setAttribute('stop-color', glowBright);
-    lg1.setAttribute('stop-color', glowStr);
-    rg0.setAttribute('stop-color', glowBright);
-    rg1.setAttribute('stop-color', glowStr);
+    // image — darken blend already removes white bg; add blue glow via drop-shadow
+    const dsBlur1 = Math.round(glow * 32);
+    const dsBlur2 = Math.round(glow * 60);
+    const dsA1    = (glow * 0.75).toFixed(2);
+    const dsA2    = (glow * 0.35).toFixed(2);
+    img.style.filter = `brightness(${(1.08 + glow*0.1).toFixed(2)}) contrast(1.2) saturate(${(0.75 + glow*0.4).toFixed(2)}) drop-shadow(0 0 ${dsBlur1}px rgba(70,130,255,${dsA1})) drop-shadow(0 0 ${dsBlur2}px rgba(40,90,200,${dsA2}))`;
 
-    // lens blur glow
-    const blurAmount = glow * 7;
-    lgb.setAttribute('stdDeviation', blurAmount);
+    // lens overlay glow (screen blend)
+    const lensA = (glow * 0.65).toFixed(2);
+    const lensGrad = `radial-gradient(circle,rgba(90,150,255,${lensA}) 0%,rgba(60,120,255,${(glow*0.3).toFixed(2)}) 45%,transparent 75%)`;
+    llDiv.style.background = lensGrad;
+    rlDiv.style.background = lensGrad;
 
-    // lens drop-shadow glow
-    const ds = `drop-shadow(0 0 ${Math.round(glow*24)}px rgba(70,130,255,${glow*.7})) drop-shadow(0 0 ${Math.round(glow*48)}px rgba(50,100,220,${glow*.3}))`;
-    ll.style.filter = ds;
-    rl.style.filter = ds;
+    // outer bloom
+    const bloomA = (glow * 0.12).toFixed(2);
+    bloom.style.background = `radial-gradient(circle,rgba(50,100,255,${bloomA}) 30%,transparent 70%)`;
 
-    // camera dots — green active
-    const camAlpha = remap(p, 0.52, 0.72, 0, 1);
-    const camCol = `rgba(80,210,120,${camAlpha})`;
-    c1.setAttribute('fill', camCol);
-    c2.setAttribute('fill', camCol);
-    c3.setAttribute('fill', camCol);
+    // ambient ring
+    const ra = glow * 0.15;
+    ring1.style.opacity    = ra > 0 ? 1 : 0;
+    ring1.style.background = `radial-gradient(circle,rgba(60,110,255,${ra.toFixed(2)}) 0%,transparent 70%)`;
+    ring2.style.borderColor = `rgba(100,150,255,${(glow*0.13).toFixed(2)})`;
 
-    /* ── ambient glow ring ── */
-    const ra = glow * 0.14;
-    ring1.style.opacity   = ra > 0 ? 1 : 0;
-    ring1.style.background = `radial-gradient(circle,rgba(60,110,255,${ra}) 0%,rgba(40,80,200,${ra*.4}) 45%,transparent 70%)`;
-    ring2.style.borderColor = `rgba(100,150,255,${glow*.12})`;
-
-    /* ── PHASE 4 (0.68→0.92): labels ── */
+    /* PHASE 4 (0.68→0.92): labels */
     const la = remap(p, 0.66, 0.90, 0, 1);
-    pre.style.color   = `rgba(201,162,39,${la})`;
-    label.style.opacity = la;
+    pre.style.color     = `rgba(201,162,39,${la.toFixed(2)})`;
+    label.style.opacity = la.toFixed(2);
 
-    /* ── scroll hint fades once scrolling starts ── */
-    hint.style.opacity = remap(p, 0, 0.08, 0.7, 0);
+    /* scroll hint fades on first movement */
+    hint.style.opacity = remap(p, 0, 0.08, 0.7, 0).toFixed(2);
 
-    // apply transforms
-    turn.style.opacity   = opacity;
-    turn.style.transform = `translateY(${ty}px) scale(${scale}) rotateY(${rotY}deg)`;
+    turn.style.opacity   = opacity.toFixed(2);
+    turn.style.transform = `translateY(${ty.toFixed(1)}px) scale(${scale.toFixed(3)}) rotateY(${rotY.toFixed(2)}deg)`;
 
     raf = null;
   }
