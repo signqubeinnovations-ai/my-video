@@ -184,6 +184,82 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,162,39,.08);display:fle
 @keyframes rodPulse{0%,100%{opacity:.8}50%{opacity:.2;transform:scaleY(.5)}}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
+/* ── HORIZONTAL PARALLAX GALLERY ── */
+.hscroll-wrap{position:relative;height:380vh}
+.hscroll-sticky{
+  position:sticky;top:0;height:100vh;overflow:hidden;
+  display:flex;flex-direction:column;
+  padding-top:4.5rem;background:var(--dark)
+}
+.hscroll-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  padding:0 3rem 1.75rem;flex-shrink:0
+}
+.hscroll-eyebrow{
+  font-size:.63rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.55rem
+}
+.hscroll-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.9rem,3.5vw,3.1rem);font-weight:300;color:var(--cream);line-height:1.15
+}
+.hscroll-h2 em{font-style:italic;color:var(--gold-lt)}
+.hscroll-hint{
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(245,239,224,.28);display:flex;align-items:center;gap:.55rem;
+  align-self:flex-end;padding-bottom:.25rem
+}
+.hscroll-hint::before{content:'';display:block;width:22px;height:1px;background:rgba(201,162,39,.4)}
+.hprogress{
+  height:1px;background:rgba(201,162,39,.1);
+  margin:0 3rem 2.25rem;position:relative;flex-shrink:0
+}
+.hprogress-fill{
+  position:absolute;left:0;top:0;bottom:0;
+  background:linear-gradient(to right,var(--gold),var(--gold-lt));
+  width:0%;transition:width .08s linear
+}
+.hscroll-track-outer{overflow:hidden;flex:1;display:flex;align-items:center}
+.hscroll-track{display:flex;align-items:center;gap:1.5rem;padding:0 3rem;will-change:transform}
+
+/* individual cards */
+.hcard{flex-shrink:0;width:310px;position:relative;overflow:hidden;border-radius:2px;transition:box-shadow .4s ease}
+.hcard:hover{box-shadow:0 0 0 1px rgba(201,162,39,.4)}
+.hcard-tall{height:72vh}
+.hcard-mid{height:57vh;margin-top:7vh}
+.hcard-short{height:44vh;margin-top:14vh}
+
+/* image layer — wider than card for parallax room */
+.hcard-img{
+  position:absolute;top:0;bottom:0;left:-22%;right:-22%;
+  background-size:cover;background-position:center;
+  will-change:transform
+}
+.hcard-glow{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,rgba(5,8,15,.9) 0%,rgba(5,8,15,.15) 55%,transparent 100%)
+}
+.hcard:hover .hcard-glow{
+  background:linear-gradient(to top,rgba(5,8,15,.78) 0%,rgba(5,8,15,.04) 60%,transparent 100%)
+}
+.hcard-label{position:absolute;bottom:0;left:0;right:0;padding:1.4rem 1.1rem 1.1rem}
+.hcard-cat{display:block;font-size:.57rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.hcard-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--cream);line-height:1.25}
+
+@media(max-width:900px){
+  .hscroll-wrap{height:auto}
+  .hscroll-sticky{position:static;height:auto;overflow:visible;padding-top:2.5rem}
+  .hscroll-track-outer{overflow-x:auto;scrollbar-width:none;align-items:flex-start}
+  .hscroll-track-outer::-webkit-scrollbar{display:none}
+  .hscroll-track{transform:none!important;padding:0 1.5rem 2rem}
+  .hcard-img{left:0;right:0;transform:none!important}
+  .hscroll-head{padding:0 1.5rem 1.5rem}
+  .hprogress{margin:0 1.5rem 1.5rem}
+  .hcard-tall{height:55vw}
+  .hcard-mid{height:44vw;margin-top:3vw}
+  .hcard-short{height:35vw;margin-top:6vw}
+}
+
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   #nav{padding:1.2rem 1.5rem}
@@ -491,6 +567,120 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,162,39,.08);display:fle
   </div>
 </section>
 
+<!-- ══════════════════════════════════════
+     HORIZONTAL PARALLAX GALLERY
+════════════════════════════════════════ -->
+<div class="hscroll-wrap">
+  <div class="hscroll-sticky" id="hsticky">
+
+    <div class="hscroll-head">
+      <div>
+        <p class="hscroll-eyebrow r">Gallery</p>
+        <h2 class="hscroll-h2 r d1">Moments That<br><em>Stay With You</em></h2>
+      </div>
+      <p class="hscroll-hint r d2">Scroll to explore</p>
+    </div>
+
+    <div class="hprogress"><div class="hprogress-fill" id="hfill"></div></div>
+
+    <div class="hscroll-track-outer">
+      <div class="hscroll-track" id="htk">
+
+        <!-- 1 — misty mountains -->
+        <div class="hcard hcard-tall">
+          <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?auto=format&fit=crop&w=900&q=85')"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-label">
+            <span class="hcard-cat">Life Journey</span>
+            <p class="hcard-name">Ancient Footsteps</p>
+          </div>
+        </div>
+
+        <!-- 2 — VR cosmos meditation (user photo) -->
+        <div class="hcard hcard-mid">
+          <div class="hcard-img" style="background-image:url('img/vr-meditation-cosmos.webp');background-position:center top"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-label">
+            <span class="hcard-cat">Guided Meditation</span>
+            <p class="hcard-name">Sacred Geometry</p>
+          </div>
+        </div>
+
+        <!-- 3 — lush forest -->
+        <div class="hcard hcard-short">
+          <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=85')"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-label">
+            <span class="hcard-cat">Ashram Tour</span>
+            <p class="hcard-name">Sacred Grove</p>
+          </div>
+        </div>
+
+        <!-- 4 — meditation silhouette -->
+        <div class="hcard hcard-tall">
+          <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=900&q=85')"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-label">
+            <span class="hcard-cat">Guided Meditation</span>
+            <p class="hcard-name">Into the Silence</p>
+          </div>
+        </div>
+
+        <!-- 5 — gathering crowd -->
+        <div class="hcard hcard-mid">
+          <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=85')"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-label">
+            <span class="hcard-cat">Live Satsang</span>
+            <p class="hcard-name">Three Million Voices</p>
+          </div>
+        </div>
+
+        <!-- 6 — candle lights -->
+        <div class="hcard hcard-short">
+          <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=900&q=85')"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-label">
+            <span class="hcard-cat">Live Satsang</span>
+            <p class="hcard-name">Flame of Devotion</p>
+          </div>
+        </div>
+
+        <!-- 7 — VR blue meditation (user photo) -->
+        <div class="hcard hcard-tall">
+          <div class="hcard-img" style="background-image:url('img/vr-meditation-blue.jpg');background-position:center center"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-label">
+            <span class="hcard-cat">Guided Meditation</span>
+            <p class="hcard-name">Enter the Circle</p>
+          </div>
+        </div>
+
+        <!-- 8 — himalayan peaks -->
+        <div class="hcard hcard-mid">
+          <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=85')"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-label">
+            <span class="hcard-cat">Life Journey</span>
+            <p class="hcard-name">The Seeker's Path</p>
+          </div>
+        </div>
+
+        <!-- 9 — mountain dawn -->
+        <div class="hcard hcard-short">
+          <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85')"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-label">
+            <span class="hcard-cat">Life Journey</span>
+            <p class="hcard-name">First Light</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- IMPACT STRIP -->
 <div class="impact-strip">
   <div class="impact-cell">
@@ -513,6 +703,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,162,39,.08);display:fle
 <!-- PHOTO STRIP -->
 <div class="strip">
   <div class="strip-track">
+    <img class="strip-img" src="img/vr-meditation-cosmos.webp" alt="" style="object-position:center top">
     <img class="strip-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=400&h=220&q=70" alt="">
     <img class="strip-img" src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=400&h=220&q=70" alt="">
     <img class="strip-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=400&h=220&q=70" alt="">
@@ -521,6 +712,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,162,39,.08);display:fle
     <img class="strip-img" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=400&h=220&q=70" alt="">
     <img class="strip-img" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
     <img class="strip-img" src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="img/vr-meditation-blue.jpg" alt="" style="object-position:center top">
     <img class="strip-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=400&h=220&q=70" alt="">
     <img class="strip-img" src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=400&h=220&q=70" alt="">
     <img class="strip-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=400&h=220&q=70" alt="">
@@ -673,6 +865,47 @@ document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
 
   window.addEventListener('scroll', () => { if(!raf) raf = requestAnimationFrame(tick); }, {passive:true});
   tick();
+})();
+
+// ── HORIZONTAL PARALLAX GALLERY ──
+(function(){
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+  const wrap  = document.querySelector('.hscroll-wrap');
+  const track = document.getElementById('htk');
+  const fill  = document.getElementById('hfill');
+  if(!wrap||!track) return;
+  const cards = Array.from(track.querySelectorAll('.hcard'));
+  const imgs  = cards.map(c=>c.querySelector('.hcard-img'));
+  let raf2=null;
+
+  function tickH(){
+    if(innerWidth<=900){raf2=null;return}
+    const rect=wrap.getBoundingClientRect();
+    const sh=wrap.offsetHeight, vh=innerHeight, vw=innerWidth;
+    if(rect.bottom<0||rect.top>vh*1.5){raf2=null;return}
+
+    const p=clamp(-rect.top/(sh-vh),0,1);
+    const outerW=track.parentElement.clientWidth||vw;
+    const maxScroll=Math.max(0,track.scrollWidth-outerW);
+    const tx=p*maxScroll;
+
+    track.style.transform=`translateX(${-tx}px)`;
+    if(fill) fill.style.width=(p*100)+'%';
+
+    // Per-card image parallax: image drifts opposite to card travel direction
+    const halfVw=vw*0.5;
+    cards.forEach((card,i)=>{
+      const img=imgs[i]; if(!img) return;
+      const center=card.offsetLeft+card.offsetWidth*0.5-tx;
+      const offset=(center-halfVw)/vw; // -0.5 … +0.5
+      img.style.transform=`translateX(${offset*75}px)`;
+    });
+    raf2=null;
+  }
+
+  window.addEventListener('scroll',()=>{if(!raf2)raf2=requestAnimationFrame(tickH)},{passive:true});
+  window.addEventListener('resize',tickH,{passive:true});
+  tickH();
 })();
 </script>
 </body>
