@@ -244,6 +244,27 @@
     .ecol h3{ font-size:1.2rem; margin-bottom:.5em; color:var(--gold-lt);}
     .ecol p{ font-size:.95rem; color:rgba(255,255,255,.82);}
 
+    /* ---------- IMPACT / MOVEMENT ---------- */
+    .impact { position:relative; overflow:hidden; color:#fff;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,212,121,.22), transparent 45%),
+        radial-gradient(circle at 88% 82%, rgba(255,107,94,.30), transparent 45%),
+        linear-gradient(150deg, var(--grape), var(--violet) 55%, #a8467f); }
+    .impact::after { content:""; position:absolute; inset:0; pointer-events:none;
+      background-image:radial-gradient(rgba(255,255,255,.5) 1px, transparent 1.4px); background-size:44px 44px; opacity:.06; }
+    .impact .section-head h2 { color:#fff; }
+    .impact .lead { max-width:760px; margin:0 auto 50px; text-align:center; font-family:'Fraunces',serif; font-style:italic; font-size:clamp(1.1rem,2.2vw,1.45rem); color:rgba(255,255,255,.92); position:relative; }
+    .impact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; position:relative; }
+    .ipill { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:20px; padding:30px; transition:transform .3s ease, background .3s ease; }
+    .ipill:hover { transform:translateY(-6px); background:rgba(255,255,255,.13); }
+    .ipill .ico { font-size:1.9rem; margin-bottom:12px; }
+    .ipill h3 { font-size:1.2rem; margin-bottom:.5em; color:var(--gold-lt); }
+    .ipill p { font-size:.94rem; color:rgba(255,255,255,.86); }
+    .outcomes { margin-top:54px; display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:18px; position:relative; }
+    .ocard { background:rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.16); border-radius:18px; padding:26px; }
+    .ocard .k { font-family:'Fraunces',serif; font-weight:700; font-size:1.12rem; color:var(--gold-lt); margin-bottom:.45em; }
+    .ocard p { font-size:.92rem; color:rgba(255,255,255,.85); }
+
     /* ---------- VENUE ---------- */
     .venue-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:50px; align-items:center;}
     .venue-grid p{ color:var(--ink-soft); font-size:1.08rem; margin-bottom:1em;}
@@ -324,6 +345,7 @@
         <a class="link" href="#about">About</a>
         <a class="link" href="#stars">Speakers</a>
         <a class="link" href="#music">Music</a>
+        <a class="link" href="#impact">Impact</a>
         <a class="link" href="#venue">Venue</a>
         <a class="link" href="sponsors.html">Sponsors</a>
         <a class="link" href="stalls.html">Stalls</a>
@@ -451,6 +473,34 @@
     </div>
   </section>
 
+  <!-- IMPACT / MOVEMENT -->
+  <section class="impact" id="impact">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow" style="color:var(--gold-lt);">A Cultural Movement</span>
+        <h2>More than a festival — a quiet revolution</h2>
+      </div>
+      <p class="lead reveal">When thousands of readers, students, artists and changemakers gather in one place, something shifts. Stories become catalysts, conversations become commitments, and a town becomes a stage for the future.</p>
+      <div class="impact-grid">
+        <div class="ipill reveal"><div class="ico">📣</div><h3>Voices that rise</h3><p>From Vedan's verses to veteran novelists, the fest amplifies youth, regional and underrepresented voices — turning literature and music into living social commentary.</p></div>
+        <div class="ipill reveal"><div class="ico">🤝</div><h3>Dialogue over division</h3><p>Panels and open conversations bring generations, languages and ideologies to the same table — building empathy and challenging perspectives.</p></div>
+        <div class="ipill reveal"><div class="ico">🌱</div><h3>Youth at the centre</h3><p>Students and young creators don't just attend — they perform, publish and lead, discovering pathways into writing, media and the arts.</p></div>
+        <div class="ipill reveal"><div class="ico">🪔</div><h3>A regional renaissance</h3><p>The festival puts Kollam and Kerala on the national cultural map, celebrating local identity while inviting the whole country in.</p></div>
+      </div>
+
+      <div class="section-head center reveal" style="margin-top:72px;">
+        <span class="eyebrow" style="color:var(--gold-lt);">The Outcome</span>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);">What this movement leaves behind</h2>
+      </div>
+      <div class="outcomes">
+        <div class="ocard reveal"><div class="k">✦ New creators</div><p>Emerging writers, poets and performers discovered and given a real platform and audience.</p></div>
+        <div class="ocard reveal"><div class="k">✦ Stronger civic dialogue</div><p>A culture of listening and debate that keeps rippling outward long after the festival ends.</p></div>
+        <div class="ocard reveal"><div class="k">✦ Pride &amp; local economy</div><p>Renewed pride in Kerala's literary heritage and a boost to local culture, tourism and trade.</p></div>
+        <div class="ocard reveal"><div class="k">✦ A lasting platform</div><p>A scalable annual movement, designed to grow and deepen its impact edition after edition.</p></div>
+      </div>
+    </div>
+  </section>
+
   <!-- VENUE -->
   <section class="venue" id="venue">
     <div class="wrap">
@@ -509,6 +559,7 @@
           <a class="fl" href="#about">About</a>
           <a class="fl" href="#stars">Speakers</a>
           <a class="fl" href="#music">Music &amp; Bands</a>
+          <a class="fl" href="#impact">Impact</a>
           <a class="fl" href="#audience">Audience</a>
           <a class="fl" href="#venue">Venue</a>
         </div>
