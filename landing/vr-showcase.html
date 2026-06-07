@@ -1,1201 +1,1168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Life of Harmony — An Immersive VR Journey</title>
-  <meta name="description" content="Step inside a life that touched a billion. A 45–60 minute interactive VR experience on Meta Quest 3 exploring the life and work of Sri Sri Ravi Shankar and the Art of Living Foundation.">
-  <meta property="og:title" content="A Life of Harmony — An Immersive VR Journey">
-  <meta property="og:description" content="Step inside a life that touched a billion.">
-  <meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="An immersive Meta Quest 3S exhibition through the life and wisdom of Gurudev Sri Sri Ravishankar — four worlds, one presence.">
+<title>An Immersive Journey — Gurudev VR Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+/* ── TOKENS ── */
+:root{
+  --bg:#07091A;
+  --bg2:#0D1028;
+  --gold:#D4AF37;
+  --gold-lt:#F0CC55;
+  --gold-dk:#9A7A18;
+  --cream:#F8F3EC;
+  --jade:#1EA876;
+  --saffron:#E8622A;
+  --lavender:#9AA5E0;
+  --muted:rgba(248,243,236,.5);
+  --border:rgba(212,175,55,.1);
+  --r4:4px;--r8:8px;--r40:40px;--r60:60px;
+}
 
-  <style>
-    /* ==============================================================
-       EDITABLE: Core palette. Change these variables to retheme.
-       ============================================================== */
-    :root {
-      --indigo:     #0B1026;
-      --indigo-2:   #0F1A3E;
-      --indigo-3:   #16214F;
-      --gold:       #F5A623;
-      --gold-lt:    #FFB627;
-      --gold-dim:   rgba(245,166,35,0.15);
-      --cream:      #F5EFE0;
-      --cream-dim:  rgba(245,239,224,0.65);
-      --teal:       #1B6954;
-      --teal-lt:    #22876A;
-      --teal-glow:  rgba(27,105,84,0.18);
-      --white:      #ffffff;
-      --section-pad: clamp(5rem, 10vw, 9rem);
-      --container:  1100px;
-      --radius:     12px;
-    }
+/* ── BASE ── */
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:'Inter',sans-serif;
+  overflow-x:hidden;line-height:1.65;font-size:1rem}
 
-    /* ==============================================================  RESET  */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      background: var(--indigo);
-      color: var(--cream);
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-    h1, h2, h3, h4 {
-      font-family: 'Playfair Display', Georgia, serif;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-    }
-    a { color: var(--gold); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+/* ── FOCUS (non-negotiable) ── */
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
 
-    .container {
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 0 clamp(1.5rem, 5vw, 3rem);
-    }
+/* ── NAV ── */
+#nav{
+  position:fixed;top:1.25rem;left:50%;transform:translateX(-50%);
+  z-index:300;display:flex;align-items:center;
+  padding:.45rem .45rem .45rem 1.6rem;
+  background:rgba(7,9,26,.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(212,175,55,.14);border-radius:var(--r60);
+  transition:background .4s,border-color .4s;white-space:nowrap;
+}
+#nav.scrolled{background:rgba(7,9,26,.94);border-color:rgba(212,175,55,.26)}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;
+  letter-spacing:.06em;color:var(--gold);margin-right:1.6rem;
+}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-link{
+  padding:.5rem 1rem;min-height:44px;display:flex;align-items:center;
+  font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(248,243,236,.45);border-radius:var(--r40);
+  transition:color .25s,background .25s;
+}
+.nav-link:hover{color:var(--cream);background:rgba(212,175,55,.1)}
+.nav-cta{
+  margin-left:.4rem;padding:.55rem 1.4rem;min-height:44px;display:flex;align-items:center;
+  background:var(--gold);color:var(--bg);font-size:.68rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;border-radius:var(--r40);
+  transition:background .25s,transform .2s;
+}
+.nav-cta:hover{background:var(--gold-lt);transform:translateY(-1px)}
+@media(max-width:900px){
+  #nav{padding:.4rem .4rem .4rem 1.2rem;top:.75rem}
+  .nav-links{display:none}
+  .nav-cta{font-size:.63rem;padding:.5rem 1.1rem}
+}
 
-    /* ==============================================================  UTILITIES  */
-    .section-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.85;
-      display: block;
-      margin-bottom: 0.9rem;
-    }
+/* ── HERO ── */
+.hero{
+  height:100dvh;min-height:640px;
+  position:relative;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;overflow:hidden;
+}
+#hero-bg{
+  position:absolute;inset:0;overflow:hidden;
+}
+#hero-bg img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  transform:scale(1.06);will-change:transform;
+}
+#hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 50%, rgba(7,9,26,.8) 0%, rgba(7,9,26,.3) 58%, transparent 100%),
+    linear-gradient(to bottom, rgba(7,9,26,.25) 0%, rgba(7,9,26,.12) 28%, rgba(7,9,26,.65) 72%, rgba(7,9,26,1) 100%);
+}
+canvas#stars{position:absolute;inset:0;z-index:1;pointer-events:none}
+.hero-body{position:relative;z-index:2;max-width:860px;padding:2rem 1.5rem}
+.hero-kicker{
+  display:flex;align-items:center;justify-content:center;gap:1.2rem;
+  font-size:.65rem;letter-spacing:.44em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:2rem;opacity:0;animation:fadeUp .9s .3s forwards;
+}
+.hero-kicker::before,.hero-kicker::after{content:'';width:32px;height:1px;background:var(--gold);opacity:.55}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,8vw,7rem);font-weight:300;line-height:1.04;
+  color:var(--cream);margin-bottom:.3rem;
+  opacity:0;animation:fadeUp .9s .5s forwards;
+  text-shadow:0 2px 32px rgba(7,9,26,.9),0 0 80px rgba(7,9,26,.6);
+}
+.hero-title i{font-style:italic;color:var(--gold)}
+.hero-sub-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.5rem,3.8vw,3.2rem);font-weight:300;font-style:italic;
+  color:rgba(248,243,236,.65);line-height:1.2;margin-bottom:1.8rem;display:block;
+  opacity:0;animation:fadeUp .9s .65s forwards;
+  text-shadow:0 1px 18px rgba(7,9,26,.9);
+}
+.hero-sub{
+  font-size:clamp(1rem,1.8vw,1.1rem);font-weight:300;
+  color:rgba(248,243,236,.75);max-width:52ch;margin:0 auto 2.5rem;
+  line-height:1.7;opacity:0;animation:fadeUp .9s .8s forwards;
+  text-shadow:0 1px 14px rgba(7,9,26,.95);
+}
+.hero-badges{
+  display:flex;gap:6px;justify-content:center;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .9s 1s forwards;
+}
+.hero-badge{
+  padding:.6rem 1.2rem;min-height:44px;display:flex;align-items:center;gap:.4em;
+  border:1px solid rgba(212,175,55,.28);
+  font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(248,243,236,.75);border-radius:var(--r40);
+  background:rgba(7,9,26,.55);backdrop-filter:blur(10px);
+}
+.hero-badge b{color:var(--gold);font-weight:500}
+.hero-scroll{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.55rem;
+  color:rgba(248,243,236,.38);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;
+  opacity:0;animation:fadeIn 1.4s 1.8s forwards;pointer-events:none;
+}
+.scroll-rod{width:1px;height:44px;background:linear-gradient(to bottom,rgba(212,175,55,.65),transparent);animation:rodPulse 2.2s ease-in-out infinite}
 
-    /* Scroll-reveal */
-    .reveal        { opacity:0; transform:translateY(2rem);  transition:opacity .7s ease,transform .7s ease; }
-    .reveal-left   { opacity:0; transform:translateX(-2.5rem); transition:opacity .7s ease,transform .7s ease; }
-    .reveal-right  { opacity:0; transform:translateX(2.5rem);  transition:opacity .7s ease,transform .7s ease; }
-    .reveal.visible, .reveal-left.visible, .reveal-right.visible { opacity:1; transform:none; }
-    .d1 { transition-delay:.10s; } .d2 { transition-delay:.20s; }
-    .d3 { transition-delay:.30s; } .d4 { transition-delay:.45s; }
-    @media (prefers-reduced-motion:reduce) {
-      .reveal,.reveal-left,.reveal-right { opacity:1; transform:none; transition:none; }
-    }
+/* ── MARQUEE ── */
+.marquee-band{background:var(--gold);overflow:hidden;padding:.8rem 0;border-top:1px solid var(--gold-dk);border-bottom:1px solid var(--gold-dk)}
+.marquee-track{display:flex;animation:marquee 30s linear infinite;width:max-content}
+.marquee-band:hover .marquee-track{animation-play-state:paused}
+.marquee-item{
+  font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;
+  color:var(--bg);letter-spacing:.06em;padding:0 2rem;white-space:nowrap;
+  display:flex;align-items:center;gap:2rem;
+}
+.marquee-item::after{content:'·';opacity:.4;font-style:normal;font-size:.75rem}
 
-    /* Buttons */
-    .btn {
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding:.85rem 2rem; border-radius:4px; cursor:pointer; border:none;
-      font-family:'Inter',sans-serif; font-weight:500; font-size:.88rem;
-      letter-spacing:.05em; text-decoration:none;
-      transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease,border-color .2s ease;
-    }
-    .btn:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
-    .btn-primary  { background:var(--gold); color:var(--indigo); }
-    .btn-primary:hover  { background:var(--gold-lt); transform:translateY(-2px); box-shadow:0 8px 24px rgba(245,166,35,.35); text-decoration:none; }
-    .btn-outline  { background:transparent; color:var(--cream); border:1px solid rgba(245,239,224,.3); }
-    .btn-outline:hover  { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); text-decoration:none; }
+/* ── EDITORIAL INTRO ── */
+.editorial{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+.ed-left{
+  padding:clamp(4rem,8vw,7rem) clamp(2rem,5vw,5rem);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;justify-content:center;
+}
+.ed-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.7rem,2.8vw,2.6rem);font-weight:300;font-style:italic;
+  line-height:1.48;color:var(--cream);
+}
+.ed-quote em{color:var(--gold);font-style:normal}
+.ed-attr{
+  margin-top:2rem;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:1rem;
+}
+.ed-attr::before{content:'';display:block;width:26px;height:1px;background:var(--gold)}
+.ed-right{padding:clamp(4rem,8vw,7rem) clamp(2rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center}
+.ed-label{font-size:.63rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.ed-list{list-style:none;display:flex;flex-direction:column;gap:.9rem}
+.ed-list li{
+  font-size:1rem;color:rgba(248,243,236,.68);line-height:1.6;
+  padding-left:1.5rem;position:relative;max-width:52ch;
+}
+.ed-list li::before{content:'—';position:absolute;left:0;color:var(--gold);opacity:.55}
+@media(max-width:800px){
+  .editorial{grid-template-columns:1fr}
+  .ed-left{border-right:none;border-bottom:1px solid var(--border)}
+}
 
-    /* ==============================================================  NAV  */
-    .nav {
-      position:fixed; top:0; left:0; right:0; z-index:100;
-      padding:.9rem 0;
-      transition:background .35s,backdrop-filter .35s;
-    }
-    .nav.scrolled {
-      background:rgba(11,16,38,.92);
-      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(245,166,35,.1);
-    }
-    .nav-inner { display:flex; align-items:center; justify-content:space-between; }
-    .nav-logo { font-family:'Playfair Display',serif; font-size:.95rem; color:var(--cream); font-style:italic; }
-    .nav-logo span { color:var(--gold); }
-    .nav-links { display:flex; gap:1.8rem; list-style:none; align-items:center; }
-    .nav-links a { font-size:.75rem; font-weight:500; letter-spacing:.09em; text-transform:uppercase; color:var(--cream-dim); transition:color .2s; }
-    .nav-links a:hover { color:var(--gold); text-decoration:none; }
-    @media(max-width:680px){ .nav-links { display:none; } }
+/* ── CHAPTER OVERVIEW ── */
+.chapters{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(0,0,0,.4)}
+.chapter-card{
+  position:relative;height:55vh;min-height:320px;overflow:hidden;
+  display:block;
+}
+.chapter-card img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .8s cubic-bezier(.25,.46,.45,.94);
+}
+.chapter-card:hover img{transform:scale(1.05)}
+.chapter-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(7,9,26,.94) 0%, rgba(7,9,26,.4) 55%, rgba(7,9,26,.12) 100%);
+  transition:background .4s;
+}
+.chapter-card:hover .chapter-grad{background:linear-gradient(to top,rgba(7,9,26,.88) 0%,rgba(7,9,26,.28) 60%,rgba(7,9,26,.08) 100%)}
+.chapter-n{
+  position:absolute;top:1.5rem;right:1.5rem;
+  font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;
+  color:var(--cream);opacity:.07;line-height:1;pointer-events:none;
+}
+.chapter-body{position:absolute;bottom:0;left:0;right:0;padding:2rem 2rem 2.2rem}
+.chapter-tag{
+  font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;
+  margin-bottom:.7rem;display:flex;align-items:center;gap:.6rem;
+}
+.chapter-tag::before{content:'';display:block;width:16px;height:1px;background:currentColor}
+.chapter-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.5rem,2.8vw,2.3rem);font-weight:300;color:var(--cream);
+  line-height:1.15;margin-bottom:.6rem;
+}
+.chapter-desc{font-size:1rem;color:rgba(248,243,236,.55);line-height:1.55}
+@media(max-width:700px){
+  .chapters{grid-template-columns:1fr}
+  .chapter-card{height:45vh}
+}
 
-    /* ==============================================================  HERO  */
-    .hero {
-      position:relative; min-height:100svh;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      text-align:center; padding:6rem 1.5rem 5rem; overflow:hidden;
-    }
-    .hero-bg {
-      position:absolute; inset:0;
-      background:
-        radial-gradient(ellipse 80% 55% at 50% 0%, rgba(245,166,35,.16) 0%, transparent 58%),
-        radial-gradient(ellipse 55% 40% at 15% 100%, rgba(27,105,84,.13) 0%, transparent 55%),
-        linear-gradient(168deg, #0B1026 0%, #12183A 38%, #1A0E35 68%, #0B1026 100%);
-      animation:heroShift 14s ease-in-out infinite alternate;
-    }
-    @keyframes heroShift {
-      0%   { filter:hue-rotate(0deg) brightness(1); }
-      50%  { filter:hue-rotate(9deg) brightness(1.06); }
-      100% { filter:hue-rotate(-6deg) brightness(.97); }
-    }
-    #hero-canvas { position:absolute; inset:0; pointer-events:none; }
+/* ── PILLAR STICKY SCROLL ── */
+.pillar-wrap{position:relative;height:240vh}
+.pillar-sticky{position:sticky;top:0;height:100dvh;overflow:hidden;display:flex;align-items:center}
 
-    /* Himalayan ridge silhouette */
-    .hero-mountains { position:absolute; bottom:0; left:0; width:100%; pointer-events:none; }
+.pb-wrap{position:absolute;inset:-60px 0;pointer-events:none}
+.pb{
+  position:absolute;inset:0;
+  opacity:0;transition:opacity 1.1s cubic-bezier(.4,0,.2,1);
+}
+.pb.on{opacity:1}
+.pb img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;
+}
 
-    .hero-content { position:relative; z-index:2; max-width:840px; }
+.pgrad{position:absolute;inset:0;pointer-events:none}
+.pgrad.left{background:linear-gradient(108deg,rgba(7,9,26,.97) 0%,rgba(7,9,26,.84) 40%,rgba(7,9,26,.22) 70%,transparent 100%)}
+.pgrad.right{background:linear-gradient(252deg,rgba(7,9,26,.97) 0%,rgba(7,9,26,.84) 40%,rgba(7,9,26,.22) 70%,transparent 100%)}
+.pgrad::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(7,9,26,.6) 0%,transparent 32%)}
 
-    .hero-badge {
-      display:inline-flex; align-items:center; gap:.5rem;
-      background:rgba(245,166,35,.1); border:1px solid rgba(245,166,35,.28);
-      border-radius:100px; padding:.32rem 1rem;
-      font-size:.68rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
-      color:var(--gold); margin-bottom:1.8rem;
-    }
-    .badge-dot { width:6px; height:6px; background:var(--gold); border-radius:50%; animation:pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.45;transform:scale(1.6);} }
+.pc{position:relative;z-index:2;padding:clamp(3rem,6vw,5rem) clamp(2rem,5vw,4.5rem);max-width:560px}
+.pc.left{margin-right:auto}
+.pc.right{margin-left:auto}
 
-    .hero-title {
-      font-size:clamp(2.6rem,7.5vw,5.4rem); font-weight:700;
-      color:var(--cream); letter-spacing:-.02em; margin-bottom:.35rem;
-    }
-    .hero-subtitle {
-      font-size:clamp(1.3rem,3.2vw,2.1rem); font-weight:400; font-style:italic;
-      color:var(--gold); margin-bottom:1.4rem;
-    }
-    .hero-tagline {
-      font-size:clamp(.95rem,1.8vw,1.18rem); font-weight:300;
-      color:var(--cream-dim); max-width:520px; margin:0 auto 2.6rem; line-height:1.85;
-    }
-    .hero-cta { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.pnum{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(5rem,10vw,9rem);
+  font-weight:300;line-height:1;position:absolute;top:3rem;opacity:.05;
+  color:var(--cream);pointer-events:none;user-select:none;
+}
+.pc.left .pnum{left:clamp(2rem,5vw,4.5rem)}
+.pc.right .pnum{right:clamp(2rem,5vw,4.5rem)}
 
-    .hero-scroll {
-      position:absolute; bottom:2.2rem; left:50%; transform:translateX(-50%);
-      z-index:2; display:flex; flex-direction:column; align-items:center; gap:.4rem;
-      color:rgba(245,239,224,.38); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase;
-      animation:scrollBounce 2.8s infinite;
-    }
-    @keyframes scrollBounce { 0%,100%{transform:translateX(-50%) translateY(0);} 55%{transform:translateX(-50%) translateY(7px);} }
-    .scroll-chevron {
-      width:18px; height:18px;
-      border-right:2px solid currentColor; border-bottom:2px solid currentColor;
-      transform:rotate(45deg);
-    }
+.ptag{
+  font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
+  margin-bottom:1rem;display:flex;align-items:center;gap:.75rem;
+}
+.ptag::before{content:'';display:inline-block;width:20px;height:1px;background:currentColor}
+.ptitle{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.3rem);font-weight:300;line-height:1.15;
+  color:var(--cream);margin-bottom:.8rem;
+}
+.plead{font-size:1rem;color:rgba(248,243,236,.45);line-height:1.75;margin-bottom:2rem;max-width:44ch}
 
-    /* ==============================================================  VISION  */
-    .vision {
-      padding:var(--section-pad) 0;
-      background:linear-gradient(180deg, var(--indigo) 0%, #0D1540 100%);
-    }
-    .vision-intro { max-width:680px; margin:0 auto 4rem; text-align:center; }
-    .vision-intro h2 { font-size:clamp(1.75rem,4vw,2.75rem); margin-bottom:1.1rem; }
-    .vision-intro p { font-size:1.02rem; font-weight:300; color:var(--cream-dim); line-height:1.85; }
+.pdots{display:flex;align-items:center;gap:.45rem;margin-bottom:1.5rem}
+.pdot{height:2px;width:16px;border-radius:1px;background:rgba(248,243,236,.15);transition:width .4s,background .4s}
+.pdot.on{width:36px}
 
-    .pillars { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.4rem; }
-    .pillar {
-      background:rgba(255,255,255,.03); border:1px solid rgba(245,166,35,.1);
-      border-radius:var(--radius); padding:2rem;
-      transition:border-color .3s,background .3s,transform .3s;
-    }
-    .pillar:hover { border-color:rgba(245,166,35,.32); background:rgba(245,166,35,.04); transform:translateY(-4px); }
-    .pillar-icon {
-      width:48px; height:48px; margin-bottom:1.1rem; background:var(--gold-dim);
-      border-radius:10px; display:flex; align-items:center; justify-content:center;
-    }
-    .pillar h3 { font-size:1.1rem; margin-bottom:.45rem; color:var(--cream); }
-    .pillar p  { font-size:.86rem; color:var(--cream-dim); line-height:1.72; }
+.pscenes{position:relative;min-height:140px}
+.pscene{
+  position:absolute;top:0;left:0;right:0;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .5s,transform .5s;pointer-events:none;
+}
+.pscene.on{opacity:1;transform:translateY(0);pointer-events:auto;position:relative}
+.psense{
+  font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;
+  margin-bottom:.55rem;display:flex;align-items:center;gap:.55rem;
+}
+.psense::before{content:'';display:inline-block;width:13px;height:1px;background:currentColor}
+.ptext{font-size:1rem;color:rgba(248,243,236,.78);line-height:1.8;max-width:44ch}
 
-    /* ==============================================================  FIVE ACTS  */
-    .acts { padding:var(--section-pad) 0; background:#0D1540; }
-    .acts-header { text-align:center; margin-bottom:5rem; }
-    .acts-header h2 { font-size:clamp(1.75rem,4vw,2.75rem); margin-bottom:.75rem; }
-    .acts-header p  { font-size:.97rem; color:var(--cream-dim); max-width:480px; margin:0 auto; }
+@media(max-width:900px){
+  .pc{padding:3rem 1.75rem 2.5rem;max-width:100%}
+  .pgrad.left,.pgrad.right{background:linear-gradient(to top,rgba(7,9,26,.98) 0%,rgba(7,9,26,.86) 45%,rgba(7,9,26,.28) 100%)}
+  .pillar-sticky{align-items:flex-end}
+  .pnum{display:none}
+}
 
-    .act-panel {
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:clamp(2rem,5vw,4.5rem); align-items:center; margin-bottom:6rem;
-    }
-    .act-panel:last-child { margin-bottom:0; }
-    .act-panel.rev .act-vis { order:2; } .act-panel.rev .act-txt { order:1; }
-    @media(max-width:760px) {
-      .act-panel { grid-template-columns:1fr; gap:2rem; }
-      .act-panel.rev .act-vis, .act-panel.rev .act-txt { order:unset; }
-    }
+/* ── QUOTE DIVIDERS ── */
+.dq{position:relative;padding:clamp(5rem,10vw,8rem) 2rem;text-align:center;overflow:hidden}
+.dq-bg{position:absolute;inset:0}
+.dq-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.dq-bg::after{content:'';position:absolute;inset:0;background:rgba(7,9,26,.84)}
+.dq-inner{position:relative;z-index:2;max-width:760px;margin:0 auto}
+.dq-mark{
+  font-family:'Cormorant Garamond',serif;font-size:6rem;line-height:.5;
+  color:var(--gold);opacity:.2;display:block;margin-bottom:1.5rem;
+}
+.dq-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,3vw,2.2rem);font-weight:300;font-style:italic;
+  color:var(--cream);line-height:1.65;margin-bottom:1.8rem;max-width:58ch;margin-left:auto;margin-right:auto;
+}
+.dq-rule{width:36px;height:1px;background:var(--gold);margin:0 auto 1.3rem;opacity:.65}
+.dq-attr{font-size:.67rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
 
-    .act-vis {
-      aspect-ratio:4/3; border-radius:var(--radius);
-      overflow:hidden; position:relative;
-    }
-    .act-grad { position:absolute; inset:0; }
-    .act-num-bg {
-      position:absolute; bottom:.6rem; right:1.2rem;
-      font-family:'Playfair Display',serif; font-size:5.5rem; font-weight:700;
-      color:rgba(255,255,255,.07); line-height:1; pointer-events:none;
-    }
+/* ── HORIZONTAL GALLERY ── */
+.hscroll-wrap{position:relative;height:380vh}
+.hscroll-sticky{
+  position:sticky;top:0;height:100dvh;overflow:hidden;
+  display:flex;flex-direction:column;padding-top:5rem;background:var(--bg);
+}
+.hscroll-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  padding:0 3.5rem 1.75rem;flex-shrink:0;
+}
+.hscroll-eyebrow{font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.hscroll-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3.2vw,2.9rem);font-weight:300;color:var(--cream);line-height:1.15;
+}
+.hscroll-h2 em{font-style:italic;color:var(--gold-lt)}
+.hscroll-hint{
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(248,243,236,.22);display:flex;align-items:center;gap:.5rem;align-self:flex-end;padding-bottom:.2rem;
+}
+.hscroll-hint::before{content:'';display:block;width:20px;height:1px;background:rgba(212,175,55,.35)}
+.hprogress{height:1px;background:rgba(212,175,55,.1);margin:0 3.5rem 2.5rem;position:relative;flex-shrink:0}
+.hprogress-fill{
+  position:absolute;left:0;top:0;bottom:0;
+  background:linear-gradient(to right,var(--gold),var(--gold-lt));
+  width:0%;transition:width .08s linear;
+}
+.hscroll-track-outer{overflow:hidden;flex:1;display:flex;align-items:center}
+.hscroll-track{display:flex;align-items:center;gap:1.25rem;padding:0 3.5rem;will-change:transform}
 
-    .act-tag {
-      font-size:.68rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
-      color:rgba(245,166,35,.65); margin-bottom:.35rem;
-    }
-    .duration-badge {
-      display:inline-flex; align-items:center; gap:.35rem;
-      background:rgba(245,166,35,.1); border:1px solid rgba(245,166,35,.22);
-      border-radius:100px; padding:.22rem .75rem;
-      font-size:.68rem; font-weight:600; color:var(--gold); letter-spacing:.08em;
-      margin-bottom:.9rem;
-    }
-    .act-txt h3 { font-size:clamp(1.35rem,2.8vw,1.85rem); margin-bottom:.75rem; color:var(--cream); }
-    .act-txt p  { font-size:.92rem; color:var(--cream-dim); line-height:1.78; margin-bottom:1.1rem; }
-    .act-choice {
-      display:flex; align-items:flex-start; gap:.55rem;
-      background:rgba(255,255,255,.03); border-left:3px solid var(--gold);
-      border-radius:0 var(--radius) var(--radius) 0; padding:.8rem 1rem;
-      font-size:.83rem; color:var(--cream-dim);
-    }
-    .act-choice strong { color:var(--cream); }
+.hcard{flex-shrink:0;width:300px;position:relative;overflow:hidden;border-radius:var(--r4);transition:box-shadow .35s}
+.hcard:hover{box-shadow:0 0 0 1px rgba(212,175,55,.5)}
+.hcard-tall{height:70vh}.hcard-mid{height:55vh;margin-top:8vh}.hcard-short{height:42vh;margin-top:15vh}
+.hcard-img{
+  position:absolute;inset:0;overflow:hidden;
+}
+.hcard-img img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  will-change:transform;
+}
+.hcard-glow{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,rgba(7,9,26,.92) 0%,rgba(7,9,26,.1) 50%,transparent 100%);
+  transition:background .35s;
+}
+.hcard:hover .hcard-glow{background:linear-gradient(to top,rgba(7,9,26,.78) 0%,rgba(7,9,26,.02) 55%,transparent 100%)}
+.hcard-top{position:absolute;top:0;left:0;right:0;padding:.75rem .85rem;display:flex;justify-content:space-between;align-items:flex-start}
+.hcard-pill{
+  padding:.3rem .75rem;background:rgba(7,9,26,.72);backdrop-filter:blur(8px);
+  border:1px solid rgba(212,175,55,.22);border-radius:var(--r40);
+  font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+}
+.hcard-num{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:300;color:rgba(248,243,236,.25);line-height:1}
+.hcard-label{position:absolute;bottom:0;left:0;right:0;padding:1.1rem 1rem .9rem}
+.hcard-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;color:var(--cream);line-height:1.25}
 
-    /* ==============================================================  FEATURES  */
-    .features { padding:var(--section-pad) 0; background:var(--indigo); }
-    .features-header { text-align:center; margin-bottom:3.5rem; }
-    .features-header h2 { font-size:clamp(1.75rem,4vw,2.75rem); margin-bottom:.6rem; }
-    .features-header p  { font-size:.95rem; color:var(--cream-dim); }
+@media(max-width:900px){
+  .hscroll-wrap{height:auto}
+  .hscroll-sticky{position:static;height:auto;overflow:visible;padding-top:3rem}
+  .hscroll-track-outer{overflow-x:auto;scrollbar-width:none;align-items:flex-start}
+  .hscroll-track-outer::-webkit-scrollbar{display:none}
+  .hscroll-track{transform:none!important;padding:0 1.5rem 2.5rem}
+  .hcard-img img{transform:none!important}
+  .hscroll-head{padding:0 1.5rem 1.5rem}
+  .hprogress{margin:0 1.5rem 1.5rem}
+  .hcard-tall{height:56vw}.hcard-mid{height:44vw;margin-top:3vw}.hcard-short{height:34vw;margin-top:6vw}
+}
 
-    .feat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1.2rem; }
-    .feat-card {
-      background:rgba(255,255,255,.03); border:1px solid rgba(245,239,224,.07);
-      border-radius:var(--radius); padding:1.5rem;
-      transition:border-color .3s,background .3s,transform .3s;
-    }
-    .feat-card:hover { border-color:rgba(245,166,35,.28); background:rgba(245,166,35,.04); transform:translateY(-3px); }
-    .feat-icon {
-      width:40px; height:40px; margin-bottom:1rem;
-      background:rgba(245,166,35,.08); border-radius:8px;
-      display:flex; align-items:center; justify-content:center;
-    }
-    .feat-card h4 { font-family:'Inter',sans-serif; font-size:.86rem; font-weight:600; color:var(--cream); margin-bottom:.35rem; }
-    .feat-card p  { font-size:.78rem; color:rgba(245,239,224,.52); line-height:1.62; }
+/* ── IMPACT ── */
+.impact-wrap{max-width:1200px;margin:0 auto}
+.impact-strip{
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:repeat(3,1fr);position:relative;
+}
+.impact-strip::before{content:'';position:absolute;left:33.33%;top:15%;bottom:15%;width:1px;background:var(--border)}
+.impact-strip::after{content:'';position:absolute;left:66.66%;top:15%;bottom:15%;width:1px;background:var(--border)}
+.impact-cell{padding:4.5rem 2.5rem;text-align:center}
+.impact-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,5.5vw,4.8rem);font-weight:300;color:var(--gold);line-height:1;margin-bottom:.5rem;
+}
+.impact-l{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(248,243,236,.35);margin-bottom:.35rem}
+.impact-d{font-size:.95rem;color:rgba(248,243,236,.28)}
+@media(max-width:700px){
+  .impact-strip{grid-template-columns:1fr}
+  .impact-strip::before,.impact-strip::after{display:none}
+  .impact-cell{border-bottom:1px solid var(--border);padding:3rem 2rem}
+  .impact-cell:last-child{border-bottom:none}
+}
 
-    /* ==============================================================  IMPACT  */
-    .impact {
-      padding:var(--section-pad) 0;
-      background:linear-gradient(180deg, var(--indigo) 0%, #061510 100%);
-      position:relative; overflow:hidden;
-    }
-    .impact::before {
-      content:''; position:absolute; top:-8%; left:-8%; width:55%; height:65%;
-      background:radial-gradient(ellipse, rgba(27,105,84,.13) 0%, transparent 68%);
-      pointer-events:none;
-    }
-    .impact-header { text-align:center; margin-bottom:4rem; }
-    .impact-header h2 { font-size:clamp(1.75rem,4vw,2.75rem); margin-bottom:.7rem; }
-    .impact-header p  { font-size:.97rem; color:var(--cream-dim); max-width:500px; margin:0 auto; }
+/* ── VIDEO SECTION ── */
+.video-section{padding:clamp(5rem,10vw,8rem) 2rem;text-align:center;background:var(--bg2);border-top:1px solid var(--border)}
+.video-inner{max-width:900px;margin:0 auto}
+.video-eyebrow{
+  font-size:.63rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:.9rem;display:flex;align-items:center;justify-content:center;gap:1rem;
+}
+.video-eyebrow::before,.video-eyebrow::after{content:'';width:26px;height:1px;background:var(--gold);opacity:.5}
+.video-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:300;color:var(--cream);margin-bottom:.6rem;line-height:1.18}
+.video-title i{font-style:italic;color:var(--gold)}
+.video-sub{font-size:1rem;color:var(--muted);margin-bottom:3rem;max-width:46ch;margin-left:auto;margin-right:auto;line-height:1.7}
+.video-frame{
+  position:relative;padding-bottom:56.25%;height:0;overflow:hidden;
+  border-radius:var(--r8);
+  box-shadow:0 0 0 1px rgba(212,175,55,.12),0 24px 64px rgba(0,0,0,.55);
+}
+.video-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 
-    .stats-grid {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
-      gap:1.4rem; margin-bottom:4rem;
-    }
-    .stat-card {
-      text-align:center; padding:2rem 1rem;
-      background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);
-      border-radius:var(--radius);
-      transition:border-color .3s,transform .3s;
-    }
-    .stat-card:hover { border-color:rgba(245,166,35,.25); transform:translateY(-3px); }
-    .stat-num {
-      font-family:'Playfair Display',serif; font-size:clamp(1.75rem,4vw,2.6rem);
-      font-weight:700; color:var(--gold); line-height:1; margin-bottom:.4rem;
-    }
-    .stat-lbl { font-size:.78rem; color:var(--cream-dim); line-height:1.45; }
+/* ── PHOTO STRIP ── */
+.strip{overflow:hidden;padding:1.75rem 0;background:rgba(12,15,38,.7);border-top:1px solid var(--border)}
+.strip-track{display:flex;gap:6px;animation:ticker 58s linear infinite;width:max-content}
+.strip:hover .strip-track{animation-play-state:paused}
+.strip-img{width:260px;height:160px;object-fit:cover;flex-shrink:0;border-radius:3px;filter:brightness(.52) saturate(.6);transition:filter .4s}
+.strip-img:hover{filter:brightness(.85) saturate(1)}
 
-    .stories { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:1.4rem; }
-    .story-card {
-      background:rgba(27,105,84,.09); border:1px solid rgba(27,105,84,.22);
-      border-radius:var(--radius); padding:2rem;
-      transition:border-color .3s,background .3s,transform .3s;
-    }
-    .story-card:hover { border-color:rgba(27,105,84,.45); background:rgba(27,105,84,.15); transform:translateY(-4px); }
-    .story-tag {
-      display:inline-block; background:rgba(27,105,84,.28); color:#4DD4A0;
-      font-size:.62rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
-      padding:.2rem .7rem; border-radius:100px; margin-bottom:.9rem;
-    }
-    .story-card h4 { font-size:1.02rem; color:var(--cream); margin-bottom:.5rem; }
-    .story-card p  { font-size:.83rem; color:var(--cream-dim); line-height:1.72; }
-    .story-link {
-      display:inline-flex; align-items:center; gap:.4rem;
-      font-size:.75rem; font-weight:500; color:#4DD4A0; margin-top:.9rem;
-    }
+/* ── CTA ── */
+.cta{
+  position:relative;min-height:82vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;padding:5rem 2rem;
+}
+.cta-bg{position:absolute;inset:0}
+.cta-bg img{
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+}
+.cta-bg::after{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 78% 68% at 50% 50%, rgba(7,9,26,.84) 0%, rgba(7,9,26,.38) 62%, transparent 100%),
+    linear-gradient(to bottom, rgba(7,9,26,.55), rgba(7,9,26,.94));
+}
+.cta-inner{position:relative;z-index:2;max-width:620px}
+.cta-pre{
+  font-size:.65rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.5rem;
+  display:flex;align-items:center;justify-content:center;gap:1rem;
+}
+.cta-pre::before,.cta-pre::after{content:'';width:26px;height:1px;background:var(--gold);opacity:.5}
+.cta-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.6rem,6vw,5.2rem);font-weight:300;
+  color:var(--cream);line-height:1.08;margin-bottom:1.3rem;
+}
+.cta-title i{font-style:italic;color:var(--gold)}
+.cta-sub{
+  font-size:1rem;color:rgba(248,243,236,.58);margin-bottom:3rem;
+  max-width:46ch;margin-left:auto;margin-right:auto;line-height:1.75;
+}
+.cta-row{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.btn-gold{
+  padding:1rem 2.6rem;min-height:52px;display:inline-flex;align-items:center;
+  background:var(--gold);color:var(--bg);font-weight:600;
+  font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  border-radius:var(--r40);transition:background .25s,transform .2s;
+}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px)}
+.btn-outline{
+  padding:1rem 2.6rem;min-height:52px;display:inline-flex;align-items:center;
+  border:1px solid rgba(212,175,55,.35);
+  color:rgba(248,243,236,.7);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  border-radius:var(--r40);transition:border-color .25s,color .25s;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
 
-    /* ==============================================================  TIMELINE  */
-    .build { padding:var(--section-pad) 0; background:#0D1540; }
-    .build-header { text-align:center; margin-bottom:4rem; }
-    .build-header h2 { font-size:clamp(1.75rem,4vw,2.75rem); margin-bottom:.6rem; }
+/* ── FOOTER ── */
+footer{
+  padding:2.75rem 3rem;border-top:1px solid var(--border);
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;
+}
+.ft-logo{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--gold)}
+.ft-collab{font-size:.72rem;color:rgba(248,243,236,.26);letter-spacing:.04em;text-align:center}
+.ft-copy{font-size:.7rem;color:rgba(248,243,236,.18);text-align:right}
+@media(max-width:700px){
+  footer{grid-template-columns:1fr;text-align:center;padding:2.5rem 1.5rem;gap:.75rem}
+  .ft-copy{text-align:center}
+}
 
-    .timeline {
-      position:relative; max-width:700px; margin:0 auto;
-      display:flex; flex-direction:column;
-    }
-    .timeline::before {
-      content:''; position:absolute; left:20px; top:0; bottom:0; width:2px;
-      background:linear-gradient(180deg, var(--gold), rgba(245,166,35,.08));
-    }
-    .tl-item { display:flex; gap:2.5rem; padding-bottom:2.5rem; position:relative; }
-    .tl-item:last-child { padding-bottom:0; }
-    .tl-dot {
-      flex-shrink:0; width:42px; height:42px; border-radius:50%;
-      background:var(--indigo-2); border:2px solid var(--gold);
-      display:flex; align-items:center; justify-content:center;
-      font-family:'Playfair Display',serif; font-weight:700; font-size:.82rem;
-      color:var(--gold); position:relative; z-index:1;
-    }
-    .tl-weeks { font-size:.7rem; color:var(--gold); font-weight:500; letter-spacing:.1em; margin-bottom:.35rem; }
-    .tl-body h4 { font-family:'Inter',sans-serif; font-size:.92rem; font-weight:600; color:var(--cream); margin-bottom:.28rem; }
-    .tl-body p  { font-size:.83rem; color:var(--cream-dim); line-height:1.65; }
+/* ── SCROLL REVEAL ── */
+.r{opacity:0;transform:translateY(22px);transition:opacity .85s cubic-bezier(.25,.46,.45,.94),transform .85s cubic-bezier(.25,.46,.45,.94)}
+.r.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}.d4{transition-delay:.48s}
 
-    /* ==============================================================  PILOT  */
-    .pilot { padding:var(--section-pad) 0; background:var(--indigo); }
-    .pilot-card {
-      max-width:800px; margin:0 auto;
-      background:linear-gradient(140deg, rgba(245,166,35,.06) 0%, rgba(245,166,35,.02) 100%);
-      border:1px solid rgba(245,166,35,.32); border-radius:18px;
-      padding:clamp(2.5rem,6vw,4rem); position:relative; overflow:hidden;
-    }
-    .pilot-card::before {
-      content:''; position:absolute; top:0; left:0; right:0; height:3px;
-      background:linear-gradient(90deg,transparent,var(--gold),transparent);
-    }
-    .pilot-badge {
-      display:inline-flex; align-items:center; gap:.4rem;
-      background:rgba(245,166,35,.14); color:var(--gold);
-      font-size:.65rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
-      padding:.28rem .9rem; border-radius:100px; margin-bottom:1.4rem;
-    }
-    .pilot-card h2 { font-size:clamp(1.55rem,3.5vw,2.35rem); margin-bottom:.8rem; }
-    .pilot-card > p { font-size:.97rem; color:var(--cream-dim); line-height:1.82; margin-bottom:2rem; }
+/* ── KEYFRAMES ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes rodPulse{0%,100%{opacity:.75}50%{opacity:.18;transform:scaleY(.4)}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-    .pilot-specs {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-      gap:1rem; margin-bottom:2.4rem;
-    }
-    .spec {
-      text-align:center; padding:1.2rem;
-      background:rgba(245,166,35,.05); border:1px solid rgba(245,166,35,.14);
-      border-radius:10px;
-    }
-    .spec-val { font-family:'Playfair Display',serif; font-size:1.45rem; font-weight:700; color:var(--gold); margin-bottom:.2rem; }
-    .spec-lbl { font-size:.7rem; color:var(--cream-dim); }
-
-    /* ==============================================================  INVESTMENT  */
-    .invest { padding:var(--section-pad) 0; background:#0D1540; }
-    .invest-header { text-align:center; margin-bottom:4rem; }
-    .invest-header h2 { font-size:clamp(1.75rem,4vw,2.75rem); margin-bottom:.6rem; }
-
-    .invest-grid { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; }
-    @media(max-width:760px){ .invest-grid { grid-template-columns:1fr; } }
-
-    .budget h3,.milestones h3 { font-size:1.05rem; color:var(--cream); margin-bottom:1.4rem; }
-
-    .b-item { margin-bottom:1.2rem; }
-    .b-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:.38rem; }
-    .b-name   { font-size:.83rem; color:var(--cream-dim); }
-    .b-amount { font-size:.83rem; font-weight:600; color:var(--cream); }
-    .b-track  { height:6px; background:rgba(255,255,255,.07); border-radius:100px; overflow:hidden; }
-    .b-fill   { height:100%; border-radius:100px; width:0; transition:width 1.3s cubic-bezier(.4,0,.2,1); }
-    .budget-total {
-      margin-top:1.5rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,.08);
-      display:flex; justify-content:space-between; align-items:baseline;
-    }
-    .budget-total span:first-child { font-size:.83rem; color:var(--cream-dim); }
-    .budget-total span:last-child  { font-family:'Playfair Display',serif; font-size:1.45rem; font-weight:700; color:var(--gold); }
-
-    .m-item {
-      display:flex; gap:1rem; margin-bottom:.9rem; padding:.95rem 1rem;
-      background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);
-      border-radius:10px; align-items:flex-start;
-      transition:border-color .2s,background .2s;
-    }
-    .m-item:hover { border-color:rgba(245,166,35,.2); background:rgba(245,166,35,.03); }
-    .m-num {
-      flex-shrink:0; width:32px; height:32px; background:var(--gold-dim);
-      border:1px solid rgba(245,166,35,.28); border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      font-size:.72rem; font-weight:700; color:var(--gold);
-    }
-    .m-body h4 { font-family:'Inter',sans-serif; font-size:.83rem; font-weight:600; color:var(--cream); margin-bottom:.18rem; }
-    .m-body p  { font-size:.76rem; color:var(--cream-dim); }
-    .m-amount  { margin-left:auto; flex-shrink:0; font-family:'Playfair Display',serif; font-size:.98rem; font-weight:700; color:var(--gold); white-space:nowrap; }
-
-    /* ==============================================================  CTA  */
-    .cta-section {
-      padding:var(--section-pad) 0; text-align:center;
-      background:linear-gradient(180deg,#0D1540 0%,var(--indigo) 100%);
-      position:relative; overflow:hidden;
-    }
-    .cta-section::before {
-      content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-      width:600px; height:380px;
-      background:radial-gradient(ellipse,rgba(245,166,35,.07) 0%,transparent 68%);
-      pointer-events:none;
-    }
-    .cta-section h2 {
-      font-size:clamp(1.8rem,4.8vw,3.3rem); max-width:700px;
-      margin:0 auto 1.1rem; line-height:1.2;
-    }
-    .cta-section > .container > p { font-size:1rem; color:var(--cream-dim); max-width:480px; margin:0 auto 2.5rem; }
-    .cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:2.8rem; }
-    /* EDITABLE: contact line */
-    .cta-contact { font-size:.82rem; color:rgba(245,239,224,.38); }
-    .cta-contact a { color:rgba(245,239,224,.55); }
-    .cta-contact a:hover { color:var(--gold); text-decoration:none; }
-
-    /* ==============================================================  FOOTER  */
-    footer {
-      background:#050B1C; padding:2.4rem 0;
-      border-top:1px solid rgba(245,166,35,.07);
-    }
-    .foot-inner {
-      display:flex; align-items:center; justify-content:space-between;
-      flex-wrap:wrap; gap:1rem;
-    }
-    .foot-logo { font-family:'Playfair Display',serif; font-size:.95rem; color:var(--cream); font-style:italic; }
-    .foot-logo span { color:var(--gold); }
-    .foot-note { font-size:.68rem; color:rgba(245,239,224,.3); text-align:center; line-height:1.65; }
-    .foot-right { font-size:.68rem; color:rgba(245,239,224,.28); }
-  </style>
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .r{opacity:1;transform:none}.pb,.pscene{transition:none}
+}
+</style>
 </head>
 <body>
 
-<!-- ================================================================
-     NAV
-     ================================================================ -->
-<nav class="nav" id="nav" aria-label="Primary navigation">
-  <div class="container nav-inner">
-    <span class="nav-logo"><span>A Life</span> of Harmony</span>
-    <ul class="nav-links">
-      <li><a href="#vision">Vision</a></li>
-      <li><a href="#acts">The Journey</a></li>
-      <li><a href="#impact">Impact</a></li>
-      <li><a href="#invest">Investment</a></li>
-      <li><a href="#contact" class="btn btn-primary" style="padding:.38rem 1.1rem;font-size:.72rem;">Approve Pilot</a></li>
-    </ul>
+<!-- NAV -->
+<nav id="nav" aria-label="Main navigation">
+  <a href="#" class="nav-logo">A Life of Harmony</a>
+  <div class="nav-links">
+    <a href="#journey" class="nav-link">Life Journey</a>
+    <a href="#meditation" class="nav-link">Meditation</a>
+    <a href="#ashram" class="nav-link">Ashram</a>
+    <a href="#satsang" class="nav-link">Satsang</a>
   </div>
+  <a href="#visit" class="nav-cta">Visit Exhibition</a>
 </nav>
 
-<!-- ================================================================
-     SECTION 1 · HERO
-     ================================================================ -->
-<section class="hero" id="hero" aria-label="Hero — A Life of Harmony VR Experience">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <canvas id="hero-canvas" aria-hidden="true"></canvas>
-
-  <!-- Himalayan ridge -->
-  <svg class="hero-mountains" aria-hidden="true" viewBox="0 0 1440 200" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,200 L0,145 L70,105 L150,135 L230,82 L310,118 L390,62 L470,95 L555,42 L640,75 L725,28 L810,65 L895,18 L975,58 L1055,33 L1135,72 L1215,44 L1290,82 L1370,52 L1440,95 L1440,200Z" fill="rgba(11,16,38,.55)"/>
-    <path d="M0,200 L0,162 L110,132 L230,152 L360,116 L480,140 L610,105 L725,130 L845,98 L960,126 L1080,103 L1200,134 L1320,112 L1440,144 L1440,200Z" fill="rgba(11,16,38,.78)"/>
-    <path d="M0,200 L0,174 L180,156 L360,172 L540,152 L720,169 L900,149 L1080,166 L1260,152 L1440,170 L1440,200Z" fill="#0B1026"/>
-  </svg>
-
-  <div class="hero-content">
-    <div class="hero-badge reveal">
-      <span class="badge-dot" aria-hidden="true"></span>
-      Meta Quest 3 &nbsp;·&nbsp; Interactive VR Experience
-    </div>
-
-    <h1 class="hero-title reveal d1">A Life of Harmony</h1>
-    <p class="hero-subtitle reveal d2">An Immersive VR Journey</p>
-
-    <p class="hero-tagline reveal d3">
-      Step inside a life that touched a billion.<br>
-      A 45–60 minute cinematic journey through the story of
-      Sri&nbsp;Sri&nbsp;Ravi Shankar and the Art&nbsp;of&nbsp;Living Foundation.
-    </p>
-
-    <div class="hero-cta reveal d4">
-      <a href="#vision" class="btn btn-primary">
-        Experience the Vision
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </a>
-      <a href="#invest" class="btn btn-outline">View the Roadmap</a>
+<!-- HERO -->
+<section class="hero">
+  <div id="hero-bg">
+    <img id="hero-bg-img" src="img/hero-bg.webp" alt="VR cosmos meditation universe">
+  </div>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="hero-body">
+    <p class="hero-kicker">Immersive Virtual Reality Exhibition</p>
+    <h1 class="hero-title">An Immersive Journey<br>Through the <i>Life of Gurudev</i></h1>
+    <span class="hero-sub-title">Four Worlds. One Presence.</span>
+    <p class="hero-sub">Step inside the life, wisdom, and world of Gurudev Sri Sri Ravishankar — and come out different.</p>
+    <div class="hero-badges" role="list">
+      <div class="hero-badge" role="listitem"><b style="color:var(--gold)">01</b> Life Journey</div>
+      <div class="hero-badge" role="listitem"><b style="color:var(--lavender)">02</b> Guided Meditation</div>
+      <div class="hero-badge" role="listitem"><b style="color:var(--jade)">03</b> Ashram Tour</div>
+      <div class="hero-badge" role="listitem"><b style="color:var(--saffron)">04</b> Live Satsang</div>
     </div>
   </div>
-
   <div class="hero-scroll" aria-hidden="true">
-    <span>Scroll to explore</span>
-    <div class="scroll-chevron"></div>
+    <div class="scroll-rod"></div>
+    <span>Enter</span>
   </div>
 </section>
 
-<!-- ================================================================
-     SECTION 2 · THE VISION
-     ================================================================ -->
-<section class="vision" id="vision" aria-labelledby="vision-h">
-  <div class="container">
-    <div class="vision-intro">
-      <span class="section-label reveal">The Vision</span>
-      <h2 id="vision-h" class="reveal d1">From exhibit to <em>experience</em>.</h2>
-      <p class="reveal d2">
-        Exhibitions tell stories. VR lets you live them. This project transforms
-        the extraordinary life of Sri Sri Ravi Shankar — meditator, peacemaker,
-        humanitarian — into a first-person journey visitors step inside, choose within,
-        and carry with them long after the headset comes off.
-      </p>
-    </div>
-
-    <div class="pillars">
-      <div class="pillar reveal d1">
-        <div class="pillar-icon" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.8">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            <path d="M2 12h20"/>
-          </svg>
-        </div>
-        <h3>Immersive</h3>
-        <p>Be <em>inside</em> the story. Stand at the Himalayan dawn. Witness reconciliation in Kashmir. No screen can do this.</p>
-      </div>
-      <div class="pillar reveal d2">
-        <div class="pillar-icon" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.8">
-            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-            <circle cx="12" cy="12" r="3"/>
-          </svg>
-        </div>
-        <h3>Interactive</h3>
-        <p>Eight decision points let each visitor chart a personal path. No two journeys through this life are exactly the same.</p>
-      </div>
-      <div class="pillar reveal d3">
-        <div class="pillar-icon" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.8">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <path d="M9 12l2 2 4-4"/>
-          </svg>
-        </div>
-        <h3>Inclusive</h3>
-        <p>Hindi and English narration. Accessible design. Distributable globally via SideQuest — no gatekeepers, no barriers.</p>
-      </div>
-    </div>
+<!-- GOLD MARQUEE -->
+<div class="marquee-band" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Life Journey</span><span class="marquee-item">Guided Meditation</span>
+    <span class="marquee-item">Ashram Tour</span><span class="marquee-item">Live Satsang</span>
+    <span class="marquee-item">Meta Quest 3S</span><span class="marquee-item">Art of Living</span>
+    <span class="marquee-item">Gurudev Sri Sri Ravishankar</span>
+    <span class="marquee-item">Life Journey</span><span class="marquee-item">Guided Meditation</span>
+    <span class="marquee-item">Ashram Tour</span><span class="marquee-item">Live Satsang</span>
+    <span class="marquee-item">Meta Quest 3S</span><span class="marquee-item">Art of Living</span>
+    <span class="marquee-item">Gurudev Sri Sri Ravishankar</span>
   </div>
+</div>
+
+<!-- EDITORIAL INTRO -->
+<div class="editorial">
+  <div class="ed-left">
+    <p class="ed-quote r">"This is not a film about a person. It is an invitation to step <em>inside</em> the awareness that shaped one of the most extraordinary lives of our time."</p>
+    <p class="ed-attr r d1">Gurudev Sri Sri Ravishankar</p>
+  </div>
+  <div class="ed-right">
+    <p class="ed-label r">About the Exhibition</p>
+    <ul class="ed-list r d1">
+      <li>Founder of the Art of Living Foundation — active in 180+ countries</li>
+      <li>A billion breaths changed through Sudarshan Kriya alone</li>
+      <li>Peace mediator in conflict zones across five continents</li>
+      <li>Teacher and guide to hundreds of millions worldwide</li>
+      <li>Available on Meta Quest 3S · No prior experience needed · 45 min</li>
+    </ul>
+  </div>
+</div>
+
+<!-- CHAPTER OVERVIEW -->
+<section class="chapters" aria-label="Four experiences">
+  <a href="#journey" class="chapter-card r">
+    <img src="img/gurudev-childhood.png" alt="Gurudev as a child" style="object-position:center 18%">
+    <div class="chapter-grad"></div>
+    <span class="chapter-n" aria-hidden="true">01</span>
+    <div class="chapter-body">
+      <p class="chapter-tag" style="color:var(--gold)">Life Journey</p>
+      <h2 class="chapter-title">Walk the Path of<br>an Extraordinary Life</h2>
+      <p class="chapter-desc">Seven decades. One unbroken thread of grace.</p>
+    </div>
+  </a>
+  <a href="#meditation" class="chapter-card r d1">
+    <img src="img/vr-meditation-cosmos.webp" alt="Guided meditation VR experience" style="object-position:center top">
+    <div class="chapter-grad"></div>
+    <span class="chapter-n" aria-hidden="true">02</span>
+    <div class="chapter-body">
+      <p class="chapter-tag" style="color:var(--lavender)">Guided Meditation</p>
+      <h2 class="chapter-title">Breathe Into<br>Absolute Stillness</h2>
+      <p class="chapter-desc">Gurudev's voice. The universe. Nothing else.</p>
+    </div>
+  </a>
+  <a href="#ashram" class="chapter-card r d2">
+    <img src="img/ashram-vishalakshi.png" alt="Vishalakshi Mantap aerial view" style="object-position:center 42%">
+    <div class="chapter-grad"></div>
+    <span class="chapter-n" aria-hidden="true">03</span>
+    <div class="chapter-body">
+      <p class="chapter-tag" style="color:var(--jade)">Ashram Tour</p>
+      <h2 class="chapter-title">A Sanctuary<br>Without Walls</h2>
+      <p class="chapter-desc">The most peaceful place on Earth. Now here.</p>
+    </div>
+  </a>
+  <a href="#satsang" class="chapter-card r d3">
+    <img src="img/gurudev-diversity.png" alt="Gurudev celebrating diversity" style="object-position:center 38%">
+    <div class="chapter-grad"></div>
+    <span class="chapter-n" aria-hidden="true">04</span>
+    <div class="chapter-body">
+      <p class="chapter-tag" style="color:var(--saffron)">Live Satsang</p>
+      <h2 class="chapter-title">Feel the Joy of<br>Ten Thousand Souls</h2>
+      <p class="chapter-desc">Music, devotion, and a silence that holds it all.</p>
+    </div>
+  </a>
 </section>
 
-<!-- ================================================================
-     SECTION 3 · THE FIVE ACTS
-     ================================================================ -->
-<section class="acts" id="acts" aria-labelledby="acts-h">
-  <div class="container">
-    <div class="acts-header">
-      <span class="section-label reveal">The Journey</span>
-      <h2 id="acts-h" class="reveal d1">Five acts. One lifetime. Your choices.</h2>
-      <p class="reveal d2">A branching cinematic narrative across 45–60 minutes of immersive experience.</p>
-    </div>
-
-    <!-- ACT I -->
-    <div class="act-panel reveal-left">
-      <div class="act-vis">
-        <div class="act-grad" style="background:linear-gradient(135deg,#1A1050 0%,#3D1F6E 42%,#7B4F9B 72%,#F5A623 100%);" aria-hidden="true"></div>
-        <span class="act-num-bg" aria-hidden="true">I</span>
+<!-- PILLAR 01 — LIFE JOURNEY -->
+<section class="pillar-wrap" id="journey">
+  <div class="pillar-sticky" data-pillar="0">
+    <div class="pb-wrap">
+      <div class="pb on">
+        <img src="img/gurudev-childhood.png" alt="" style="object-position:center 18%">
       </div>
-      <div class="act-txt">
-        <p class="act-tag">Act One</p>
-        <span class="duration-badge">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          90 seconds
-        </span>
-        <h3>Beginnings</h3>
-        <p>The Himalayas at dawn. A child sits in stillness while the world wakes. You are present inside the formative years of a life that would become a movement.</p>
-        <div class="act-choice" role="note">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-          <span><strong>Your choice:</strong> Follow the breath of early morning meditation, or walk with the young student through sacred texts.</span>
-        </div>
+      <div class="pb">
+        <img src="img/gurudev-1956.png" alt="" style="object-position:center 30%">
+      </div>
+      <div class="pb">
+        <img src="img/gurudev-young-meditation.png" alt="" style="object-position:center 15%">
+      </div>
+      <div class="pb">
+        <img src="img/gurudev-diversity.png" alt="" style="object-position:center 38%">
       </div>
     </div>
-
-    <!-- ACT II -->
-    <div class="act-panel rev reveal-right">
-      <div class="act-vis">
-        <div class="act-grad" style="background:linear-gradient(135deg,#0D2B45 0%,#1A5276 42%,#2E86AB 70%,#FFB627 100%);" aria-hidden="true"></div>
-        <span class="act-num-bg" aria-hidden="true">II</span>
-      </div>
-      <div class="act-txt">
-        <p class="act-tag">Act Two</p>
-        <span class="duration-badge">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          3 minutes
-        </span>
-        <h3>Vision Emerges</h3>
-        <p>1981. A vision takes form. The Art of Living Foundation is born from a single question: can ancient wisdom heal the modern mind?</p>
-        <div class="act-choice" role="note">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-          <span><strong>Two paths:</strong> The Meditation Path — witness the birth of Sudarshan Kriya — or the Teaching Path, following the first courses across the world.</span>
+    <div class="pgrad left"></div>
+    <div class="pc left">
+      <div class="pnum" aria-hidden="true">01</div>
+      <p class="ptag r" style="color:var(--gold)">Life Journey</p>
+      <h2 class="ptitle r d1">Walk the Path of<br>an Extraordinary Life</h2>
+      <p class="plead r d2">A cinematic journey spanning seven decades — every scene reveals a new chapter and a new part of yourself.</p>
+      <div class="r d3">
+        <div class="pdots" id="dots0" aria-hidden="true">
+          <span class="pdot on" style="background:var(--gold)"></span>
+          <span class="pdot"></span><span class="pdot"></span><span class="pdot"></span>
         </div>
-      </div>
-    </div>
-
-    <!-- ACT III -->
-    <div class="act-panel reveal-left">
-      <div class="act-vis">
-        <div class="act-grad" style="background:linear-gradient(135deg,#1A0A2E 0%,#2D1B69 40%,#1B6954 68%,#4DD4A0 100%);" aria-hidden="true"></div>
-        <span class="act-num-bg" aria-hidden="true">III</span>
-      </div>
-      <div class="act-txt">
-        <p class="act-tag">Act Three</p>
-        <span class="duration-badge">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          2 minutes
-        </span>
-        <h3>The Peacemaker</h3>
-        <p>Kashmir. Ayodhya. Two of the most charged places on earth. You stand at the centre of dialogues that brought adversaries into the same room — and changed history quietly.</p>
-        <div class="act-choice" role="note">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-          <span><strong>Three perspectives:</strong> The Mediator, the Community Leader, or the Journalist witnessing reconciliation unfold.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ACT IV -->
-    <div class="act-panel rev reveal-right">
-      <div class="act-vis">
-        <div class="act-grad" style="background:linear-gradient(135deg,#0A1A10 0%,#1B4D3E 42%,#27AE60 70%,#F5A623 100%);" aria-hidden="true"></div>
-        <span class="act-num-bg" aria-hidden="true">IV</span>
-      </div>
-      <div class="act-txt">
-        <p class="act-tag">Act Four</p>
-        <span class="duration-badge">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          3 minutes
-        </span>
-        <h3>Scale of Compassion</h3>
-        <p>A movement at planetary scale. Farmers, forests, and futures transformed across 182 countries. Choose where you stand in the story of service.</p>
-        <div class="act-choice" role="note">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-          <span><strong>Three missions:</strong> Mission Green Earth (100M+ trees), Women Empowerment, or Skill Development for 475,000+ youth.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ACT V -->
-    <div class="act-panel reveal-left">
-      <div class="act-vis">
-        <div class="act-grad" style="background:linear-gradient(135deg,#0B1026 0%,#2C1654 30%,#8B5CF6 60%,#F5A623 85%,#FFE8A0 100%);" aria-hidden="true"></div>
-        <span class="act-num-bg" aria-hidden="true">V</span>
-      </div>
-      <div class="act-txt">
-        <p class="act-tag">Act Five</p>
-        <span class="duration-badge">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          2 minutes
-        </span>
-        <h3>Legacy</h3>
-        <p>One billion lives. A vision that reaches forward. The final act is personal — a moment of quiet reflection where the journey becomes yours to continue.</p>
-        <div class="act-choice" role="note">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-          <span><strong>The question:</strong> What will you carry forward? A personal reflection prompt closes the experience.</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================================================================
-     SECTION 4 · FEATURES
-     ================================================================ -->
-<section class="features" id="features" aria-labelledby="feat-h">
-  <div class="container">
-    <div class="features-header">
-      <span class="section-label reveal">What Makes It Special</span>
-      <h2 id="feat-h" class="reveal d1">Built for the moment. Ready for the world.</h2>
-      <p class="reveal d2">Every technical decision serves the story.</p>
-    </div>
-    <div class="feat-grid">
-
-      <div class="feat-card reveal d1">
-        <div class="feat-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.8"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.87v6.26a1 1 0 0 1-1.447.9L15 14M5 18h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/></svg>
-        </div>
-        <h4>Cinematic AI Visuals</h4>
-        <p>AI-generated imagery rendered for 360° VR — photorealistic environments placing visitors inside real historical moments.</p>
-      </div>
-
-      <div class="feat-card reveal d2">
-        <div class="feat-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.8"><path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0m12 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/></svg>
-        </div>
-        <h4>Spatial 3D Audio</h4>
-        <p>Sound that moves with you. Himalayan winds, crowd resonance, intimate narration — all positionally rendered.</p>
-      </div>
-
-      <div class="feat-card reveal d3">
-        <div class="feat-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h4>8+ Choice Points</h4>
-        <p>A branching narrative that makes each visit unique. No two visitors take exactly the same path through the story.</p>
-      </div>
-
-      <div class="feat-card reveal d1">
-        <div class="feat-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <h4>Bilingual Narration</h4>
-        <p>Full narration in Hindi and English. A single toggle switches the entire experience — no restart required.</p>
-      </div>
-
-      <div class="feat-card reveal d2">
-        <div class="feat-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01M8 12h.01M16 12h.01"/></svg>
-        </div>
-        <h4>Native Meta Quest 3</h4>
-        <p>Optimised for Quest 3's mixed-reality capabilities and controller-free hand-tracking interactions.</p>
-      </div>
-
-      <div class="feat-card reveal d3">
-        <div class="feat-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        </div>
-        <h4>Globally Distributable</h4>
-        <p>Publish via SideQuest from day one. No App Lab approval delays. Reach audiences everywhere, immediately.</p>
-      </div>
-
-      <div class="feat-card reveal d1">
-        <div class="feat-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.8"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M13 2v7h7"/></svg>
-        </div>
-        <h4>Built in Quill 2.0</h4>
-        <p>No-code VR production means faster iteration, lower costs, and easy content updates without a rebuild.</p>
-      </div>
-
-      <div class="feat-card reveal d2">
-        <div class="feat-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        </div>
-        <h4>Scalable Platform</h4>
-        <p>Architecture designed to port to Apple Vision Pro and PlayStation VR as the platform market matures.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================
-     SECTION 5 · IMPACT
-     ================================================================ -->
-<section class="impact" id="impact" aria-labelledby="impact-h">
-  <div class="container">
-    <div class="impact-header">
-      <span class="section-label reveal">The Story Behind the Story</span>
-      <h2 id="impact-h" class="reveal d1">Numbers that demand to be felt, not just read.</h2>
-      <p class="reveal d2">These are the real-world figures visitors step inside.</p>
-    </div>
-
-    <!-- EDITABLE: stats — change data-target and data-suffix as needed -->
-    <div class="stats-grid" id="stats-grid">
-      <div class="stat-card reveal d1">
-        <div class="stat-num" data-target="1" data-suffix="B+">0</div>
-        <div class="stat-lbl">Lives touched by Art of Living</div>
-      </div>
-      <div class="stat-card reveal d2">
-        <div class="stat-num" data-target="182" data-suffix="">0</div>
-        <div class="stat-lbl">Countries reached</div>
-      </div>
-      <div class="stat-card reveal d3">
-        <div class="stat-num" data-target="100" data-suffix="M+">0</div>
-        <div class="stat-lbl">Trees planted — Mission Green Earth</div>
-      </div>
-      <div class="stat-card reveal d1">
-        <div class="stat-num" data-target="3" data-suffix="M+">0</div>
-        <div class="stat-lbl">Farmers trained in sustainable practices</div>
-      </div>
-      <div class="stat-card reveal d2">
-        <div class="stat-num" data-target="475" data-suffix="K+">0</div>
-        <div class="stat-lbl">Youth skilled through programmes</div>
-      </div>
-      <div class="stat-card reveal d3">
-        <div class="stat-num" data-target="111" data-suffix="K+">0</div>
-        <div class="stat-lbl">Women empowered economically</div>
-      </div>
-    </div>
-
-    <div class="stories">
-      <div class="story-card reveal d1">
-        <span class="story-tag">Peacemaking</span>
-        <h4>Kashmir: Crossing Lines</h4>
-        <p>In one of the world's most volatile regions, Art of Living facilitated dialogues between groups who had not spoken for decades. You will stand in that room.</p>
-        <span class="story-link" aria-hidden="true">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Experienced in Act III
-        </span>
-      </div>
-      <div class="story-card reveal d2">
-        <span class="story-tag">Reconciliation</span>
-        <h4>Ayodhya: Harmony After Conflict</h4>
-        <p>2019. A decades-long dispute neared resolution. Art of Living worked quietly — with both sides — toward a moment the country had nearly stopped hoping for.</p>
-        <span class="story-link" aria-hidden="true">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Experienced in Act III
-        </span>
-      </div>
-      <div class="story-card reveal d3">
-        <span class="story-tag">Environment</span>
-        <h4>Mission Green Earth</h4>
-        <p>Over 100 million trees. Rivers restored. Farmers trained in natural agriculture. The largest volunteer-led environmental movement in Indian history — now a VR experience.</p>
-        <span class="story-link" aria-hidden="true">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Experienced in Act IV
-        </span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================
-     SECTION 6 · HOW IT'S BUILT
-     ================================================================ -->
-<section class="build" id="build" aria-labelledby="build-h">
-  <div class="container">
-    <div class="build-header">
-      <span class="section-label reveal">Production</span>
-      <h2 id="build-h" class="reveal d1">16 weeks. Five clear phases.</h2>
-      <p class="reveal d2" style="color:var(--cream-dim);max-width:460px;margin:.7rem auto 0;font-size:.93rem;">
-        Defined deliverables at every stage. No ambiguity about what happens when.
-      </p>
-    </div>
-
-    <div class="timeline">
-      <div class="tl-item reveal d1">
-        <div class="tl-dot" aria-hidden="true">1</div>
-        <div class="tl-body">
-          <div class="tl-weeks">Weeks 1–3</div>
-          <h4>Planning &amp; Story Architecture</h4>
-          <p>Script refinement, choice-point mapping, visual style guide, hardware procurement. Deliverable: locked story bible and production schedule.</p>
-        </div>
-      </div>
-      <div class="tl-item reveal d2">
-        <div class="tl-dot" aria-hidden="true">2</div>
-        <div class="tl-body">
-          <div class="tl-weeks">Weeks 4–7</div>
-          <h4>Video &amp; Asset Production</h4>
-          <p>AI-generated visual asset creation, voiceover recording in Hindi and English, spatial audio design, all scenes rendered for 360° VR.</p>
-        </div>
-      </div>
-      <div class="tl-item reveal d3">
-        <div class="tl-dot" aria-hidden="true">3</div>
-        <div class="tl-body">
-          <div class="tl-weeks">Weeks 8–12</div>
-          <h4>VR Development</h4>
-          <p>Assembly in Quill 2.0, branching logic, language toggle, hand-tracking interactions, Meta Quest 3 performance optimisation.</p>
-        </div>
-      </div>
-      <div class="tl-item reveal d4">
-        <div class="tl-dot" aria-hidden="true">4</div>
-        <div class="tl-body">
-          <div class="tl-weeks">Weeks 13–15</div>
-          <h4>Testing &amp; Refinement</h4>
-          <p>User testing sessions, accessibility review, content QA with subject-matter advisers, performance benchmarking, final polish.</p>
-        </div>
-      </div>
-      <div class="tl-item reveal" style="transition-delay:.55s">
-        <div class="tl-dot" aria-hidden="true">5</div>
-        <div class="tl-body">
-          <div class="tl-weeks">Week 16</div>
-          <h4>Launch &amp; Handover</h4>
-          <p>SideQuest publication, exhibition installation on 4 headsets, staff training, documentation handover. 12-month support begins.</p>
+        <div class="pscenes" id="scenes0">
+          <div class="pscene on">
+            <p class="psense" style="color:var(--gold)">Sight</p>
+            <p class="ptext">A quiet courtyard in Tamil Nadu, 1956. Honey-gold morning light. A young child sits cross-legged beneath a neem tree, eyes closed — already carrying something ancient.</p>
+          </div>
+          <div class="pscene">
+            <p class="psense" style="color:var(--gold)">Origin</p>
+            <p class="ptext">A mother holds her child against an India that is newly free. The year is 1956. In that small face: no sign yet of the millions who will call him teacher. And yet — something already knows.</p>
+          </div>
+          <div class="pscene">
+            <p class="psense" style="color:var(--gold)">Turning</p>
+            <p class="ptext">The Himalayas at 12,000 feet. Dawn blushes across impossibly still snow as a young seeker sits in silence, watching, searching for the source of everything.</p>
+          </div>
+          <div class="pscene">
+            <p class="psense" style="color:var(--gold)">Scale</p>
+            <p class="ptext">Three million faces fill an open field. Gurudev speaks. Then — a silence deeper than anything — three million people exhale together. You are in the middle of it all.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================================================================
-     SECTION 7 · THE PILOT
-     ================================================================ -->
-<section class="pilot" id="pilot" aria-labelledby="pilot-h">
-  <div class="container">
-    <div class="pilot-card reveal">
-      <div class="pilot-badge" aria-hidden="true">
-        <svg width="9" height="9" viewBox="0 0 24 24" fill="#F5A623"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        Proof of Concept
+<!-- QUOTE 1 -->
+<div class="dq">
+  <div class="dq-bg">
+    <img src="img/gurudev-young-meditation.png" alt="" style="object-position:40% 15%">
+  </div>
+  <div class="dq-inner r">
+    <span class="dq-mark" aria-hidden="true">"</span>
+    <p class="dq-text">When you know how to handle the breath, you can handle every situation in life. The breath is the link between the inner world and the outer world.</p>
+    <div class="dq-rule" aria-hidden="true"></div>
+    <p class="dq-attr">Gurudev Sri Sri Ravishankar</p>
+  </div>
+</div>
+
+<!-- PILLAR 02 — GUIDED MEDITATION -->
+<section class="pillar-wrap" id="meditation">
+  <div class="pillar-sticky" data-pillar="1">
+    <div class="pb-wrap">
+      <div class="pb on">
+        <img src="img/vr-meditation-cosmos.webp" alt="" style="object-position:center top">
       </div>
-      <h2 id="pilot-h">See it before you commit.</h2>
-      <p>
-        A full commitment is easier when you've experienced the work. The Pilot delivers
-        a complete, polished version of Act&nbsp;I — childhood and spiritual awakening in the
-        Himalayas — on a single Meta Quest 3 headset, in four weeks. It is a fully working
-        demo your team, board, or community can wear and feel. If it doesn't move people,
-        you walk away with everything learned and nothing wasted.
-      </p>
-      <!-- EDITABLE: Pilot specs -->
-      <div class="pilot-specs">
-        <div class="spec">
-          <div class="spec-val">₹2.5L</div>
-          <div class="spec-lbl">Fixed pilot cost</div>
+      <div class="pb">
+        <img src="img/gurudev-young-meditation.png" alt="" style="object-position:center 15%">
+      </div>
+      <div class="pb">
+        <img src="https://images.unsplash.com/photo-1534796636912-3b952d9a9f4f?auto=format&fit=crop&w=1920&q=85" alt="" style="object-position:center">
+      </div>
+      <div class="pb">
+        <img src="img/vr-meditation-blue.jpg" alt="" style="object-position:center center">
+      </div>
+    </div>
+    <div class="pgrad right"></div>
+    <div class="pc right">
+      <div class="pnum" aria-hidden="true">02</div>
+      <p class="ptag r" style="color:var(--lavender)">Guided Meditation</p>
+      <h2 class="ptitle r d1">Breathe Into<br>Absolute Stillness</h2>
+      <p class="plead r d2">In virtual reality the outside world falls completely away. Only the breath, Gurudev's voice, and the vast quiet within you.</p>
+      <div class="r d3">
+        <div class="pdots" id="dots1" aria-hidden="true">
+          <span class="pdot on" style="background:var(--lavender)"></span>
+          <span class="pdot"></span><span class="pdot"></span><span class="pdot"></span>
         </div>
-        <div class="spec">
-          <div class="spec-val">4 wks</div>
-          <div class="spec-lbl">Delivery timeline</div>
-        </div>
-        <div class="spec">
-          <div class="spec-val">Act I</div>
-          <div class="spec-lbl">Full demo delivered</div>
-        </div>
-        <div class="spec">
-          <div class="spec-val">1 HMD</div>
-          <div class="spec-lbl">Meta Quest 3 included</div>
+        <div class="pscenes" id="scenes1">
+          <div class="pscene on">
+            <p class="psense" style="color:var(--lavender)">Sight</p>
+            <p class="ptext">The room around you dissolves. A universe of stars surrounds you in every direction — a sacred geometry of light pulsing at the centre. You are floating inside something enormous and perfectly calm.</p>
+          </div>
+          <div class="pscene">
+            <p class="psense" style="color:var(--lavender)">Sound</p>
+            <p class="ptext">Gurudev's voice arrives not from a speaker but from everywhere at once. Gentle. Unhurried. <em style="color:rgba(248,243,236,.82)">"Take a long, deep breath in…"</em> And something in you lets go.</p>
+          </div>
+          <div class="pscene">
+            <p class="psense" style="color:var(--lavender)">Feel</p>
+            <p class="ptext">With each breath, pulses of soft light move through the space — saffron on the inhale, deep violet on the exhale. Your body follows without being asked. The breath breathes you.</p>
+          </div>
+          <div class="pscene">
+            <p class="psense" style="color:var(--lavender)">Arrive</p>
+            <p class="ptext">The boundary between you and the surrounding stillness becomes unclear. You are not watching anymore. You are somewhere beyond thought — resting in what Gurudev says is already always there.</p>
+          </div>
         </div>
       </div>
-      <a href="#contact" class="btn btn-primary">
-        Approve the Pilot
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
     </div>
   </div>
 </section>
 
-<!-- ================================================================
-     SECTION 8 · INVESTMENT & ROADMAP
-     ================================================================ -->
-<section class="invest" id="invest" aria-labelledby="invest-h">
-  <div class="container">
-    <div class="invest-header">
-      <span class="section-label reveal">Investment</span>
-      <h2 id="invest-h" class="reveal d1">Transparent. Structured. Achievable.</h2>
-      <!-- EDITABLE: summary line -->
-      <p class="reveal d2" style="color:var(--cream-dim);">₹8,00,000 total &nbsp;·&nbsp; 16 weeks &nbsp;·&nbsp; 4 exhibition headsets &nbsp;·&nbsp; 12-month support</p>
+<!-- QUOTE 2 -->
+<div class="dq">
+  <div class="dq-bg">
+    <img src="img/vr-meditation-cosmos.webp" alt="" style="object-position:center top">
+  </div>
+  <div class="dq-inner r">
+    <span class="dq-mark" aria-hidden="true">"</span>
+    <p class="dq-text">Meditation is not something you do. It is something that happens — when you stop doing everything else and simply be.</p>
+    <div class="dq-rule" aria-hidden="true"></div>
+    <p class="dq-attr">Gurudev Sri Sri Ravishankar</p>
+  </div>
+</div>
+
+<!-- PILLAR 03 — ASHRAM TOUR -->
+<section class="pillar-wrap" id="ashram">
+  <div class="pillar-sticky" data-pillar="2">
+    <div class="pb-wrap">
+      <div class="pb on">
+        <img src="img/ashram-vishalakshi.png" alt="" style="object-position:center 42%">
+      </div>
+      <div class="pb">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=85" alt="" style="object-position:center">
+      </div>
+      <div class="pb">
+        <img src="img/ashram-vishalakshi.png" alt="" style="object-position:center 55%">
+      </div>
+      <div class="pb">
+        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1920&q=85" alt="" style="object-position:center">
+      </div>
     </div>
-
-    <div class="invest-grid">
-
-      <!-- BUDGET BARS — EDITABLE: name, amount, data-width (percentage of total) -->
-      <div class="budget reveal">
-        <h3>Budget Breakdown</h3>
-
-        <div class="b-item">
-          <div class="b-top"><span class="b-name">Hardware — Meta Quest 3 × 4</span><span class="b-amount">₹2,40,000</span></div>
-          <div class="b-track"><div class="b-fill" data-width="30" style="background:linear-gradient(90deg,#F5A623,#FFB627)"></div></div>
+    <div class="pgrad left"></div>
+    <div class="pc left">
+      <div class="pnum" aria-hidden="true">03</div>
+      <p class="ptag r" style="color:var(--jade)">Ashram Tour</p>
+      <h2 class="ptitle r d1">A Sanctuary<br>Without Walls</h2>
+      <p class="plead r d2">The Art of Living International Centre in Bengaluru — one of the most peaceful places on Earth — comes to you in every detail.</p>
+      <div class="r d3">
+        <div class="pdots" id="dots2" aria-hidden="true">
+          <span class="pdot on" style="background:var(--jade)"></span>
+          <span class="pdot"></span><span class="pdot"></span><span class="pdot"></span>
         </div>
-        <div class="b-item">
-          <div class="b-top"><span class="b-name">Development — Quill 2.0 &amp; integration</span><span class="b-amount">₹2,00,000</span></div>
-          <div class="b-track"><div class="b-fill" data-width="25" style="background:linear-gradient(90deg,#8B5CF6,#A78BFA)"></div></div>
-        </div>
-        <div class="b-item">
-          <div class="b-top"><span class="b-name">Audio, Voice &amp; AI Visuals</span><span class="b-amount">₹1,20,000</span></div>
-          <div class="b-track"><div class="b-fill" data-width="15" style="background:linear-gradient(90deg,#2E86AB,#54B4D3)"></div></div>
-        </div>
-        <div class="b-item">
-          <div class="b-top"><span class="b-name">Exhibition Setup &amp; Installation</span><span class="b-amount">₹1,60,000</span></div>
-          <div class="b-track"><div class="b-fill" data-width="20" style="background:linear-gradient(90deg,#1B6954,#27AE60)"></div></div>
-        </div>
-        <div class="b-item">
-          <div class="b-top"><span class="b-name">Contingency</span><span class="b-amount">₹80,000</span></div>
-          <div class="b-track"><div class="b-fill" data-width="10" style="background:linear-gradient(90deg,#555,#888)"></div></div>
-        </div>
-
-        <div class="budget-total">
-          <span>Total Investment</span>
-          <span>₹8,00,000</span>
+        <div class="pscenes" id="scenes2">
+          <div class="pscene on">
+            <p class="psense" style="color:var(--jade)">Sight</p>
+            <p class="ptext">A tiered white temple rises from the forest. Morning mist moves across a lotus pond. A white egret lifts off without a sound. Layered greens — bamboo, banyan, bougainvillea — glowing in the first light.</p>
+          </div>
+          <div class="pscene">
+            <p class="psense" style="color:var(--jade)">Sound</p>
+            <p class="ptext">Temple bells from somewhere unseen. A soft chant swelling, then settling like water. You turn 360° and see only trees, paths, devotees in white moving with unhurried peace.</p>
+          </div>
+          <div class="pscene">
+            <p class="psense" style="color:var(--jade)">Enter</p>
+            <p class="ptext">The doors of the Vishalakshi Mantap open before you. Light pours through the dome in long golden columns. Hundreds sit in silence. The air is dense with intention — you feel it land on your skin.</p>
+          </div>
+          <div class="pscene">
+            <p class="psense" style="color:var(--jade)">Stay</p>
+            <p class="ptext">You sit on the steps at sunset. A peacock crosses the path. No one rushes. This is what the ashram gives everyone — permission to stop. To breathe. To simply be where you are.</p>
+          </div>
         </div>
       </div>
-
-      <!-- PAYMENT MILESTONES — EDITABLE -->
-      <div class="milestones reveal d2">
-        <h3>Payment Milestones</h3>
-
-        <div class="m-item">
-          <div class="m-num">1</div>
-          <div class="m-body"><h4>Project Approval</h4><p>On signing — secures resources, begins planning</p></div>
-          <span class="m-amount">₹1,60,000</span>
-        </div>
-        <div class="m-item">
-          <div class="m-num">2</div>
-          <div class="m-body"><h4>Production Start</h4><p>Week 4 — on delivery of locked script &amp; style guide</p></div>
-          <span class="m-amount">₹2,00,000</span>
-        </div>
-        <div class="m-item">
-          <div class="m-num">3</div>
-          <div class="m-body"><h4>Development Start</h4><p>Week 8 — on delivery of all video &amp; audio assets</p></div>
-          <span class="m-amount">₹2,00,000</span>
-        </div>
-        <div class="m-item">
-          <div class="m-num">4</div>
-          <div class="m-body"><h4>Testing Complete</h4><p>Week 13 — on sign-off of full experience</p></div>
-          <span class="m-amount">₹1,60,000</span>
-        </div>
-        <div class="m-item">
-          <div class="m-num">5</div>
-          <div class="m-body"><h4>Launch &amp; Handover</h4><p>Week 16 — exhibition live, support period begins</p></div>
-          <span class="m-amount">₹80,000</span>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- ================================================================
-     SECTION 9 · CALL TO ACTION
-     ================================================================ -->
-<section class="cta-section" id="contact" aria-labelledby="cta-h">
-  <div class="container">
-    <span class="section-label reveal">Take the Next Step</span>
-    <h2 id="cta-h" class="reveal d1">
-      The world is ready to step<br>inside this story.
-    </h2>
-    <p class="reveal d2">
-      One conversation is all it takes to begin. Approve the pilot, or ask for the full plan.
-      Either way, you will know within four weeks whether this moves people the way we believe it will.
-    </p>
-    <div class="cta-btns reveal d3">
-      <!-- EDITABLE: replace mailto and href with real links -->
-      <a href="mailto:hello@yourproject.com" class="btn btn-primary" style="font-size:.95rem;padding:1rem 2.2rem;">
-        Approve the Pilot
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="mailto:hello@yourproject.com" class="btn btn-outline" style="font-size:.95rem;padding:1rem 2.2rem;">
-        Download the Full Plan
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-      </a>
+<!-- QUOTE 3 -->
+<div class="dq">
+  <div class="dq-bg">
+    <img src="img/ashram-vishalakshi.png" alt="" style="object-position:center 38%">
+  </div>
+  <div class="dq-inner r">
+    <span class="dq-mark" aria-hidden="true">"</span>
+    <p class="dq-text">You are not just a body and a mind. You are a field of unbounded awareness — infinite peace, infinite joy, infinite love. This is your nature.</p>
+    <div class="dq-rule" aria-hidden="true"></div>
+    <p class="dq-attr">Gurudev Sri Sri Ravishankar</p>
+  </div>
+</div>
+
+<!-- PILLAR 04 — LIVE SATSANG -->
+<section class="pillar-wrap" id="satsang">
+  <div class="pillar-sticky" data-pillar="3">
+    <div class="pb-wrap">
+      <div class="pb on">
+        <img src="img/gurudev-diversity.png" alt="" style="object-position:center 38%">
+      </div>
+      <div class="pb">
+        <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1920&q=85" alt="" style="object-position:center">
+      </div>
+      <div class="pb">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1920&q=85" alt="" style="object-position:center">
+      </div>
+      <div class="pb">
+        <img src="img/gurudev-diversity.png" alt="" style="object-position:center 50%">
+      </div>
     </div>
-    <!-- EDITABLE: contact details -->
-    <p class="cta-contact reveal d4">
-      Questions? Reach us at
-      <a href="mailto:hello@yourproject.com">hello@yourproject.com</a>
-      &nbsp;·&nbsp;
-      <a href="tel:+910000000000">+91 00000 00000</a>
-    </p>
+    <div class="pgrad right"></div>
+    <div class="pc right">
+      <div class="pnum" aria-hidden="true">04</div>
+      <p class="ptag r" style="color:var(--saffron)">Live Satsang</p>
+      <h2 class="ptitle r d1">Feel the Joy of<br>Ten Thousand Souls</h2>
+      <p class="plead r d2">A satsang with Gurudev is felt more than described. Music, laughter, devotion, and a silence that holds them all.</p>
+      <div class="r d3">
+        <div class="pdots" id="dots3" aria-hidden="true">
+          <span class="pdot on" style="background:var(--saffron)"></span>
+          <span class="pdot"></span><span class="pdot"></span><span class="pdot"></span>
+        </div>
+        <div class="pscenes" id="scenes3">
+          <div class="pscene on">
+            <p class="psense" style="color:var(--saffron)">Sound</p>
+            <p class="ptext">Tablas, harmonium, voices — the bhajan begins and sound wraps around you from every direction. It builds. Your whole chest resonates. Ten thousand people are singing and you are among them.</p>
+          </div>
+          <div class="pscene">
+            <p class="psense" style="color:var(--saffron)">Sight</p>
+            <p class="ptext">A sea of candle flames to the horizon. Faces lit gold from below — eyes closed, smiling, tears running freely. Joy and grief looking identical. You turn and see the same scene in every direction.</p>
+          </div>
+          <div class="pscene">
+            <p class="psense" style="color:var(--saffron)">Presence</p>
+            <p class="ptext">Gurudev speaks. Unhurried, playful, then suddenly profound. The crowd erupts in laughter, then falls into the deepest collective silence you have ever been part of. Something lands in you — you'll feel it for days.</p>
+          </div>
+          <div class="pscene">
+            <p class="psense" style="color:var(--saffron)">After</p>
+            <p class="ptext">The satsang ends. People rise slowly — no one is in a hurry. Someone near you is weeping and smiling at the same time. You understand. You take the headset off. The room is the same. You are not.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ================================================================
-     SECTION 10 · FOOTER
-     ================================================================ -->
-<footer role="contentinfo">
-  <div class="container foot-inner">
-    <div class="foot-logo"><span>A Life</span> of Harmony</div>
-    <div class="foot-note">
-      A proof-of-concept VR initiative &nbsp;·&nbsp; 2025<br>
-      All figures reflect Art of Living Foundation's reported reach.
+<!-- GALLERY -->
+<div class="hscroll-wrap">
+  <div class="hscroll-sticky" id="hsticky">
+    <div class="hscroll-head">
+      <div>
+        <p class="hscroll-eyebrow r">Gallery</p>
+        <h2 class="hscroll-h2 r d1">Moments That<br><em>Stay With You</em></h2>
+      </div>
+      <p class="hscroll-hint r d2">Scroll to explore</p>
     </div>
-    <div class="foot-right">Meta Quest 3 Experience</div>
+    <div class="hprogress"><div class="hprogress-fill" id="hfill"></div></div>
+    <div class="hscroll-track-outer">
+      <div class="hscroll-track" id="htk">
+
+        <div class="hcard hcard-tall">
+          <div class="hcard-img"><img src="img/gurudev-childhood.png" alt="Gurudev childhood" style="object-position:center 18%"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-top"><span class="hcard-pill">Life Journey</span><span class="hcard-num">01</span></div>
+          <div class="hcard-label"><p class="hcard-name">Ancient Footsteps</p></div>
+        </div>
+
+        <div class="hcard hcard-mid">
+          <div class="hcard-img"><img src="img/vr-meditation-cosmos.webp" alt="Sacred geometry VR" style="object-position:center top"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-top"><span class="hcard-pill" style="border-color:rgba(154,165,224,.3);color:var(--lavender)">Meditation</span><span class="hcard-num">02</span></div>
+          <div class="hcard-label"><p class="hcard-name">Sacred Geometry</p></div>
+        </div>
+
+        <div class="hcard hcard-short">
+          <div class="hcard-img"><img src="img/ashram-vishalakshi.png" alt="Vishalakshi Mantap" style="object-position:center 42%"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-top"><span class="hcard-pill" style="border-color:rgba(30,168,118,.3);color:var(--jade)">Ashram</span><span class="hcard-num">03</span></div>
+          <div class="hcard-label"><p class="hcard-name">The Sacred Centre</p></div>
+        </div>
+
+        <div class="hcard hcard-tall">
+          <div class="hcard-img"><img src="img/gurudev-young-meditation.png" alt="Gurudev in meditation" style="object-position:center 15%"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-top"><span class="hcard-pill" style="border-color:rgba(154,165,224,.3);color:var(--lavender)">Meditation</span><span class="hcard-num">04</span></div>
+          <div class="hcard-label"><p class="hcard-name">Into the Silence</p></div>
+        </div>
+
+        <div class="hcard hcard-mid">
+          <div class="hcard-img"><img src="img/gurudev-diversity.png" alt="Celebrating diversity" style="object-position:center 38%"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-top"><span class="hcard-pill" style="border-color:rgba(232,98,42,.3);color:var(--saffron)">Satsang</span><span class="hcard-num">05</span></div>
+          <div class="hcard-label"><p class="hcard-name">Celebrating Diversity</p></div>
+        </div>
+
+        <div class="hcard hcard-short">
+          <div class="hcard-img"><img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=900&q=85" alt="Candle flames"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-top"><span class="hcard-pill" style="border-color:rgba(232,98,42,.3);color:var(--saffron)">Satsang</span><span class="hcard-num">06</span></div>
+          <div class="hcard-label"><p class="hcard-name">Flame of Devotion</p></div>
+        </div>
+
+        <div class="hcard hcard-tall">
+          <div class="hcard-img"><img src="img/vr-meditation-blue.jpg" alt="VR meditation circle" style="object-position:center center"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-top"><span class="hcard-pill" style="border-color:rgba(154,165,224,.3);color:var(--lavender)">Meditation</span><span class="hcard-num">07</span></div>
+          <div class="hcard-label"><p class="hcard-name">Enter the Circle</p></div>
+        </div>
+
+        <div class="hcard hcard-mid">
+          <div class="hcard-img"><img src="img/gurudev-1956.png" alt="Gurudev 1956" style="object-position:center 28%"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-top"><span class="hcard-pill">Life Journey</span><span class="hcard-num">08</span></div>
+          <div class="hcard-label"><p class="hcard-name">Where It Began</p></div>
+        </div>
+
+        <div class="hcard hcard-short">
+          <div class="hcard-img"><img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=900&q=85" alt="Nature at ashram"></div>
+          <div class="hcard-glow"></div>
+          <div class="hcard-top"><span class="hcard-pill" style="border-color:rgba(30,168,118,.3);color:var(--jade)">Ashram</span><span class="hcard-num">09</span></div>
+          <div class="hcard-label"><p class="hcard-name">First Light</p></div>
+        </div>
+
+      </div>
+    </div>
   </div>
+</div>
+
+<!-- IMPACT -->
+<div class="impact-wrap">
+  <div class="impact-strip">
+    <div class="impact-cell">
+      <p class="impact-n r" data-count="180" data-suffix="+">0</p>
+      <p class="impact-l r d1">Countries</p>
+      <p class="impact-d r d2">where Art of Living is present</p>
+    </div>
+    <div class="impact-cell">
+      <p class="impact-n r" data-count="500" data-suffix="M+">0</p>
+      <p class="impact-l r d1">Lives Touched</p>
+      <p class="impact-d r d2">through programs, teachings & service</p>
+    </div>
+    <div class="impact-cell">
+      <p class="impact-n r" data-count="44" data-suffix="">0</p>
+      <p class="impact-l r d1">Years of Giving</p>
+      <p class="impact-d r d2">an unbroken journey of compassion</p>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<section class="video-section">
+  <div class="video-inner">
+    <p class="video-eyebrow r">Watch the Story</p>
+    <h2 class="video-title r d1">The Journey of <i>Gurudev</i></h2>
+    <p class="video-sub r d2">An extraordinary life, told in motion. Watch the full story before you step inside it.</p>
+    <div class="video-frame r d3">
+      <iframe src="https://www.youtube.com/embed/k493mHHWTfw"
+        title="The Journey of Gurudev Sri Sri Ravishankar"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <img class="strip-img" src="img/gurudev-childhood.png" alt="" style="object-position:center 18%">
+    <img class="strip-img" src="img/gurudev-1956.png" alt="" style="object-position:center 28%">
+    <img class="strip-img" src="img/gurudev-young-meditation.png" alt="" style="object-position:center 15%">
+    <img class="strip-img" src="img/ashram-vishalakshi.png" alt="" style="object-position:center 42%">
+    <img class="strip-img" src="img/gurudev-diversity.png" alt="" style="object-position:center 38%">
+    <img class="strip-img" src="img/vr-meditation-cosmos.webp" alt="" style="object-position:center top">
+    <img class="strip-img" src="img/vr-meditation-blue.jpg" alt="" style="object-position:center">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="img/gurudev-childhood.png" alt="" style="object-position:center 18%">
+    <img class="strip-img" src="img/gurudev-1956.png" alt="" style="object-position:center 28%">
+    <img class="strip-img" src="img/gurudev-young-meditation.png" alt="" style="object-position:center 15%">
+    <img class="strip-img" src="img/ashram-vishalakshi.png" alt="" style="object-position:center 42%">
+    <img class="strip-img" src="img/gurudev-diversity.png" alt="" style="object-position:center 38%">
+    <img class="strip-img" src="img/vr-meditation-cosmos.webp" alt="" style="object-position:center top">
+    <img class="strip-img" src="img/vr-meditation-blue.jpg" alt="" style="object-position:center">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta" id="visit">
+  <div class="cta-bg">
+    <img src="img/vr-meditation-cosmos.webp" alt="">
+  </div>
+  <div class="cta-inner">
+    <p class="cta-pre r">The Exhibition is Open</p>
+    <h2 class="cta-title r d1">Your Journey<br>Begins <i>Here</i></h2>
+    <p class="cta-sub r d2">All four experiences are open to the public at Art of Living centres. No prior knowledge needed. Just 45 minutes and a willingness to be still.</p>
+    <div class="cta-row r d3">
+      <a href="mailto:signqubeinnovations@gmail.com?subject=VR Experience — Book a Visit" class="btn-gold">Reserve Your Experience</a>
+      <a href="https://www.artofliving.org" target="_blank" rel="noopener" class="btn-outline">Art of Living →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="ft-logo">A Life of Harmony</span>
+  <span class="ft-collab">In collaboration with the Art of Living Foundation</span>
+  <span class="ft-copy">© 2025 Signqube Innovations</span>
 </footer>
 
-<!-- ================================================================
-     JAVASCRIPT
-     ================================================================ -->
 <script>
-  /* ---- Sticky nav ---- */
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 55);
-  }, { passive: true });
+// ── NAV ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 80), {passive:true});
 
-  /* ---- Scroll-reveal (IntersectionObserver) ---- */
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -35px 0px' });
+// ── HERO PARALLAX ──
+const heroBgImg = document.getElementById('hero-bg-img');
+window.addEventListener('scroll', () => {
+  if(scrollY < innerHeight) heroBgImg.style.transform = `scale(1.06) translateY(${scrollY * 0.16}px)`;
+}, {passive:true});
 
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => io.observe(el));
-
-  /* ---- Count-up numbers ---- */
-  function countUp(el, target, suffix, ms) {
-    const t0 = performance.now();
-    (function tick(now) {
-      const p = Math.min((now - t0) / ms, 1);
-      const ease = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(ease * target).toLocaleString() + (p >= 1 ? suffix : '');
-      if (p < 1) requestAnimationFrame(tick);
-    })(t0);
+// ── STARS ──
+(function(){
+  const c = document.getElementById('stars');
+  const ctx = c.getContext('2d');
+  let w, h, pts;
+  function init(){
+    w = c.width = c.offsetWidth; h = c.height = c.offsetHeight;
+    pts = Array.from({length:90}, () => ({
+      x:Math.random()*w, y:Math.random()*h,
+      r:Math.random()*1.7+.2,
+      vx:(Math.random()-.5)*.16, vy:(Math.random()-.5)*.16,
+      a:Math.random()*.5+.08,
+    }));
   }
-
-  const statIO = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      e.target.querySelectorAll('.stat-num').forEach(el => {
-        countUp(el, +el.dataset.target, el.dataset.suffix || '', 1800);
-      });
-      statIO.unobserve(e.target);
+  function frame(){
+    ctx.clearRect(0,0,w,h);
+    pts.forEach(p => {
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0)p.x=w; if(p.x>w)p.x=0;
+      if(p.y<0)p.y=h; if(p.y>h)p.y=0;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle = p.r>1.3 ? `rgba(212,175,55,${p.a})` : `rgba(255,255,255,${p.a*.5})`;
+      ctx.fill();
     });
-  }, { threshold: 0.25 });
+    requestAnimationFrame(frame);
+  }
+  new ResizeObserver(init).observe(c); init(); frame();
+})();
 
-  const sg = document.getElementById('stats-grid');
-  if (sg) statIO.observe(sg);
+// ── SCROLL REVEAL ──
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+}, {threshold:.08, rootMargin:'0px 0px -28px 0px'});
+document.querySelectorAll('.r').forEach(el => io.observe(el));
 
-  /* ---- Budget bar animation ---- */
-  const budgetIO = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      e.target.querySelectorAll('.b-fill').forEach(bar => {
-        requestAnimationFrame(() => { bar.style.width = bar.dataset.width + '%'; });
+// ── COUNT-UP ──
+function countUp(el, target, suffix, ms){
+  const t0 = performance.now();
+  (function tick(now){
+    const p = Math.min((now-t0)/ms,1), e = 1-Math.pow(1-p,3);
+    el.textContent = Math.round(e*target).toLocaleString()+(p>=1?suffix:'');
+    if(p<1) requestAnimationFrame(tick);
+  })(t0);
+}
+const cio = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      countUp(e.target, +e.target.dataset.count, e.target.dataset.suffix||'+', 2400);
+      cio.unobserve(e.target);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+// ── PILLAR STICKY SCROLL ──
+(function(){
+  function clamp(v,a,b){ return Math.max(a,Math.min(b,v)) }
+  const accentColors = ['var(--gold)','var(--lavender)','var(--jade)','var(--saffron)'];
+  const data = Array.from(document.querySelectorAll('.pillar-wrap')).map((wrap, i) => ({
+    wrap,
+    bgs:   wrap.querySelectorAll('.pb'),
+    pbWrap:wrap.querySelector('.pb-wrap'),
+    dots:  document.querySelectorAll(`#dots${i} .pdot`),
+    scenes:document.querySelectorAll(`#scenes${i} .pscene`),
+    accent:accentColors[i], last:-1,
+  }));
+  let raf = null;
+  function tick(){
+    const vh = innerHeight;
+    data.forEach(d => {
+      const rect = d.wrap.getBoundingClientRect();
+      const sh = d.wrap.offsetHeight;
+      if(rect.bottom < 0 || rect.top > vh * 1.5) return;
+      const p = clamp(-rect.top / (sh - vh), 0, 1);
+      if(d.pbWrap) d.pbWrap.style.transform = `translateY(${(p-.5)*44}px)`;
+      const idx = Math.min(Math.floor(p*4), 3);
+      if(idx === d.last) return;
+      d.last = idx;
+      d.bgs.forEach((bg,i) => bg.classList.toggle('on', i===idx));
+      d.dots.forEach((dot,i) => {
+        const active = i===idx;
+        dot.classList.toggle('on', active);
+        dot.style.background = active ? d.accent : 'rgba(248,243,236,.15)';
       });
-      budgetIO.unobserve(e.target);
+      d.scenes.forEach((s,i) => s.classList.toggle('on', i===idx));
     });
-  }, { threshold: 0.25 });
+    raf = null;
+  }
+  window.addEventListener('scroll', () => { if(!raf) raf = requestAnimationFrame(tick); }, {passive:true});
+  tick();
+})();
 
-  document.querySelectorAll('.budget').forEach(el => budgetIO.observe(el));
-
-  /* ---- Hero particle canvas ---- */
-  (function () {
-    const canvas = document.getElementById('hero-canvas');
-    if (!canvas) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      canvas.style.display = 'none'; return;
-    }
-    const ctx = canvas.getContext('2d');
-    let W, H, P = [];
-    const N = 90;
-
-    function mkP() {
-      return {
-        x: Math.random() * W, y: Math.random() * H,
-        r: Math.random() * 1.5 + 0.25,
-        a: Math.random() * 0.55 + 0.08,
-        vx: (Math.random() - 0.5) * 0.14,
-        vy: -(Math.random() * 0.22 + 0.04),
-        f: Math.random() * Math.PI * 2,
-        fs: Math.random() * 0.018 + 0.005,
-      };
-    }
-
-    function resize() {
-      W = canvas.width  = canvas.offsetWidth;
-      H = canvas.height = canvas.offsetHeight;
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      P.forEach(p => {
-        p.f += p.fs;
-        const alpha = p.a * (0.55 + 0.45 * Math.sin(p.f));
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.r > 1.2
-          ? `rgba(245,166,35,${alpha})`
-          : `rgba(255,255,255,${alpha})`;
-        ctx.fill();
-        p.x += p.vx; p.y += p.vy;
-        if (p.y < -4) { p.y = H + 4; p.x = Math.random() * W; }
-        if (p.x < -4) p.x = W + 4;
-        if (p.x > W + 4) p.x = -4;
-      });
-      requestAnimationFrame(draw);
-    }
-
-    resize();
-    P = Array.from({ length: N }, mkP);
-    window.addEventListener('resize', resize, { passive: true });
-    draw();
-  })();
-
-  /* ---- Parallax on hero mountains (subtle) ---- */
-  (function () {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const mountains = document.querySelector('.hero-mountains');
-    if (!mountains) return;
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      mountains.style.transform = `translateY(${y * 0.18}px)`;
-    }, { passive: true });
-  })();
+// ── HORIZONTAL GALLERY ──
+(function(){
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+  const wrap  = document.querySelector('.hscroll-wrap');
+  const track = document.getElementById('htk');
+  const fill  = document.getElementById('hfill');
+  if(!wrap||!track) return;
+  const cards = Array.from(track.querySelectorAll('.hcard'));
+  const imgs  = cards.map(c => c.querySelector('.hcard-img img'));
+  let raf2 = null;
+  function tickH(){
+    if(innerWidth <= 900){ raf2=null; return }
+    const rect = wrap.getBoundingClientRect();
+    const sh = wrap.offsetHeight, vh = innerHeight, vw = innerWidth;
+    if(rect.bottom<0||rect.top>vh*1.5){ raf2=null; return }
+    const p = clamp(-rect.top/(sh-vh),0,1);
+    const outerW = track.parentElement.clientWidth||vw;
+    const maxScroll = Math.max(0, track.scrollWidth-outerW);
+    const tx = p*maxScroll;
+    track.style.transform = `translateX(${-tx}px)`;
+    if(fill) fill.style.width = (p*100)+'%';
+    const halfVw = vw*.5;
+    cards.forEach((card,i) => {
+      const img = imgs[i]; if(!img) return;
+      const center = card.offsetLeft+card.offsetWidth*.5-tx;
+      const offset = (center-halfVw)/vw;
+      img.style.transform = `translateX(${offset*24}px)`;
+    });
+    raf2 = null;
+  }
+  window.addEventListener('scroll',()=>{if(!raf2)raf2=requestAnimationFrame(tickH)},{passive:true});
+  window.addEventListener('resize',tickH,{passive:true});
+  tickH();
+})();
 </script>
 </body>
 </html>
