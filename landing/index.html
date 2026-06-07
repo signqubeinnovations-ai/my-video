@@ -278,12 +278,15 @@
     @media (max-width: 900px){
       .about-grid, .venue-grid, .foot-grid { grid-template-columns: 1fr; }
       .nav-links {
-        position: fixed; inset: 0 0 0 auto; width: min(78vw, 320px);
-        background: var(--ink); flex-direction: column; align-items: flex-start;
-        padding: 100px 32px 40px; gap: 1.4rem; transform: translateX(100%); transition: transform .35s ease;
-        box-shadow: -20px 0 60px -20px rgba(0,0,0,.6);
+        position: fixed; top:0; right:0; bottom:0; left:0;
+        height:100vh; height:100dvh; width:100%;
+        background: var(--ink); flex-direction: column; align-items: flex-start; justify-content:flex-start;
+        padding: 96px 32px 40px; gap: 1.2rem; overflow-y:auto;
+        transform: translateX(100%); transition: transform .35s ease; z-index:90;
       }
+      .nav-links a.link { font-size:1.15rem; }
       .nav-links.open { transform: none; }
+      header.nav.menu-open { background: var(--ink); box-shadow:none; }
       .nav-toggle { display:block; z-index:101; }
       .venue-visual{ min-height:320px;}
       .awaits{ grid-template-columns:1fr; }
@@ -526,8 +529,14 @@
     // Mobile menu
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navlinks');
-    toggle.addEventListener('click', () => links.classList.toggle('open'));
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      nav.classList.toggle('menu-open', open);
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('open');
+      nav.classList.remove('menu-open');
+    }));
 
     // Reveal on scroll
     const io = new IntersectionObserver((entries) => {

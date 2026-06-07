@@ -267,8 +267,14 @@
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navlinks');
-    toggle.addEventListener('click', () => links.classList.toggle('open'));
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      nav.classList.toggle('menu-open', open);
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('open');
+      nav.classList.remove('menu-open');
+    }));
     const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
