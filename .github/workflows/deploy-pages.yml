@@ -1,8 +1,9 @@
 name: Deploy landing site to GitHub Pages
 
 on:
-  push:
-    branches: [master, claude/website-project-uKVBr]
+  # Manual-only: deploy from the Actions tab ("Run workflow") to avoid
+  # email notifications on every push. Re-add a `push:` trigger to restore
+  # automatic deploys.
   workflow_dispatch:
 
 permissions:
