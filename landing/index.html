@@ -542,6 +542,23 @@ h1.hero-title em{font-style:italic}
 .r[data-d="4"]{transition-delay:.4s}
 .r[data-d="5"]{transition-delay:.5s}
 
+/* ── BACK TO TOP ── */
+#totop{
+  position:fixed;bottom:2rem;right:2rem;z-index:400;
+  width:48px;height:48px;border-radius:50%;
+  background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(26,21,16,.18);
+  border:1px solid rgba(255,255,255,.08);
+  opacity:0;transform:translateY(12px);
+  transition:opacity .3s ease,transform .3s ease,background .2s;
+  pointer-events:none;
+  cursor:pointer;
+}
+#totop.show{opacity:1;transform:none;pointer-events:auto}
+#totop:hover{background:var(--gold);box-shadow:0 6px 24px rgba(184,134,11,.35)}
+#totop svg{width:18px;height:18px;flex-shrink:0}
+
 /* ── PROGRESS BAR ── */
 #progress{position:fixed;top:0;left:0;right:0;height:2px;background:var(--gold);transform-origin:left;transform:scaleX(0);z-index:500;will-change:transform;pointer-events:none}
 
@@ -569,6 +586,11 @@ h1.hero-title em{font-style:italic}
 <body>
 
 <div id="progress" aria-hidden="true"></div>
+<button id="totop" aria-label="Back to top">
+  <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
+  </svg>
+</button>
 
 <!-- NAV -->
 <nav id="nav" aria-label="Site navigation">
@@ -1067,6 +1089,13 @@ h1.hero-title em{font-style:italic}
       gs.scrollLeft = sl-(e.pageX-gs.offsetLeft-sx)*1.4;
     });
   }
+
+  /* BACK TO TOP */
+  const totop = document.getElementById('totop');
+  window.addEventListener('scroll', ()=>{
+    totop.classList.toggle('show', window.scrollY > 400);
+  }, {passive:true});
+  totop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
   /* SCROLL PROGRESS */
   const prog = document.getElementById('progress');
