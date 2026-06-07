@@ -1,595 +1,1028 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kollam Literature Fest 2026 | Uniting Minds Through Literature, Culture &amp; Dialogue</title>
-  <meta name="description" content="Kollam Literature Fest 2026 — a premier cultural and intellectual gathering in Kerala celebrating literature, storytelling and ideas. Star conversations, live band nights, workshops and a movement of 15,000+ minds. Presented by Capital Media." />
-  <meta name="theme-color" content="#f7f5f1" />
-  <meta property="og:title" content="Kollam Literature Fest 2026" />
-  <meta property="og:description" content="Uniting Minds Through Literature, Culture &amp; Dialogue. Kerala, 2026. Presented by Capital Media." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="img/litfest/kollam-tower-book.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="An immersive Meta Quest 3S VR experience through the life and wisdom of Gurudev Sri Sri Ravishankar — four worlds, one presence.">
+<title>Gurudev VR — An Immersive Journey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+img,video,iframe{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font:inherit}
 
-    :root {
-      --bg:       #f7f5f1;   /* off-white paper */
-      --bg-2:     #efece4;   /* subtle alt */
-      --surface:  #ffffff;
-      --ink:      #18171c;   /* near-black text */
-      --ink-2:    #2c2a31;
-      --muted:    #6c685f;   /* secondary text — AA */
-      --line:     #e4dfd4;   /* hairline */
-      --line-2:   #d8d2c4;
-      --accent:   #c0573a;   /* warm clay */
-      --accent-d: #a4492f;
-      --accent-sft:#f0e2d8;
-      --dark:     #16151a;   /* inverted sections */
+/* ── TOKENS ── */
+:root{
+  --bg:#FAF7F2;
+  --bg2:#F2EDE3;
+  --bg3:#EDE5D8;
+  --surface:#FFFFFF;
+  --ink:#1A1510;
+  --ink2:#5A4D42;
+  --muted:#9C8B7A;
+  --gold:#B8860B;
+  --gold-lt:#D4A520;
+  --gold-pale:#F5E8B8;
+  --saffron:#C85A28;
+  --sage:#3E7056;
+  --violet:#6B5EA8;
+  --border:rgba(26,21,16,.1);
+  --border-lg:rgba(26,21,16,.16);
+  --shadow-xs:0 1px 3px rgba(26,21,16,.06);
+  --shadow-sm:0 2px 10px rgba(26,21,16,.08);
+  --shadow-md:0 6px 28px rgba(26,21,16,.1);
+  --shadow-lg:0 16px 56px rgba(26,21,16,.14);
+  --shadow-xl:0 28px 80px rgba(26,21,16,.18);
+  --r8:8px;--r12:12px;--r16:16px;--r24:24px;--r40:40px;--rfull:9999px;
+}
 
-      --r-sm: 10px; --r: 16px; --r-lg: 22px; --r-pill: 100px;
-      --maxw: 1180px;
-      --gap-section: clamp(76px, 10vw, 130px);
-    }
+/* ── BASE ── */
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:'Inter',sans-serif;
+  line-height:1.65;font-size:1rem;
+  overflow-x:hidden;
+}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
 
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg); color: var(--ink);
-      font-size: 1.0625rem; line-height: 1.7;
-      overflow-x: hidden; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
-    }
-    h1,h2,h3,h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; line-height: 1.08; letter-spacing: -.01em; }
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(22px, 5vw, 48px); }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    ::selection { background: var(--accent); color: #fff; }
-    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-    a, button { -webkit-tap-highlight-color: transparent; }
-    [id] { scroll-margin-top: 90px; }
+/* ── NAV ── */
+#nav{
+  position:fixed;top:1.25rem;left:50%;transform:translateX(-50%);
+  z-index:400;display:flex;align-items:center;gap:.5rem;
+  padding:.4rem .4rem .4rem 1.6rem;
+  background:rgba(250,247,242,.92);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid var(--border);border-radius:var(--rfull);
+  white-space:nowrap;
+  transition:background .35s,border-color .35s,box-shadow .35s;
+  box-shadow:var(--shadow-xs);
+}
+#nav.scrolled{box-shadow:var(--shadow-sm)}
+#nav.hero-zone{
+  background:rgba(10,7,4,.72);
+  border-color:rgba(255,255,255,.14);box-shadow:none;
+}
+#nav.hero-zone .nav-logo{color:rgba(255,255,255,.9)}
+#nav.hero-zone .nav-link{color:rgba(255,255,255,.62)}
+#nav.hero-zone .nav-link:hover{background:rgba(255,255,255,.1);color:#fff}
+#nav.hero-zone .nav-cta{background:#fff;color:var(--ink)}
+#nav.hero-zone .nav-cta:hover{background:var(--gold-lt);color:#fff}
+#nav.hero-zone .nav-ham{color:rgba(255,255,255,.85)}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;font-weight:500;letter-spacing:.05em;
+  color:var(--ink);transition:color .3s;
+}
+.nav-links{display:flex;align-items:center;gap:.2rem}
+.nav-link{
+  font-size:.78rem;font-weight:500;letter-spacing:.04em;
+  color:var(--ink2);padding:.4rem .85rem;border-radius:var(--rfull);
+  min-height:44px;display:flex;align-items:center;
+  transition:background .2s,color .2s;
+}
+.nav-link:hover{background:rgba(26,21,16,.07);color:var(--ink)}
+.nav-cta{
+  background:var(--ink);color:#fff;
+  font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:.5rem 1.35rem;border-radius:var(--rfull);
+  min-height:44px;display:flex;align-items:center;
+  transition:background .2s,transform .15s,box-shadow .2s;
+}
+.nav-cta:hover{background:var(--gold);transform:translateY(-1px);box-shadow:0 4px 14px rgba(184,134,11,.3)}
+.nav-ham{
+  display:none;width:44px;height:44px;border-radius:var(--rfull);
+  align-items:center;justify-content:center;
+  color:var(--ink);transition:background .2s,color .3s;
+}
+.nav-ham:hover{background:rgba(26,21,16,.07)}
+.nav-ham svg{width:20px;height:20px}
+@media(max-width:800px){
+  .nav-links{display:none}.nav-ham{display:flex}
+  #nav{padding:.35rem .35rem .35rem 1.2rem}
+}
 
-    /* small section index + label */
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: .7em;
-      font-family: 'Inter', sans-serif; font-size: .74rem; font-weight: 600;
-      letter-spacing: .22em; text-transform: uppercase; color: var(--muted);
-    }
-    .eyebrow .idx { color: var(--accent); }
+/* ── MOBILE MENU ── */
+#mobile-menu{
+  display:none;position:fixed;inset:0;z-index:390;
+  background:var(--bg);padding:6rem 2.5rem 3rem;
+  flex-direction:column;gap:0;overflow-y:auto;
+}
+#mobile-menu.open{display:flex}
+.mmenu-item{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,7vw,2.8rem);
+  font-weight:300;color:var(--ink);
+  padding:.65rem 0;border-bottom:1px solid var(--border);
+  transition:color .2s,padding-left .25s;
+}
+.mmenu-item:hover{color:var(--gold);padding-left:.5rem}
+.mmenu-sub{
+  display:block;font-family:'Inter',sans-serif;
+  font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.15rem;
+}
+.mmenu-cta{
+  margin-top:2rem;align-self:flex-start;
+  background:var(--ink);color:#fff;
+  font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:1rem 2rem;border-radius:var(--rfull);
+  min-height:52px;display:flex;align-items:center;
+  transition:background .2s;
+}
+.mmenu-cta:hover{background:var(--gold)}
+.mmenu-close{
+  position:absolute;top:1.5rem;right:1.5rem;
+  width:44px;height:44px;border-radius:var(--rfull);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--bg2);color:var(--ink);transition:background .2s;
+}
+.mmenu-close:hover{background:var(--bg3)}
+.mmenu-close svg{width:20px;height:20px}
 
-    /* Buttons */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: .5em;
-      font-family: 'Inter', sans-serif; font-weight: 500; font-size: .97rem;
-      padding: .85em 1.6em; min-height: 48px; border-radius: var(--r-pill);
-      border: 1px solid transparent; cursor: pointer;
-      transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
-    }
-    .btn-primary { background: var(--ink); color: var(--bg); }
-    .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
-    .btn-outline { background: transparent; color: var(--ink); border-color: var(--line-2); }
-    .btn-outline:hover { border-color: var(--ink); transform: translateY(-2px); }
-    .btn-inv { background: var(--bg); color: var(--ink); }
-    .btn-inv:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
-    .btn-inv-outline { background: transparent; color: var(--bg); border-color: rgba(255,255,255,.35); }
-    .btn-inv-outline:hover { border-color: var(--bg); transform: translateY(-2px); }
+/* ── HERO ── */
+.hero{
+  position:relative;height:100dvh;min-height:640px;
+  display:flex;align-items:flex-end;overflow:hidden;
+}
+.hero-media{position:absolute;inset:0}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-media::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(8,5,2,.55) 0%,rgba(8,5,2,.18) 40%,rgba(8,5,2,.82) 100%);
+}
+.hero-body{
+  position:relative;z-index:2;
+  width:100%;max-width:1200px;margin:0 auto;
+  padding:0 2rem 5.5rem;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:rgba(255,255,255,.1);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.2);border-radius:var(--rfull);
+  padding:.45rem 1rem .45rem .65rem;margin-bottom:1.75rem;
+}
+.hero-badge-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--gold-lt);
+  animation:hbpulse 2.2s ease-in-out infinite;
+}
+@keyframes hbpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
+.hero-badge-text{
+  font-size:.7rem;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,255,255,.82);
+}
+h1.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,7.5vw,6.5rem);
+  font-weight:300;line-height:1.07;letter-spacing:-.01em;
+  color:#fff;margin-bottom:1.25rem;max-width:820px;
+}
+h1.hero-title em{font-style:italic}
+.hero-sub{
+  font-size:clamp(.9rem,1.8vw,1.05rem);
+  color:rgba(255,255,255,.64);line-height:1.68;
+  max-width:460px;margin-bottom:2.5rem;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--gold);color:#fff;
+  font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  padding:1rem 2rem;border-radius:var(--rfull);min-height:52px;
+  box-shadow:0 4px 22px rgba(184,134,11,.38);
+  transition:background .2s,transform .15s,box-shadow .2s;
+}
+.btn-primary:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 8px 30px rgba(184,134,11,.44)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:rgba(255,255,255,.1);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.28);color:#fff;
+  font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  padding:1rem 1.75rem;border-radius:var(--rfull);min-height:52px;
+  transition:background .2s,border-color .2s,transform .15s;
+}
+.btn-outline:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.45);transform:translateY(-2px)}
+.hero-scroll-hint{
+  position:absolute;bottom:2.25rem;left:50%;transform:translateX(-50%);
+  z-index:2;display:flex;flex-direction:column;align-items:center;gap:.55rem;
+}
+.scroll-label{
+  font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.38);
+}
+.scroll-line{
+  width:1px;height:50px;
+  background:linear-gradient(180deg,rgba(255,255,255,.45) 0%,rgba(255,255,255,0) 100%);
+  animation:scrollanim 2s ease-in-out infinite;
+}
+@keyframes scrollanim{
+  0%,100%{transform:scaleY(1) translateY(0);opacity:.8}
+  55%{transform:scaleY(.65) translateY(5px);opacity:.35}
+}
 
-    /* ---------- NAV ---------- */
-    header.nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 20px 0; border-bottom: 1px solid transparent;
-      transition: background .3s ease, border-color .3s ease, padding .3s ease;
-    }
-    header.nav.scrolled {
-      background: rgba(247,245,241,.82); backdrop-filter: blur(14px) saturate(1.1);
-      border-bottom-color: var(--line); padding: 12px 0;
-    }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-    .brand { display: flex; align-items: center; gap: .65em; color: var(--ink); }
-    .brand-mark {
-      width: 38px; height: 38px; border-radius: 10px; flex: none;
-      background: var(--ink); color: var(--bg);
-      display: grid; place-items: center; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.15rem;
-    }
-    .brand-text { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.02rem; line-height: 1.1; }
-    .brand-text small { display: block; font-family: 'Inter', sans-serif; font-weight: 500; font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
-    .nav-links { display: flex; align-items: center; gap: 1.9rem; }
-    .nav-links a.link { color: var(--ink-2); font-size: .92rem; font-weight: 500; transition: color .2s; }
-    .nav-links a.link:hover { color: var(--accent); }
-    .nav-toggle { display: none; background: none; border: none; color: var(--ink); font-size: 1.5rem; cursor: pointer; line-height: 1; padding: 6px; }
+/* ── MARQUEE BAND ── */
+.band{background:var(--ink);padding:.9rem 0;overflow:hidden}
+.band-track{display:flex;white-space:nowrap;animation:bandslide 28s linear infinite}
+.band-track:hover{animation-play-state:paused}
+@keyframes bandslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.band-item{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-weight:400;font-style:italic;
+  letter-spacing:.07em;color:rgba(255,255,255,.58);
+  padding:0 2.5rem;display:inline-flex;align-items:center;gap:2.5rem;
+}
+.band-item::after{content:'◆';font-style:normal;font-size:.48rem;color:var(--gold);opacity:.75}
 
-    /* ---------- HERO ---------- */
-    .hero { padding: clamp(130px, 17vh, 190px) 0 clamp(70px, 9vw, 110px); position: relative; }
-    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(36px, 6vw, 80px); align-items: center; }
-    .hero-meta { display: inline-flex; align-items: center; gap: .8em; color: var(--muted); font-size: .8rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 26px; }
-    .hero-meta .pip { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
-    .hero h1 { font-size: clamp(3rem, 8vw, 5.6rem); font-weight: 400; letter-spacing: -.025em; }
-    .hero h1 em { font-style: italic; color: var(--accent); }
-    .hero h1 .sub { display: block; font-size: clamp(1rem, 2vw, 1.35rem); font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: .02em; color: var(--muted); margin-top: 18px; }
-    .hero .lede { color: var(--ink-2); font-size: 1.15rem; max-width: 42ch; margin: 26px 0 32px; }
-    .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; }
-    .hero-figure { position: relative; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
-    .hero-figure img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1 / 1; }
+/* ── SECTION SCAFFOLD ── */
+.sec{padding:7rem 2rem}
+.sec-inner{max-width:1200px;margin:0 auto}
+.eyebrow{
+  font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1rem;
+  display:flex;align-items:center;gap:.65rem;
+}
+.eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--gold);flex-shrink:0}
+.display{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,4.8vw,4rem);
+  font-weight:300;line-height:1.1;letter-spacing:-.01em;color:var(--ink);
+}
+.display em{font-style:italic;color:var(--gold)}
+.lead{font-size:1rem;color:var(--ink2);line-height:1.76;max-width:58ch}
 
-    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: clamp(48px, 7vw, 80px); border-top: 1px solid var(--line); }
-    .hstat { padding: 26px 8px 0; }
-    .hstat + .hstat { border-left: 1px solid var(--line); padding-left: clamp(16px, 3vw, 32px); }
-    .hstat .n { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(1.6rem, 3vw, 2.3rem); letter-spacing: -.02em; }
-    .hstat .l { font-size: .82rem; color: var(--muted); letter-spacing: .03em; margin-top: 4px; }
+/* ── INTRO ── */
+.intro-bg{background:var(--bg)}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.intro-left{display:flex;flex-direction:column;gap:1.5rem}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem;padding-top:.5rem}
+.stat{padding-left:1.25rem;border-left:2.5px solid var(--gold)}
+.stat-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.6rem;font-weight:300;color:var(--ink);line-height:1;margin-bottom:.2rem;
+}
+.stat-l{font-size:.75rem;color:var(--muted);letter-spacing:.05em;line-height:1.4}
+.intro-right{position:relative}
+.portrait-wrap{
+  border-radius:var(--r24);overflow:hidden;aspect-ratio:3/4;
+  box-shadow:var(--shadow-xl);
+}
+.portrait-wrap img{width:100%;height:100%;object-fit:cover}
+.portrait-chip{
+  position:absolute;bottom:-1rem;left:-1.5rem;
+  background:var(--surface);border-radius:var(--r16);
+  padding:1.1rem 1.5rem;box-shadow:var(--shadow-md);
+  border:1px solid var(--border);
+}
+.chip-year{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;font-weight:300;color:var(--gold);line-height:1;
+}
+.chip-label{font-size:.72rem;color:var(--muted);margin-top:.2rem}
+@media(max-width:920px){
+  .intro-grid{grid-template-columns:1fr;gap:3rem}
+  .portrait-chip{left:1rem;bottom:1rem}
+}
 
-    /* ---------- SECTION SHELL ---------- */
-    section { padding: var(--gap-section) 0; }
-    .section-head { max-width: 760px; margin-bottom: 56px; }
-    .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
-    .section-head h2 { font-size: clamp(2rem, 4.4vw, 3.1rem); font-weight: 400; margin: 18px 0 16px; }
-    .section-head p { color: var(--muted); font-size: 1.1rem; max-width: 60ch; }
-    .section-head.center p { margin-left: auto; margin-right: auto; }
-    .rule { height: 1px; background: var(--line); border: 0; }
+/* ── CHAPTERS ── */
+.chapters-bg{background:var(--bg2)}
+.ch-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1.25rem;margin-top:3.5rem;
+}
+.ch-card{
+  position:relative;border-radius:var(--r16);overflow:hidden;
+  aspect-ratio:3/4;display:block;box-shadow:var(--shadow-sm);
+  transition:transform .4s cubic-bezier(.25,.1,.25,1),box-shadow .4s;
+}
+.ch-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.ch-card img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .7s cubic-bezier(.25,.1,.25,1);
+}
+.ch-card:hover img{transform:scale(1.06)}
+.ch-grad{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(10,6,3,.82) 100%)}
+.ch-body{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.25rem}
+.ch-num{
+  font-size:.65rem;font-weight:600;letter-spacing:.18em;color:var(--gold-lt);
+  margin-bottom:.5rem;text-transform:uppercase;
+}
+.ch-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.05rem,1.7vw,1.45rem);font-weight:400;color:#fff;line-height:1.25;
+}
+@media(max-width:900px){.ch-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){
+  .ch-grid{gap:.875rem}
+  .ch-card{aspect-ratio:2/3}
+}
 
-    /* ---------- ABOUT ---------- */
-    .about { background: var(--bg); }
-    .about-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(40px, 6vw, 80px); align-items: center; }
-    .about-grid h2 { font-size: clamp(2rem, 4.5vw, 3.1rem); font-weight: 400; margin: 18px 0 22px; }
-    .about-grid p { color: var(--ink-2); font-size: 1.12rem; margin-bottom: 1.1em; max-width: 56ch; }
-    .about-grid p strong { font-weight: 600; }
-    .about-figure { border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
-    .about-figure img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
-    .awaits { list-style: none; margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 26px; }
-    .awaits li { display: flex; gap: .6em; align-items: baseline; color: var(--ink); font-size: 1rem; }
-    .awaits li::before { content: "—"; color: var(--accent); flex: none; }
+/* ── PILLARS ── */
+.pillar{display:grid;grid-template-columns:1fr 1fr;min-height:100dvh}
+.pillar.flip .p-img{order:2}
+.pillar.flip .p-body{order:1}
+.p-img{position:relative;overflow:hidden}
+.p-img img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;transition:transform .9s ease;
+}
+.pillar:hover .p-img img{transform:scale(1.04)}
+.p-body{
+  display:flex;flex-direction:column;justify-content:center;
+  gap:1.75rem;padding:5.5rem 4.5rem;background:var(--bg);
+}
+.pillar.flip .p-body{background:var(--bg2)}
+.p-n{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.p-tag{
+  display:inline-block;font-size:.68rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;border-radius:var(--rfull);padding:.35rem 1rem;align-self:flex-start;
+}
+.p-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.9rem,3.2vw,3rem);font-weight:300;line-height:1.15;color:var(--ink);
+}
+.p-title em{font-style:italic;color:var(--gold)}
+.p-desc{font-size:.97rem;color:var(--ink2);line-height:1.78;max-width:44ch}
+.p-list{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.p-list li{
+  display:flex;align-items:flex-start;gap:.8rem;
+  font-size:.88rem;color:var(--ink2);line-height:1.55;
+}
+.p-list li::before{
+  content:'';display:block;width:5px;height:5px;border-radius:50%;
+  background:var(--gold);margin-top:.48rem;flex-shrink:0;
+}
+.p-link{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--gold);transition:gap .25s;align-self:flex-start;
+}
+.p-link:hover{gap:1rem}
+.p-link svg{width:15px;height:15px}
+@media(max-width:800px){
+  .pillar,.pillar.flip{grid-template-columns:1fr;min-height:auto}
+  .pillar.flip .p-img,.pillar.flip .p-body{order:unset}
+  .p-img{aspect-ratio:4/3}
+  .p-body{padding:3.5rem 1.75rem}
+}
 
-    /* ---------- CARD (light, flat, hairline) ---------- */
-    .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); transition: border-color .25s ease, transform .25s ease; }
-    .card:hover { border-color: var(--line-2); transform: translateY(-4px); }
+/* ── QUOTE DIVIDER ── */
+.qdiv{height:55vh;min-height:300px;position:relative;overflow:hidden}
+.qdiv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.qdiv::after{content:'';position:absolute;inset:0;background:rgba(8,5,2,.44)}
+.qdiv-text{
+  position:absolute;inset:0;z-index:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:2rem;gap:1rem;
+}
+.qdiv-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,3.2vw,2.6rem);
+  font-weight:300;font-style:italic;color:#fff;line-height:1.45;max-width:680px;
+}
+.qdiv-attr{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45)}
 
-    /* ---------- SPEAKERS ---------- */
-    .stars { background: var(--bg-2); }
-    .star-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(228px, 1fr)); gap: 18px; }
-    .star { padding: 30px; position: relative; }
-    .star .av {
-      width: 88px; height: 88px; border-radius: 50%; margin-bottom: 20px;
-      display: grid; place-items: center; font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.7rem; color: var(--accent);
-      background: var(--accent-sft); background-size: cover; background-position: center top; overflow: hidden;
-      border: 1px solid var(--line);
-    }
-    .star .av.has-photo { color: transparent; border-color: var(--line-2); }
-    .star h3 { font-size: 1.25rem; font-weight: 600; font-family: 'Inter', sans-serif; letter-spacing: -.01em; margin-bottom: .3em; }
-    .star p { font-size: .94rem; color: var(--muted); }
-    .star .tag { position: absolute; top: 22px; right: 22px; font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+/* ── GALLERY ── */
+.gallery-bg{background:var(--bg2);padding:7rem 0}
+.gallery-head{max-width:1200px;margin:0 auto 3.5rem;padding:0 2rem}
+.g-scroll{
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:0 2rem 1.5rem;cursor:grab;
+}
+.g-scroll:active{cursor:grabbing}
+.g-scroll::-webkit-scrollbar{height:3px}
+.g-scroll::-webkit-scrollbar-track{background:transparent}
+.g-scroll::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+.g-track{display:flex;gap:1.5rem;width:max-content;padding-bottom:.5rem}
+.g-card{
+  width:clamp(240px,28vw,310px);flex-shrink:0;
+  border-radius:var(--r16);overflow:hidden;scroll-snap-align:start;
+  background:var(--surface);box-shadow:var(--shadow-sm);
+  transition:transform .35s cubic-bezier(.25,.1,.25,1),box-shadow .35s;
+}
+.g-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.g-img{aspect-ratio:3/4;overflow:hidden;position:relative}
+.g-img img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .6s ease;
+}
+.g-card:hover .g-img img{transform:scale(1.06)}
+.g-info{padding:1.1rem 1.35rem 1.4rem}
+.g-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:.3rem;
+}
+.g-sub{font-size:.75rem;color:var(--muted);line-height:1.5}
 
-    /* ---------- MUSIC ---------- */
-    .music { background: var(--bg); }
-    .music-banner { border-radius: var(--r-lg); overflow: hidden; margin-bottom: 34px; border: 1px solid var(--line); }
-    .music-banner img { width: 100%; height: auto; display: block; }
-    .band-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(248px, 1fr)); gap: 18px; }
-    .band { padding: 30px; display: flex; flex-direction: column; }
-    .band .ico {
-      width: 70px; height: 70px; border-radius: 50%; margin-bottom: 20px;
-      display: grid; place-items: center; font-size: 1.6rem;
-      background: var(--bg-2); border: 1px solid var(--line);
-      background-size: cover; background-position: center top; overflow: hidden;
-    }
-    .band .ico.has-photo { font-size: 0; border-color: var(--line-2); }
-    .band h3 { font-size: 1.35rem; font-weight: 500; margin-bottom: .25em; }
-    .band p { font-size: .94rem; color: var(--muted); }
+/* ── VIDEO ── */
+.video-bg{background:var(--bg);padding:7rem 2rem}
+.video-inner{max-width:960px;margin:0 auto;text-align:center}
+.video-frame{
+  margin-top:3.5rem;border-radius:var(--r16);overflow:hidden;
+  box-shadow:var(--shadow-xl);aspect-ratio:16/9;position:relative;
+  border:1px solid var(--border);
+}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 
-    /* ---------- AUDIENCE ---------- */
-    .audience { background: var(--bg-2); }
-    .aud-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
-    .aud-card { padding: 32px; }
-    .aud-card .ico { font-size: 1.6rem; margin-bottom: 16px; }
-    .aud-card h3 { font-size: 1.18rem; font-weight: 600; font-family: 'Inter', sans-serif; letter-spacing: -.01em; margin-bottom: .7em; }
-    .aud-card ul { list-style: none; }
-    .aud-card li { color: var(--muted); font-size: .96rem; padding: .3em 0 .3em 1.2em; position: relative; }
-    .aud-card li::before { content: "·"; position: absolute; left: .2em; color: var(--accent); font-weight: 700; }
+/* ── FULL QUOTE ── */
+.fq-bg{
+  background:var(--ink);padding:8rem 2rem;
+  position:relative;overflow:hidden;
+}
+.fq-bg::before{
+  content:'"';position:absolute;
+  top:-3rem;left:1.5rem;
+  font-family:'Cormorant Garamond',serif;
+  font-size:22rem;line-height:1;
+  color:rgba(255,255,255,.035);
+  pointer-events:none;user-select:none;
+}
+.fq-inner{max-width:760px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.fq-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.7rem,3.8vw,3rem);
+  font-weight:300;font-style:italic;
+  color:#fff;line-height:1.45;margin-bottom:2.25rem;
+}
+.fq-line{width:40px;height:1px;background:var(--gold);margin:0 auto 1.5rem}
+.fq-attr{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);line-height:1.7}
+.fq-attr strong{color:var(--gold-lt);font-weight:500}
 
-    /* ---------- EXPERIENCE ---------- */
-    .exp { background: var(--bg); }
-    .exp-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(238px, 1fr)); gap: 18px; }
-    .ecol { padding: 32px; }
-    .ecol .ico { font-size: 1.7rem; margin-bottom: 14px; }
-    .ecol h3 { font-size: 1.18rem; font-weight: 600; font-family: 'Inter', sans-serif; letter-spacing: -.01em; margin-bottom: .5em; }
-    .ecol p { font-size: .96rem; color: var(--muted); }
+/* ── CTA ── */
+.cta-bg{background:var(--bg2);padding:8rem 2rem}
+.cta-inner{max-width:640px;margin:0 auto;text-align:center}
+.cta-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,4.5vw,3.8rem);
+  font-weight:300;line-height:1.12;color:var(--ink);margin-bottom:1.25rem;
+}
+.cta-h em{font-style:italic;color:var(--gold)}
+.cta-sub{font-size:.97rem;color:var(--ink2);line-height:1.72;margin-bottom:2.5rem}
+.cta-form{display:flex;gap:.75rem;max-width:460px;margin:0 auto 1rem}
+.cta-input{
+  flex:1;padding:.875rem 1.25rem;
+  background:var(--surface);border:1.5px solid var(--border-lg);
+  border-radius:var(--rfull);color:var(--ink);
+  font-size:.9rem;font-family:'Inter',sans-serif;
+  transition:border-color .2s,box-shadow .2s;
+}
+.cta-input:focus{
+  outline:none;border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(184,134,11,.12);
+}
+.cta-input::placeholder{color:var(--muted)}
+.cta-note{font-size:.72rem;color:var(--muted)}
+@media(max-width:520px){.cta-form{flex-direction:column}}
 
-    /* ---------- IMPACT (the one inverted moment) ---------- */
-    .impact { background: var(--dark); color: var(--bg); }
-    .impact .eyebrow { color: rgba(247,245,241,.6); }
-    .impact .eyebrow .idx { color: var(--accent); }
-    .impact .section-head h2 { color: var(--bg); }
-    .impact .lead { max-width: 64ch; margin: 0 auto 54px; text-align: center; font-family: 'Fraunces', serif; font-weight: 400; font-style: italic; font-size: clamp(1.3rem, 2.6vw, 1.9rem); line-height: 1.35; color: rgba(247,245,241,.92); }
-    .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1); border-radius: var(--r); overflow: hidden; }
-    .ipill { background: var(--dark); padding: 34px; transition: background .25s ease; }
-    .ipill:hover { background: #1d1c22; }
-    .ipill .ico { font-size: 1.7rem; margin-bottom: 14px; }
-    .ipill h3 { font-size: 1.2rem; font-weight: 500; margin-bottom: .5em; color: #fff; }
-    .ipill p { font-size: .96rem; color: rgba(247,245,241,.72); }
-    .outcomes { margin-top: 26px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
-    .ocard { padding: 4px 4px 4px 22px; border-left: 2px solid var(--accent); }
-    .ocard .k { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.14rem; color: #fff; margin-bottom: .35em; }
-    .ocard p { font-size: .94rem; color: rgba(247,245,241,.72); }
+/* ── FOOTER ── */
+.footer{background:var(--ink);color:rgba(255,255,255,.42);padding:4rem 2rem}
+.footer-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:2rem;flex-wrap:wrap;
+}
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:500;letter-spacing:.05em;color:#fff;
+}
+.footer-copy{font-size:.74rem;line-height:1.65}
+.footer-nav{display:flex;gap:1.5rem;font-size:.74rem}
+.footer-nav a{color:rgba(255,255,255,.38);transition:color .2s}
+.footer-nav a:hover{color:var(--gold-lt)}
+@media(max-width:600px){
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:1.25rem}
+}
 
-    /* ---------- VENUE ---------- */
-    .venue { background: var(--bg); }
-    .venue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 70px); align-items: center; }
-    .venue-grid h2 { font-size: clamp(2rem, 4.5vw, 3.1rem); font-weight: 400; margin: 18px 0 18px; }
-    .venue-grid p { color: var(--ink-2); font-size: 1.1rem; margin-bottom: 1em; max-width: 52ch; }
-    .venue-list { list-style: none; margin-top: 18px; }
-    .venue-list li { padding: .7em 0; position: relative; color: var(--ink); font-size: 1.02rem; border-top: 1px solid var(--line); display: flex; gap: .8em; align-items: baseline; }
-    .venue-list li::before { content: "—"; color: var(--accent); }
-    .venue-visual { border-radius: var(--r-lg); min-height: 440px; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 32px; color: #fff; border: 1px solid var(--line); }
-    .venue-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-    .venue-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.55), transparent 55%); z-index: 0; }
-    .venue-visual .vtag { position: relative; z-index: 1; }
-    .venue-visual .vtag .eyebrow { color: rgba(255,255,255,.85); }
-    .venue-visual .vtag h3 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 500; margin-top: .3em; }
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.r.on{opacity:1;transform:none}
+.r[data-d="1"]{transition-delay:.1s}
+.r[data-d="2"]{transition-delay:.2s}
+.r[data-d="3"]{transition-delay:.3s}
+.r[data-d="4"]{transition-delay:.4s}
+.r[data-d="5"]{transition-delay:.5s}
 
-    /* ---------- FINAL CTA ---------- */
-    .final { background: var(--dark); color: var(--bg); text-align: center; }
-    .final .eyebrow { color: rgba(247,245,241,.6); justify-content: center; }
-    .final h2 { font-size: clamp(2.3rem, 6vw, 4.2rem); font-weight: 400; letter-spacing: -.025em; }
-    .final h2 em { font-style: italic; color: var(--accent); }
-    .final p { font-size: 1.15rem; color: rgba(247,245,241,.78); max-width: 54ch; margin: 22px auto 14px; }
-    .join-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 30px 0 34px; }
-    .join-row span { border: 1px solid rgba(255,255,255,.22); padding: .5em 1.2em; border-radius: var(--r-pill); font-size: .92rem; color: rgba(247,245,241,.88); }
-    .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .cta-secondary { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
-
-    /* ---------- FOOTER ---------- */
-    .footer { background: var(--dark); color: var(--bg); padding: 30px 0 40px; }
-    .footer .rule { background: rgba(255,255,255,.12); margin-bottom: 44px; }
-    .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; }
-    .foot-grid h4 { font-family: 'Inter', sans-serif; font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(247,245,241,.55); margin-bottom: 16px; font-weight: 600; }
-    .foot-grid p, .foot-grid a.fl { color: rgba(247,245,241,.74); font-size: .95rem; display: block; padding: .22em 0; }
-    .foot-grid a.fl:hover { color: var(--accent); }
-    .foot-brand .brand { color: var(--bg); }
-    .foot-brand .brand-mark { background: var(--bg); color: var(--dark); }
-    .foot-brand .brand-text small { color: rgba(247,245,241,.55); }
-    .foot-brand p { margin-top: 14px; max-width: 320px; }
-    .copy { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); color: rgba(247,245,241,.5); font-size: .85rem; }
-
-    /* ---------- MOTION ---------- */
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.in { opacity: 1; transform: none; }
-
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 900px) {
-      .hero-grid, .about-grid, .venue-grid, .foot-grid { grid-template-columns: 1fr; }
-      .hero-figure { order: -1; max-width: 460px; }
-      .nav-links {
-        position: fixed; top: 0; right: 0; bottom: 0; left: 0;
-        height: 100vh; height: 100dvh; width: 100%;
-        background: var(--surface); flex-direction: column; align-items: flex-start; justify-content: flex-start;
-        padding: 100px 32px 40px; gap: 1.1rem; overflow-y: auto;
-        transform: translateX(100%); transition: transform .35s ease; z-index: 90;
-      }
-      .nav-links a.link { font-size: 1.25rem; color: var(--ink); }
-      .nav-links.open { transform: none; }
-      header.nav.menu-open { background: var(--surface); border-bottom-color: transparent; }
-      .nav-toggle { display: block; z-index: 101; }
-      .venue-visual { min-height: 320px; }
-      .awaits { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 560px) {
-      .foot-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
-      .reveal { opacity: 1 !important; transform: none !important; }
-    }
-  </style>
+/* ── A11Y MOTION ── */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .r{opacity:1;transform:none}
+}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <header class="nav" id="nav">
-    <div class="wrap nav-inner">
-      <a href="#top" class="brand" aria-label="Kollam Literature Fest 2026 — home">
-        <span class="brand-mark" aria-hidden="true">K</span>
-        <span class="brand-text">Kollam Lit Fest<small>Kerala · 2026</small></span>
+<!-- NAV -->
+<nav id="nav" aria-label="Site navigation">
+  <span class="nav-logo">Gurudev VR</span>
+  <div class="nav-links" role="list">
+    <a href="#journey" class="nav-link" role="listitem">Life Journey</a>
+    <a href="#meditation" class="nav-link" role="listitem">Meditation</a>
+    <a href="#ashram" class="nav-link" role="listitem">Ashram</a>
+    <a href="#satsang" class="nav-link" role="listitem">Satsang</a>
+  </div>
+  <a href="#reserve" class="nav-cta">Experience Now</a>
+  <button class="nav-ham" id="ham-btn" aria-label="Open navigation" aria-expanded="false">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>
+    </svg>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button class="mmenu-close" id="menu-close" aria-label="Close menu">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+  </button>
+  <a href="#journey" class="mmenu-item"><span class="mmenu-sub">01</span>Life Journey</a>
+  <a href="#meditation" class="mmenu-item"><span class="mmenu-sub">02</span>Guided Meditation</a>
+  <a href="#ashram" class="mmenu-item"><span class="mmenu-sub">03</span>Ashram Tour</a>
+  <a href="#satsang" class="mmenu-item"><span class="mmenu-sub">04</span>Live Satsang</a>
+  <a href="#reserve" class="mmenu-cta">Reserve Experience</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" aria-label="Gurudev VR — An Immersive Journey">
+  <div class="hero-media" aria-hidden="true">
+    <img src="img/ashram-vishalakshi.png" alt="" loading="eager" fetchpriority="high" style="object-position:center 38%">
+  </div>
+  <div class="hero-body">
+    <div class="hero-badge r on">
+      <span class="hero-badge-dot" aria-hidden="true"></span>
+      <span class="hero-badge-text">Meta Quest 3S &nbsp;·&nbsp; VR Exhibition</span>
+    </div>
+    <h1 class="hero-title r on" data-d="1">
+      Experience the<br>
+      Life of <em>Gurudev</em><br>
+      in VR
+    </h1>
+    <p class="hero-sub r on" data-d="2">
+      Step inside the extraordinary world of Sri Sri Ravishankar — his journey, his silence, his ashram, and the joy of millions — all in immersive Meta Quest 3S.
+    </p>
+    <div class="hero-actions r on" data-d="3">
+      <a href="#journey" class="btn-primary">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M10 8l4 4-4 4"/></svg>
+        Begin the Journey
       </a>
-      <nav class="nav-links" id="navlinks" aria-label="Primary">
-        <a class="link" href="#about">About</a>
-        <a class="link" href="#stars">Speakers</a>
-        <a class="link" href="#music">Music</a>
-        <a class="link" href="#impact">Impact</a>
-        <a class="link" href="#venue">Venue</a>
-        <a class="link" href="sponsors.html">Sponsors</a>
-        <a class="link" href="stalls.html">Stalls</a>
-        <a class="btn btn-primary" href="#contact" style="min-height:auto; padding:.6em 1.3em;">Get Involved</a>
-      </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navlinks" aria-expanded="false">☰</button>
+      <a href="#video" class="btn-outline">
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.14v14l11-7-11-7z"/></svg>
+        Watch Trailer
+      </a>
     </div>
-  </header>
+  </div>
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <span class="scroll-label">Scroll</span>
+    <span class="scroll-line"></span>
+  </div>
+</section>
 
-  <main>
+<!-- BAND -->
+<div class="band" aria-hidden="true">
+  <div class="band-track">
+    <span class="band-item">Life Journey</span>
+    <span class="band-item">Guided Meditation</span>
+    <span class="band-item">Ashram Tour</span>
+    <span class="band-item">Live Satsang</span>
+    <span class="band-item">Life Journey</span>
+    <span class="band-item">Guided Meditation</span>
+    <span class="band-item">Ashram Tour</span>
+    <span class="band-item">Live Satsang</span>
+    <span class="band-item">Life Journey</span>
+    <span class="band-item">Guided Meditation</span>
+    <span class="band-item">Ashram Tour</span>
+    <span class="band-item">Live Satsang</span>
+    <span class="band-item">Life Journey</span>
+    <span class="band-item">Guided Meditation</span>
+    <span class="band-item">Ashram Tour</span>
+    <span class="band-item">Live Satsang</span>
+  </div>
+</div>
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div class="reveal">
-          <span class="hero-meta"><span class="pip"></span> Kollam · Kerala — 2026</span>
-          <h1>Kollam <em>Literature</em> Fest<span class="sub">Uniting minds through literature, culture &amp; dialogue.</span></h1>
-          <p class="lede">A premier cultural and intellectual gathering celebrating storytelling, ideas and the voices shaping our future.</p>
-          <div class="hero-cta">
-            <a href="#contact" class="btn btn-primary">Get Involved →</a>
-            <a href="#about" class="btn btn-outline">Explore the Festival</a>
+<!-- INTRO -->
+<section class="sec intro-bg" aria-label="About the experience">
+  <div class="sec-inner">
+    <div class="intro-grid">
+      <div class="intro-left">
+        <p class="eyebrow r">The Experience</p>
+        <h2 class="display r" data-d="1">Four Worlds.<br><em>One Presence.</em></h2>
+        <p class="lead r" data-d="2">
+          Don the Meta Quest 3S and enter the untold story of a spiritual master — his childhood in Tamil Nadu, his silent meditations, his sacred ashram, and the millions of lives he has touched across the globe.
+        </p>
+        <div class="stats-grid r" data-d="3">
+          <div class="stat">
+            <div class="stat-n">35M+</div>
+            <div class="stat-l">Global Followers</div>
           </div>
-        </div>
-        <div class="hero-figure reveal">
-          <img src="img/litfest/kollam-tower-book.svg" alt="The Kollam Chinnakkada clock tower rising from an open book, with pages turning into birds" />
-        </div>
-      </div>
-      <div class="hero-stats reveal">
-        <div class="hstat"><div class="n">15K–20K</div><div class="l">Festival Visitors</div></div>
-        <div class="hstat"><div class="n">5</div><div class="l">Star Conversations</div></div>
-        <div class="hstat"><div class="n">4</div><div class="l">Live Band Nights</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="wrap">
-      <div class="about-grid">
-        <div class="reveal">
-          <span class="eyebrow"><span class="idx">01</span> About the Festival</span>
-          <h2>More than books — a movement of ideas.</h2>
-          <p>Kollam Literature Fest 2026 is a premier cultural and intellectual gathering designed to celebrate the power of <strong>literature, storytelling, and ideas</strong>. Set in the vibrant cultural landscape of Kerala, it brings together writers, thinkers, artists and audiences from across the country.</p>
-          <p>This festival is not just about books — it is about <strong>conversations that inspire change</strong>, narratives that challenge perspectives, and voices that redefine the future.</p>
-          <ul class="awaits">
-            <li>Star conversations</li>
-            <li>Live music &amp; band nights</li>
-            <li>Panel discussions</li>
-            <li>Workshops &amp; talks</li>
-            <li>Book stalls &amp; exhibitions</li>
-            <li>Art installations &amp; photo spots</li>
-          </ul>
-        </div>
-        <div class="about-figure reveal">
-          <img src="img/litfest/about.svg" alt="An open book with pages turning into birds, symbolising ideas taking flight" loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SPEAKERS -->
-  <section class="stars" id="stars">
-    <div class="wrap">
-      <div class="section-head center reveal">
-        <span class="eyebrow"><span class="idx">02</span> Star Interactions &amp; Conversations</span>
-        <h2>Voices that shape the conversation</h2>
-        <p>Leading thinkers, artists and storytellers come together to spark dialogue across literature, cinema, music and culture.</p>
-      </div>
-      <div class="star-grid">
-        <div class="star card reveal"><span class="tag">Author</span><div class="av" data-wiki="Shashi Tharoor">ST</div><h3>Shashi Tharoor</h3><p>Internationally acclaimed author and intellectual speaker.</p></div>
-        <div class="star card reveal"><span class="tag">Novelist</span><div class="av" data-wiki="M. Mukundan">MM</div><h3>M. Mukundan</h3><p>Legendary Malayalam novelist and literary icon.</p></div>
-        <div class="star card reveal"><span class="tag">Cinema</span><div class="av" data-wiki="Prakash Raj">PR</div><h3>Prakash Raj</h3><p>A powerful voice in cinema, literature and public discourse.</p></div>
-        <div class="star card reveal"><span class="tag">Traveler</span><div class="av" data-wiki="Santhosh George Kulangara">SK</div><h3>Santhosh George Kulangara</h3><p>Renowned traveler and storyteller sharing global perspectives.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MUSIC -->
-  <section class="music" id="music">
-    <div class="wrap">
-      <div class="section-head center reveal">
-        <span class="eyebrow"><span class="idx">03</span> Live Music &amp; Band Nights</span>
-        <h2>Rhythms of Expression</h2>
-        <p>The festival expands beyond words into music — powerful voices, contemporary sounds and cultural energy creating unforgettable evenings.</p>
-      </div>
-      <div class="music-banner reveal">
-        <img src="img/litfest/music.svg" alt="Live concert with a cheering crowd, equalizer bars and stage lights" loading="lazy" />
-      </div>
-      <div class="band-grid">
-        <div class="band card reveal"><div class="ico" data-wiki="Avial (band)">🎸</div><h3>Avial</h3><p>Kerala's iconic fusion rock band redefining Malayalam music.</p></div>
-        <div class="band card reveal"><div class="ico" data-wiki="Chai Met Toast">☕</div><h3>Chai Met Toast</h3><p>Feel-good indie vibes with a strong youth following.</p></div>
-        <div class="band card reveal"><div class="ico" data-wiki="Shanka Tribe">🥁</div><h3>Shanka Tribe</h3><p>High-energy tribal fusion and experimental soundscapes.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AUDIENCE -->
-  <section class="audience" id="audience">
-    <div class="wrap">
-      <div class="section-head center reveal">
-        <span class="eyebrow"><span class="idx">04</span> A Festival For Everyone</span>
-        <h2>Who's in the room</h2>
-        <p>An open, vibrant gathering welcoming readers, students, creators and families — anyone who loves stories, ideas and culture.</p>
-      </div>
-      <div class="aud-grid">
-        <div class="aud-card card reveal"><div class="ico">📚</div><h3>Literature &amp; Intellectual Community</h3><ul><li>Readers, writers, poets</li><li>Academicians &amp; educators</li><li>Cultural thinkers</li></ul></div>
-        <div class="aud-card card reveal"><div class="ico">🎓</div><h3>Students &amp; Youth</h3><ul><li>School &amp; college students</li><li>Aspiring creators &amp; performers</li><li>Digital-native audience</li></ul></div>
-        <div class="aud-card card reveal"><div class="ico">🎬</div><h3>Creative &amp; Media Community</h3><ul><li>Filmmakers, designers, musicians</li><li>Influencers &amp; content creators</li><li>Journalists &amp; media professionals</li></ul></div>
-        <div class="aud-card card reveal"><div class="ico">👨‍👩‍👧</div><h3>General Public &amp; Families</h3><ul><li>Culture enthusiasts</li><li>Local community participation</li><li>Families &amp; weekend visitors</li></ul></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="exp">
-    <div class="wrap">
-      <div class="section-head center reveal">
-        <span class="eyebrow"><span class="idx">05</span> The Experience</span>
-        <h2>Where creativity meets intellect</h2>
-        <p>From keynote stages to quiet reading corners, every space is designed to spark a moment of connection.</p>
-      </div>
-      <div class="exp-cols">
-        <div class="ecol card reveal"><div class="ico">🎙️</div><h3>Keynote Stages</h3><p>Headline conversations and literary talks with celebrated voices.</p></div>
-        <div class="ecol card reveal"><div class="ico">🗣️</div><h3>Panels &amp; Dialogues</h3><p>Breakout discussion zones where ideas meet and perspectives shift.</p></div>
-        <div class="ecol card reveal"><div class="ico">✍️</div><h3>Workshops</h3><p>Hands-on halls for aspiring writers, creators and performers.</p></div>
-        <div class="ecol card reveal"><div class="ico">🎨</div><h3>Art &amp; Culture</h3><p>Installations, photo spots and book stalls woven through the venue.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- IMPACT -->
-  <section class="impact" id="impact">
-    <div class="wrap">
-      <div class="section-head center reveal">
-        <span class="eyebrow"><span class="idx">06</span> A Cultural Movement</span>
-        <h2>More than a festival — a quiet revolution</h2>
-      </div>
-      <p class="lead reveal">When thousands of readers, students, artists and changemakers gather in one place, something shifts. Stories become catalysts, conversations become commitments, and a town becomes a stage for the future.</p>
-      <div class="impact-grid">
-        <div class="ipill reveal"><div class="ico">📣</div><h3>Voices that rise</h3><p>From spoken-word poets to veteran novelists, the fest amplifies youth, regional and underrepresented voices — turning literature and music into living social commentary.</p></div>
-        <div class="ipill reveal"><div class="ico">🤝</div><h3>Dialogue over division</h3><p>Panels and open conversations bring generations, languages and ideologies to the same table — building empathy and challenging perspectives.</p></div>
-        <div class="ipill reveal"><div class="ico">🌱</div><h3>Youth at the centre</h3><p>Students and young creators don't just attend — they perform, publish and lead, discovering pathways into writing, media and the arts.</p></div>
-        <div class="ipill reveal"><div class="ico">🪔</div><h3>A regional renaissance</h3><p>The festival puts Kollam and Kerala on the national cultural map, celebrating local identity while inviting the whole country in.</p></div>
-      </div>
-
-      <div class="section-head center reveal" style="margin-top:68px;">
-        <span class="eyebrow"><span class="idx">·</span> The Outcome</span>
-        <h2 style="font-size:clamp(1.7rem,4vw,2.5rem);">What this movement leaves behind</h2>
-      </div>
-      <div class="outcomes">
-        <div class="ocard reveal"><div class="k">New creators</div><p>Emerging writers, poets and performers discovered and given a real platform and audience.</p></div>
-        <div class="ocard reveal"><div class="k">Stronger civic dialogue</div><p>A culture of listening and debate that keeps rippling outward long after the festival ends.</p></div>
-        <div class="ocard reveal"><div class="k">Pride &amp; local economy</div><p>Renewed pride in Kerala's literary heritage and a boost to local culture, tourism and trade.</p></div>
-        <div class="ocard reveal"><div class="k">A lasting platform</div><p>A scalable annual movement, designed to grow and deepen its impact edition after edition.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VENUE -->
-  <section class="venue" id="venue">
-    <div class="wrap">
-      <div class="venue-grid">
-        <div class="reveal">
-          <span class="eyebrow"><span class="idx">07</span> Venue &amp; Experience</span>
-          <h2>Kollam · Kerala</h2>
-          <p>A culturally rich coastal town with growing prominence, Kollam offers the perfect setting for a large-scale intellectual and cultural gathering — a blend of traditional Kerala aesthetics and modern festival design.</p>
-          <ul class="venue-list">
-            <li>Main stage for keynote sessions</li>
-            <li>Breakout discussion zones</li>
-            <li>Workshop halls</li>
-            <li>Exhibition &amp; book stalls</li>
-            <li>Food court &amp; relaxation areas</li>
-            <li>Art installations &amp; photo spots</li>
-          </ul>
-        </div>
-        <div class="venue-visual reveal">
-          <img src="img/litfest/venue.svg" alt="Kerala backwaters at sunset with palms, a pavilion and festival tents" loading="lazy" />
-          <div class="vtag">
-            <span class="eyebrow">Immersive Ambience</span>
-            <h3>Where tradition meets a modern festival</h3>
+          <div class="stat">
+            <div class="stat-n">180</div>
+            <div class="stat-l">Countries Reached</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">40+</div>
+            <div class="stat-l">Years of Service</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">4</div>
+            <div class="stat-l">VR Worlds</div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="final" id="contact">
-    <div class="wrap reveal">
-      <span class="eyebrow">Be Part of a Cultural Movement</span>
-      <h2>It's more than an event —<br>it's a <em>platform for impact.</em></h2>
-      <p>Kollam Literature Fest 2026 is a platform to inspire, connect and create impact. Come be part of Kerala's cultural conversation.</p>
-      <div class="join-row">
-        <span>Visitor</span><span>Volunteer</span><span>Partner</span><span>Participant</span>
-      </div>
-      <div class="cta-row">
-        <a href="mailto:signqubeinnovations@gmail.com?subject=Kollam%20Literature%20Fest%202026" class="btn btn-inv">Get in Touch →</a>
-      </div>
-      <div class="cta-secondary">
-        <a href="sponsors.html" class="btn btn-inv-outline">Sponsorship Options →</a>
-        <a href="stalls.html" class="btn btn-inv-outline">Book a Stall →</a>
+      <div class="intro-right r" data-d="2">
+        <div class="portrait-wrap">
+          <img src="img/gurudev-young-meditation.png" alt="Young Gurudev Sri Sri Ravishankar in meditation" loading="lazy" style="object-position:center 20%">
+        </div>
+        <div class="portrait-chip">
+          <div class="chip-year">1956</div>
+          <div class="chip-label">Born in Papanasam, Tamil Nadu</div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  </main>
+<!-- CHAPTERS -->
+<section class="sec chapters-bg" aria-label="Four VR chapters">
+  <div class="sec-inner">
+    <p class="eyebrow r">Four Chapters</p>
+    <h2 class="display r" data-d="1">Choose Your <em>World</em></h2>
+    <div class="ch-grid">
 
-  <!-- FOOTER -->
-  <footer class="footer" id="footer-contact">
-    <div class="wrap">
-      <hr class="rule" />
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <a href="#top" class="brand"><span class="brand-mark" aria-hidden="true">K</span><span class="brand-text">Kollam Lit Fest<small>Kerala · 2026</small></span></a>
-          <p>A premier cultural and intellectual gathering celebrating literature, storytelling and ideas. Presented by Capital Media.</p>
+      <a href="#journey" class="ch-card r" data-d="1">
+        <img src="img/gurudev-childhood.png" alt="Gurudev as a child" loading="lazy" style="object-position:center 18%">
+        <div class="ch-grad"></div>
+        <div class="ch-body">
+          <p class="ch-num">01 · Life Journey</p>
+          <h3 class="ch-name">A Life of Extraordinary Grace</h3>
         </div>
-        <div>
-          <h4>Explore</h4>
-          <a class="fl" href="#about">About</a>
-          <a class="fl" href="#stars">Speakers</a>
-          <a class="fl" href="#music">Music &amp; Bands</a>
-          <a class="fl" href="#impact">Impact</a>
-          <a class="fl" href="#venue">Venue</a>
+      </a>
+
+      <a href="#meditation" class="ch-card r" data-d="2">
+        <img src="img/vr-meditation-cosmos.webp" alt="VR sacred geometry cosmos" loading="lazy">
+        <div class="ch-grad"></div>
+        <div class="ch-body">
+          <p class="ch-num">02 · Guided Meditation</p>
+          <h3 class="ch-name">Silence Within the Cosmos</h3>
         </div>
-        <div>
-          <h4>Get Involved</h4>
-          <a class="fl" href="sponsors.html">Sponsorship</a>
-          <a class="fl" href="stalls.html">Stalls &amp; Exhibitions</a>
-          <a class="fl" href="#contact">Volunteer &amp; Partner</a>
+      </a>
+
+      <a href="#ashram" class="ch-card r" data-d="3">
+        <img src="img/ashram-vishalakshi.png" alt="Aerial view of Vishalakshi Mantap temple" loading="lazy" style="object-position:center 45%">
+        <div class="ch-grad"></div>
+        <div class="ch-body">
+          <p class="ch-num">03 · Ashram Tour</p>
+          <h3 class="ch-name">Heart of the Foundation</h3>
         </div>
-        <div>
-          <h4>Contact</h4>
-          <a class="fl" href="mailto:signqubeinnovations@gmail.com">signqubeinnovations@gmail.com</a>
-          <p>Kollam, Kerala, India</p>
+      </a>
+
+      <a href="#satsang" class="ch-card r" data-d="4">
+        <img src="img/gurudev-diversity.png" alt="Gurudev with global community" loading="lazy" style="object-position:center 28%">
+        <div class="ch-grad"></div>
+        <div class="ch-body">
+          <p class="ch-num">04 · Live Satsang</p>
+          <h3 class="ch-name">One World, One Song</h3>
         </div>
-      </div>
-      <div class="copy">
-        <span>© 2026 Kollam Literature Fest. All rights reserved.</span>
-        <span>Presented by Capital Media</span>
-      </div>
+      </a>
+
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    // Nav scroll state
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+<!-- PILLAR 1: LIFE JOURNEY -->
+<section id="journey" class="pillar" aria-label="Chapter 1 — Life Journey">
+  <div class="p-img">
+    <img src="img/gurudev-1956.png" alt="Infant Gurudev with mother, Papanasam 1956" loading="lazy" style="object-position:center 28%">
+  </div>
+  <div class="p-body">
+    <p class="p-n r">Chapter 01</p>
+    <span class="p-tag r" data-d="1" style="background:var(--gold)">Life Journey</span>
+    <h2 class="p-title r" data-d="2">Walk the Path of<br>an <em>Extraordinary Life</em></h2>
+    <p class="p-desc r" data-d="3">
+      From a prodigious childhood in Tamil Nadu to guiding millions across 180 countries — experience seven decades of unbroken grace and service through immersive VR storytelling.
+    </p>
+    <ul class="p-list r" data-d="3">
+      <li><span>Childhood in Papanasam, Tamil Nadu (1956–1970s)</span></li>
+      <li><span>Years of deep study and spiritual awakening</span></li>
+      <li><span>Founding the Art of Living Foundation (1981)</span></li>
+      <li><span>Global humanitarian mission across 180 nations</span></li>
+    </ul>
+    <a href="#reserve" class="p-link r" data-d="4">
+      Experience This World
+      <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
 
-    // Mobile menu
-    const toggle = document.getElementById('navToggle');
-    const links = document.getElementById('navlinks');
-    const setMenu = (open) => {
-      links.classList.toggle('open', open);
-      nav.classList.toggle('menu-open', open);
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      toggle.textContent = open ? '✕' : '☰';
-    };
-    toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+<!-- PILLAR 2: MEDITATION -->
+<section id="meditation" class="pillar flip" aria-label="Chapter 2 — Guided Meditation">
+  <div class="p-img">
+    <img src="img/vr-meditation-cosmos.webp" alt="Sacred geometry cosmos in VR" loading="lazy">
+  </div>
+  <div class="p-body">
+    <p class="p-n r">Chapter 02</p>
+    <span class="p-tag r" data-d="1" style="background:var(--sage)">Guided Meditation</span>
+    <h2 class="p-title r" data-d="2">Dissolve into the<br><em>Cosmos of Silence</em></h2>
+    <p class="p-desc r" data-d="3">
+      Guided by Gurudev's own voice, float through living geometries of light and sound as the Sudarshan Kriya takes you beyond thought, beyond time, beyond self.
+    </p>
+    <ul class="p-list r" data-d="3">
+      <li><span>SKY Breath Meditation in an immersive VR cosmos</span></li>
+      <li><span>Gurudev's live voice and gentle presence</span></li>
+      <li><span>360° sacred geometry visualizations</span></li>
+      <li><span>Binaural soundscapes for deep inner stillness</span></li>
+    </ul>
+    <a href="#reserve" class="p-link r" data-d="4" style="color:var(--sage)">
+      Experience This World
+      <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
 
-    // Reveal on scroll
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+<!-- QUOTE DIVIDER -->
+<div class="qdiv" role="img" aria-label="VR meditation visual with quote">
+  <img src="img/vr-meditation-blue.jpg" alt="" loading="lazy">
+  <div class="qdiv-text">
+    <p class="qdiv-quote r on">"Meditation is not an activity.<br>It is your very nature."</p>
+    <p class="qdiv-attr r on" data-d="1">Gurudev Sri Sri Ravishankar</p>
+  </div>
+</div>
 
-    // Speaker & performer photos: load each portrait from Wikipedia, fall back
-    // to the initials / emoji already in the element. A local file at
-    // img/litfest/speakers/<slug>.jpg, if present, takes priority.
-    (function loadPhotos(){
-      const slug = s => s.toLowerCase().replace(/\(.*?\)/g,'').trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-      const apply = (el, src) => {
-        const img = new Image();
-        img.onload = () => { el.style.backgroundImage = 'url("' + src + '")'; el.classList.add('has-photo'); };
-        img.onerror = () => {};
-        img.src = src;
-      };
-      document.querySelectorAll('[data-wiki]').forEach(el => {
-        const name = el.getAttribute('data-wiki');
-        const local = 'img/litfest/speakers/' + slug(name) + '.jpg';
-        fetch(local, { method: 'HEAD' })
-          .then(r => {
-            if (r.ok) { apply(el, local); return; }
-            return fetch('https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(name))
-              .then(r => r.ok ? r.json() : null)
-              .then(d => {
-                const src = d && ((d.thumbnail && d.thumbnail.source) || (d.originalimage && d.originalimage.source));
-                if (src) apply(el, src);
-              });
-          })
-          .catch(() => {});
-      });
-    })();
-  </script>
+<!-- PILLAR 3: ASHRAM -->
+<section id="ashram" class="pillar" aria-label="Chapter 3 — Ashram Tour">
+  <div class="p-img">
+    <img src="img/ashram-vishalakshi.png" alt="Aerial view of Vishalakshi Mantap, Art of Living International Centre, Bangalore" loading="lazy" style="object-position:center 45%">
+  </div>
+  <div class="p-body">
+    <p class="p-n r">Chapter 03</p>
+    <span class="p-tag r" data-d="1" style="background:var(--saffron)">Ashram Tour</span>
+    <h2 class="p-title r" data-d="2">Enter the Sacred<br><em>Heart of the Foundation</em></h2>
+    <p class="p-desc r" data-d="3">
+      Fly over Vishalakshi Mantap, walk through the serene gardens of the Art of Living International Centre in Bangalore — one of the world's most sacred spiritual campuses.
+    </p>
+    <ul class="p-list r" data-d="3">
+      <li><span>Aerial tour of the iconic Vishalakshi Mantap</span></li>
+      <li><span>Gardens, meditation halls, and sacred gathering spaces</span></li>
+      <li><span>Experience a 100,000-devotee gathering from within</span></li>
+      <li><span>The story of how this campus came to be</span></li>
+    </ul>
+    <a href="#reserve" class="p-link r" data-d="4" style="color:var(--saffron)">
+      Experience This World
+      <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- PILLAR 4: SATSANG -->
+<section id="satsang" class="pillar flip" aria-label="Chapter 4 — Live Satsang">
+  <div class="p-img">
+    <img src="img/gurudev-diversity.png" alt="Gurudev with a diverse global community" loading="lazy" style="object-position:center 28%">
+  </div>
+  <div class="p-body">
+    <p class="p-n r">Chapter 04</p>
+    <span class="p-tag r" data-d="1" style="background:var(--violet)">Live Satsang</span>
+    <h2 class="p-title r" data-d="2">Feel the Joy of<br><em>One World Singing</em></h2>
+    <p class="p-desc r" data-d="3">
+      Step into a live satsang with thousands of hearts in harmony — music, chanting, laughter, and the electric presence of Gurudev as you've never felt it before.
+    </p>
+    <ul class="p-list r" data-d="3">
+      <li><span>360° live satsang immersion — you are there</span></li>
+      <li><span>Multi-language devotional music and chanting</span></li>
+      <li><span>Gurudev's talks and spontaneous wisdom, up close</span></li>
+      <li><span>The unified energy of 100,000 people in joy</span></li>
+    </ul>
+    <a href="#reserve" class="p-link r" data-d="4" style="color:var(--violet)">
+      Experience This World
+      <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-bg" aria-label="Photo gallery">
+  <div class="gallery-head">
+    <p class="eyebrow r">Gallery</p>
+    <h2 class="display r" data-d="1">Moments of <em>Presence</em></h2>
+  </div>
+  <div class="g-scroll" id="g-scroll" role="region" aria-label="Scrollable photo gallery">
+    <div class="g-track">
+
+      <div class="g-card">
+        <div class="g-img">
+          <img src="img/gurudev-childhood.png" alt="Gurudev as a young child, Tamil Nadu" loading="lazy" style="object-position:center 18%">
+        </div>
+        <div class="g-info">
+          <p class="g-title">Childhood Portrait</p>
+          <p class="g-sub">Tamil Nadu · Early 1960s</p>
+        </div>
+      </div>
+
+      <div class="g-card">
+        <div class="g-img">
+          <img src="img/gurudev-1956.png" alt="Infant Gurudev with mother, 1956" loading="lazy" style="object-position:center 28%">
+        </div>
+        <div class="g-info">
+          <p class="g-title">With Mother</p>
+          <p class="g-sub">Papanasam · 1956</p>
+        </div>
+      </div>
+
+      <div class="g-card">
+        <div class="g-img">
+          <img src="img/gurudev-young-meditation.png" alt="Young Gurudev in deep meditation" loading="lazy" style="object-position:center 20%">
+        </div>
+        <div class="g-info">
+          <p class="g-title">Early Meditation</p>
+          <p class="g-sub">Years of inner awakening</p>
+        </div>
+      </div>
+
+      <div class="g-card">
+        <div class="g-img">
+          <img src="img/ashram-vishalakshi.png" alt="Aerial view of Vishalakshi Mantap" loading="lazy" style="object-position:center 45%">
+        </div>
+        <div class="g-info">
+          <p class="g-title">Vishalakshi Mantap</p>
+          <p class="g-sub">Art of Living International Centre</p>
+        </div>
+      </div>
+
+      <div class="g-card">
+        <div class="g-img">
+          <img src="img/vr-meditation-cosmos.webp" alt="Sacred geometry cosmos in VR" loading="lazy">
+        </div>
+        <div class="g-info">
+          <p class="g-title">Cosmos of Silence</p>
+          <p class="g-sub">SKY Breath in VR</p>
+        </div>
+      </div>
+
+      <div class="g-card">
+        <div class="g-img">
+          <img src="img/vr-meditation-blue.jpg" alt="Immersive blue VR meditation" loading="lazy">
+        </div>
+        <div class="g-info">
+          <p class="g-title">Into the Blue</p>
+          <p class="g-sub">Guided VR meditation</p>
+        </div>
+      </div>
+
+      <div class="g-card">
+        <div class="g-img">
+          <img src="img/gurudev-diversity.png" alt="Gurudev celebrating diversity with global community" loading="lazy" style="object-position:center 28%">
+        </div>
+        <div class="g-info">
+          <p class="g-title">Celebrating Diversity</p>
+          <p class="g-sub">180 nations · One family</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" class="video-bg" aria-label="Experience preview video">
+  <div class="video-inner">
+    <p class="eyebrow r" style="justify-content:center">Watch</p>
+    <h2 class="display r" data-d="1" style="text-align:center">See the <em>Experience</em></h2>
+    <p class="lead r" data-d="2" style="text-align:center;margin:1rem auto 0">
+      A glimpse of what awaits inside the headset.
+    </p>
+    <div class="video-frame r" data-d="2">
+      <iframe
+        src="https://www.youtube.com/embed/k493mHHWTfw?rel=0&modestbranding=1&color=white"
+        title="Gurudev VR Experience — Official Trailer"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FULL QUOTE -->
+<section class="fq-bg" aria-label="Quote by Gurudev">
+  <div class="fq-inner">
+    <blockquote>
+      <p class="fq-text r">"Silence is not the absence of noise.<br>It is the presence of <em>self</em>."</p>
+      <div class="fq-line r" data-d="1"></div>
+      <footer class="fq-attr r" data-d="2">
+        <strong>Gurudev Sri Sri Ravishankar</strong><br>
+        Founder, Art of Living Foundation
+      </footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="reserve" class="cta-bg" aria-label="Reserve your VR experience">
+  <div class="cta-inner">
+    <p class="eyebrow r" style="justify-content:center">Reserve Your Spot</p>
+    <h2 class="cta-h r" data-d="1">Ready to Step <em>Inside?</em></h2>
+    <p class="cta-sub r" data-d="2">
+      Leave your email and be the first to know when the exhibition opens near you.
+    </p>
+    <form class="cta-form r" data-d="3" id="cta-form" novalidate>
+      <input type="email" class="cta-input" id="email-in"
+        placeholder="Your email address"
+        autocomplete="email" required
+        aria-label="Email address">
+      <button type="submit" class="btn-primary" id="cta-btn">Notify Me</button>
+    </form>
+    <p class="cta-note r" data-d="4">No spam. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-logo">Gurudev VR Experience</span>
+    <p class="footer-copy">
+      A Meta Quest 3S exhibition by the Art of Living Foundation.<br>
+      &copy; 2025 Art of Living Foundation. All rights reserved.
+    </p>
+    <nav class="footer-nav" aria-label="Footer links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* NAV */
+  const nav   = document.getElementById('nav');
+  const heroEl= document.querySelector('.hero');
+  function tickNav(){
+    const heroH = heroEl ? heroEl.offsetHeight : 600;
+    const y = window.scrollY;
+    nav.classList.toggle('hero-zone', y < heroH - 72);
+    nav.classList.toggle('scrolled',  y > 20);
+  }
+  window.addEventListener('scroll', tickNav, {passive:true});
+  tickNav();
+
+  /* MOBILE MENU */
+  const hamBtn = document.getElementById('ham-btn');
+  const menu   = document.getElementById('mobile-menu');
+  const mclose = document.getElementById('menu-close');
+  function openMenu(){
+    menu.classList.add('open');
+    hamBtn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+  function closeMenu(){
+    menu.classList.remove('open');
+    hamBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+  hamBtn.addEventListener('click', openMenu);
+  mclose.addEventListener('click', closeMenu);
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  /* SCROLL REVEAL */
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.r:not(.on)').forEach(el=>io.observe(el));
+
+  /* GALLERY DRAG */
+  const gs = document.getElementById('g-scroll');
+  if(gs){
+    let drag=false, sx=0, sl=0;
+    gs.addEventListener('mousedown',  e=>{ drag=true; sx=e.pageX-gs.offsetLeft; sl=gs.scrollLeft; });
+    gs.addEventListener('mouseleave', ()=>{ drag=false; });
+    gs.addEventListener('mouseup',    ()=>{ drag=false; });
+    gs.addEventListener('mousemove',  e=>{
+      if(!drag) return;
+      e.preventDefault();
+      gs.scrollLeft = sl-(e.pageX-gs.offsetLeft-sx)*1.4;
+    });
+  }
+
+  /* CTA FORM */
+  const form = document.getElementById('cta-form');
+  const ein  = document.getElementById('email-in');
+  const cbtn = document.getElementById('cta-btn');
+  if(form){
+    form.addEventListener('submit', e=>{
+      e.preventDefault();
+      if(!ein.value||!ein.validity.valid) return;
+      cbtn.textContent="You're on the list ✓";
+      cbtn.style.background='var(--sage)';
+      cbtn.style.boxShadow='none';
+      cbtn.disabled=true; ein.disabled=true;
+    });
+  }
+
+})();
+</script>
 </body>
 </html>
