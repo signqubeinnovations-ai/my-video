@@ -177,9 +177,16 @@
     }
     .star:hover{ transform: translateY(-6px); background: rgba(255,255,255,.09); border-color: rgba(244,183,64,.5); }
     .star .av {
-      width:64px;height:64px;border-radius:50%; margin-bottom:18px;
-      display:grid;place-items:center; font-family:'Fraunces',serif; font-weight:700; font-size:1.5rem; color:#2a1500;
+      width:88px;height:88px;border-radius:50%; margin-bottom:18px;
+      display:grid;place-items:center; font-family:'Fraunces',serif; font-weight:700; font-size:1.9rem; color:#2a1500;
       background: linear-gradient(135deg, var(--gold-lt), var(--coral));
+      background-size:cover; background-position:center top; overflow:hidden;
+      transition: box-shadow .3s ease;
+    }
+    .star .av.has-photo {
+      color:transparent;
+      border:2px solid rgba(255,255,255,.25);
+      box-shadow:0 10px 26px -10px rgba(0,0,0,.5);
     }
     .star h3 { font-size:1.25rem; margin-bottom:.4em; }
     .star p { font-size:.92rem; color: rgba(255,255,255,.72); }
@@ -375,11 +382,11 @@
         <p>Leading thinkers, artists and storytellers come together to spark dialogue across literature, cinema, music and culture.</p>
       </div>
       <div class="star-grid">
-        <div class="star reveal"><span class="tag">Author</span><div class="av">ST</div><h3>Shashi Tharoor</h3><p>Internationally acclaimed author and intellectual speaker.</p></div>
-        <div class="star reveal"><span class="tag">Novelist</span><div class="av">MM</div><h3>M. Mukundan</h3><p>Legendary Malayalam novelist and literary icon.</p></div>
-        <div class="star reveal"><span class="tag">Cinema</span><div class="av">PR</div><h3>Prakash Raj</h3><p>A powerful voice in cinema, literature and public discourse.</p></div>
-        <div class="star reveal"><span class="tag">Traveler</span><div class="av">SK</div><h3>Santhosh George Kulangara</h3><p>Renowned traveler and storyteller sharing global perspectives.</p></div>
-        <div class="star reveal"><span class="tag">Youth Voice</span><div class="av">VD</div><h3>Vedan</h3><p>A voice of the youth, blending music, poetry and social commentary.</p></div>
+        <div class="star reveal"><span class="tag">Author</span><div class="av" data-wiki="Shashi Tharoor">ST</div><h3>Shashi Tharoor</h3><p>Internationally acclaimed author and intellectual speaker.</p></div>
+        <div class="star reveal"><span class="tag">Novelist</span><div class="av" data-wiki="M. Mukundan">MM</div><h3>M. Mukundan</h3><p>Legendary Malayalam novelist and literary icon.</p></div>
+        <div class="star reveal"><span class="tag">Cinema</span><div class="av" data-wiki="Prakash Raj">PR</div><h3>Prakash Raj</h3><p>A powerful voice in cinema, literature and public discourse.</p></div>
+        <div class="star reveal"><span class="tag">Traveler</span><div class="av" data-wiki="Santhosh George Kulangara">SK</div><h3>Santhosh George Kulangara</h3><p>Renowned traveler and storyteller sharing global perspectives.</p></div>
+        <div class="star reveal"><span class="tag">Youth Voice</span><div class="av" data-wiki="Vedan (rapper)">VD</div><h3>Vedan</h3><p>A voice of the youth, blending music, poetry and social commentary.</p></div>
       </div>
     </div>
   </section>
@@ -543,6 +550,34 @@
       entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Speaker photos: load each portrait from Wikipedia, fall back to initials.
+    // A local file at img/litfest/speakers/<slug>.jpg, if present, takes priority.
+    (function loadSpeakerPhotos(){
+      const slug = s => s.toLowerCase().replace(/\(.*?\)/g,'').trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+      const apply = (el, src) => {
+        const img = new Image();
+        img.onload = () => { el.style.backgroundImage = 'url("' + src + '")'; el.classList.add('has-photo'); };
+        img.onerror = () => {};
+        img.src = src;
+      };
+      document.querySelectorAll('.av[data-wiki]').forEach(el => {
+        const name = el.getAttribute('data-wiki');
+        const local = 'img/litfest/speakers/' + slug(name) + '.jpg';
+        // Prefer a local override if it exists; otherwise pull from Wikipedia.
+        fetch(local, { method: 'HEAD' })
+          .then(r => {
+            if (r.ok) { apply(el, local); return; }
+            return fetch('https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(name))
+              .then(r => r.ok ? r.json() : null)
+              .then(d => {
+                const src = d && ((d.thumbnail && d.thumbnail.source) || (d.originalimage && d.originalimage.source));
+                if (src) apply(el, src);
+              });
+          })
+          .catch(() => {});
+      });
+    })();
   </script>
 </body>
 </html>
