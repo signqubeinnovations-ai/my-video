@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Festival night scene with stage lights, palms and floating books">
+  <defs>
+    <radialGradient id="hglow" cx="50%" cy="18%" r="60%">
+      <stop offset="0%" stop-color="#ffd479" stop-opacity=".55"/>
+      <stop offset="40%" stop-color="#ff6b5e" stop-opacity=".18"/>
+      <stop offset="100%" stop-color="#1a1030" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffd479" stop-opacity=".0"/>
+      <stop offset="100%" stop-color="#ffd479" stop-opacity=".22"/>
+    </linearGradient>
+    <linearGradient id="beam2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a368f0" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#a368f0" stop-opacity=".22"/>
+    </linearGradient>
+  </defs>
+
+  <!-- glow -->
+  <rect width="1440" height="900" fill="url(#hglow)"/>
+
+  <!-- light beams from stage -->
+  <g opacity=".8">
+    <polygon points="720,120 560,820 880,820" fill="url(#beam)"/>
+    <polygon points="720,120 300,780 540,820" fill="url(#beam2)"/>
+    <polygon points="720,120 900,820 1140,780" fill="url(#beam2)"/>
+  </g>
+
+  <!-- bokeh / floating sparks -->
+  <g fill="#ffd479">
+    <circle cx="180" cy="180" r="5" opacity=".7"/>
+    <circle cx="1280" cy="150" r="6" opacity=".6"/>
+    <circle cx="1080" cy="260" r="4" opacity=".8"/>
+    <circle cx="360" cy="300" r="4" opacity=".6"/>
+    <circle cx="640" cy="120" r="3" opacity=".9"/>
+    <circle cx="980" cy="90" r="4" opacity=".5"/>
+  </g>
+  <g fill="#ff9d8a">
+    <circle cx="260" cy="120" r="3" opacity=".6"/>
+    <circle cx="1180" cy="320" r="5" opacity=".5"/>
+    <circle cx="820" cy="220" r="3" opacity=".7"/>
+  </g>
+
+  <!-- floating books -->
+  <g opacity=".9" transform="translate(250,360) rotate(-18)">
+    <rect x="-46" y="-34" width="92" height="64" rx="6" fill="#ff6b5e"/>
+    <rect x="-46" y="-34" width="14" height="64" rx="4" fill="#c94e43"/>
+    <line x1="-22" y1="-12" x2="34" y2="-12" stroke="#fff" stroke-opacity=".5" stroke-width="3"/>
+    <line x1="-22" y1="2" x2="34" y2="2" stroke="#fff" stroke-opacity=".4" stroke-width="3"/>
+  </g>
+  <g opacity=".9" transform="translate(1170,430) rotate(14)">
+    <rect x="-46" y="-34" width="92" height="64" rx="6" fill="#6d3bd6"/>
+    <rect x="-46" y="-34" width="14" height="64" rx="4" fill="#4f2aa0"/>
+    <line x1="-22" y1="-12" x2="34" y2="-12" stroke="#fff" stroke-opacity=".5" stroke-width="3"/>
+    <line x1="-22" y1="2" x2="34" y2="2" stroke="#fff" stroke-opacity=".4" stroke-width="3"/>
+  </g>
+  <g opacity=".85" transform="translate(560,470) rotate(8)">
+    <rect x="-38" y="-28" width="76" height="54" rx="6" fill="#f4b740"/>
+    <rect x="-38" y="-28" width="12" height="54" rx="4" fill="#cf971f"/>
+  </g>
+
+  <!-- palm silhouettes -->
+  <g fill="#0d0720" opacity=".92">
+    <g transform="translate(120,900)">
+      <rect x="-8" y="-220" width="16" height="220" rx="6"/>
+      <path d="M0,-210 C-70,-250 -150,-240 -200,-200 C-140,-230 -60,-228 0,-196 Z"/>
+      <path d="M0,-210 C70,-250 150,-240 200,-200 C140,-230 60,-228 0,-196 Z"/>
+      <path d="M0,-214 C-40,-300 -120,-330 -180,-330 C-120,-300 -50,-270 0,-200 Z"/>
+      <path d="M0,-214 C40,-300 120,-330 180,-330 C120,-300 50,-270 0,-200 Z"/>
+      <path d="M0,-216 C-10,-320 -30,-380 -70,-420 C-20,-360 -6,-300 0,-208 Z"/>
+      <path d="M0,-216 C10,-320 30,-380 70,-420 C20,-360 6,-300 0,-208 Z"/>
+    </g>
+    <g transform="translate(1330,900) scale(-1,1)">
+      <rect x="-8" y="-260" width="16" height="260" rx="6"/>
+      <path d="M0,-250 C-70,-290 -150,-280 -200,-240 C-140,-270 -60,-268 0,-236 Z"/>
+      <path d="M0,-250 C70,-290 150,-280 200,-240 C140,-270 60,-268 0,-236 Z"/>
+      <path d="M0,-254 C-40,-340 -120,-370 -180,-370 C-120,-340 -50,-310 0,-240 Z"/>
+      <path d="M0,-254 C40,-340 120,-370 180,-370 C120,-340 50,-310 0,-240 Z"/>
+      <path d="M0,-256 C-10,-360 -30,-420 -70,-460 C-20,-400 -6,-340 0,-248 Z"/>
+      <path d="M0,-256 C10,-360 30,-420 70,-460 C20,-400 6,-340 0,-248 Z"/>
+    </g>
+  </g>
+
+  <!-- crowd silhouette -->
+  <g fill="#080414" opacity=".95">
+    <rect x="0" y="820" width="1440" height="80"/>
+    <g>
+      <circle cx="60" cy="810" r="26"/><rect x="40" y="826" width="40" height="74" rx="14"/>
+      <circle cx="160" cy="820" r="24"/><rect x="142" y="834" width="36" height="66" rx="13"/>
+      <circle cx="250" cy="806" r="27"/><rect x="229" y="824" width="42" height="76" rx="14"/>
+      <circle cx="360" cy="822" r="23"/><rect x="343" y="836" width="34" height="64" rx="12"/>
+      <circle cx="470" cy="810" r="26"/><rect x="450" y="826" width="40" height="74" rx="14"/>
+      <circle cx="580" cy="820" r="24"/><rect x="562" y="834" width="36" height="66" rx="13"/>
+      <circle cx="690" cy="806" r="27"/><rect x="669" y="824" width="42" height="76" rx="14"/>
+      <circle cx="800" cy="822" r="23"/><rect x="783" y="836" width="34" height="64" rx="12"/>
+      <circle cx="910" cy="810" r="26"/><rect x="890" y="826" width="40" height="74" rx="14"/>
+      <circle cx="1020" cy="820" r="24"/><rect x="1002" y="834" width="36" height="66" rx="13"/>
+      <circle cx="1130" cy="806" r="27"/><rect x="1109" y="824" width="42" height="76" rx="14"/>
+      <circle cx="1240" cy="822" r="23"/><rect x="1223" y="836" width="34" height="64" rx="12"/>
+      <circle cx="1350" cy="810" r="26"/><rect x="1330" y="826" width="40" height="74" rx="14"/>
+    </g>
+  </g>
+</svg>

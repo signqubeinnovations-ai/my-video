@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="An open book with pages turning into birds">
+  <defs>
+    <linearGradient id="abg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2a1750"/>
+      <stop offset="55%" stop-color="#3d2178"/>
+      <stop offset="100%" stop-color="#6d3bd6"/>
+    </linearGradient>
+    <radialGradient id="asun" cx="50%" cy="38%" r="50%">
+      <stop offset="0%" stop-color="#ffd479" stop-opacity=".8"/>
+      <stop offset="100%" stop-color="#ffd479" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="page" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbf7ef"/>
+      <stop offset="100%" stop-color="#e8dcc4"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="800" fill="url(#abg)"/>
+  <circle cx="400" cy="300" r="280" fill="url(#asun)"/>
+
+  <!-- sparkles -->
+  <g fill="#ffd479" opacity=".8">
+    <circle cx="150" cy="150" r="4"/><circle cx="650" cy="180" r="5"/>
+    <circle cx="120" cy="420" r="3"/><circle cx="690" cy="400" r="4"/>
+    <circle cx="240" cy="110" r="3"/><circle cx="560" cy="120" r="3"/>
+  </g>
+
+  <!-- open book -->
+  <g transform="translate(400,560)">
+    <ellipse cx="0" cy="40" rx="300" ry="36" fill="#000" opacity=".25"/>
+    <!-- left page -->
+    <path d="M0,-10 C-90,-60 -210,-60 -290,-20 L-290,60 C-210,20 -90,20 0,70 Z" fill="url(#page)" stroke="#cdbfa0" stroke-width="2"/>
+    <!-- right page -->
+    <path d="M0,-10 C90,-60 210,-60 290,-20 L290,60 C210,20 90,20 0,70 Z" fill="url(#page)" stroke="#cdbfa0" stroke-width="2"/>
+    <!-- spine -->
+    <path d="M0,-10 L0,70" stroke="#a8895f" stroke-width="3"/>
+    <!-- text lines -->
+    <g stroke="#9a7f57" stroke-width="3" opacity=".55">
+      <line x1="-250" y1="-8" x2="-50" y2="-26"/>
+      <line x1="-250" y1="8" x2="-50" y2="-10"/>
+      <line x1="-250" y1="24" x2="-50" y2="6"/>
+      <line x1="50" y1="-26" x2="250" y2="-8"/>
+      <line x1="50" y1="-10" x2="250" y2="8"/>
+      <line x1="50" y1="6" x2="250" y2="24"/>
+    </g>
+  </g>
+
+  <!-- pages turning into birds -->
+  <g fill="#fbf7ef">
+    <path d="M380,250 q30,-26 60,0 q-30,-10 -60,0 Z" opacity=".95"/>
+    <path d="M450,210 q26,-22 52,0 q-26,-9 -52,0 Z" opacity=".9"/>
+    <path d="M520,180 q22,-18 44,0 q-22,-7 -44,0 Z" opacity=".85"/>
+    <path d="M330,200 q22,-18 44,0 q-22,-7 -44,0 Z" opacity=".8"/>
+    <path d="M270,250 q18,-15 36,0 q-18,-6 -36,0 Z" opacity=".7"/>
+  </g>
+  <g fill="#ffd479">
+    <path d="M580,150 q18,-15 36,0 q-18,-6 -36,0 Z" opacity=".9"/>
+    <path d="M210,300 q16,-13 32,0 q-16,-5 -32,0 Z" opacity=".8"/>
+  </g>
+</svg>

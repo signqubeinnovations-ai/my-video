@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Karunagappally Literature Fest 2026 | Uniting Minds Through Literature, Culture &amp; Dialogue</title>
-  <meta name="description" content="Karunagappally Literature Fest 2026 — a premier cultural and intellectual gathering in Kerala celebrating literature, storytelling and ideas. Star conversations, live band nights, and a movement of 15,000+ minds. Presented by Capital Media." />
+  <title>Kollam Literature Fest 2026 | Uniting Minds Through Literature, Culture &amp; Dialogue</title>
+  <meta name="description" content="Kollam Literature Fest 2026 — a premier cultural and intellectual gathering in Kerala celebrating literature, storytelling and ideas. Star conversations, live band nights, workshops and a movement of 15,000+ minds. Presented by Capital Media." />
   <meta name="theme-color" content="#1d1233" />
-  <meta property="og:title" content="Karunagappally Literature Fest 2026" />
+  <meta property="og:title" content="Kollam Literature Fest 2026" />
   <meta property="og:description" content="Uniting Minds Through Literature, Culture &amp; Dialogue. Kerala, 2026. Presented by Capital Media." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/litfest/hero.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -69,8 +70,6 @@
     .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -8px rgba(244,183,64,.75); }
     .btn-ghost { background: rgba(255,255,255,.08); color: var(--white); border: 1px solid rgba(255,255,255,.35); }
     .btn-ghost:hover { background: rgba(255,255,255,.16); transform: translateY(-3px); }
-    .btn-dark { background: var(--ink); color: var(--white); }
-    .btn-dark:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -10px rgba(26,16,48,.6); }
 
     /* ---------- NAV ---------- */
     header.nav {
@@ -109,17 +108,21 @@
         linear-gradient(160deg, var(--ink) 0%, var(--plum) 55%, var(--grape) 100%);
       overflow: hidden; color: var(--white);
     }
+    .hero-art {
+      position:absolute; inset:0; z-index:1;
+      background: url("img/litfest/hero.svg") center bottom / cover no-repeat;
+      opacity:.9; pointer-events:none;
+    }
     .hero::after {
-      content: ""; position: absolute; inset: 0; pointer-events: none;
+      content: ""; position: absolute; inset: 0; pointer-events: none; z-index:1;
       background-image:
         radial-gradient(rgba(255,255,255,.5) 1px, transparent 1.4px);
       background-size: 46px 46px;
-      opacity: .06;
+      opacity: .05;
     }
-    .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; animation: float 14s ease-in-out infinite; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .5; animation: float 14s ease-in-out infinite; z-index:0; }
     .blob.b1 { width: 380px; height: 380px; background: var(--violet); top: -80px; left: -90px; }
     .blob.b2 { width: 320px; height: 320px; background: var(--coral); bottom: -90px; right: -60px; animation-delay: -5s; }
-    .blob.b3 { width: 260px; height: 260px; background: var(--gold); top: 40%; right: 22%; opacity:.3; animation-delay: -9s; }
     @keyframes float { 0%,100%{ transform: translate(0,0) scale(1);} 50%{ transform: translate(20px,-30px) scale(1.08);} }
 
     .hero-inner { position: relative; z-index: 2; padding: 130px 0 90px; }
@@ -153,21 +156,14 @@
 
     /* ---------- ABOUT ---------- */
     .about { background: var(--paper); position: relative; }
-    .about-grid { display:grid; grid-template-columns: 1.15fr .85fr; gap: 60px; align-items:center; }
+    .about-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items:center; }
     .about-grid p { color: var(--ink-soft); font-size: 1.1rem; margin-bottom: 1.2em; }
     .about-grid p strong { color: var(--ink); }
-    .about-card {
-      background: linear-gradient(160deg, var(--ink), var(--grape));
-      color:#fff; border-radius: 26px; padding: 42px; position:relative; overflow:hidden;
-      box-shadow: 0 30px 60px -25px rgba(42,23,80,.6);
-    }
-    .about-card::before{ content:""; position:absolute; width:200px;height:200px;border-radius:50%;
-      background: radial-gradient(circle, var(--coral), transparent 70%); top:-60px; right:-50px; opacity:.5;}
-    .about-card h3 { font-size:1.5rem; margin-bottom:.6em; position:relative; }
-    .about-card ul { list-style:none; position:relative; }
-    .about-card li { padding:.6em 0; border-bottom:1px solid rgba(255,255,255,.12); display:flex; gap:.7em; align-items:flex-start; font-size:.98rem; color:rgba(255,255,255,.88);}
-    .about-card li:last-child{border:none;}
-    .about-card li::before{ content:"✦"; color: var(--gold-lt); flex:none; }
+    .about-figure { position:relative; border-radius:26px; overflow:hidden; box-shadow:0 30px 60px -25px rgba(42,23,80,.6); }
+    .about-figure img { width:100%; height:100%; object-fit:cover; aspect-ratio: 1 / 1; }
+    .awaits { list-style:none; margin-top:26px; display:grid; grid-template-columns:1fr 1fr; gap:10px 22px; }
+    .awaits li { display:flex; gap:.6em; align-items:flex-start; color:var(--ink); font-size:.98rem; }
+    .awaits li::before{ content:"✦"; color: var(--violet); flex:none; }
 
     /* ---------- STARS ---------- */
     .stars { background: linear-gradient(180deg, var(--ink), var(--plum)); color:#fff; position:relative; }
@@ -193,6 +189,8 @@
     .music { background: linear-gradient(165deg, #150b2c, #2a1750 60%, #4a1d4d); color:#fff; }
     .music .section-head h2 { color:#fff; }
     .music .section-head p { color: rgba(255,255,255,.78); }
+    .music-banner { border-radius:24px; overflow:hidden; margin-bottom:36px; box-shadow:0 30px 60px -28px rgba(0,0,0,.6); }
+    .music-banner img { width:100%; height:auto; display:block; }
     .band-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:22px; }
     .band {
       border-radius:20px; padding:30px; position:relative; overflow:hidden;
@@ -224,50 +222,14 @@
     .aud-card li { color: var(--ink-soft); font-size:.95rem; padding:.28em 0 .28em 1.3em; position:relative; }
     .aud-card li::before{ content:"›"; position:absolute; left:0; color:var(--violet); font-weight:700; }
 
-    .footfall { margin-top:54px; background: linear-gradient(135deg, var(--grape), var(--violet)); border-radius:26px; padding:46px; color:#fff; position:relative; overflow:hidden;}
-    .footfall::after{ content:""; position:absolute; width:300px;height:300px;border-radius:50%; background:radial-gradient(circle,var(--gold),transparent 70%); bottom:-120px; left:-80px; opacity:.4;}
-    .footfall h3{ font-size:1.5rem; margin-bottom:24px; position:relative;}
-    .ff-stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:24px; position:relative;}
-    .ff-stats .n{ font-family:'Fraunces',serif; font-size:2.1rem; font-weight:700; color:var(--gold-lt);}
-    .ff-stats .l{ font-size:.85rem; color:rgba(255,255,255,.8);}
-    .quality { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; position:relative;}
-    .quality span{ background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.2); padding:.5em 1em; border-radius:100px; font-size:.85rem;}
-
-    /* ---------- REVENUE / SPONSOR ---------- */
-    .spon { background: var(--paper); }
-    .rev-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:22px; margin-bottom:60px;}
-    .rev {
-      background:#fff; border-radius:20px; padding:30px; border:1px solid #ece3d3;
-      position:relative; transition:transform .3s; border-top:4px solid var(--violet);
-    }
-    .rev:hover{transform:translateY(-6px);}
-    .rev .num{ font-family:'Fraunces',serif; font-size:1.1rem; color:var(--violet); font-weight:700;}
-    .rev h3{ font-size:1.2rem; margin:.3em 0 .6em;}
-    .rev ul{ list-style:none;}
-    .rev li{ color:var(--ink-soft); font-size:.93rem; padding:.25em 0 .25em 1.2em; position:relative;}
-    .rev li::before{ content:"•"; position:absolute; left:0; color:var(--gold);}
-
-    .fin-banner{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:24px;
-      background: var(--ink); color:#fff; border-radius:26px; padding:46px; text-align:center;}
-    .fin .n{ font-family:'Fraunces',serif; font-size:2.4rem; font-weight:800; color:var(--gold-lt);}
-    .fin .l{ font-size:.88rem; color:rgba(255,255,255,.72); letter-spacing:.04em;}
-
-    .branding { background: linear-gradient(180deg, var(--plum), var(--ink)); color:#fff;}
-    .branding .section-head h2{color:#fff;} .branding .section-head p{color:rgba(255,255,255,.78);}
-    .brand-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px;}
-    .bcol{ background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:20px; padding:30px;}
-    .bcol h3{ font-size:1.2rem; margin-bottom:.7em; color:var(--gold-lt);}
-    .bcol ul{ list-style:none;}
-    .bcol li{ font-size:.94rem; color:rgba(255,255,255,.84); padding:.4em 0; border-bottom:1px solid rgba(255,255,255,.1); display:flex; gap:.6em;}
-    .bcol li:last-child{border:none;}
-    .bcol li::before{ content:"✓"; color:var(--gold); flex:none; font-weight:700;}
-
-    .perks{ margin-top:54px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:26px; padding:46px;}
-    .perks h3{ font-size:1.6rem; margin-bottom:8px; color:#fff;}
-    .perks p.sub{ color:rgba(255,255,255,.7); margin-bottom:26px;}
-    .perk-list{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px;}
-    .perk{ display:flex; gap:.7em; align-items:center; background:rgba(255,255,255,.06); border-radius:14px; padding:14px 18px; font-size:.94rem; color:#fff;}
-    .perk .c{ width:30px;height:30px;border-radius:9px; display:grid;place-items:center; background:linear-gradient(135deg,var(--gold-lt),var(--coral)); color:#2a1500; font-weight:700; flex:none;}
+    /* ---------- EXPERIENCE ---------- */
+    .exp { background: linear-gradient(180deg, var(--plum), var(--ink)); color:#fff;}
+    .exp .section-head h2{color:#fff;} .exp .section-head p{color:rgba(255,255,255,.78);}
+    .exp-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px;}
+    .ecol{ background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:20px; padding:30px;}
+    .ecol .ico{ font-size:1.8rem; margin-bottom:12px;}
+    .ecol h3{ font-size:1.2rem; margin-bottom:.5em; color:var(--gold-lt);}
+    .ecol p{ font-size:.95rem; color:rgba(255,255,255,.82);}
 
     /* ---------- VENUE ---------- */
     .venue-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:50px; align-items:center;}
@@ -276,14 +238,12 @@
     .venue-list li{ padding:.55em 0 .55em 2em; position:relative; color:var(--ink); font-size:1rem; border-bottom:1px dashed #e2d8c7;}
     .venue-list li::before{ content:"◆"; position:absolute; left:0; color:var(--violet);}
     .venue-visual{
-      border-radius:26px; min-height:420px; position:relative; overflow:hidden;
-      background: linear-gradient(150deg, var(--grape), var(--coral) 120%);
+      border-radius:26px; min-height:440px; position:relative; overflow:hidden;
       display:flex; align-items:flex-end; padding:36px; color:#fff;
       box-shadow:0 30px 60px -28px rgba(42,23,80,.6);
     }
-    .venue-visual::before{ content:""; position:absolute; inset:0;
-      background-image: radial-gradient(rgba(255,255,255,.6) 1px, transparent 1.4px); background-size:30px 30px; opacity:.12;}
-    .venue-visual .vtag{ position:relative; }
+    .venue-visual img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
+    .venue-visual .vtag{ position:relative; z-index:1; text-shadow:0 2px 20px rgba(0,0,0,.4);}
     .venue-visual .vtag .eyebrow{ color:var(--gold-lt);}
     .venue-visual .vtag h3{ font-size:2rem; margin-top:.2em;}
 
@@ -325,12 +285,13 @@
       }
       .nav-links.open { transform: none; }
       .nav-toggle { display:block; z-index:101; }
-      .venue-visual{ min-height:300px;}
+      .venue-visual{ min-height:320px;}
+      .awaits{ grid-template-columns:1fr; }
     }
     @media (max-width: 560px){
       section{ padding:70px 0;}
       .hero-stats{ gap:24px;}
-      .about-card, .footfall, .fin-banner, .perks, .venue-visual{ padding:30px;}
+      .about-figure, .venue-visual{ }
     }
   </style>
 </head>
@@ -341,14 +302,13 @@
     <div class="wrap nav-inner">
       <a href="#top" class="brand">
         <span class="brand-mark">K</span>
-        <span class="brand-text">Karunagappally Lit Fest<small>Kerala · 2026</small></span>
+        <span class="brand-text">Kollam Lit Fest<small>Kerala · 2026</small></span>
       </a>
       <nav class="nav-links" id="navlinks">
         <a class="link" href="#about">About</a>
         <a class="link" href="#stars">Speakers</a>
         <a class="link" href="#music">Music</a>
         <a class="link" href="#audience">Audience</a>
-        <a class="link" href="#sponsor">Sponsor</a>
         <a class="link" href="#venue">Venue</a>
         <a class="btn btn-gold" href="#contact" style="padding:.7em 1.4em;">Get Involved</a>
       </nav>
@@ -358,21 +318,21 @@
 
   <!-- HERO -->
   <section class="hero" id="top">
-    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="blob b1"></div><div class="blob b2"></div>
+    <div class="hero-art"></div>
     <div class="wrap hero-inner">
       <span class="badge"><span class="dot"></span> Presented by Capital Media</span>
-      <h1>Karunagappally<br><span class="grad">Literature Fest</span><span class="year">2026</span></h1>
+      <h1>Kollam<br><span class="grad">Literature Fest</span><span class="year">2026</span></h1>
       <p class="tagline">Uniting minds through literature, culture &amp; dialogue.</p>
-      <p class="place">Karunagappally · Kollam · Kerala</p>
+      <p class="place">Kollam · Kerala</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn btn-gold">Become a Sponsor →</a>
+        <a href="#contact" class="btn btn-gold">Get Involved →</a>
         <a href="#about" class="btn btn-ghost">Explore the Festival</a>
       </div>
       <div class="hero-stats">
-        <div class="hstat"><div class="n">15K–20K</div><div class="l">Total Visitors</div></div>
+        <div class="hstat"><div class="n">15K–20K</div><div class="l">Festival Visitors</div></div>
         <div class="hstat"><div class="n">5</div><div class="l">Star Conversations</div></div>
         <div class="hstat"><div class="n">4</div><div class="l">Live Band Nights</div></div>
-        <div class="hstat"><div class="n">₹60L+</div><div class="l">Projected Revenue</div></div>
       </div>
     </div>
   </section>
@@ -384,19 +344,19 @@
         <div class="reveal">
           <span class="eyebrow">About the Festival</span>
           <h2 style="font-size:clamp(2rem,4.5vw,3.2rem); margin:14px 0 22px;">More than books — a movement of ideas.</h2>
-          <p>Karunagappally Literature Fest 2026 is a premier cultural and intellectual gathering designed to celebrate the power of <strong>literature, storytelling, and ideas</strong>. Set in the vibrant cultural landscape of Kerala, it brings together writers, thinkers, artists and audiences from across the country.</p>
+          <p>Kollam Literature Fest 2026 is a premier cultural and intellectual gathering designed to celebrate the power of <strong>literature, storytelling, and ideas</strong>. Set in the vibrant cultural landscape of Kerala, it brings together writers, thinkers, artists and audiences from across the country.</p>
           <p>This festival is not just about books — it is about <strong>conversations that inspire change</strong>, narratives that challenge perspectives, and voices that redefine the future. From engaging panel discussions to immersive cultural experiences, the event creates a space where creativity meets intellect.</p>
-        </div>
-        <div class="about-card reveal">
-          <h3>What awaits you</h3>
-          <ul>
-            <li>Star conversations with leading voices</li>
+          <ul class="awaits">
+            <li>Star conversations</li>
             <li>Live music &amp; band nights</li>
-            <li>Panel discussions &amp; literary talks</li>
-            <li>Workshops &amp; breakout zones</li>
+            <li>Panel discussions</li>
+            <li>Workshops &amp; talks</li>
             <li>Book stalls &amp; exhibitions</li>
             <li>Art installations &amp; photo spots</li>
           </ul>
+        </div>
+        <div class="about-figure reveal">
+          <img src="img/litfest/about.svg" alt="An open book with pages turning into birds, symbolising ideas taking flight" loading="lazy" />
         </div>
       </div>
     </div>
@@ -426,7 +386,10 @@
       <div class="section-head center reveal">
         <span class="eyebrow" style="color:var(--gold-lt);">Live Music &amp; Band Nights</span>
         <h2>Rhythms of Expression</h2>
-        <p>The festival expands beyond words into music — powerful voices, contemporary sounds and cultural energy designed to amplify engagement and create unforgettable evenings.</p>
+        <p>The festival expands beyond words into music — powerful voices, contemporary sounds and cultural energy creating unforgettable evenings.</p>
+      </div>
+      <div class="music-banner reveal">
+        <img src="img/litfest/music.svg" alt="Live concert with a cheering crowd, equalizer bars and stage lights" loading="lazy" />
       </div>
       <div class="band-grid">
         <div class="band b1 reveal"><div class="ico">🎤</div><h3>Vedan</h3><p>A revolutionary voice blending rap, poetry and social narratives.</p></div>
@@ -441,86 +404,32 @@
   <section class="audience" id="audience">
     <div class="wrap">
       <div class="section-head center reveal">
-        <span class="eyebrow">Primary Audience Segments</span>
+        <span class="eyebrow">A Festival For Everyone</span>
         <h2>Who's in the room</h2>
-        <p>An educated, aspirational and youth-heavy crowd with high engagement and strong social sharing behaviour.</p>
+        <p>An open, vibrant gathering welcoming readers, students, creators and families — anyone who loves stories, ideas and culture.</p>
       </div>
       <div class="aud-grid">
         <div class="aud-card reveal"><div class="ico">📚</div><h3>Literature &amp; Intellectual Community</h3><ul><li>Readers, writers, poets</li><li>Academicians &amp; educators</li><li>Cultural thinkers</li></ul></div>
         <div class="aud-card reveal"><div class="ico">🎓</div><h3>Students &amp; Youth</h3><ul><li>School &amp; college students</li><li>Aspiring creators &amp; performers</li><li>Digital-native audience</li></ul></div>
-        <div class="aud-card reveal"><div class="ico">🎬</div><h3>Creative &amp; Media Industry</h3><ul><li>Filmmakers, designers, musicians</li><li>Influencers &amp; content creators</li><li>Journalists &amp; media professionals</li></ul></div>
+        <div class="aud-card reveal"><div class="ico">🎬</div><h3>Creative &amp; Media Community</h3><ul><li>Filmmakers, designers, musicians</li><li>Influencers &amp; content creators</li><li>Journalists &amp; media professionals</li></ul></div>
         <div class="aud-card reveal"><div class="ico">👨‍👩‍👧</div><h3>General Public &amp; Families</h3><ul><li>Culture enthusiasts</li><li>Local community participation</li><li>Families &amp; weekend visitors</li></ul></div>
       </div>
-
-      <div class="footfall reveal">
-        <h3>Footfall Projection</h3>
-        <div class="ff-stats">
-          <div><div class="n">15K–20K</div><div class="l">Total Visitors</div></div>
-          <div><div class="n">5K–7K</div><div class="l">Daily Average</div></div>
-          <div><div class="n">8,000+</div><div class="l">Peak (Music Nights)</div></div>
-          <div><div class="n">18–35</div><div class="l">Core Demographic</div></div>
-        </div>
-        <div class="quality">
-          <span>High engagement &amp; time spent</span>
-          <span>Strong social media sharing</span>
-          <span>Educated, aspirational crowd</span>
-          <span>Youth-heavy demographic</span>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- SPONSOR / REVENUE -->
-  <section class="spon" id="sponsor">
+  <!-- EXPERIENCE -->
+  <section class="exp">
     <div class="wrap">
       <div class="section-head center reveal">
-        <span class="eyebrow">Revenue Model &amp; Opportunities</span>
-        <h2>A multi-revenue cultural platform</h2>
-        <p>Structured for profitability and scalability — future editions can grow 2–3x.</p>
+        <span class="eyebrow" style="color:var(--gold-lt);">The Experience</span>
+        <h2>Where creativity meets intellect</h2>
+        <p>From keynote stages to quiet reading corners, every space is designed to spark a moment of connection.</p>
       </div>
-      <div class="rev-grid">
-        <div class="rev reveal"><div class="num">01</div><h3>Sponsorships</h3><ul><li>Title Sponsor</li><li>Gold &amp; Silver Sponsors</li><li>Category Sponsors</li></ul></div>
-        <div class="rev reveal"><div class="num">02</div><h3>Ticketing</h3><ul><li>Music night passes</li><li>VIP access tickets</li><li>Premium events</li></ul></div>
-        <div class="rev reveal"><div class="num">03</div><h3>Stalls &amp; Exhibitions</h3><ul><li>Book stalls</li><li>Food vendors</li><li>Brand experience booths</li></ul></div>
-        <div class="rev reveal"><div class="num">04</div><h3>Partnerships</h3><ul><li>Media partnerships</li><li>Institutional tie-ups</li><li>Cultural organizations</li></ul></div>
-      </div>
-
-      <div class="fin-banner reveal">
-        <div class="fin"><div class="n">₹60L+</div><div class="l">Total Revenue</div></div>
-        <div class="fin"><div class="n">₹10L</div><div class="l">Estimated Profit</div></div>
-        <div class="fin"><div class="n">₹50L</div><div class="l">Estimated Budget</div></div>
-        <div class="fin"><div class="n">High</div><div class="l">Scalability</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BRANDING -->
-  <section class="branding">
-    <div class="wrap">
-      <div class="section-head center reveal">
-        <span class="eyebrow" style="color:var(--gold-lt);">Branding Opportunities</span>
-        <h2>Integrated, not just logos</h2>
-        <p>Sponsors become part of the festival experience through high-impact, experiential and digital touchpoints.</p>
-      </div>
-      <div class="brand-cols">
-        <div class="bcol reveal"><h3>High-Impact Visibility</h3><ul><li>Main stage branding</li><li>Social campaigns &amp; reels</li><li>Photo booths &amp; installations</li><li>Entry gates &amp; venue branding</li><li>Tickets, passes &amp; merch</li></ul></div>
-        <div class="bcol reveal"><h3>Experiential Branding</h3><ul><li>Branded lounges</li><li>Interactive installations</li><li>Product demos &amp; sampling</li><li>Sponsored sessions &amp; talks</li></ul></div>
-        <div class="bcol reveal"><h3>Digital Amplification</h3><ul><li>Influencer collaborations</li><li>Live streaming &amp; content</li><li>Post-event media coverage</li></ul></div>
-      </div>
-
-      <div class="perks reveal">
-        <h3>What sponsors get</h3>
-        <p class="sub">A complete package across marketing, stage, and media — plus custom integrations.</p>
-        <div class="perk-list">
-          <div class="perk"><span class="c">✓</span> Logo on all marketing materials</div>
-          <div class="perk"><span class="c">✓</span> Social media promotions</div>
-          <div class="perk"><span class="c">✓</span> Stage branding &amp; standees</div>
-          <div class="perk"><span class="c">✓</span> Speaking opportunities</div>
-          <div class="perk"><span class="c">✓</span> Stall / exhibition space</div>
-          <div class="perk"><span class="c">✓</span> Media coverage mentions</div>
-          <div class="perk"><span class="c">✓</span> Branded sessions</div>
-          <div class="perk"><span class="c">✓</span> Product showcases</div>
-        </div>
+      <div class="exp-cols">
+        <div class="ecol reveal"><div class="ico">🎙️</div><h3>Keynote Stages</h3><p>Headline conversations and literary talks with celebrated voices.</p></div>
+        <div class="ecol reveal"><div class="ico">🗣️</div><h3>Panels &amp; Dialogues</h3><p>Breakout discussion zones where ideas meet and perspectives shift.</p></div>
+        <div class="ecol reveal"><div class="ico">✍️</div><h3>Workshops</h3><p>Hands-on halls for aspiring writers, creators and performers.</p></div>
+        <div class="ecol reveal"><div class="ico">🎨</div><h3>Art &amp; Culture</h3><p>Installations, photo spots and book stalls woven through the venue.</p></div>
       </div>
     </div>
   </section>
@@ -531,8 +440,8 @@
       <div class="venue-grid">
         <div class="reveal">
           <span class="eyebrow">Venue &amp; Experience</span>
-          <h2 style="font-size:clamp(2rem,4.5vw,3.2rem); margin:14px 0 18px;">Kollam · Karunagappally</h2>
-          <p>A culturally rich town with growing prominence, Karunagappally offers the perfect setting for a large-scale intellectual and cultural gathering — a blend of traditional Kerala aesthetics and modern festival design.</p>
+          <h2 style="font-size:clamp(2rem,4.5vw,3.2rem); margin:14px 0 18px;">Kollam · Kerala</h2>
+          <p>A culturally rich coastal town with growing prominence, Kollam offers the perfect setting for a large-scale intellectual and cultural gathering — a blend of traditional Kerala aesthetics and modern festival design.</p>
           <ul class="venue-list">
             <li>Main stage for keynote sessions</li>
             <li>Breakout discussion zones</li>
@@ -543,6 +452,7 @@
           </ul>
         </div>
         <div class="venue-visual reveal">
+          <img src="img/litfest/venue.svg" alt="Kerala backwaters at sunset with palms, a pavilion and festival tents" loading="lazy" />
           <div class="vtag">
             <span class="eyebrow">Immersive Ambience</span>
             <h3>Where tradition meets a modern festival</h3>
@@ -557,11 +467,11 @@
     <div class="wrap reveal">
       <span class="eyebrow" style="color:var(--gold-lt);">Be Part of a Cultural Movement</span>
       <h2>It's more than an event —<br>it's a <span class="grad">platform for impact.</span></h2>
-      <p>Literature Fest 2026 is a platform to inspire, connect and create impact. Join us and put your brand at the heart of Kerala's cultural conversation.</p>
+      <p>Kollam Literature Fest 2026 is a platform to inspire, connect and create impact. Come be part of Kerala's cultural conversation.</p>
       <div class="join-row">
-        <span>Sponsor</span><span>Partner</span><span>Participant</span><span>Volunteer</span>
+        <span>Visitor</span><span>Volunteer</span><span>Partner</span><span>Participant</span>
       </div>
-      <a href="mailto:signqubeinnovations@gmail.com?subject=Karunagappally%20Literature%20Fest%202026" class="btn btn-gold">Get in Touch →</a>
+      <a href="mailto:signqubeinnovations@gmail.com?subject=Kollam%20Literature%20Fest%202026" class="btn btn-gold">Get in Touch →</a>
     </div>
   </section>
 
@@ -570,7 +480,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div class="foot-brand">
-          <a href="#top" class="brand"><span class="brand-mark">K</span><span class="brand-text">Karunagappally Lit Fest<small>Kerala · 2026</small></span></a>
+          <a href="#top" class="brand"><span class="brand-mark">K</span><span class="brand-text">Kollam Lit Fest<small>Kerala · 2026</small></span></a>
           <p>A premier cultural and intellectual gathering celebrating literature, storytelling and ideas. Presented by Capital Media.</p>
         </div>
         <div>
@@ -578,18 +488,18 @@
           <a class="fl" href="#about">About</a>
           <a class="fl" href="#stars">Speakers</a>
           <a class="fl" href="#music">Music &amp; Bands</a>
-          <a class="fl" href="#sponsor">Sponsorship</a>
+          <a class="fl" href="#audience">Audience</a>
           <a class="fl" href="#venue">Venue</a>
         </div>
         <div>
           <h4>Contact</h4>
           <a class="fl" href="mailto:signqubeinnovations@gmail.com">signqubeinnovations@gmail.com</a>
-          <p>Karunagappally, Kollam<br>Kerala, India</p>
-          <p>Sponsor · Partner · Participant · Volunteer</p>
+          <p>Kollam, Kerala, India</p>
+          <p>Visitor · Volunteer · Partner · Participant</p>
         </div>
       </div>
       <div class="copy">
-        <span>© 2026 Karunagappally Literature Fest. All rights reserved.</span>
+        <span>© 2026 Kollam Literature Fest. All rights reserved.</span>
         <span>Presented by Capital Media</span>
       </div>
     </div>

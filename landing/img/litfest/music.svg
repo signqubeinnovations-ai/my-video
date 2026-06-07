@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Live concert with crowd, equalizer bars and stage lights">
+  <defs>
+    <radialGradient id="mglow" cx="50%" cy="10%" r="70%">
+      <stop offset="0%" stop-color="#ff6b5e" stop-opacity=".5"/>
+      <stop offset="45%" stop-color="#a368f0" stop-opacity=".22"/>
+      <stop offset="100%" stop-color="#150b2c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mbar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffd479"/>
+      <stop offset="100%" stop-color="#ff6b5e"/>
+    </linearGradient>
+    <linearGradient id="mbar2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a368f0"/>
+      <stop offset="100%" stop-color="#6d3bd6"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1440" height="520" fill="url(#mglow)"/>
+
+  <!-- light beams -->
+  <g opacity=".5">
+    <polygon points="700,0 600,360 800,360" fill="#ffd479" opacity=".25"/>
+    <polygon points="700,0 400,330 560,360" fill="#a368f0" opacity=".25"/>
+    <polygon points="700,0 880,360 1040,330" fill="#ff6b5e" opacity=".22"/>
+  </g>
+
+  <!-- equalizer bars -->
+  <g>
+    <rect x="120" y="170" width="34" height="190" rx="10" fill="url(#mbar2)" opacity=".85"/>
+    <rect x="170" y="120" width="34" height="240" rx="10" fill="url(#mbar)" opacity=".9"/>
+    <rect x="220" y="210" width="34" height="150" rx="10" fill="url(#mbar2)" opacity=".8"/>
+    <rect x="270" y="90"  width="34" height="270" rx="10" fill="url(#mbar)" opacity=".9"/>
+    <rect x="320" y="200" width="34" height="160" rx="10" fill="url(#mbar2)" opacity=".8"/>
+
+    <rect x="1086" y="200" width="34" height="160" rx="10" fill="url(#mbar2)" opacity=".8"/>
+    <rect x="1136" y="90"  width="34" height="270" rx="10" fill="url(#mbar)" opacity=".9"/>
+    <rect x="1186" y="210" width="34" height="150" rx="10" fill="url(#mbar2)" opacity=".8"/>
+    <rect x="1236" y="120" width="34" height="240" rx="10" fill="url(#mbar)" opacity=".9"/>
+    <rect x="1286" y="170" width="34" height="190" rx="10" fill="url(#mbar2)" opacity=".85"/>
+  </g>
+
+  <!-- crowd with raised hands -->
+  <g fill="#0a0518">
+    <rect x="0" y="360" width="1440" height="160"/>
+    <g>
+      <circle cx="70" cy="350" r="30"/><rect x="46" y="372" width="48" height="148" rx="16"/>
+      <rect x="40" y="300" width="12" height="80" rx="6" transform="rotate(-12 46 340)"/>
+      <circle cx="190" cy="362" r="28"/><rect x="168" y="382" width="44" height="138" rx="15"/>
+      <circle cx="320" cy="346" r="32"/><rect x="296" y="370" width="48" height="150" rx="16"/>
+      <rect x="350" y="296" width="12" height="80" rx="6" transform="rotate(12 356 336)"/>
+      <circle cx="450" cy="364" r="27"/><rect x="429" y="384" width="42" height="136" rx="15"/>
+      <circle cx="580" cy="350" r="30"/><rect x="556" y="372" width="48" height="148" rx="16"/>
+      <circle cx="700" cy="360" r="34"/><rect x="674" y="384" width="52" height="136" rx="17"/>
+      <rect x="668" y="300" width="13" height="86" rx="6" transform="rotate(-10 674 344)"/>
+      <rect x="726" y="300" width="13" height="86" rx="6" transform="rotate(10 732 344)"/>
+      <circle cx="830" cy="350" r="30"/><rect x="806" y="372" width="48" height="148" rx="16"/>
+      <circle cx="950" cy="364" r="27"/><rect x="929" y="384" width="42" height="136" rx="15"/>
+      <circle cx="1080" cy="346" r="32"/><rect x="1056" y="370" width="48" height="150" rx="16"/>
+      <rect x="1110" y="296" width="12" height="80" rx="6" transform="rotate(12 1116 336)"/>
+      <circle cx="1210" cy="362" r="28"/><rect x="1188" y="382" width="44" height="138" rx="15"/>
+      <circle cx="1340" cy="350" r="30"/><rect x="1316" y="372" width="48" height="148" rx="16"/>
+      <rect x="1310" y="300" width="12" height="80" rx="6" transform="rotate(-12 1316 340)"/>
+    </g>
+  </g>
+</svg>

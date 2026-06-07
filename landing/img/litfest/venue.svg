@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Kerala backwaters at sunset with palms, a pavilion and festival tents">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3d2178"/>
+      <stop offset="45%" stop-color="#a368f0"/>
+      <stop offset="78%" stop-color="#ff8a5e"/>
+      <stop offset="100%" stop-color="#ffd479"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffd479" stop-opacity=".7"/>
+      <stop offset="35%" stop-color="#c9658a" stop-opacity=".8"/>
+      <stop offset="100%" stop-color="#2a1750"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff3d6"/>
+      <stop offset="60%" stop-color="#ffd479"/>
+      <stop offset="100%" stop-color="#ffb347" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1000" height="520" fill="url(#sky)"/>
+  <circle cx="500" cy="470" r="150" fill="url(#sun)"/>
+  <rect y="520" width="1000" height="280" fill="url(#water)"/>
+
+  <!-- distant tree line -->
+  <path d="M0,520 L0,470 Q120,455 200,470 Q320,440 420,468 Q560,445 660,470 Q820,448 1000,472 L1000,520 Z" fill="#3a1f5e" opacity=".7"/>
+
+  <!-- pavilion (Kerala style) silhouette -->
+  <g fill="#1a0f33">
+    <rect x="430" y="430" width="140" height="92"/>
+    <polygon points="410,432 590,432 540,388 460,388"/>
+    <polygon points="455,388 545,388 500,352"/>
+    <rect x="455" y="460" width="20" height="62"/>
+    <rect x="525" y="460" width="20" height="62"/>
+    <rect x="490" y="455" width="20" height="67"/>
+  </g>
+
+  <!-- festival tents/flags -->
+  <g>
+    <g transform="translate(170,470)">
+      <polygon points="0,52 70,52 35,0" fill="#ff6b5e"/>
+      <rect x="-2" y="-30" width="4" height="30" fill="#1a0f33"/>
+      <polygon points="2,-30 2,-14 26,-22" fill="#ffd479"/>
+    </g>
+    <g transform="translate(760,476)">
+      <polygon points="0,46 60,46 30,0" fill="#6d3bd6"/>
+      <rect x="-2" y="-26" width="4" height="26" fill="#1a0f33"/>
+      <polygon points="2,-26 2,-12 24,-19" fill="#ff6b5e"/>
+    </g>
+  </g>
+
+  <!-- palms -->
+  <g fill="#120a26">
+    <g transform="translate(110,522)">
+      <path d="M-6,0 C-14,-120 -10,-200 6,-300 C-2,-200 4,-120 10,0 Z"/>
+      <g transform="translate(4,-300)">
+        <path d="M0,0 C-60,-30 -130,-22 -180,12 C-120,-8 -50,-6 0,18 Z"/>
+        <path d="M0,0 C60,-30 130,-22 180,12 C120,-8 50,-6 0,18 Z"/>
+        <path d="M0,0 C-40,-70 -110,-96 -170,-92 C-110,-72 -44,-44 0,8 Z"/>
+        <path d="M0,0 C40,-70 110,-96 170,-92 C110,-72 44,-44 0,8 Z"/>
+        <path d="M0,0 C-8,-80 -26,-140 -60,-176 C-16,-120 -4,-70 0,6 Z"/>
+        <path d="M0,0 C8,-80 26,-140 60,-176 C16,-120 4,-70 0,6 Z"/>
+      </g>
+    </g>
+    <g transform="translate(910,522) scale(-1,1)">
+      <path d="M-6,0 C-14,-100 -10,-170 6,-250 C-2,-170 4,-100 10,0 Z"/>
+      <g transform="translate(4,-250)">
+        <path d="M0,0 C-60,-30 -130,-22 -180,12 C-120,-8 -50,-6 0,18 Z"/>
+        <path d="M0,0 C60,-30 130,-22 180,12 C120,-8 50,-6 0,18 Z"/>
+        <path d="M0,0 C-40,-66 -110,-90 -170,-86 C-110,-66 -44,-40 0,8 Z"/>
+        <path d="M0,0 C40,-66 110,-90 170,-86 C110,-66 44,-40 0,8 Z"/>
+        <path d="M0,0 C-8,-74 -26,-130 -60,-164 C-16,-110 -4,-64 0,6 Z"/>
+        <path d="M0,0 C8,-74 26,-130 60,-164 C16,-110 4,-64 0,6 Z"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- water reflections -->
+  <g stroke="#ffd479" stroke-opacity=".35" stroke-width="4">
+    <line x1="430" y1="560" x2="570" y2="560"/>
+    <line x1="450" y1="600" x2="550" y2="600"/>
+    <line x1="470" y1="640" x2="530" y2="640"/>
+  </g>
+  <g stroke="#fff" stroke-opacity=".18" stroke-width="3">
+    <line x1="150" y1="580" x2="320" y2="580"/>
+    <line x1="680" y1="600" x2="860" y2="600"/>
+  </g>
+</svg>
