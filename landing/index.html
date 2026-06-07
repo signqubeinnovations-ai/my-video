@@ -211,7 +211,13 @@
     .band.b3::before{ background: linear-gradient(140deg, rgba(244,183,64,.35), transparent); }
     .band.b4::before{ background: linear-gradient(140deg, rgba(163,104,240,.4), transparent); }
     .band > * { position:relative; z-index:1; }
-    .band .ico { font-size:1.6rem; margin-bottom:auto; }
+    .band .ico {
+      width:72px; height:72px; border-radius:50%; margin-bottom:auto;
+      display:grid; place-items:center; font-size:1.7rem;
+      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18);
+      background-size:cover; background-position:center top; overflow:hidden;
+    }
+    .band .ico.has-photo { font-size:0; border:2px solid rgba(255,255,255,.3); box-shadow:0 10px 26px -10px rgba(0,0,0,.5); }
     .band h3 { font-size:1.5rem; margin-bottom:.3em; }
     .band p { font-size:.9rem; color: rgba(255,255,255,.82); }
 
@@ -403,10 +409,10 @@
         <img src="img/litfest/music.svg" alt="Live concert with a cheering crowd, equalizer bars and stage lights" loading="lazy" />
       </div>
       <div class="band-grid">
-        <div class="band b1 reveal"><div class="ico">🎤</div><h3>Vedan</h3><p>A revolutionary voice blending rap, poetry and social narratives.</p></div>
-        <div class="band b2 reveal"><div class="ico">🎸</div><h3>Avial</h3><p>Kerala's iconic fusion rock band redefining Malayalam music.</p></div>
-        <div class="band b3 reveal"><div class="ico">☕</div><h3>Chai Met Toast</h3><p>Feel-good indie vibes with a strong youth following.</p></div>
-        <div class="band b4 reveal"><div class="ico">🥁</div><h3>Shanka Tribe</h3><p>High-energy tribal fusion and experimental soundscapes.</p></div>
+        <div class="band b1 reveal"><div class="ico" data-wiki="Vedan (rapper)">🎤</div><h3>Vedan</h3><p>A revolutionary voice blending rap, poetry and social narratives.</p></div>
+        <div class="band b2 reveal"><div class="ico" data-wiki="Avial (band)">🎸</div><h3>Avial</h3><p>Kerala's iconic fusion rock band redefining Malayalam music.</p></div>
+        <div class="band b3 reveal"><div class="ico" data-wiki="Chai Met Toast">☕</div><h3>Chai Met Toast</h3><p>Feel-good indie vibes with a strong youth following.</p></div>
+        <div class="band b4 reveal"><div class="ico" data-wiki="Shanka Tribe">🥁</div><h3>Shanka Tribe</h3><p>High-energy tribal fusion and experimental soundscapes.</p></div>
       </div>
     </div>
   </section>
@@ -551,9 +557,10 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    // Speaker photos: load each portrait from Wikipedia, fall back to initials.
-    // A local file at img/litfest/speakers/<slug>.jpg, if present, takes priority.
-    (function loadSpeakerPhotos(){
+    // Speaker & performer photos: load each portrait from Wikipedia, fall back
+    // to the initials / emoji already in the element. A local file at
+    // img/litfest/speakers/<slug>.jpg, if present, takes priority.
+    (function loadPhotos(){
       const slug = s => s.toLowerCase().replace(/\(.*?\)/g,'').trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
       const apply = (el, src) => {
         const img = new Image();
@@ -561,7 +568,7 @@
         img.onerror = () => {};
         img.src = src;
       };
-      document.querySelectorAll('.av[data-wiki]').forEach(el => {
+      document.querySelectorAll('[data-wiki]').forEach(el => {
         const name = el.getAttribute('data-wiki');
         const local = 'img/litfest/speakers/' + slug(name) + '.jpg';
         // Prefer a local override if it exists; otherwise pull from Wikipedia.
