@@ -28,10 +28,16 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload landing folder
+      - name: Build clean deploy folder
+        run: |
+          mkdir -p _deploy
+          cp landing/vr-showcase.html _deploy/index.html
+          cp -r landing/img _deploy/img
+
+      - name: Upload deploy folder
         uses: actions/upload-pages-artifact@v3
         with:
-          path: landing/
+          path: _deploy/
 
       - name: Deploy to GitHub Pages
         id: deployment
