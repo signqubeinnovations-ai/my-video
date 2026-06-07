@@ -395,6 +395,17 @@ canvas#stars{position:absolute;inset:0;z-index:1;pointer-events:none}
 .strip-img{width:270px;height:165px;object-fit:cover;flex-shrink:0;border-radius:3px;filter:brightness(.55) saturate(.65)}
 .strip-img:hover{filter:brightness(.82) saturate(1);transition:filter .4s}
 
+/* ── VIDEO SECTION ── */
+.video-section{padding:clamp(5rem,10vw,8rem) 2rem;text-align:center;background:var(--bg2);border-top:1px solid var(--border)}
+.video-section-inner{max-width:900px;margin:0 auto}
+.video-eyebrow{font-size:.63rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;display:flex;align-items:center;justify-content:center;gap:1rem}
+.video-eyebrow::before,.video-eyebrow::after{content:'';width:28px;height:1px;background:var(--gold);opacity:.5}
+.video-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:300;color:var(--cream);margin-bottom:.6rem;line-height:1.2}
+.video-title i{font-style:italic;color:var(--gold)}
+.video-sub{font-size:.9rem;color:var(--text-dim);margin-bottom:3rem;max-width:500px;margin-left:auto;margin-right:auto}
+.video-frame{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;box-shadow:0 0 0 1px rgba(212,175,55,.12),0 32px 80px rgba(0,0,0,.6)}
+.video-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+
 /* ── CTA ── */
 .cta{
   position:relative;min-height:80vh;
@@ -554,10 +565,10 @@ footer{
 <section class="pillar-wrap" id="journey">
   <div class="pillar-sticky" data-pillar="0">
     <div class="pb-wrap">
-      <div class="pb on"  style="background-image:url('https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?auto=format&fit=crop&w=1920&q=85');background-position:center 55%"></div>
-      <div class="pb"     style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=85')"></div>
-      <div class="pb"     style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1920&q=85')"></div>
-      <div class="pb"     style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1920&q=85')"></div>
+      <div class="pb on"  style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/maxresdefault.jpg');background-position:center 30%"></div>
+      <div class="pb"     style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/hqdefault.jpg');background-position:center 25%"></div>
+      <div class="pb"     style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/sddefault.jpg');background-position:center 35%"></div>
+      <div class="pb"     style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/0.jpg');background-position:center 30%"></div>
     </div>
     <div class="pgrad left"></div>
     <div class="pc left">
@@ -595,7 +606,7 @@ footer{
 
 <!-- QUOTE 1 -->
 <div class="dq">
-  <div class="dq-bg" style="background-image:url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1920&q=80')"></div>
+  <div class="dq-bg" style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/maxresdefault.jpg');background-position:center 20%"></div>
   <div class="dq-inner r">
     <span class="dq-mark">"</span>
     <p class="dq-text">When you know how to handle the breath, you can handle every situation in life. The breath is the link between the inner world and the outer world.</p>
@@ -611,8 +622,8 @@ footer{
   <div class="pillar-sticky" data-pillar="1">
     <div class="pb-wrap">
       <div class="pb on"  style="background-image:url('img/vr-meditation-cosmos.webp');background-position:center top"></div>
-      <div class="pb"     style="background-image:url('https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=1920&q=85')"></div>
-      <div class="pb"     style="background-image:url('https://images.unsplash.com/photo-1534796636912-3b952d9a9f4f?auto=format&fit=crop&w=1920&q=85')"></div>
+      <div class="pb"     style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/maxresdefault.jpg');background-position:center 40%"></div>
+      <div class="pb"     style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/hqdefault.jpg');background-position:center 40%"></div>
       <div class="pb"     style="background-image:url('img/vr-meditation-blue.jpg');background-position:center center"></div>
     </div>
     <div class="pgrad right"></div>
@@ -707,7 +718,7 @@ footer{
 
 <!-- QUOTE 3 -->
 <div class="dq">
-  <div class="dq-bg" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80')"></div>
+  <div class="dq-bg" style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/hqdefault.jpg');background-position:center 30%"></div>
   <div class="dq-inner r">
     <span class="dq-mark">"</span>
     <p class="dq-text">You are not just a body and a mind. You are a field of unbounded awareness — infinite peace, infinite joy, infinite love. This is your nature.</p>
@@ -722,10 +733,10 @@ footer{
 <section class="pillar-wrap" id="satsang">
   <div class="pillar-sticky" data-pillar="3">
     <div class="pb-wrap">
-      <div class="pb on"  style="background-image:url('https://images.unsplash.com/photo-1540575467537-b52dbfdcc71e?auto=format&fit=crop&w=1920&q=85')"></div>
-      <div class="pb"     style="background-image:url('https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1920&q=85')"></div>
-      <div class="pb"     style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1920&q=85')"></div>
-      <div class="pb"     style="background-image:url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1920&q=85')"></div>
+      <div class="pb on"  style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/maxresdefault.jpg');background-position:center 45%"></div>
+      <div class="pb"     style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/hqdefault.jpg');background-position:center 50%"></div>
+      <div class="pb"     style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/sddefault.jpg');background-position:center 45%"></div>
+      <div class="pb"     style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/mqdefault.jpg');background-position:center 50%"></div>
     </div>
     <div class="pgrad right"></div>
     <div class="pc right">
@@ -779,7 +790,7 @@ footer{
 
         <!-- 1 -->
         <div class="hcard hcard-tall">
-          <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?auto=format&fit=crop&w=900&q=85')"></div>
+          <div class="hcard-img" style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/maxresdefault.jpg');background-position:center 25%"></div>
           <div class="hcard-glow"></div>
           <div class="hcard-top">
             <span class="hcard-pill">Life Journey</span>
@@ -818,7 +829,7 @@ footer{
 
         <!-- 4 -->
         <div class="hcard hcard-tall">
-          <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=900&q=85')"></div>
+          <div class="hcard-img" style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/hqdefault.jpg');background-position:center 35%"></div>
           <div class="hcard-glow"></div>
           <div class="hcard-top">
             <span class="hcard-pill" style="border-color:rgba(154,165,224,.3);color:var(--lavender)">Meditation</span>
@@ -831,7 +842,7 @@ footer{
 
         <!-- 5 -->
         <div class="hcard hcard-mid">
-          <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=85')"></div>
+          <div class="hcard-img" style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/sddefault.jpg');background-position:center 40%"></div>
           <div class="hcard-glow"></div>
           <div class="hcard-top">
             <span class="hcard-pill" style="border-color:rgba(232,98,42,.3);color:var(--saffron)">Satsang</span>
@@ -870,7 +881,7 @@ footer{
 
         <!-- 8 -->
         <div class="hcard hcard-mid">
-          <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=85')"></div>
+          <div class="hcard-img" style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/mqdefault.jpg');background-position:center 30%"></div>
           <div class="hcard-glow"></div>
           <div class="hcard-top">
             <span class="hcard-pill">Life Journey</span>
@@ -883,7 +894,7 @@ footer{
 
         <!-- 9 -->
         <div class="hcard hcard-short">
-          <div class="hcard-img" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85')"></div>
+          <div class="hcard-img" style="background-image:url('https://img.youtube.com/vi/k493mHHWTfw/0.jpg');background-position:center 30%"></div>
           <div class="hcard-glow"></div>
           <div class="hcard-top">
             <span class="hcard-pill">Life Journey</span>
@@ -924,25 +935,43 @@ footer{
 <div class="strip">
   <div class="strip-track">
     <img class="strip-img" src="img/vr-meditation-cosmos.webp" alt="" style="object-position:center top">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=400&h=220&q=70" alt="">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=400&h=220&q=70" alt="">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=400&h=220&q=70" alt="">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&h=220&q=70" alt="">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=400&h=220&q=70" alt="">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://img.youtube.com/vi/k493mHHWTfw/maxresdefault.jpg" alt="">
+    <img class="strip-img" src="https://img.youtube.com/vi/k493mHHWTfw/hqdefault.jpg" alt="">
+    <img class="strip-img" src="https://img.youtube.com/vi/k493mHHWTfw/sddefault.jpg" alt="">
     <img class="strip-img" src="img/vr-meditation-blue.jpg" alt="" style="object-position:center top">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=400&h=220&q=70" alt="">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=400&h=220&q=70" alt="">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=400&h=220&q=70" alt="">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&h=220&q=70" alt="">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://img.youtube.com/vi/k493mHHWTfw/mqdefault.jpg" alt="">
+    <img class="strip-img" src="https://img.youtube.com/vi/k493mHHWTfw/0.jpg" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
     <img class="strip-img" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
-    <img class="strip-img" src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="img/vr-meditation-cosmos.webp" alt="" style="object-position:center top">
+    <img class="strip-img" src="https://img.youtube.com/vi/k493mHHWTfw/maxresdefault.jpg" alt="">
+    <img class="strip-img" src="https://img.youtube.com/vi/k493mHHWTfw/hqdefault.jpg" alt="">
+    <img class="strip-img" src="https://img.youtube.com/vi/k493mHHWTfw/sddefault.jpg" alt="">
+    <img class="strip-img" src="img/vr-meditation-blue.jpg" alt="" style="object-position:center top">
+    <img class="strip-img" src="https://img.youtube.com/vi/k493mHHWTfw/mqdefault.jpg" alt="">
+    <img class="strip-img" src="https://img.youtube.com/vi/k493mHHWTfw/0.jpg" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
+    <img class="strip-img" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=400&h=220&q=70" alt="">
   </div>
 </div>
+
+<!-- VIDEO SECTION -->
+<section class="video-section">
+  <div class="video-section-inner">
+    <p class="video-eyebrow r">Watch the Story</p>
+    <h2 class="video-title r d1">The Journey of <i>Gurudev</i></h2>
+    <p class="video-sub r d2">An extraordinary life, told in motion. Watch the full story before you step inside it.</p>
+    <div class="video-frame r d3">
+      <iframe
+        src="https://www.youtube.com/embed/k493mHHWTfw"
+        title="The Journey of Gurudev Sri Sri Ravishankar"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
 
 <!-- CTA -->
 <section class="cta" id="visit">
