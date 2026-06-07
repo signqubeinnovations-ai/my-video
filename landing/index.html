@@ -305,7 +305,7 @@ h1.hero-title em{font-style:italic}
 }
 .ch-card{
   position:relative;border-radius:var(--r16);overflow:hidden;
-  aspect-ratio:4/5;display:block;box-shadow:var(--shadow-sm);
+  aspect-ratio:1/1;display:block;box-shadow:var(--shadow-sm);
   background:var(--bg3);
   transition:transform .4s cubic-bezier(.25,.1,.25,1),box-shadow .4s;
 }
@@ -333,25 +333,14 @@ h1.hero-title em{font-style:italic}
   font-family:'Cormorant Garamond',serif;
   font-size:1.1rem;font-weight:400;color:#fff;line-height:1.25;margin-bottom:.4rem;
 }
-.ch-desc{
-  font-size:.75rem;color:rgba(255,255,255,.68);line-height:1.5;
-  max-height:0;overflow:hidden;
-  transition:max-height .4s ease, opacity .4s ease;
-  opacity:0;
-}
-.ch-card:hover .ch-desc{max-height:80px;opacity:1}
-/* on mobile always show desc */
-@media(max-width:800px){
-  .ch-desc{max-height:80px;opacity:1}
-}
 @media(max-width:900px){
-  .ch-grid{grid-template-columns:1fr 1fr;gap:1rem}
-  .ch-card{aspect-ratio:3/4}
+  .ch-grid{grid-template-columns:1fr 1fr;gap:.875rem}
+  .ch-card{aspect-ratio:1/1}
 }
 @media(max-width:480px){
   .ch-grid{gap:.75rem}
-  .ch-card{aspect-ratio:3/4}
-  .ch-name{font-size:1rem}
+  .ch-card{aspect-ratio:1/1}
+  .ch-name{font-size:.95rem}
 }
 
 /* ── PILLARS ── */
@@ -736,7 +725,6 @@ h1.hero-title em{font-style:italic}
         <div class="ch-body">
           <p class="ch-num">01 · Life Journey</p>
           <h3 class="ch-name">A Life of Extraordinary Grace</h3>
-          <p class="ch-desc">From a gifted childhood in Tamil Nadu to touching 180 nations — walk seven decades of Gurudev's extraordinary path.</p>
         </div>
       </a>
 
@@ -746,7 +734,6 @@ h1.hero-title em{font-style:italic}
         <div class="ch-body">
           <p class="ch-num">02 · Guided Meditation</p>
           <h3 class="ch-name">Silence Within the Cosmos</h3>
-          <p class="ch-desc">Float through sacred geometry and light as Gurudev's voice guides you into the deepest stillness — SKY Breath in VR.</p>
         </div>
       </a>
 
@@ -756,7 +743,6 @@ h1.hero-title em{font-style:italic}
         <div class="ch-body">
           <p class="ch-num">03 · Ashram Tour</p>
           <h3 class="ch-name">Heart of the Foundation</h3>
-          <p class="ch-desc">Soar over Vishalakshi Mantap and wander the sacred grounds of the world's most beloved spiritual campus.</p>
         </div>
       </a>
 
@@ -766,7 +752,6 @@ h1.hero-title em{font-style:italic}
         <div class="ch-body">
           <p class="ch-num">04 · Live Satsang</p>
           <h3 class="ch-name">One World, One Song</h3>
-          <p class="ch-desc">Step into a live satsang — music, laughter, chanting, and 100,000 hearts united in joy around Gurudev.</p>
         </div>
       </a>
 
