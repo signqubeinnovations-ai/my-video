@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Fusion of the Kollam Chinnakkada clock tower rising from an open book, with pages turning into birds">
+  <defs>
+    <linearGradient id="ktsky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2a1750"/>
+      <stop offset="55%" stop-color="#3d2178"/>
+      <stop offset="100%" stop-color="#6d3bd6"/>
+    </linearGradient>
+    <radialGradient id="kthalo" cx="50%" cy="36%" r="46%">
+      <stop offset="0%" stop-color="#ffd479" stop-opacity=".85"/>
+      <stop offset="60%" stop-color="#ff9d6b" stop-opacity=".25"/>
+      <stop offset="100%" stop-color="#ffd479" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ktgold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#cf971f"/>
+      <stop offset="35%" stop-color="#ffd479"/>
+      <stop offset="70%" stop-color="#f4b740"/>
+      <stop offset="100%" stop-color="#b9831a"/>
+    </linearGradient>
+    <linearGradient id="ktgold2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b9831a"/>
+      <stop offset="50%" stop-color="#ffd479"/>
+      <stop offset="100%" stop-color="#cf971f"/>
+    </linearGradient>
+    <linearGradient id="ktpage" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbf7ef"/>
+      <stop offset="100%" stop-color="#e8dcc4"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="800" fill="url(#ktsky)"/>
+  <circle cx="400" cy="300" r="300" fill="url(#kthalo)"/>
+
+  <!-- sparkles -->
+  <g fill="#ffd479" opacity=".85">
+    <circle cx="150" cy="150" r="4"/><circle cx="660" cy="170" r="5"/>
+    <circle cx="120" cy="430" r="3"/><circle cx="700" cy="420" r="4"/>
+    <circle cx="230" cy="110" r="3"/><circle cx="560" cy="120" r="3"/>
+    <circle cx="690" cy="300" r="3"/>
+  </g>
+
+  <!-- ===== CLOCK TOWER ===== -->
+  <g>
+    <!-- finial / flagpole -->
+    <line x1="400" y1="92" x2="400" y2="150" stroke="#ffd479" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="400" cy="92" r="8" fill="#ffd479"/>
+    <path d="M400,100 L444,114 L400,128 Z" fill="#ff6b5e"/>
+
+    <!-- domed roof -->
+    <path d="M352,210 Q400,128 448,210 Z" fill="url(#ktgold)"/>
+    <path d="M352,210 Q400,150 448,210" fill="none" stroke="#8f6512" stroke-width="2" opacity=".4"/>
+    <!-- cornice over roof base -->
+    <rect x="344" y="208" width="112" height="14" rx="3" fill="url(#ktgold2)"/>
+
+    <!-- belfry (clock housing) -->
+    <rect x="356" y="222" width="88" height="96" rx="4" fill="url(#ktgold)"/>
+    <rect x="356" y="222" width="88" height="96" rx="4" fill="none" stroke="#8f6512" stroke-width="1.5" opacity=".35"/>
+
+    <!-- clock face -->
+    <circle cx="400" cy="270" r="40" fill="#fbf7ef" stroke="url(#ktgold2)" stroke-width="7"/>
+    <g stroke="#2a1750" stroke-width="3" stroke-linecap="round">
+      <line x1="400" y1="270" x2="400" y2="244"/>   <!-- hour hand -->
+      <line x1="400" y1="270" x2="420" y2="282"/>   <!-- minute hand -->
+    </g>
+    <g fill="#2a1750">
+      <circle cx="400" cy="236" r="2"/><circle cx="434" cy="270" r="2"/>
+      <circle cx="400" cy="304" r="2"/><circle cx="366" cy="270" r="2"/>
+    </g>
+    <circle cx="400" cy="270" r="3.5" fill="#2a1750"/>
+
+    <!-- main shaft -->
+    <rect x="350" y="318" width="100" height="266" fill="url(#ktgold)"/>
+    <rect x="350" y="318" width="100" height="266" fill="none" stroke="#8f6512" stroke-width="1.5" opacity=".3"/>
+    <!-- shaft pilasters -->
+    <line x1="372" y1="320" x2="372" y2="582" stroke="#8f6512" stroke-width="2" opacity=".25"/>
+    <line x1="428" y1="320" x2="428" y2="582" stroke="#8f6512" stroke-width="2" opacity=".25"/>
+
+    <!-- arched window -->
+    <path d="M384,470 q16,-26 32,0 v54 h-32 Z" fill="#2a1750" opacity=".55"/>
+    <path d="M384,470 q16,-26 32,0" fill="none" stroke="#fbf7ef" stroke-width="2" opacity=".4"/>
+
+    <!-- engraved band -->
+    <rect x="350" y="408" width="100" height="22" fill="url(#ktgold2)"/>
+    <text x="400" y="424" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="700" fill="#5a3d08" letter-spacing="2">KOLLAM</text>
+
+    <!-- base plinth widening into the book -->
+    <path d="M334,560 L466,560 L486,584 L314,584 Z" fill="url(#ktgold2)"/>
+  </g>
+
+  <!-- ===== OPEN BOOK ===== -->
+  <g transform="translate(400,612)">
+    <ellipse cx="0" cy="44" rx="320" ry="34" fill="#000" opacity=".22"/>
+    <!-- pages -->
+    <path d="M0,-6 C-95,-58 -220,-58 -300,-16 L-300,66 C-220,24 -95,24 0,76 Z" fill="url(#ktpage)" stroke="#cdbfa0" stroke-width="2"/>
+    <path d="M0,-6 C95,-58 220,-58 300,-16 L300,66 C220,24 95,24 0,76 Z" fill="url(#ktpage)" stroke="#cdbfa0" stroke-width="2"/>
+    <!-- spine -->
+    <path d="M0,-6 L0,76" stroke="#a8895f" stroke-width="3"/>
+    <!-- page lines -->
+    <g stroke="#9a7f57" stroke-width="3" opacity=".5">
+      <line x1="-258" y1="0" x2="-70" y2="-20"/>
+      <line x1="-258" y1="18" x2="-70" y2="-2"/>
+      <line x1="-258" y1="36" x2="-70" y2="16"/>
+      <line x1="70" y1="-20" x2="258" y2="0"/>
+      <line x1="70" y1="-2" x2="258" y2="18"/>
+      <line x1="70" y1="16" x2="258" y2="36"/>
+    </g>
+  </g>
+
+  <!-- pages turning into birds -->
+  <g fill="#fbf7ef">
+    <path d="M470,250 q26,-22 52,0 q-26,-9 -52,0 Z" opacity=".9"/>
+    <path d="M540,210 q22,-18 44,0 q-22,-7 -44,0 Z" opacity=".8"/>
+    <path d="M300,250 q22,-18 44,0 q-22,-7 -44,0 Z" opacity=".85"/>
+    <path d="M250,300 q18,-15 36,0 q-18,-6 -36,0 Z" opacity=".7"/>
+  </g>
+  <g fill="#ffd479">
+    <path d="M600,180 q18,-15 36,0 q-18,-6 -36,0 Z" opacity=".9"/>
+    <path d="M210,210 q16,-13 32,0 q-16,-5 -32,0 Z" opacity=".75"/>
+  </g>
+</svg>
