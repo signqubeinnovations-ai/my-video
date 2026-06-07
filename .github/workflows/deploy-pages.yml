@@ -1,8 +1,8 @@
-name: Deploy Escape Within to GitHub Pages
+name: Deploy landing site to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [master, claude/website-project-uKVBr]
   workflow_dispatch:
 
 permissions:
