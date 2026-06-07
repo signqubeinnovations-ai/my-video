@@ -312,26 +312,25 @@ h1.hero-title em{font-style:italic}
 .ch-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
 .ch-card img{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transform:scale(1.12);
   transition:transform .7s cubic-bezier(.25,.1,.25,1);
 }
-.ch-card:hover img{transform:scale(1.05)}
+.ch-card:hover img{transform:scale(1.2)}
 /* gradient only at bottom — no black at top */
 .ch-grad{
   position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 38%,rgba(6,4,2,.65) 70%,rgba(6,4,2,.92) 100%);
-  transition:background .4s ease;
-}
-.ch-card:hover .ch-grad{
-  background:linear-gradient(180deg,transparent 25%,rgba(6,4,2,.72) 60%,rgba(6,4,2,.95) 100%);
+  background:linear-gradient(180deg,transparent 35%,rgba(4,2,1,.75) 68%,rgba(4,2,1,.96) 100%);
 }
 .ch-body{position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1.1rem}
 .ch-num{
   font-size:.62rem;font-weight:600;letter-spacing:.16em;color:var(--gold-lt);
   margin-bottom:.4rem;text-transform:uppercase;
+  text-shadow:0 1px 6px rgba(0,0,0,.6);
 }
 .ch-name{
   font-family:'Cormorant Garamond',serif;
-  font-size:1.1rem;font-weight:400;color:#fff;line-height:1.25;margin-bottom:.4rem;
+  font-size:1.15rem;font-weight:500;color:#fff;line-height:1.25;
+  text-shadow:0 1px 8px rgba(0,0,0,.55);
 }
 @media(max-width:900px){
   .ch-grid{grid-template-columns:1fr 1fr;gap:.875rem}
