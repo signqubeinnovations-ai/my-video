@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kollam Literature Fest 2026 | Uniting Minds Through Literature, Culture &amp; Dialogue</title>
   <meta name="description" content="Kollam Literature Fest 2026 — a premier cultural and intellectual gathering in Kerala celebrating literature, storytelling and ideas. Star conversations, live band nights, workshops and a movement of 15,000+ minds. Presented by Capital Media." />
-  <meta name="theme-color" content="#1d1233" />
+  <meta name="theme-color" content="#160c28" />
   <meta property="og:title" content="Kollam Literature Fest 2026" />
   <meta property="og:description" content="Uniting Minds Through Literature, Culture &amp; Dialogue. Kerala, 2026. Presented by Capital Media." />
   <meta property="og:type" content="website" />
@@ -17,295 +17,309 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink:      #1a1030;
-      --plum:     #2a1750;
-      --grape:    #3d2178;
+      /* Brand */
+      --ink:      #160c28;
+      --plum:     #241349;
+      --grape:    #3a1f72;
       --violet:   #6d3bd6;
-      --orchid:   #a368f0;
+      --orchid:   #a877f2;
       --gold:     #f4b740;
-      --gold-lt:  #ffd479;
-      --coral:    #ff6b5e;
-      --cream:    #f7f1e6;
-      --paper:    #fbf7ef;
-      --muted:    #9b8fb5;
-      --ink-soft: #4a3a6b;
+      --gold-lt:  #ffd884;
+      --coral:    #ff6f5e;
+
+      /* Light surfaces */
+      --bg:       #faf5ec;
+      --bg-2:     #f3ecdc;
+      --surface:  #fffdf8;
+      --text:     #1f1430;
+      --ink-soft: #473a64;   /* body copy on light — AA */
+      --muted:    #6a5d83;   /* secondary copy — AA */
+      --line:     #e8dec9;
       --white:    #ffffff;
-      --maxw:     1180px;
+
+      /* Scale */
+      --r-sm: 12px; --r: 18px; --r-lg: 24px; --r-pill: 100px;
+      --sh-sm: 0 2px 10px -3px rgba(31,18,54,.16);
+      --sh-md: 0 20px 48px -26px rgba(31,18,54,.55);
+      --sh-lg: 0 40px 84px -34px rgba(31,18,54,.6);
+      --maxw:  1180px;
+      --gap-section: clamp(72px, 10vw, 128px);
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      background: var(--paper);
-      color: var(--ink);
-      line-height: 1.65;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1.0625rem;          /* 17px */
+      line-height: 1.7;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    h1, h2, h3, .display { font-family: 'Fraunces', Georgia, serif; line-height: 1.04; font-weight: 700; }
+    h1, h2, h3, h4, .display { font-family: 'Fraunces', Georgia, serif; line-height: 1.06; font-weight: 700; }
 
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
 
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
+    ::selection { background: var(--gold); color: #2a1500; }
+
+    /* Accessibility: visible keyboard focus everywhere */
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+    a, button { -webkit-tap-highlight-color: transparent; }
+
+    /* Keep anchored headings clear of the fixed nav */
+    section[id], [id]{ scroll-margin-top: 88px; }
 
     .eyebrow {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--violet);
+      display: inline-flex; align-items: center; gap: .7em;
+      font-family: 'Inter', sans-serif; font-size: .76rem; font-weight: 600;
+      letter-spacing: .26em; text-transform: uppercase; color: var(--violet);
     }
+    .eyebrow::before { content: ""; width: 26px; height: 2px; background: currentColor; opacity: .6; }
+    .section-head.center .eyebrow::before { display: none; }
 
+    /* Buttons */
     .btn {
-      display: inline-flex; align-items: center; gap: 0.55em;
-      font-weight: 600; font-size: 0.98rem;
-      padding: 0.95em 1.8em; border-radius: 100px;
-      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
-      cursor: pointer; border: none;
+      display: inline-flex; align-items: center; justify-content: center; gap: .55em;
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem;
+      padding: .9em 1.7em; border-radius: var(--r-pill); cursor: pointer; border: 1px solid transparent;
+      min-height: 48px; transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
     }
-    .btn-gold { background: linear-gradient(135deg, var(--gold-lt), var(--gold)); color: #3a2400; box-shadow: 0 10px 30px -8px rgba(244,183,64,.6); }
-    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -8px rgba(244,183,64,.75); }
-    .btn-ghost { background: rgba(255,255,255,.08); color: var(--white); border: 1px solid rgba(255,255,255,.35); }
-    .btn-ghost:hover { background: rgba(255,255,255,.16); transform: translateY(-3px); }
+    .btn-gold { background: linear-gradient(135deg, var(--gold-lt), var(--gold)); color: #3a2400; box-shadow: 0 12px 30px -10px rgba(244,183,64,.65); }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -10px rgba(244,183,64,.8); }
+    .btn-gold:active { transform: translateY(0); }
+    .btn-ghost { background: rgba(255,255,255,.06); color: var(--white); border-color: rgba(255,255,255,.4); }
+    .btn-ghost:hover { background: rgba(255,255,255,.14); transform: translateY(-2px); }
+    .btn-dark { background: var(--ink); color: #fff; }
+    .btn-dark:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
 
     /* ---------- NAV ---------- */
     header.nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      transition: background .35s ease, box-shadow .35s ease, padding .35s ease;
-      padding: 20px 0;
+      transition: background .35s ease, box-shadow .35s ease, padding .35s ease, border-color .35s ease;
+      padding: 18px 0; border-bottom: 1px solid transparent;
     }
     header.nav.scrolled {
-      background: rgba(26,16,48,.86);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 4px 30px -10px rgba(0,0,0,.5);
-      padding: 12px 0;
+      background: rgba(22,12,40,.82); backdrop-filter: blur(16px) saturate(1.2);
+      border-bottom-color: rgba(255,255,255,.08); padding: 10px 0;
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-    .brand { display: flex; align-items: center; gap: 0.7em; color: var(--white); }
+    .brand { display: flex; align-items: center; gap: .7em; color: var(--white); }
     .brand-mark {
-      width: 40px; height: 40px; border-radius: 11px; flex: none;
+      width: 42px; height: 42px; border-radius: 12px; flex: none;
       background: linear-gradient(135deg, var(--gold), var(--coral));
-      display: grid; place-items: center;
-      font-family: 'Fraunces', serif; font-weight: 900; color: #2a1500; font-size: 1.2rem;
+      display: grid; place-items: center; box-shadow: 0 6px 18px -6px rgba(244,183,64,.7);
+      font-family: 'Fraunces', serif; font-weight: 900; color: #2a1500; font-size: 1.25rem;
     }
-    .brand-text { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.05rem; letter-spacing: .01em; line-height: 1.1; }
-    .brand-text small { display:block; font-family:'Inter',sans-serif; font-weight:500; font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color: var(--gold-lt); }
-    .nav-links { display: flex; align-items: center; gap: 2rem; }
-    .nav-links a.link { color: rgba(255,255,255,.82); font-size: .92rem; font-weight: 500; transition: color .2s; }
+    .brand-text { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.06rem; line-height: 1.1; }
+    .brand-text small { display:block; font-family:'Inter',sans-serif; font-weight:500; font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color: var(--gold-lt); margin-top:2px; }
+    .nav-links { display: flex; align-items: center; gap: 1.9rem; }
+    .nav-links a.link { color: rgba(255,255,255,.8); font-size: .92rem; font-weight: 500; transition: color .2s; }
     .nav-links a.link:hover { color: var(--gold-lt); }
-    .nav-toggle { display:none; background:none; border:none; color:#fff; font-size:1.6rem; cursor:pointer; }
+    .nav-toggle { display:none; background:none; border:none; color:#fff; font-size:1.6rem; cursor:pointer; line-height:1; padding:6px; }
 
     /* ---------- HERO ---------- */
     .hero {
-      position: relative; min-height: 100vh; display: flex; align-items: center;
+      position: relative; min-height: 100svh; display: flex; align-items: center;
       background:
-        radial-gradient(circle at 18% 22%, rgba(163,104,240,.40), transparent 45%),
-        radial-gradient(circle at 82% 78%, rgba(255,107,94,.30), transparent 45%),
-        radial-gradient(circle at 60% 10%, rgba(244,183,64,.22), transparent 40%),
+        radial-gradient(circle at 16% 20%, rgba(168,119,242,.42), transparent 46%),
+        radial-gradient(circle at 84% 80%, rgba(255,111,94,.3), transparent 46%),
+        radial-gradient(circle at 62% 8%, rgba(244,183,64,.2), transparent 40%),
         linear-gradient(160deg, var(--ink) 0%, var(--plum) 55%, var(--grape) 100%);
       overflow: hidden; color: var(--white);
     }
-    .hero-art {
-      position:absolute; inset:0; z-index:1;
-      background: url("img/litfest/hero.svg") center bottom / cover no-repeat;
-      opacity:.9; pointer-events:none;
-    }
+    .hero-art { position:absolute; inset:0; z-index:1; background: url("img/litfest/hero.svg") center bottom / cover no-repeat; opacity:.9; pointer-events:none; }
     .hero::after {
-      content: ""; position: absolute; inset: 0; pointer-events: none; z-index:1;
-      background-image:
-        radial-gradient(rgba(255,255,255,.5) 1px, transparent 1.4px);
-      background-size: 46px 46px;
-      opacity: .05;
+      content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+      background-image: radial-gradient(rgba(255,255,255,.5) 1px, transparent 1.4px); background-size: 46px 46px; opacity:.05;
     }
-    .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .5; animation: float 14s ease-in-out infinite; z-index:0; }
-    .blob.b1 { width: 380px; height: 380px; background: var(--violet); top: -80px; left: -90px; }
-    .blob.b2 { width: 320px; height: 320px; background: var(--coral); bottom: -90px; right: -60px; animation-delay: -5s; }
-    @keyframes float { 0%,100%{ transform: translate(0,0) scale(1);} 50%{ transform: translate(20px,-30px) scale(1.08);} }
+    .blob { position:absolute; border-radius:50%; filter:blur(70px); opacity:.5; animation: float 16s ease-in-out infinite; z-index:0; }
+    .blob.b1 { width:380px; height:380px; background:var(--violet); top:-90px; left:-90px; }
+    .blob.b2 { width:320px; height:320px; background:var(--coral); bottom:-90px; right:-60px; animation-delay:-6s; }
+    @keyframes float { 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(20px,-30px) scale(1.08);} }
 
-    .hero-inner { position: relative; z-index: 2; padding: 130px 0 90px; }
-    .hero .badge {
+    .hero-inner { position:relative; z-index:2; padding: 140px 0 96px; max-width: 880px; }
+    .badge {
       display:inline-flex; align-items:center; gap:.6em;
-      background: rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.25);
-      padding:.5em 1.1em; border-radius:100px; font-size:.78rem; font-weight:600;
-      letter-spacing:.16em; text-transform:uppercase; margin-bottom: 28px;
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.22);
+      padding:.55em 1.1em; border-radius:var(--r-pill); font-size:.74rem; font-weight:600;
+      letter-spacing:.18em; text-transform:uppercase; margin-bottom:30px; color:rgba(255,255,255,.92);
     }
-    .badge .dot { width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(244,183,64,.25); }
-    .hero h1 { font-size: clamp(2.9rem, 8vw, 6.4rem); font-weight: 900; letter-spacing: -.02em; }
-    .hero h1 .grad {
-      background: linear-gradient(100deg, var(--gold-lt), var(--coral) 60%, var(--orchid));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .hero .year { display:block; font-style: italic; font-weight: 500; }
-    .hero .tagline { font-size: clamp(1.05rem, 2.4vw, 1.5rem); color: rgba(255,255,255,.85); max-width: 620px; margin: 26px 0 14px; font-family:'Fraunces',serif; font-style: italic; }
-    .hero .place { color: var(--gold-lt); font-weight: 600; letter-spacing:.04em; margin-bottom: 38px; }
-    .hero-cta { display: flex; flex-wrap: wrap; gap: 16px; }
+    .badge .dot { width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(244,183,64,.22); }
+    .hero h1 { font-size: clamp(3rem, 8.4vw, 6.6rem); font-weight: 900; letter-spacing: -.025em; }
+    .hero h1 .grad { background: linear-gradient(100deg, var(--gold-lt), var(--coral) 58%, var(--orchid)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero .year { display:block; font-style:italic; font-weight:500; color:rgba(255,255,255,.92); }
+    .hero .tagline { font-size: clamp(1.1rem, 2.3vw, 1.5rem); color: rgba(255,255,255,.86); max-width: 36ch; margin: 28px 0 12px; font-family:'Fraunces',serif; font-style:italic; }
+    .hero .place { display:inline-flex; align-items:center; gap:.5em; color: var(--gold-lt); font-weight:600; letter-spacing:.04em; margin-bottom:40px; }
+    .hero-cta { display:flex; flex-wrap:wrap; gap:14px; }
 
-    .hero-stats { display:flex; flex-wrap:wrap; gap: 38px; margin-top: 60px; }
-    .hstat .n { font-family:'Fraunces',serif; font-size: 2.2rem; font-weight: 700; color: var(--gold-lt); }
-    .hstat .l { font-size: .82rem; color: rgba(255,255,255,.7); letter-spacing:.04em; }
+    .hero-stats { display:flex; flex-wrap:wrap; gap: 16px 40px; margin-top: 64px; }
+    .hstat { padding-left:18px; border-left:2px solid rgba(244,183,64,.55); }
+    .hstat .n { font-family:'Fraunces',serif; font-size:2.1rem; font-weight:700; color:var(--gold-lt); line-height:1; }
+    .hstat .l { font-size:.84rem; color:rgba(255,255,255,.74); letter-spacing:.03em; margin-top:6px; }
+
+    .scroll-cue { position:absolute; left:50%; bottom:26px; transform:translateX(-50%); z-index:2; color:rgba(255,255,255,.6); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; display:flex; flex-direction:column; align-items:center; gap:8px; }
+    .scroll-cue span { width:1px; height:34px; background:linear-gradient(rgba(255,255,255,.6), transparent); animation: cue 1.8s ease-in-out infinite; }
+    @keyframes cue { 0%,100%{ opacity:.3; transform:scaleY(.6);} 50%{ opacity:1; transform:scaleY(1);} }
 
     /* ---------- SECTION SHELL ---------- */
-    section { padding: 96px 0; }
+    section { padding: var(--gap-section) 0; }
     .section-head { max-width: 720px; margin-bottom: 56px; }
     .section-head.center { margin-left:auto; margin-right:auto; text-align:center; }
-    .section-head h2 { font-size: clamp(2rem, 4.5vw, 3.3rem); margin: 14px 0 18px; letter-spacing:-.01em; }
-    .section-head p { color: var(--ink-soft); font-size: 1.08rem; }
+    .section-head h2 { font-size: clamp(2rem, 4.4vw, 3.2rem); margin: 16px 0 16px; letter-spacing:-.015em; }
+    .section-head p { color: var(--ink-soft); font-size: 1.1rem; max-width: 60ch; }
+    .section-head.center p { margin-left:auto; margin-right:auto; }
 
     /* ---------- ABOUT ---------- */
-    .about { background: var(--paper); position: relative; }
-    .about-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items:center; }
-    .about-grid p { color: var(--ink-soft); font-size: 1.1rem; margin-bottom: 1.2em; }
-    .about-grid p strong { color: var(--ink); }
-    .about-figure { position:relative; border-radius:26px; overflow:hidden; box-shadow:0 30px 60px -25px rgba(42,23,80,.6); }
+    .about { background: var(--bg); position: relative; }
+    .about-grid { display:grid; grid-template-columns: 1.08fr .92fr; gap: clamp(40px,6vw,72px); align-items:center; }
+    .about-grid h2 { font-size: clamp(2rem,4.5vw,3.2rem); margin:16px 0 22px; letter-spacing:-.015em; }
+    .about-grid p { color: var(--ink-soft); font-size: 1.12rem; margin-bottom: 1.1em; max-width: 56ch; }
+    .about-grid p strong { color: var(--text); font-weight: 600; }
+    .about-figure { position:relative; border-radius:var(--r-lg); overflow:hidden; box-shadow: var(--sh-lg); border:1px solid var(--line); }
     .about-figure img { width:100%; height:100%; object-fit:cover; aspect-ratio: 1 / 1; }
-    .awaits { list-style:none; margin-top:26px; display:grid; grid-template-columns:1fr 1fr; gap:10px 22px; }
-    .awaits li { display:flex; gap:.6em; align-items:flex-start; color:var(--ink); font-size:.98rem; }
+    .awaits { list-style:none; margin-top:28px; display:grid; grid-template-columns:1fr 1fr; gap:12px 24px; }
+    .awaits li { display:flex; gap:.6em; align-items:flex-start; color:var(--text); font-size:1rem; font-weight:500; }
     .awaits li::before{ content:"✦"; color: var(--violet); flex:none; }
 
-    /* ---------- STARS ---------- */
-    .stars { background: linear-gradient(180deg, var(--ink), var(--plum)); color:#fff; position:relative; }
-    .stars .section-head h2, .stars .section-head p { color:#fff; }
-    .stars .section-head p { color: rgba(255,255,255,.78); }
-    .star-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 22px; }
-    .star {
-      background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12);
-      border-radius:20px; padding:28px; transition: transform .3s ease, background .3s ease, border-color .3s;
-      position:relative; overflow:hidden;
+    /* ---------- DARK SECTION BASE ---------- */
+    .dark { color:#fff; position:relative; }
+    .dark .section-head h2 { color:#fff; }
+    .dark .section-head p { color: rgba(255,255,255,.8); }
+    .stars { background: linear-gradient(180deg, var(--ink), var(--plum)); }
+    .star-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 20px; }
+    .card-dark {
+      background: rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.12);
+      border-radius:var(--r-lg); transition: transform .3s ease, background .3s ease, border-color .3s ease, box-shadow .3s ease;
     }
-    .star:hover{ transform: translateY(-6px); background: rgba(255,255,255,.09); border-color: rgba(244,183,64,.5); }
+    .card-dark:hover { transform: translateY(-6px); background: rgba(255,255,255,.085); border-color: rgba(244,183,64,.5); box-shadow: var(--sh-md); }
+    .star { padding:30px; position:relative; overflow:hidden; }
     .star .av {
-      width:88px;height:88px;border-radius:50%; margin-bottom:18px;
-      display:grid;place-items:center; font-family:'Fraunces',serif; font-weight:700; font-size:1.9rem; color:#2a1500;
+      width:92px;height:92px;border-radius:50%; margin-bottom:20px;
+      display:grid;place-items:center; font-family:'Fraunces',serif; font-weight:700; font-size:1.95rem; color:#2a1500;
       background: linear-gradient(135deg, var(--gold-lt), var(--coral));
       background-size:cover; background-position:center top; overflow:hidden;
-      transition: box-shadow .3s ease;
     }
-    .star .av.has-photo {
-      color:transparent;
-      border:2px solid rgba(255,255,255,.25);
-      box-shadow:0 10px 26px -10px rgba(0,0,0,.5);
-    }
-    .star h3 { font-size:1.25rem; margin-bottom:.4em; }
-    .star p { font-size:.92rem; color: rgba(255,255,255,.72); }
-    .star .tag { position:absolute; top:18px; right:18px; font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-lt); font-weight:600;}
+    .star .av.has-photo { color:transparent; border:2px solid rgba(255,255,255,.28); box-shadow:0 12px 28px -10px rgba(0,0,0,.55); }
+    .star h3 { font-size:1.3rem; margin-bottom:.4em; }
+    .star p { font-size:.95rem; color: rgba(255,255,255,.74); }
+    .star .tag { position:absolute; top:20px; right:20px; font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-lt); font-weight:600;}
 
     /* ---------- MUSIC ---------- */
-    .music { background: linear-gradient(165deg, #150b2c, #2a1750 60%, #4a1d4d); color:#fff; }
-    .music .section-head h2 { color:#fff; }
-    .music .section-head p { color: rgba(255,255,255,.78); }
-    .music-banner { border-radius:24px; overflow:hidden; margin-bottom:36px; box-shadow:0 30px 60px -28px rgba(0,0,0,.6); }
+    .music { background: linear-gradient(165deg, #130a26, #241349 60%, #3f1a52); }
+    .music-banner { border-radius:var(--r-lg); overflow:hidden; margin-bottom:38px; box-shadow: var(--sh-lg); border:1px solid rgba(255,255,255,.1); }
     .music-banner img { width:100%; height:auto; display:block; }
-    .band-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:22px; }
+    .band-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
     .band {
-      border-radius:20px; padding:30px; position:relative; overflow:hidden;
-      background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
-      transition: transform .3s; min-height: 180px; display:flex; flex-direction:column; justify-content:flex-end;
+      border-radius:var(--r-lg); padding:30px; position:relative; overflow:hidden;
+      background: rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.1);
+      transition: transform .3s ease, box-shadow .3s ease; min-height: 200px; display:flex; flex-direction:column; justify-content:flex-end;
     }
-    .band:hover{ transform: translateY(-6px) scale(1.01); }
+    .band:hover{ transform: translateY(-6px); box-shadow: var(--sh-md); }
     .band::before{ content:""; position:absolute; inset:0; opacity:.85; z-index:0; }
-    .band.b1::before{ background: linear-gradient(140deg, rgba(255,107,94,.35), transparent); }
-    .band.b2::before{ background: linear-gradient(140deg, rgba(109,59,214,.4), transparent); }
-    .band.b3::before{ background: linear-gradient(140deg, rgba(244,183,64,.35), transparent); }
-    .band.b4::before{ background: linear-gradient(140deg, rgba(163,104,240,.4), transparent); }
+    .band.b2::before{ background: linear-gradient(140deg, rgba(109,59,214,.4), transparent 70%); }
+    .band.b3::before{ background: linear-gradient(140deg, rgba(244,183,64,.32), transparent 70%); }
+    .band.b4::before{ background: linear-gradient(140deg, rgba(168,119,242,.4), transparent 70%); }
     .band > * { position:relative; z-index:1; }
     .band .ico {
-      width:72px; height:72px; border-radius:50%; margin-bottom:auto;
+      width:74px; height:74px; border-radius:50%; margin-bottom:auto;
       display:grid; place-items:center; font-size:1.7rem;
       background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18);
       background-size:cover; background-position:center top; overflow:hidden;
     }
-    .band .ico.has-photo { font-size:0; border:2px solid rgba(255,255,255,.3); box-shadow:0 10px 26px -10px rgba(0,0,0,.5); }
+    .band .ico.has-photo { font-size:0; border:2px solid rgba(255,255,255,.3); box-shadow:0 12px 28px -10px rgba(0,0,0,.55); }
     .band h3 { font-size:1.5rem; margin-bottom:.3em; }
-    .band p { font-size:.9rem; color: rgba(255,255,255,.82); }
+    .band p { font-size:.95rem; color: rgba(255,255,255,.84); }
 
     /* ---------- AUDIENCE ---------- */
-    .aud-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:22px; }
-    .aud-card {
-      background:#fff; border:1px solid #ece3d3; border-radius:20px; padding:30px;
-      box-shadow:0 14px 40px -28px rgba(42,23,80,.4); transition: transform .3s, box-shadow .3s;
-    }
-    .aud-card:hover{ transform:translateY(-6px); box-shadow:0 24px 50px -28px rgba(42,23,80,.55); }
-    .aud-card .ico { width:50px;height:50px;border-radius:13px; display:grid;place-items:center; font-size:1.4rem; margin-bottom:16px;
-      background: linear-gradient(135deg, #efe6ff, #ffe9d6); }
-    .aud-card h3 { font-size:1.22rem; margin-bottom:.5em; }
+    .audience { background: var(--bg-2); }
+    .aud-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .card-light { background: var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); box-shadow: var(--sh-sm); transition: transform .3s ease, box-shadow .3s ease; }
+    .card-light:hover { transform:translateY(-6px); box-shadow: var(--sh-md); }
+    .aud-card { padding:32px; }
+    .aud-card .ico { width:54px;height:54px;border-radius:14px; display:grid;place-items:center; font-size:1.5rem; margin-bottom:18px; background: linear-gradient(135deg, #efe6ff, #ffe9d6); }
+    .aud-card h3 { font-size:1.24rem; margin-bottom:.6em; }
     .aud-card ul { list-style:none; }
-    .aud-card li { color: var(--ink-soft); font-size:.95rem; padding:.28em 0 .28em 1.3em; position:relative; }
+    .aud-card li { color: var(--ink-soft); font-size:.97rem; padding:.3em 0 .3em 1.3em; position:relative; }
     .aud-card li::before{ content:"›"; position:absolute; left:0; color:var(--violet); font-weight:700; }
 
     /* ---------- EXPERIENCE ---------- */
-    .exp { background: linear-gradient(180deg, var(--plum), var(--ink)); color:#fff;}
-    .exp .section-head h2{color:#fff;} .exp .section-head p{color:rgba(255,255,255,.78);}
-    .exp-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px;}
-    .ecol{ background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:20px; padding:30px;}
-    .ecol .ico{ font-size:1.8rem; margin-bottom:12px;}
-    .ecol h3{ font-size:1.2rem; margin-bottom:.5em; color:var(--gold-lt);}
-    .ecol p{ font-size:.95rem; color:rgba(255,255,255,.82);}
+    .exp { background: linear-gradient(180deg, var(--plum), var(--ink)); }
+    .exp-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px;}
+    .ecol{ padding:32px;}
+    .ecol .ico{ font-size:1.9rem; margin-bottom:14px;}
+    .ecol h3{ font-size:1.22rem; margin-bottom:.5em; color:var(--gold-lt);}
+    .ecol p{ font-size:.97rem; color:rgba(255,255,255,.82);}
 
     /* ---------- IMPACT / MOVEMENT ---------- */
-    .impact { position:relative; overflow:hidden; color:#fff;
+    .impact { overflow:hidden; color:#fff;
       background:
-        radial-gradient(circle at 12% 18%, rgba(255,212,121,.22), transparent 45%),
-        radial-gradient(circle at 88% 82%, rgba(255,107,94,.30), transparent 45%),
+        radial-gradient(circle at 12% 16%, rgba(255,212,121,.22), transparent 45%),
+        radial-gradient(circle at 88% 84%, rgba(255,111,94,.3), transparent 45%),
         linear-gradient(150deg, var(--grape), var(--violet) 55%, #a8467f); }
-    .impact::after { content:""; position:absolute; inset:0; pointer-events:none;
-      background-image:radial-gradient(rgba(255,255,255,.5) 1px, transparent 1.4px); background-size:44px 44px; opacity:.06; }
+    .impact::after { content:""; position:absolute; inset:0; pointer-events:none; background-image:radial-gradient(rgba(255,255,255,.5) 1px, transparent 1.4px); background-size:44px 44px; opacity:.06; }
     .impact .section-head h2 { color:#fff; }
-    .impact .lead { max-width:760px; margin:0 auto 50px; text-align:center; font-family:'Fraunces',serif; font-style:italic; font-size:clamp(1.1rem,2.2vw,1.45rem); color:rgba(255,255,255,.92); position:relative; }
-    .impact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; position:relative; }
-    .ipill { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:20px; padding:30px; transition:transform .3s ease, background .3s ease; }
-    .ipill:hover { transform:translateY(-6px); background:rgba(255,255,255,.13); }
-    .ipill .ico { font-size:1.9rem; margin-bottom:12px; }
-    .ipill h3 { font-size:1.2rem; margin-bottom:.5em; color:var(--gold-lt); }
-    .ipill p { font-size:.94rem; color:rgba(255,255,255,.86); }
-    .outcomes { margin-top:54px; display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:18px; position:relative; }
-    .ocard { background:rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.16); border-radius:18px; padding:26px; }
-    .ocard .k { font-family:'Fraunces',serif; font-weight:700; font-size:1.12rem; color:var(--gold-lt); margin-bottom:.45em; }
-    .ocard p { font-size:.92rem; color:rgba(255,255,255,.85); }
+    .impact .lead { max-width:62ch; margin:0 auto 52px; text-align:center; font-family:'Fraunces',serif; font-style:italic; font-size:clamp(1.15rem,2.2vw,1.5rem); color:rgba(255,255,255,.94); position:relative; }
+    .impact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; position:relative; }
+    .ipill { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:var(--r-lg); padding:32px; transition:transform .3s ease, background .3s ease; }
+    .ipill:hover { transform:translateY(-6px); background:rgba(255,255,255,.14); }
+    .ipill .ico { font-size:2rem; margin-bottom:14px; }
+    .ipill h3 { font-size:1.22rem; margin-bottom:.5em; color:var(--gold-lt); }
+    .ipill p { font-size:.97rem; color:rgba(255,255,255,.88); }
+    .outcomes { margin-top:54px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; position:relative; }
+    .ocard { background:rgba(0,0,0,.2); border:1px solid rgba(255,255,255,.18); border-radius:var(--r); padding:28px; }
+    .ocard .k { font-family:'Fraunces',serif; font-weight:700; font-size:1.14rem; color:var(--gold-lt); margin-bottom:.45em; }
+    .ocard p { font-size:.95rem; color:rgba(255,255,255,.86); }
 
     /* ---------- VENUE ---------- */
-    .venue-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:50px; align-items:center;}
-    .venue-grid p{ color:var(--ink-soft); font-size:1.08rem; margin-bottom:1em;}
-    .venue-list{ list-style:none; margin-top:14px;}
-    .venue-list li{ padding:.55em 0 .55em 2em; position:relative; color:var(--ink); font-size:1rem; border-bottom:1px dashed #e2d8c7;}
+    .venue { background: var(--bg); }
+    .venue-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:clamp(40px,6vw,64px); align-items:center;}
+    .venue-grid h2 { font-size: clamp(2rem,4.5vw,3.2rem); margin:16px 0 18px; letter-spacing:-.015em; }
+    .venue-grid p{ color:var(--ink-soft); font-size:1.1rem; margin-bottom:1em; max-width:52ch;}
+    .venue-list{ list-style:none; margin-top:16px;}
+    .venue-list li{ padding:.6em 0 .6em 2em; position:relative; color:var(--text); font-size:1.02rem; border-bottom:1px solid var(--line);}
     .venue-list li::before{ content:"◆"; position:absolute; left:0; color:var(--violet);}
     .venue-visual{
-      border-radius:26px; min-height:440px; position:relative; overflow:hidden;
-      display:flex; align-items:flex-end; padding:36px; color:#fff;
-      box-shadow:0 30px 60px -28px rgba(42,23,80,.6);
+      border-radius:var(--r-lg); min-height:460px; position:relative; overflow:hidden;
+      display:flex; align-items:flex-end; padding:36px; color:#fff; box-shadow: var(--sh-lg); border:1px solid var(--line);
     }
     .venue-visual img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
-    .venue-visual .vtag{ position:relative; z-index:1; text-shadow:0 2px 20px rgba(0,0,0,.4);}
+    .venue-visual::after{ content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(20,10,36,.7), transparent 55%); z-index:0; }
+    .venue-visual .vtag{ position:relative; z-index:1;}
     .venue-visual .vtag .eyebrow{ color:var(--gold-lt);}
-    .venue-visual .vtag h3{ font-size:2rem; margin-top:.2em;}
+    .venue-visual .vtag h3{ font-size:clamp(1.5rem,3vw,2.1rem); margin-top:.25em;}
 
-    /* ---------- CTA ---------- */
+    /* ---------- FINAL CTA ---------- */
     .final {
+      color:#fff; text-align:center; overflow:hidden;
       background:
-        radial-gradient(circle at 20% 30%, rgba(163,104,240,.4), transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(255,107,94,.35), transparent 50%),
+        radial-gradient(circle at 20% 28%, rgba(168,119,242,.4), transparent 50%),
+        radial-gradient(circle at 80% 72%, rgba(255,111,94,.35), transparent 50%),
         linear-gradient(150deg, var(--ink), var(--grape));
-      color:#fff; text-align:center; position:relative; overflow:hidden;
     }
-    .final h2{ font-size:clamp(2.4rem,6vw,4.6rem); font-weight:900; letter-spacing:-.02em;}
+    .final h2{ font-size:clamp(2.4rem,6vw,4.4rem); font-weight:900; letter-spacing:-.025em;}
     .final h2 .grad{ background:linear-gradient(100deg,var(--gold-lt),var(--coral),var(--orchid)); -webkit-background-clip:text; background-clip:text; color:transparent; font-style:italic;}
-    .final p{ font-size:1.2rem; color:rgba(255,255,255,.85); max-width:600px; margin:22px auto 14px;}
-    .join-row{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:30px 0 40px;}
-    .join-row span{ background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.25); padding:.6em 1.4em; border-radius:100px; font-weight:600;}
+    .final p{ font-size:1.18rem; color:rgba(255,255,255,.86); max-width:54ch; margin:22px auto 14px;}
+    .join-row{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:32px 0 36px;}
+    .join-row span{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.24); padding:.55em 1.3em; border-radius:var(--r-pill); font-weight:600; font-size:.95rem;}
+    .cta-row { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+    .cta-secondary { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:18px; }
 
-    /* ---------- CONTACT / FOOTER ---------- */
-    .footer{ background: var(--ink); color:#fff; padding:70px 0 36px;}
-    .foot-grid{ display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.12);}
-    .foot-grid h4{ font-family:'Inter',sans-serif; font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-lt); margin-bottom:16px;}
-    .foot-grid p, .foot-grid a.fl{ color:rgba(255,255,255,.72); font-size:.95rem; display:block; padding:.2em 0;}
+    /* ---------- FOOTER ---------- */
+    .footer{ background: var(--ink); color:#fff; padding:76px 0 36px;}
+    .foot-grid{ display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap:40px; padding-bottom:42px; border-bottom:1px solid rgba(255,255,255,.12);}
+    .foot-grid h4{ font-family:'Inter',sans-serif; font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-lt); margin-bottom:16px;}
+    .foot-grid p, .foot-grid a.fl{ color:rgba(255,255,255,.72); font-size:.95rem; display:block; padding:.22em 0;}
     .foot-grid a.fl:hover{ color:var(--gold-lt);}
     .foot-brand .brand-text{ color:#fff;}
     .foot-brand p{ margin-top:14px; max-width:320px;}
-    .copy{ display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; padding-top:24px; color:rgba(255,255,255,.5); font-size:.85rem;}
+    .copy{ display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; padding-top:24px; color:rgba(255,255,255,.55); font-size:.85rem;}
 
-    .reveal{ opacity:0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease;}
+    /* ---------- MOTION ---------- */
+    .reveal{ opacity:0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease;}
     .reveal.in{ opacity:1; transform:none;}
 
     /* ---------- RESPONSIVE ---------- */
@@ -315,20 +329,25 @@
         position: fixed; top:0; right:0; bottom:0; left:0;
         height:100vh; height:100dvh; width:100%;
         background: var(--ink); flex-direction: column; align-items: flex-start; justify-content:flex-start;
-        padding: 96px 32px 40px; gap: 1.2rem; overflow-y:auto;
+        padding: 100px 32px 40px; gap: 1.1rem; overflow-y:auto;
         transform: translateX(100%); transition: transform .35s ease; z-index:90;
       }
-      .nav-links a.link { font-size:1.15rem; }
+      .nav-links a.link { font-size:1.2rem; }
       .nav-links.open { transform: none; }
-      header.nav.menu-open { background: var(--ink); box-shadow:none; }
+      header.nav.menu-open { background: var(--ink); box-shadow:none; border-bottom-color:transparent; }
       .nav-toggle { display:block; z-index:101; }
-      .venue-visual{ min-height:320px;}
+      .venue-visual{ min-height:340px;}
       .awaits{ grid-template-columns:1fr; }
+      .scroll-cue{ display:none; }
     }
     @media (max-width: 560px){
-      section{ padding:70px 0;}
-      .hero-stats{ gap:24px;}
-      .about-figure, .venue-visual{ }
+      .hero-inner{ padding:120px 0 80px; }
+      .hero-stats{ gap:14px 28px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *, *::before, *::after { animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+      .reveal{ opacity:1 !important; transform:none !important; }
     }
   </style>
 </head>
@@ -337,11 +356,11 @@
   <!-- NAV -->
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
-      <a href="#top" class="brand">
-        <span class="brand-mark">K</span>
+      <a href="#top" class="brand" aria-label="Kollam Literature Fest 2026 — home">
+        <span class="brand-mark" aria-hidden="true">K</span>
         <span class="brand-text">Kollam Lit Fest<small>Kerala · 2026</small></span>
       </a>
-      <nav class="nav-links" id="navlinks">
+      <nav class="nav-links" id="navlinks" aria-label="Primary">
         <a class="link" href="#about">About</a>
         <a class="link" href="#stars">Speakers</a>
         <a class="link" href="#music">Music</a>
@@ -349,11 +368,13 @@
         <a class="link" href="#venue">Venue</a>
         <a class="link" href="sponsors.html">Sponsors</a>
         <a class="link" href="stalls.html">Stalls</a>
-        <a class="btn btn-gold" href="#contact" style="padding:.7em 1.4em;">Get Involved</a>
+        <a class="btn btn-gold" href="#contact" style="padding:.65em 1.4em; min-height:auto;">Get Involved</a>
       </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navlinks" aria-expanded="false">☰</button>
     </div>
   </header>
+
+  <main>
 
   <!-- HERO -->
   <section class="hero" id="top">
@@ -363,7 +384,7 @@
       <span class="badge"><span class="dot"></span> Presented by Capital Media</span>
       <h1>Kollam<br><span class="grad">Literature Fest</span><span class="year">2026</span></h1>
       <p class="tagline">Uniting minds through literature, culture &amp; dialogue.</p>
-      <p class="place">Kollam · Kerala</p>
+      <p class="place">📍 Kollam · Kerala</p>
       <div class="hero-cta">
         <a href="#contact" class="btn btn-gold">Get Involved →</a>
         <a href="#about" class="btn btn-ghost">Explore the Festival</a>
@@ -374,6 +395,7 @@
         <div class="hstat"><div class="n">4</div><div class="l">Live Band Nights</div></div>
       </div>
     </div>
+    <div class="scroll-cue" aria-hidden="true">Scroll<span></span></div>
   </section>
 
   <!-- ABOUT -->
@@ -382,7 +404,7 @@
       <div class="about-grid">
         <div class="reveal">
           <span class="eyebrow">About the Festival</span>
-          <h2 style="font-size:clamp(2rem,4.5vw,3.2rem); margin:14px 0 22px;">More than books — a movement of ideas.</h2>
+          <h2>More than books — a movement of ideas.</h2>
           <p>Kollam Literature Fest 2026 is a premier cultural and intellectual gathering designed to celebrate the power of <strong>literature, storytelling, and ideas</strong>. Set in the vibrant cultural landscape of Kerala, it brings together writers, thinkers, artists and audiences from across the country.</p>
           <p>This festival is not just about books — it is about <strong>conversations that inspire change</strong>, narratives that challenge perspectives, and voices that redefine the future. From engaging panel discussions to immersive cultural experiences, the event creates a space where creativity meets intellect.</p>
           <ul class="awaits">
@@ -402,7 +424,7 @@
   </section>
 
   <!-- STARS -->
-  <section class="stars" id="stars">
+  <section class="stars dark" id="stars">
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow" style="color:var(--gold-lt);">Star Interactions &amp; Conversations</span>
@@ -410,16 +432,16 @@
         <p>Leading thinkers, artists and storytellers come together to spark dialogue across literature, cinema, music and culture.</p>
       </div>
       <div class="star-grid">
-        <div class="star reveal"><span class="tag">Author</span><div class="av" data-wiki="Shashi Tharoor">ST</div><h3>Shashi Tharoor</h3><p>Internationally acclaimed author and intellectual speaker.</p></div>
-        <div class="star reveal"><span class="tag">Novelist</span><div class="av" data-wiki="M. Mukundan">MM</div><h3>M. Mukundan</h3><p>Legendary Malayalam novelist and literary icon.</p></div>
-        <div class="star reveal"><span class="tag">Cinema</span><div class="av" data-wiki="Prakash Raj">PR</div><h3>Prakash Raj</h3><p>A powerful voice in cinema, literature and public discourse.</p></div>
-        <div class="star reveal"><span class="tag">Traveler</span><div class="av" data-wiki="Santhosh George Kulangara">SK</div><h3>Santhosh George Kulangara</h3><p>Renowned traveler and storyteller sharing global perspectives.</p></div>
+        <div class="star card-dark reveal"><span class="tag">Author</span><div class="av" data-wiki="Shashi Tharoor">ST</div><h3>Shashi Tharoor</h3><p>Internationally acclaimed author and intellectual speaker.</p></div>
+        <div class="star card-dark reveal"><span class="tag">Novelist</span><div class="av" data-wiki="M. Mukundan">MM</div><h3>M. Mukundan</h3><p>Legendary Malayalam novelist and literary icon.</p></div>
+        <div class="star card-dark reveal"><span class="tag">Cinema</span><div class="av" data-wiki="Prakash Raj">PR</div><h3>Prakash Raj</h3><p>A powerful voice in cinema, literature and public discourse.</p></div>
+        <div class="star card-dark reveal"><span class="tag">Traveler</span><div class="av" data-wiki="Santhosh George Kulangara">SK</div><h3>Santhosh George Kulangara</h3><p>Renowned traveler and storyteller sharing global perspectives.</p></div>
       </div>
     </div>
   </section>
 
   <!-- MUSIC -->
-  <section class="music" id="music">
+  <section class="music dark" id="music">
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow" style="color:var(--gold-lt);">Live Music &amp; Band Nights</span>
@@ -446,16 +468,16 @@
         <p>An open, vibrant gathering welcoming readers, students, creators and families — anyone who loves stories, ideas and culture.</p>
       </div>
       <div class="aud-grid">
-        <div class="aud-card reveal"><div class="ico">📚</div><h3>Literature &amp; Intellectual Community</h3><ul><li>Readers, writers, poets</li><li>Academicians &amp; educators</li><li>Cultural thinkers</li></ul></div>
-        <div class="aud-card reveal"><div class="ico">🎓</div><h3>Students &amp; Youth</h3><ul><li>School &amp; college students</li><li>Aspiring creators &amp; performers</li><li>Digital-native audience</li></ul></div>
-        <div class="aud-card reveal"><div class="ico">🎬</div><h3>Creative &amp; Media Community</h3><ul><li>Filmmakers, designers, musicians</li><li>Influencers &amp; content creators</li><li>Journalists &amp; media professionals</li></ul></div>
-        <div class="aud-card reveal"><div class="ico">👨‍👩‍👧</div><h3>General Public &amp; Families</h3><ul><li>Culture enthusiasts</li><li>Local community participation</li><li>Families &amp; weekend visitors</li></ul></div>
+        <div class="aud-card card-light reveal"><div class="ico">📚</div><h3>Literature &amp; Intellectual Community</h3><ul><li>Readers, writers, poets</li><li>Academicians &amp; educators</li><li>Cultural thinkers</li></ul></div>
+        <div class="aud-card card-light reveal"><div class="ico">🎓</div><h3>Students &amp; Youth</h3><ul><li>School &amp; college students</li><li>Aspiring creators &amp; performers</li><li>Digital-native audience</li></ul></div>
+        <div class="aud-card card-light reveal"><div class="ico">🎬</div><h3>Creative &amp; Media Community</h3><ul><li>Filmmakers, designers, musicians</li><li>Influencers &amp; content creators</li><li>Journalists &amp; media professionals</li></ul></div>
+        <div class="aud-card card-light reveal"><div class="ico">👨‍👩‍👧</div><h3>General Public &amp; Families</h3><ul><li>Culture enthusiasts</li><li>Local community participation</li><li>Families &amp; weekend visitors</li></ul></div>
       </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section class="exp">
+  <section class="exp dark">
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow" style="color:var(--gold-lt);">The Experience</span>
@@ -463,10 +485,10 @@
         <p>From keynote stages to quiet reading corners, every space is designed to spark a moment of connection.</p>
       </div>
       <div class="exp-cols">
-        <div class="ecol reveal"><div class="ico">🎙️</div><h3>Keynote Stages</h3><p>Headline conversations and literary talks with celebrated voices.</p></div>
-        <div class="ecol reveal"><div class="ico">🗣️</div><h3>Panels &amp; Dialogues</h3><p>Breakout discussion zones where ideas meet and perspectives shift.</p></div>
-        <div class="ecol reveal"><div class="ico">✍️</div><h3>Workshops</h3><p>Hands-on halls for aspiring writers, creators and performers.</p></div>
-        <div class="ecol reveal"><div class="ico">🎨</div><h3>Art &amp; Culture</h3><p>Installations, photo spots and book stalls woven through the venue.</p></div>
+        <div class="ecol card-dark reveal"><div class="ico">🎙️</div><h3>Keynote Stages</h3><p>Headline conversations and literary talks with celebrated voices.</p></div>
+        <div class="ecol card-dark reveal"><div class="ico">🗣️</div><h3>Panels &amp; Dialogues</h3><p>Breakout discussion zones where ideas meet and perspectives shift.</p></div>
+        <div class="ecol card-dark reveal"><div class="ico">✍️</div><h3>Workshops</h3><p>Hands-on halls for aspiring writers, creators and performers.</p></div>
+        <div class="ecol card-dark reveal"><div class="ico">🎨</div><h3>Art &amp; Culture</h3><p>Installations, photo spots and book stalls woven through the venue.</p></div>
       </div>
     </div>
   </section>
@@ -505,7 +527,7 @@
       <div class="venue-grid">
         <div class="reveal">
           <span class="eyebrow">Venue &amp; Experience</span>
-          <h2 style="font-size:clamp(2rem,4.5vw,3.2rem); margin:14px 0 18px;">Kollam · Kerala</h2>
+          <h2>Kollam · Kerala</h2>
           <p>A culturally rich coastal town with growing prominence, Kollam offers the perfect setting for a large-scale intellectual and cultural gathering — a blend of traditional Kerala aesthetics and modern festival design.</p>
           <ul class="venue-list">
             <li>Main stage for keynote sessions</li>
@@ -530,26 +552,30 @@
   <!-- FINAL CTA -->
   <section class="final" id="contact">
     <div class="wrap reveal">
-      <span class="eyebrow" style="color:var(--gold-lt);">Be Part of a Cultural Movement</span>
+      <span class="eyebrow" style="color:var(--gold-lt); justify-content:center;">Be Part of a Cultural Movement</span>
       <h2>It's more than an event —<br>it's a <span class="grad">platform for impact.</span></h2>
       <p>Kollam Literature Fest 2026 is a platform to inspire, connect and create impact. Come be part of Kerala's cultural conversation.</p>
       <div class="join-row">
         <span>Visitor</span><span>Volunteer</span><span>Partner</span><span>Participant</span>
       </div>
-      <a href="mailto:signqubeinnovations@gmail.com?subject=Kollam%20Literature%20Fest%202026" class="btn btn-gold">Get in Touch →</a>
-      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:18px;">
+      <div class="cta-row">
+        <a href="mailto:signqubeinnovations@gmail.com?subject=Kollam%20Literature%20Fest%202026" class="btn btn-gold">Get in Touch →</a>
+      </div>
+      <div class="cta-secondary">
         <a href="sponsors.html" class="btn btn-ghost">Sponsorship Options →</a>
         <a href="stalls.html" class="btn btn-ghost">Book a Stall →</a>
       </div>
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
   <footer class="footer" id="footer-contact">
     <div class="wrap">
       <div class="foot-grid">
         <div class="foot-brand">
-          <a href="#top" class="brand"><span class="brand-mark">K</span><span class="brand-text">Kollam Lit Fest<small>Kerala · 2026</small></span></a>
+          <a href="#top" class="brand"><span class="brand-mark" aria-hidden="true">K</span><span class="brand-text">Kollam Lit Fest<small>Kerala · 2026</small></span></a>
           <p>A premier cultural and intellectual gathering celebrating literature, storytelling and ideas. Presented by Capital Media.</p>
         </div>
         <div>
@@ -591,14 +617,16 @@
     // Mobile menu
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navlinks');
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
+    const setMenu = (open) => {
+      links.classList.toggle('open', open);
       nav.classList.toggle('menu-open', open);
-    });
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      links.classList.remove('open');
-      nav.classList.remove('menu-open');
-    }));
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      toggle.textContent = open ? '✕' : '☰';
+    };
+    toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 
     // Reveal on scroll
     const io = new IntersectionObserver((entries) => {
