@@ -318,7 +318,11 @@ h1.hero-title em{font-style:italic}
 /* gradient only at bottom — no black at top */
 .ch-grad{
   position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 45%,rgba(6,4,2,.7) 80%,rgba(6,4,2,.88) 100%);
+  background:linear-gradient(180deg,transparent 38%,rgba(6,4,2,.65) 70%,rgba(6,4,2,.92) 100%);
+  transition:background .4s ease;
+}
+.ch-card:hover .ch-grad{
+  background:linear-gradient(180deg,transparent 25%,rgba(6,4,2,.72) 60%,rgba(6,4,2,.95) 100%);
 }
 .ch-body{position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1.1rem}
 .ch-num{
@@ -327,7 +331,18 @@ h1.hero-title em{font-style:italic}
 }
 .ch-name{
   font-family:'Cormorant Garamond',serif;
-  font-size:1.1rem;font-weight:400;color:#fff;line-height:1.25;
+  font-size:1.1rem;font-weight:400;color:#fff;line-height:1.25;margin-bottom:.4rem;
+}
+.ch-desc{
+  font-size:.75rem;color:rgba(255,255,255,.68);line-height:1.5;
+  max-height:0;overflow:hidden;
+  transition:max-height .4s ease, opacity .4s ease;
+  opacity:0;
+}
+.ch-card:hover .ch-desc{max-height:80px;opacity:1}
+/* on mobile always show desc */
+@media(max-width:800px){
+  .ch-desc{max-height:80px;opacity:1}
 }
 @media(max-width:900px){
   .ch-grid{grid-template-columns:1fr 1fr;gap:1rem}
@@ -531,13 +546,23 @@ h1.hero-title em{font-style:italic}
 #progress{position:fixed;top:0;left:0;right:0;height:2px;background:var(--gold);transform-origin:left;transform:scaleX(0);z-index:500;will-change:transform;pointer-events:none}
 
 /* ── PILLAR PARALLAX ── */
-.p-img img{will-change:transform;transition:transform .1s linear}
+.p-img img{will-change:transform;transition:transform .12s linear;animation:imgpulse 7s ease-in-out infinite}
+@keyframes imgpulse{0%,100%{filter:brightness(1) saturate(1)}50%{filter:brightness(1.08) saturate(1.14)}}
+
+/* ── QUOTE DIVIDER KEN BURNS ── */
+.qdiv img{animation:kenburns 32s ease-in-out infinite alternate}
+
+/* ── COSMOS GLOW ── */
+@keyframes cosmosGlow{
+  0%,100%{filter:brightness(1) saturate(1) contrast(1)}
+  50%{filter:brightness(1.12) saturate(1.22) contrast(1.04)}
+}
 
 /* ── A11Y MOTION ── */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   .r{opacity:1;transform:none}
-  #hero-cv,.fq-line.r,.p-img img{transition:none!important;animation:none!important}
+  #hero-cv,.fq-line.r,.p-img img,.qdiv img{transition:none!important;animation:none!important}
 }
 </style>
 </head>
@@ -689,6 +714,7 @@ h1.hero-title em{font-style:italic}
         <div class="ch-body">
           <p class="ch-num">01 · Life Journey</p>
           <h3 class="ch-name">A Life of Extraordinary Grace</h3>
+          <p class="ch-desc">From a gifted childhood in Tamil Nadu to touching 180 nations — walk seven decades of Gurudev's extraordinary path.</p>
         </div>
       </a>
 
@@ -698,6 +724,7 @@ h1.hero-title em{font-style:italic}
         <div class="ch-body">
           <p class="ch-num">02 · Guided Meditation</p>
           <h3 class="ch-name">Silence Within the Cosmos</h3>
+          <p class="ch-desc">Float through sacred geometry and light as Gurudev's voice guides you into the deepest stillness — SKY Breath in VR.</p>
         </div>
       </a>
 
@@ -707,6 +734,7 @@ h1.hero-title em{font-style:italic}
         <div class="ch-body">
           <p class="ch-num">03 · Ashram Tour</p>
           <h3 class="ch-name">Heart of the Foundation</h3>
+          <p class="ch-desc">Soar over Vishalakshi Mantap and wander the sacred grounds of the world's most beloved spiritual campus.</p>
         </div>
       </a>
 
@@ -716,6 +744,7 @@ h1.hero-title em{font-style:italic}
         <div class="ch-body">
           <p class="ch-num">04 · Live Satsang</p>
           <h3 class="ch-name">One World, One Song</h3>
+          <p class="ch-desc">Step into a live satsang — music, laughter, chanting, and 100,000 hearts united in joy around Gurudev.</p>
         </div>
       </a>
 
@@ -751,7 +780,7 @@ h1.hero-title em{font-style:italic}
 <!-- PILLAR 2: MEDITATION -->
 <section id="meditation" class="pillar flip" aria-label="Chapter 2 — Guided Meditation">
   <div class="p-img">
-    <img src="img/vr-meditation-cosmos.webp" alt="Sacred geometry cosmos in VR" loading="lazy">
+    <img src="img/vr-meditation-cosmos.webp" alt="Sacred geometry cosmos in VR" loading="lazy" style="animation-name:imgpulse,cosmosGlow;animation-duration:7s,5s;animation-timing-function:ease-in-out,ease-in-out;animation-iteration-count:infinite,infinite">
   </div>
   <div class="p-body">
     <p class="p-n r">Chapter 02</p>
