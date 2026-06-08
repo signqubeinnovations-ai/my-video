@@ -3,867 +3,510 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Escape Within | Silence Retreats in God's Own Country</title>
-  <meta name="description" content="Advanced meditation &amp; silence programs in Kerala's most sacred natural sanctuaries. Guided by Art of Living volunteers. Transform from within." />
-  <meta property="og:title" content="Escape Within | Silence Retreats in Kerala" />
-  <meta property="og:description" content="Step away from noise. Step into yourself. Advanced silence programs in Kerala's lush spiritual heartlands." />
+  <title>Escape Within | Silence &amp; Meditation Retreats · Art of Living</title>
+  <meta name="description" content="Destination Advanced Meditation Programs by Art of Living volunteers. Sacred nature. Deep silence. Small groups. India's most transformative retreat experience." />
+  <meta property="og:title" content="Escape Within | Silence Retreats in Kerala &amp; Across India" />
+  <meta property="og:description" content="Step away from noise. Step into yourself. Advanced silence programs in India's most sacred natural sanctuaries." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --forest:   #1a3328;
-      --deep:     #0d2218;
-      --gold:     #c9963a;
-      --gold-lt:  #e8b860;
-      --sage:     #4a7a5e;
-      --sage-lt:  #6a9e7e;
-      --cream:    #faf5ed;
-      --ivory:    #f2ece0;
-      --warm:     #ede5d4;
-      --muted:    #8a7a66;
-      --text:     #2c1f10;
+      --ink:      #07100a;
+      --deep:     #0c1d14;
+      --forest:   #122518;
+      --moss:     #1b3825;
+      --sage:     #2e6647;
+      --sage-lt:  #4a8a65;
+      --gold:     #c8952e;
+      --gold-lt:  #daa84c;
+      --gold-pale:#edd080;
+      --cream:    #faf6ee;
+      --ivory:    #f2ebe0;
+      --warm:     #e8dfd0;
+      --stone:    #bfb5a5;
+      --muted:    #88785e;
+      --text:     #1c1208;
       --white:    #ffffff;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--cream); overflow-x: hidden; line-height: 1.6; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
-      background: var(--cream);
-      overflow-x: hidden;
-    }
-
-    /* ── NAVBAR ── */
+    /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 3rem;
-      background: rgba(10, 28, 20, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(201, 150, 58, 0.2);
-      transition: background 0.3s;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 68px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem;
+      background: rgba(7,16,10,0.96);
+      backdrop-filter: blur(20px) saturate(160%);
+      border-bottom: 1px solid rgba(200,149,46,0.12);
+      transition: background 0.4s;
     }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem; font-weight: 300; letter-spacing: 0.08em;
-      color: var(--gold-lt); text-decoration: none;
-    }
-    .nav-logo span { font-style: italic; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-logo { font-family: 'Cormorant', serif; font-size: 1.5rem; font-weight: 400; letter-spacing: 0.04em; color: var(--cream); text-decoration: none; }
+    .nav-logo em { color: var(--gold-lt); font-style: italic; }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
     .nav-links a {
-      color: rgba(255,255,255,0.8); text-decoration: none;
-      font-size: 0.85rem; letter-spacing: 0.06em; font-weight: 400;
+      color: rgba(250,246,238,0.7); text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 0.07em; font-weight: 400;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--gold-lt); }
-    .nav-cta {
+    .btn-nav {
       background: var(--gold); color: var(--deep);
-      padding: 0.55rem 1.4rem; border-radius: 40px;
-      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em;
-      text-decoration: none; transition: background 0.2s, transform 0.2s;
+      padding: 0.6rem 1.6rem; border-radius: 3px;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, transform 0.15s;
     }
-    .nav-cta:hover { background: var(--gold-lt); transform: translateY(-1px); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger span { width: 24px; height: 2px; background: var(--gold-lt); border-radius: 2px; }
+    .btn-nav:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--gold-lt); border-radius: 2px; }
+    @media (max-width: 768px) { nav { padding: 0 1.5rem; } .nav-links { display: none; } .hamburger { display: flex; } }
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      background:
-        linear-gradient(170deg, rgba(10,28,18,0.72) 0%, rgba(13,34,24,0.42) 50%, rgba(26,51,40,0.65) 100%),
-        url('hero-bg.jpg') center/cover no-repeat;
+      min-height: 100vh; position: relative;
       display: flex; align-items: center; justify-content: center;
-      text-align: center; position: relative; overflow: hidden;
+      background: var(--ink); overflow: hidden;
+      padding: 8rem 2rem 6rem; text-align: center;
     }
-    .hero::before {
-      content: '';
+    .hero-bg {
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse at center bottom, rgba(201,150,58,0.10) 0%, transparent 70%);
-      pointer-events: none;
+      background-image: url('hero-bg.jpeg');
+      background-size: cover; background-position: center 20%; opacity: 0.30;
     }
-
-    /* ── HERO AMBIENT LIGHT ── */
-    .hero-light {
-      position: absolute;
-      bottom: -10%; left: 50%;
-      width: 420px; height: 420px;
-      margin-left: -210px;
-      border-radius: 50%;
-      pointer-events: none; z-index: 1;
-      background: radial-gradient(circle,
-        rgba(232,184,96,0.28) 0%,
-        rgba(201,150,58,0.12) 40%,
-        transparent 70%
-      );
-      animation: orbRise 5s ease-in-out infinite;
-      filter: blur(18px);
+    .hero-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 20%, rgba(7,16,10,0.82) 100%); }
+    .hero-glow {
+      position: absolute; bottom: -15%; left: 50%; transform: translateX(-50%);
+      width: 640px; height: 420px;
+      background: radial-gradient(ellipse, rgba(200,149,46,0.13) 0%, transparent 70%);
+      filter: blur(50px); pointer-events: none;
+      animation: glowPulse 7s ease-in-out infinite;
     }
-    .hero-light-core {
-      position: absolute;
-      bottom: -5%; left: 50%;
-      width: 180px; height: 180px;
-      margin-left: -90px;
-      border-radius: 50%;
-      pointer-events: none; z-index: 1;
-      background: radial-gradient(circle,
-        rgba(255,225,140,0.32) 0%,
-        rgba(232,184,96,0.14) 50%,
-        transparent 75%
-      );
-      animation: orbRise 5s ease-in-out infinite;
-      animation-delay: 0.25s;
-      filter: blur(8px);
-    }
-    @keyframes orbRise {
-      0%   { transform: translateY(0px);   opacity: 0; }
-      18%  { opacity: 1; }
-      65%  { opacity: 0.9; }
-      100% { transform: translateY(-90vh); opacity: 0; }
-    }
-    .hero-figure {
-      position: absolute;
-      bottom: 0; left: 50%; transform: translateX(-50%);
-      width: clamp(280px, 38vw, 580px);
-      opacity: 0.92;
-      pointer-events: none;
-      filter: drop-shadow(0 0 60px rgba(201,150,58,0.18));
-    }
-    .hero-figure img { width: 100%; display: block; }
-    .hero-content { padding: 7rem 2rem 4rem; max-width: 860px; position: relative; z-index: 2; }
+    @keyframes glowPulse { 0%,100% { opacity:0.55; transform:translateX(-50%) scale(1); } 50% { opacity:1; transform:translateX(-50%) scale(1.18); } }
+    .hero-content { position: relative; z-index: 2; max-width: 860px; }
     .hero-eyebrow {
-      display: inline-block;
-      font-family: 'Inter', sans-serif; font-size: 0.75rem;
-      font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1.4rem;
-      border: 1px solid rgba(201,150,58,0.35); padding: 0.4rem 1.2rem; border-radius: 40px;
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 2.2rem;
     }
+    .hero-eyebrow::before, .hero-eyebrow::after { content: ''; width: 30px; height: 1px; background: rgba(200,149,46,0.45); flex-shrink: 0; }
     .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 7vw, 5.4rem);
-      font-weight: 400; line-height: 1.12;
-      color: var(--white); margin-bottom: 1rem;
+      font-family: 'Cormorant', serif;
+      font-size: clamp(3rem, 8vw, 5.8rem);
+      font-weight: 300; color: var(--cream); line-height: 1.08;
+      letter-spacing: -0.01em; margin-bottom: 1.8rem;
     }
-    .hero h1 em { font-style: italic; color: var(--gold-lt); }
+    .hero h1 em { color: var(--gold-pale); font-style: italic; font-weight: 400; }
     .hero-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
-      font-weight: 300; color: rgba(255,255,255,0.78);
-      line-height: 1.7; max-width: 640px; margin: 0 auto 2.4rem;
+      font-family: 'Cormorant', serif;
+      font-size: clamp(1.1rem, 2.2vw, 1.32rem);
+      font-style: italic; font-weight: 300;
+      color: rgba(250,246,238,0.58); line-height: 1.95; margin-bottom: 3rem;
     }
-    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
     .btn-primary {
       background: var(--gold); color: var(--deep);
-      padding: 0.9rem 2.2rem; border-radius: 50px;
-      font-weight: 600; font-size: 0.95rem; letter-spacing: 0.04em;
-      text-decoration: none; display: inline-block;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 24px rgba(201,150,58,0.35);
+      padding: 0.9rem 2.4rem; border-radius: 3px;
+      font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: background 0.2s, transform 0.15s;
     }
-    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 6px 32px rgba(201,150,58,0.5); }
-    .btn-outline {
-      border: 1.5px solid rgba(255,255,255,0.4); color: var(--white);
-      padding: 0.9rem 2.2rem; border-radius: 50px;
-      font-weight: 400; font-size: 0.95rem; letter-spacing: 0.04em;
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-outline-light {
+      border: 1px solid rgba(250,246,238,0.25); color: rgba(250,246,238,0.75);
+      padding: 0.9rem 2.4rem; border-radius: 3px;
+      font-weight: 400; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
       text-decoration: none; display: inline-block;
       transition: border-color 0.2s, background 0.2s;
     }
-    .btn-outline:hover { border-color: var(--gold-lt); background: rgba(201,150,58,0.12); }
-    .hero-scroll {
-      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-      color: rgba(255,255,255,0.4); font-size: 0.7rem; letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-    .scroll-line {
-      width: 1px; height: 48px;
-      background: linear-gradient(to bottom, rgba(201,150,58,0.6), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+    .btn-outline-light:hover { border-color: var(--gold-lt); background: rgba(200,149,46,0.1); color: var(--gold-pale); }
+    .hero-note { font-size: 0.75rem; color: rgba(250,246,238,0.3); letter-spacing: 0.06em; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    .pulse { width: 6px; height: 6px; border-radius: 50%; background: #4caf76; box-shadow: 0 0 0 0 rgba(76,175,118,0.4); animation: pulse 2s infinite; flex-shrink: 0; }
+    @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(76,175,118,0.4)} 70%{box-shadow:0 0 0 8px rgba(76,175,118,0)} 100%{box-shadow:0 0 0 0 rgba(76,175,118,0)} }
 
     /* ── TRUST BAR ── */
     .trust-bar {
-      background: var(--deep);
-      padding: 1.2rem 2rem;
-      display: flex; align-items: center; justify-content: center;
-      gap: 3rem; flex-wrap: wrap;
+      background: var(--deep); padding: 0;
+      display: flex; align-items: stretch; justify-content: center;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
     }
     .trust-item {
-      display: flex; align-items: center; gap: 0.6rem;
-      color: rgba(255,255,255,0.65); font-size: 0.82rem; letter-spacing: 0.04em;
+      display: flex; align-items: center; gap: 0.55rem;
+      color: rgba(250,246,238,0.55); font-size: 0.75rem; letter-spacing: 0.06em;
+      padding: 1.1rem 2.2rem; white-space: nowrap; flex-shrink: 0;
     }
+    .trust-item + .trust-item { border-left: 1px solid rgba(255,255,255,0.07); }
     .trust-item svg { color: var(--gold); flex-shrink: 0; }
-    .trust-divider { width: 1px; height: 22px; background: rgba(255,255,255,0.1); }
 
     /* ── SECTION BASE ── */
-    section { padding: 6rem 2rem; }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--sage); margin-bottom: 0.8rem;
+    section { padding: 7rem 2rem; }
+    .container { max-width: 1120px; margin: 0 auto; }
+    .sec-label {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 1rem;
     }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem); font-weight: 400;
-      line-height: 1.2; color: var(--forest); margin-bottom: 1rem;
+    .sec-title {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 300;
+      line-height: 1.15; color: var(--forest); margin-bottom: 1rem;
     }
-    .section-title em { font-style: italic; color: var(--gold); }
-    .section-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem; color: var(--muted); line-height: 1.75;
-      max-width: 560px;
-    }
-    .section-header { margin-bottom: 3.5rem; }
-    .section-header.center { text-align: center; }
-    .section-header.center .section-sub { margin: 0 auto; }
+    .sec-title em { font-style: italic; color: var(--gold); font-weight: 400; }
+    .sec-sub { font-family: 'Cormorant', serif; font-size: 1.15rem; font-style: italic; color: var(--muted); line-height: 1.8; }
+    .sec-header { margin-bottom: 4rem; }
+    .sec-header.center { text-align: center; }
+    .sec-header.center .sec-sub { max-width: 540px; margin: 0 auto; }
+    .rule { width: 48px; height: 1px; background: var(--gold); margin: 1.2rem 0; }
+    .center .rule { margin: 1.2rem auto; }
 
-    /* ── ABOUT ── */
+    /* ── ABOUT / GURUDEV ── */
     .about { background: var(--cream); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    .about-visual {
-      position: relative;
+    .about-grid { display: grid; grid-template-columns: 420px 1fr; gap: 6rem; align-items: center; }
+    .about-visual { position: relative; }
+    .about-img {
+      width: 100%; height: 500px; object-fit: cover; object-position: center top;
+      border-radius: 4px; display: block;
+      filter: brightness(0.95) contrast(1.05);
     }
-    .about-img-main {
-      width: 100%; height: 460px; object-fit: cover; border-radius: 8px;
-      background: linear-gradient(135deg, var(--forest) 0%, var(--sage) 100%);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
-    .about-img-main img { width: 100%; height: 100%; object-fit: cover; }
     .about-badge {
-      position: absolute; bottom: -20px; right: -20px;
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
       background: var(--gold); color: var(--deep);
-      padding: 1.2rem 1.4rem; border-radius: 8px;
-      text-align: center; font-weight: 600;
+      padding: 1.4rem 1.6rem; border-radius: 4px; text-align: center;
     }
-    .about-badge .num { font-family: 'Playfair Display', serif; font-size: 2rem; display: block; line-height: 1; }
-    .about-badge .lbl { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
-    .about-text p {
-      color: #5a4a38; line-height: 1.85; margin-bottom: 1.2rem;
-      font-size: 1rem;
-    }
-    .about-pillars { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.8rem; }
+    .about-badge .num { font-family: 'Cormorant', serif; font-size: 2.2rem; font-weight: 500; display: block; line-height: 1; }
+    .about-badge .lbl { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.3rem; display: block; }
+    .about-body { padding: 0.5rem 0; }
+    .about-body p { color: var(--muted); line-height: 1.9; margin-bottom: 1.2rem; font-size: 0.97rem; }
+    .about-body p strong { color: var(--text); font-weight: 600; }
+    .about-pillars { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 2rem; }
     .pillar {
-      display: flex; gap: 1rem; align-items: flex-start;
-      padding: 1rem 1.2rem; background: var(--ivory); border-radius: 8px;
+      display: flex; gap: 0.9rem; align-items: flex-start;
+      padding: 1rem 1.2rem; background: var(--ivory); border-radius: 4px;
       border-left: 3px solid var(--gold);
     }
-    .pillar-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
-    .pillar h4 { font-size: 0.9rem; font-weight: 600; color: var(--forest); margin-bottom: 0.2rem; }
-    .pillar p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .pillar-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .pillar h4 { font-size: 0.88rem; font-weight: 600; color: var(--forest); margin-bottom: 0.15rem; }
+    .pillar p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } .about-badge { display: none; } .about-img { height: 320px; } }
+
+    /* ── USP ── */
+    .usp { background: linear-gradient(165deg, var(--deep) 0%, var(--forest) 100%); padding: 7rem 2rem; }
+    .usp .sec-label { color: var(--gold); }
+    .usp .sec-title { color: var(--cream); }
+    .usp .sec-title em { color: var(--gold-lt); }
+    .usp .sec-sub { color: rgba(250,246,238,0.5); }
+    .usp .rule { background: rgba(200,149,46,0.35); }
+    .usp-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1.5px; background: rgba(200,149,46,0.12);
+      border: 1px solid rgba(200,149,46,0.12); border-radius: 6px; overflow: hidden;
+    }
+    .usp-card {
+      background: rgba(12,29,20,0.6); padding: 2.5rem 2rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      transition: background 0.3s;
+    }
+    .usp-card:hover { background: rgba(27,56,37,0.85); }
+    .usp-icon { font-size: 1.8rem; }
+    .usp-title { font-family: 'Cormorant', serif; font-size: 1.2rem; font-weight: 400; font-style: italic; color: var(--gold-lt); line-height: 1.3; }
+    .usp-body { font-size: 0.855rem; color: rgba(250,246,238,0.58); line-height: 1.85; }
+    @media (max-width: 960px) { .usp-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .usp-grid { grid-template-columns: 1fr; } }
 
     /* ── UPCOMING COURSES ── */
     .upcoming { background: var(--ivory); }
-    .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+
+    /* featured card */
+    .feat-card {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-radius: 6px; overflow: hidden;
+      box-shadow: 0 6px 40px rgba(0,0,0,0.10);
+      border: 1px solid rgba(200,149,46,0.12);
+      margin-bottom: 3rem;
+    }
+    .feat-img { position: relative; min-height: 400px; overflow: hidden; background: var(--forest); }
+    .feat-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s; }
+    .feat-card:hover .feat-img img { transform: scale(1.04); }
+    .feat-badge {
+      position: absolute; top: 1.4rem; left: 1.4rem;
+      background: var(--gold); color: var(--deep);
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 2px;
+    }
+    .feat-urgency {
+      position: absolute; bottom: 1.4rem; left: 1.4rem;
+      background: rgba(12,29,20,0.88); backdrop-filter: blur(10px);
+      border: 1px solid rgba(200,149,46,0.25);
+      padding: 0.5rem 1rem; border-radius: 2px;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .urgency-dot { width: 6px; height: 6px; border-radius: 50%; background: #e05a3a; flex-shrink: 0; animation: pulse 1.6s infinite; }
+    .feat-urgency span { font-size: 0.72rem; color: rgba(250,246,238,0.8); letter-spacing: 0.04em; }
+    .feat-body { background: var(--deep); padding: 3rem 2.5rem; display: flex; flex-direction: column; justify-content: center; gap: 1.1rem; }
+    .feat-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; color: var(--gold); text-transform: uppercase; }
+    .feat-title { font-family: 'Cormorant', serif; font-size: 2rem; font-weight: 300; color: var(--cream); line-height: 1.2; }
+    .feat-location { font-size: 0.8rem; color: rgba(250,246,238,0.4); display: flex; align-items: center; gap: 0.4rem; }
+    .feat-desc { font-family: 'Cormorant', serif; font-size: 1.05rem; font-style: italic; color: rgba(250,246,238,0.65); line-height: 1.8; }
+    .feat-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .ftag { background: rgba(200,149,46,0.1); border: 1px solid rgba(200,149,46,0.22); color: var(--gold-lt); font-size: 0.72rem; padding: 0.28rem 0.75rem; border-radius: 2px; letter-spacing: 0.04em; }
+    .feat-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: 1.2rem; border-top: 1px solid rgba(250,246,238,0.07); }
+    .feat-seats { font-size: 0.8rem; color: rgba(250,246,238,0.45); }
+    .feat-seats strong { color: var(--gold-lt); }
+    @media (max-width: 860px) { .feat-card { grid-template-columns: 1fr; } .feat-img { min-height: 260px; } .feat-body { padding: 2rem 1.5rem; } }
+
+    /* course cards */
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
     .course-card {
-      background: var(--white); border-radius: 12px;
+      background: var(--white); border-radius: 6px;
       overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.06);
       transition: transform 0.25s, box-shadow 0.25s;
       display: flex; flex-direction: column;
+      border: 1px solid rgba(200,149,46,0.08);
     }
-    .course-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
-    .course-img {
-      height: 180px;
-      background: linear-gradient(135deg, var(--forest) 0%, var(--sage) 100%);
-      position: relative; overflow: hidden; flex-shrink: 0;
-    }
-    .course-img img { width: 100%; height: 100%; object-fit: cover; }
+    .course-card:hover { transform: translateY(-4px); box-shadow: 0 10px 36px rgba(0,0,0,0.12); }
+    .course-img { height: 180px; background: var(--forest); position: relative; overflow: hidden; }
+    .course-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .course-card:hover .course-img img { transform: scale(1.06); }
     .course-tag {
       position: absolute; top: 1rem; left: 1rem;
       background: var(--gold); color: var(--deep);
-      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 0.3rem 0.8rem; border-radius: 30px;
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.28rem 0.7rem; border-radius: 2px;
     }
     .course-tag.sold { background: #c0392b; color: #fff; }
-    .course-tag.limited { background: #e67e22; color: #fff; }
-    .course-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
-    .course-date {
-      font-size: 0.75rem; color: var(--sage); font-weight: 500;
-      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.5rem;
-    }
-    .course-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem; font-weight: 600; color: var(--forest);
-      margin-bottom: 0.5rem; line-height: 1.3;
-    }
-    .course-location {
-      font-size: 0.82rem; color: var(--muted); margin-bottom: 0.8rem;
-      display: flex; align-items: center; gap: 0.3rem;
-    }
-    .course-desc { font-size: 0.87rem; color: #6a5a48; line-height: 1.6; flex: 1; margin-bottom: 1.2rem; }
-    .course-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-top: 1rem; border-top: 1px solid var(--warm);
-    }
-    .course-seats { font-size: 0.8rem; color: var(--muted); }
+    .course-tag.limited { background: #bf6e22; color: #fff; }
+    .course-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .course-date { font-size: 0.72rem; color: var(--sage); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .course-name { font-family: 'Cormorant', serif; font-size: 1.3rem; font-weight: 400; color: var(--forest); margin-bottom: 0.4rem; line-height: 1.25; }
+    .course-location { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.8rem; }
+    .course-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 1.2rem; }
+    .course-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--warm); }
+    .course-seats { font-size: 0.78rem; color: var(--muted); }
     .course-seats strong { color: var(--sage); }
     .btn-register {
       background: var(--forest); color: var(--white);
-      padding: 0.5rem 1.2rem; border-radius: 30px;
-      font-size: 0.82rem; font-weight: 500; text-decoration: none;
+      padding: 0.5rem 1.2rem; border-radius: 3px;
+      font-size: 0.78rem; font-weight: 600; text-decoration: none; letter-spacing: 0.04em;
       transition: background 0.2s;
     }
     .btn-register:hover { background: var(--gold); color: var(--deep); }
 
-    /* ── PLACES ── */
-    .places { background: var(--cream); }
-    .places-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-    .place-card {
-      border-radius: 10px; overflow: hidden; position: relative;
-      cursor: pointer; transition: transform 0.3s;
+    /* ── JOURNEY STEPS ── */
+    .journey { background: var(--cream); }
+    .journey-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border: 1px solid rgba(200,149,46,0.14); border-radius: 6px; overflow: hidden; margin-bottom: 2rem;
     }
-    .place-card:hover { transform: scale(1.02); }
-    .place-card.tall { grid-row: span 2; }
-    .place-thumb {
-      width: 100%; height: 240px;
-      background: linear-gradient(135deg, var(--forest), var(--sage-lt));
-      position: relative; overflow: hidden;
-    }
-    .place-card.tall .place-thumb { height: 100%; min-height: 490px; }
-    .place-thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .place-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,28,18,0.85) 0%, transparent 55%);
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 1.4rem;
-    }
-    .place-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem; font-weight: 600; color: var(--white); margin-bottom: 0.3rem;
-    }
-    .place-desc { font-size: 0.8rem; color: rgba(255,255,255,0.72); line-height: 1.5; }
-    .place-tag {
-      display: inline-block; margin-bottom: 0.5rem;
-      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--gold); border: 1px solid rgba(201,150,58,0.5);
-      padding: 0.2rem 0.6rem; border-radius: 20px;
-    }
+    .journey-step { padding: 2.4rem 1.8rem; border-right: 1px solid rgba(200,149,46,0.1); }
+    .journey-step:last-child { border-right: none; }
+    .journey-num { font-family: 'Cormorant', serif; font-size: 3.5rem; font-weight: 300; color: rgba(200,149,46,0.14); line-height: 1; margin-bottom: 0.5rem; }
+    .journey-day { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; }
+    .journey-title { font-family: 'Cormorant', serif; font-size: 1.25rem; font-weight: 400; font-style: italic; color: var(--forest); margin-bottom: 0.8rem; }
+    .journey-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.8; }
+    .journey-note { text-align: center; font-family: 'Cormorant', serif; font-style: italic; font-size: 1rem; color: var(--stone); }
+    @media (max-width: 960px) { .journey-steps { grid-template-columns: 1fr 1fr; } .journey-step:nth-child(2) { border-right: none; } .journey-step:nth-child(1), .journey-step:nth-child(2) { border-bottom: 1px solid rgba(200,149,46,0.1); } }
+    @media (max-width: 600px) { .journey-steps { grid-template-columns: 1fr; } .journey-step { border-right: none; border-bottom: 1px solid rgba(200,149,46,0.1); } .journey-step:last-child { border-bottom: none; } }
 
     /* ── PREMIUM JOURNEYS ── */
-    .premium-journeys {
-      background: var(--deep);
-      padding: 6rem 2rem;
-      position: relative; overflow: hidden;
-    }
-    .premium-journeys::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at top right, rgba(201,150,58,0.07) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .premium-journeys .section-label { color: var(--gold); }
-    .premium-journeys .section-title { color: var(--white); }
-    .premium-journeys .section-sub { color: rgba(255,255,255,0.6); }
-    .premium-badge-row {
-      display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;
-    }
-    .premium-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      border: 1px solid rgba(201,150,58,0.4); border-radius: 30px;
-      padding: 0.4rem 1rem; font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-lt);
-    }
-    .premium-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.2rem;
-    }
-    .premium-card {
-      border-radius: 14px; overflow: hidden; position: relative;
-      min-height: 400px; cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .premium-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-    .premium-card.featured {
-      grid-column: span 1; min-height: 480px;
-    }
+    .premium { background: var(--deep); padding: 7rem 2rem; position: relative; overflow: hidden; }
+    .premium::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top right, rgba(200,149,46,0.07) 0%, transparent 65%); pointer-events: none; }
+    .premium .sec-label { color: var(--gold); }
+    .premium .sec-title { color: var(--cream); }
+    .premium .sec-title em { color: var(--gold-lt); }
+    .premium .sec-sub { color: rgba(250,246,238,0.5); }
+    .premium .rule { background: rgba(200,149,46,0.3); }
+    .badge-row { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .premium-badge { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid rgba(200,149,46,0.3); border-radius: 2px; padding: 0.35rem 0.9rem; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-lt); }
+    .premium-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .premium-card { border-radius: 6px; overflow: hidden; position: relative; min-height: 400px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+    .premium-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+    .premium-card.feat { min-height: 480px; }
     .premium-card.wide { grid-column: span 2; min-height: 320px; }
-    .premium-img {
-      position: absolute; inset: 0;
-      background: var(--forest);
-    }
-    .premium-img img { width: 100%; height: 100%; object-fit: cover; }
+    .premium-img { position: absolute; inset: 0; background: var(--forest); }
+    .premium-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+    .premium-card:hover .premium-img img { transform: scale(1.04); }
     .premium-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(5,15,10,0.95) 0%, rgba(5,15,10,0.45) 55%, rgba(5,15,10,0.15) 100%);
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 1.8rem;
+      background: linear-gradient(to top, rgba(5,15,10,0.96) 0%, rgba(5,15,10,0.45) 55%, rgba(5,15,10,0.12) 100%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 1.8rem;
     }
-    .premium-card:hover .premium-overlay {
-      background: linear-gradient(to top, rgba(5,15,10,0.98) 0%, rgba(5,15,10,0.6) 60%, rgba(5,15,10,0.2) 100%);
-    }
-    .premium-state {
-      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
-    }
-    .premium-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.7rem; font-weight: 600; color: var(--white);
-      line-height: 1.1; margin-bottom: 0.5rem;
-    }
-    .premium-card.wide .premium-name { font-size: 1.4rem; }
-    .premium-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.7);
-      line-height: 1.5; margin-bottom: 1rem;
-    }
-    .premium-details {
-      display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.2rem;
-    }
-    .premium-detail {
-      font-size: 0.72rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
-      display: flex; align-items: center; gap: 0.3rem;
-    }
-    .premium-actions {
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .btn-interest {
-      background: rgba(201,150,58,0.15); border: 1px solid rgba(201,150,58,0.5);
-      color: var(--gold-lt); padding: 0.5rem 1.2rem; border-radius: 30px;
-      font-size: 0.8rem; font-weight: 500; text-decoration: none; letter-spacing: 0.04em;
-      transition: background 0.2s, border-color 0.2s;
-    }
+    .premium-state { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .premium-name { font-family: 'Cormorant', serif; font-size: 1.8rem; font-weight: 300; color: var(--cream); line-height: 1.1; margin-bottom: 0.5rem; }
+    .premium-card.wide .premium-name { font-size: 1.5rem; }
+    .premium-tagline { font-family: 'Cormorant', serif; font-size: 1rem; font-style: italic; color: rgba(250,246,238,0.65); line-height: 1.55; margin-bottom: 1rem; }
+    .premium-details { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .premium-detail { font-size: 0.7rem; color: rgba(250,246,238,0.48); letter-spacing: 0.04em; display: flex; align-items: center; gap: 0.3rem; }
+    .premium-actions { display: flex; align-items: center; justify-content: space-between; }
+    .btn-interest { background: rgba(200,149,46,0.14); border: 1px solid rgba(200,149,46,0.4); color: var(--gold-lt); padding: 0.5rem 1.2rem; border-radius: 3px; font-size: 0.78rem; font-weight: 500; text-decoration: none; letter-spacing: 0.04em; transition: background 0.2s, border-color 0.2s; }
     .btn-interest:hover { background: var(--gold); color: var(--deep); border-color: var(--gold); }
-    .premium-availability {
-      font-size: 0.7rem; color: rgba(255,255,255,0.4); letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    .premium-pill {
-      position: absolute; top: 1.2rem; right: 1.2rem;
-      background: rgba(201,150,58,0.2); border: 1px solid rgba(201,150,58,0.4);
-      color: var(--gold); font-size: 0.65rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.28rem 0.7rem; border-radius: 20px;
-    }
-    .premium-pill.new { background: rgba(74,122,94,0.3); border-color: rgba(74,122,94,0.6); color: #8de0b0; }
-    @media (max-width: 960px) {
-      .premium-grid { grid-template-columns: 1fr 1fr; }
-      .premium-card.wide { grid-column: span 2; }
-      .premium-card.featured { min-height: 380px; }
-    }
-    @media (max-width: 600px) {
-      .premium-grid { grid-template-columns: 1fr; }
-      .premium-card.wide { grid-column: span 1; }
-      .premium-card { min-height: 340px; }
-    }
+    .premium-avail { font-size: 0.68rem; color: rgba(250,246,238,0.35); letter-spacing: 0.06em; text-transform: uppercase; }
+    .premium-pill { position: absolute; top: 1.2rem; right: 1.2rem; background: rgba(200,149,46,0.18); border: 1px solid rgba(200,149,46,0.35); color: var(--gold); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 2px; }
+    .premium-pill.new { background: rgba(74,138,101,0.28); border-color: rgba(74,138,101,0.5); color: #8de0b0; }
+    @media (max-width: 960px) { .premium-grid { grid-template-columns: 1fr 1fr; } .premium-card.wide { grid-column: span 2; } }
+    @media (max-width: 600px) { .premium-grid { grid-template-columns: 1fr; } .premium-card.wide { grid-column: span 1; } .premium-card { min-height: 340px; } }
 
-    /* ── EXPERIENCE NUMBERS ── */
-    .numbers {
-      background: linear-gradient(135deg, var(--deep) 0%, var(--forest) 100%);
-      padding: 5rem 2rem;
-    }
-    .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
-    .num-item { display: flex; flex-direction: column; align-items: center; }
-    .num-value {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.2rem; font-weight: 600; color: var(--gold);
-      line-height: 1; margin-bottom: 0.5rem;
-    }
-    .num-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); letter-spacing: 0.06em; text-transform: uppercase; }
+    /* ── NUMBERS ── */
+    .numbers { background: linear-gradient(135deg, var(--ink) 0%, var(--forest) 100%); padding: 5rem 2rem; }
+    .numbers-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+    .num-item { display: flex; flex-direction: column; align-items: center; flex: 1; padding: 2rem 1.5rem; }
+    .num-item + .num-item { border-left: 1px solid rgba(250,246,238,0.08); }
+    .num-val { font-family: 'Cormorant', serif; font-size: 3.2rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
+    .num-lbl { font-size: 0.75rem; color: rgba(250,246,238,0.45); letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
+    @media (max-width: 640px) { .numbers-inner { flex-wrap: wrap; } .num-item { flex: 1 1 45%; border-left: none; border-bottom: 1px solid rgba(250,246,238,0.08); } }
 
-    /* ── PAST COURSES / TESTIMONIALS ── */
+    /* ── TESTIMONIALS ── */
     .testimonials { background: var(--ivory); }
-    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .testi-card {
-      background: var(--white); border-radius: 10px;
-      padding: 1.8rem; position: relative;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      background: var(--white); border-radius: 6px;
+      padding: 2rem; position: relative;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      border: 1px solid var(--warm);
+      transition: transform 0.25s, box-shadow 0.25s;
     }
-    .testi-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem; font-style: italic; color: #5a4a38;
-      line-height: 1.75; margin-bottom: 1.2rem;
-    }
-    .testi-quote::before {
-      content: '\201C';
-      font-family: 'Playfair Display', serif; font-size: 3rem;
-      color: var(--gold); line-height: 0; vertical-align: -0.8rem;
-      margin-right: 0.2rem;
-    }
-    .testi-author { display: flex; align-items: center; gap: 0.8rem; }
-    .testi-avatar {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--sage), var(--forest));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 600; color: var(--white); font-size: 1rem; flex-shrink: 0;
-    }
-    .testi-name { font-weight: 600; font-size: 0.88rem; color: var(--forest); }
-    .testi-place { font-size: 0.75rem; color: var(--muted); }
-    .testi-course {
-      position: absolute; top: 1.2rem; right: 1.2rem;
-      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em;
-      color: var(--sage); text-transform: uppercase;
-      background: rgba(74,122,94,0.1); padding: 0.25rem 0.6rem; border-radius: 20px;
-    }
-    .past-courses-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 3rem; }
-    .past-card {
-      background: var(--white); border-radius: 10px; overflow: hidden;
-      display: flex; flex-direction: column;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    .past-img {
-      height: 140px;
-      background: linear-gradient(135deg, var(--forest), var(--sage));
-      overflow: hidden;
-    }
-    .past-img img { width: 100%; height: 100%; object-fit: cover; }
-    .past-body { padding: 1.1rem; }
-    .past-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--forest); margin-bottom: 0.3rem; }
-    .past-meta { font-size: 0.78rem; color: var(--muted); }
+    .testi-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.09); }
+    .testi-rule { width: 32px; height: 2px; background: var(--gold); margin-bottom: 1.2rem; }
+    .testi-quote { font-family: 'Cormorant', serif; font-size: 1.08rem; font-style: italic; color: var(--text); line-height: 1.75; margin-bottom: 1.5rem; }
+    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+    .testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--sage), var(--forest)); display: flex; align-items: center; justify-content: center; font-weight: 600; color: var(--white); font-size: 0.9rem; flex-shrink: 0; }
+    .testi-name { font-weight: 600; font-size: 0.85rem; color: var(--forest); }
+    .testi-place { font-size: 0.73rem; color: var(--stone); margin-top: 0.1rem; }
+    .testi-course { position: absolute; top: 1.2rem; right: 1.2rem; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.07em; color: var(--sage); text-transform: uppercase; background: rgba(46,102,71,0.08); padding: 0.22rem 0.6rem; border-radius: 2px; }
+    @media (max-width: 960px) { .testi-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .testi-grid { grid-template-columns: 1fr; } }
 
-    /* ── PROCESS / HOW IT WORKS ── */
+    /* ── PROCESS ── */
     .process { background: var(--cream); }
     .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
-    .process-steps::before {
-      content: '';
-      position: absolute; top: 2rem; left: 12%; right: 12%; height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    .process-line {
+      position: absolute; top: 22px; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(200,149,46,0.4), transparent);
     }
     .step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 0.5rem; }
-    .step-num {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--gold); color: var(--deep);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
-      margin-bottom: 1.2rem; position: relative; z-index: 1;
-      box-shadow: 0 0 0 8px rgba(201,150,58,0.12);
-    }
-    .step h4 { font-size: 0.95rem; font-weight: 600; color: var(--forest); margin-bottom: 0.5rem; }
-    .step p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+    .step-num { width: 44px; height: 44px; border-radius: 50%; background: var(--gold); color: var(--deep); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant', serif; font-size: 1.2rem; font-weight: 500; margin-bottom: 1.2rem; position: relative; z-index: 1; box-shadow: 0 0 0 8px rgba(200,149,46,0.10); }
+    .step h4 { font-size: 0.9rem; font-weight: 600; color: var(--forest); margin-bottom: 0.5rem; }
+    .step p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+    @media (max-width: 960px) { .process-steps { grid-template-columns: 1fr 1fr; } .process-line { display: none; } }
+    @media (max-width: 600px) { .process-steps { grid-template-columns: 1fr; } }
 
-    /* ── LEAD FORM ── */
-    .lead-form-section {
-      background: linear-gradient(135deg, var(--deep) 0%, var(--forest) 100%);
-      position: relative; overflow: hidden;
+    /* ── FORM ── */
+    .form-section { background: linear-gradient(155deg, var(--ink) 0%, var(--moss) 100%); padding: 7rem 2rem; position: relative; overflow: hidden; }
+    .form-section::before { content: ''; position: absolute; top: -80px; right: -80px; width: 420px; height: 420px; border-radius: 50%; background: rgba(200,149,46,0.04); pointer-events: none; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+    .form-text .sec-label { color: var(--gold); }
+    .form-text .sec-title { color: var(--cream); }
+    .form-text .sec-sub { color: rgba(250,246,238,0.5); }
+    .form-feats { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0.85rem; }
+    .form-feat { display: flex; align-items: flex-start; gap: 0.75rem; color: rgba(250,246,238,0.72); font-size: 0.87rem; line-height: 1.6; }
+    .form-feat::before { content: '✦'; color: var(--gold); font-size: 0.65rem; flex-shrink: 0; margin-top: 0.25rem; }
+    .form-box {
+      background: rgba(250,246,238,0.04); border: 1px solid rgba(200,149,46,0.15);
+      border-radius: 6px; padding: 2.8rem; backdrop-filter: blur(20px);
     }
-    .lead-form-section::before {
-      content: '';
-      position: absolute; top: -80px; right: -80px;
-      width: 400px; height: 400px; border-radius: 50%;
-      background: rgba(201,150,58,0.05); pointer-events: none;
-    }
-    .lead-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    .lead-text .section-label { color: var(--gold); }
-    .lead-text .section-title { color: var(--white); }
-    .lead-text .section-sub { color: rgba(255,255,255,0.65); max-width: 400px; }
-    .lead-features { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
-    .lead-feat {
-      display: flex; align-items: center; gap: 0.8rem;
-      color: rgba(255,255,255,0.8); font-size: 0.88rem;
-    }
-    .lead-feat::before { content: '✦'; color: var(--gold); font-size: 0.7rem; flex-shrink: 0; }
-    .form-card {
-      background: var(--white); border-radius: 16px;
-      padding: 2.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-    }
-    .form-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem; color: var(--forest); margin-bottom: 0.3rem;
-    }
-    .form-card .form-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.8rem; }
+    .form-box h3 { font-family: 'Cormorant', serif; font-size: 1.7rem; font-weight: 300; color: var(--cream); margin-bottom: 0.3rem; }
+    .form-box .form-sub { font-size: 0.82rem; color: rgba(250,246,238,0.38); margin-bottom: 2rem; letter-spacing: 0.04em; }
     .form-group { margin-bottom: 1.1rem; }
-    .form-group label { display: block; font-size: 0.78rem; font-weight: 500; color: var(--forest); margin-bottom: 0.4rem; letter-spacing: 0.04em; }
+    .form-group label { display: block; font-size: 0.73rem; font-weight: 500; color: rgba(250,246,238,0.5); margin-bottom: 0.4rem; letter-spacing: 0.08em; text-transform: uppercase; }
     .form-group input,
     .form-group select,
     .form-group textarea {
       width: 100%;
-      border: 1.5px solid var(--warm); border-radius: 8px;
-      padding: 0.7rem 0.9rem; font-size: 0.9rem; font-family: 'Inter', sans-serif;
-      color: var(--text); background: var(--cream);
-      outline: none; transition: border-color 0.2s;
+      background: rgba(250,246,238,0.06); border: 1px solid rgba(200,149,46,0.18);
+      border-radius: 4px; padding: 0.75rem 1rem;
+      font-size: 0.88rem; font-family: 'Inter', sans-serif;
+      color: var(--cream); outline: none; transition: border-color 0.2s, background 0.2s;
     }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--sage); background: var(--white); }
-    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(250,246,238,0.22); }
+    .form-group select option { background: var(--forest); color: var(--cream); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: rgba(200,149,46,0.55); background: rgba(250,246,238,0.09); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-submit {
-      width: 100%; background: var(--gold); color: var(--deep);
-      border: none; border-radius: 50px; padding: 0.9rem 2rem;
-      font-size: 0.95rem; font-weight: 600; letter-spacing: 0.04em;
-      cursor: pointer; transition: background 0.2s, transform 0.2s;
-      font-family: 'Inter', sans-serif; margin-top: 0.5rem;
-    }
+    .form-submit { width: 100%; background: var(--gold); color: var(--deep); border: none; border-radius: 3px; padding: 1rem 2rem; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, transform 0.15s; font-family: 'Inter', sans-serif; margin-top: 0.5rem; }
     .form-submit:hover { background: var(--gold-lt); transform: translateY(-1px); }
-    .form-privacy { font-size: 0.73rem; color: var(--muted); text-align: center; margin-top: 0.8rem; line-height: 1.5; }
+    .form-privacy { font-size: 0.7rem; color: rgba(250,246,238,0.25); text-align: center; margin-top: 1rem; line-height: 1.6; }
+    @media (max-width: 900px) { .form-grid { grid-template-columns: 1fr; gap: 3rem; } .form-row { grid-template-columns: 1fr; } }
 
     /* ── FAQ ── */
     .faq { background: var(--ivory); }
-    .faq-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.8rem; }
-    .faq-item {
-      background: var(--white); border-radius: 10px;
-      border: 1px solid var(--warm); overflow: hidden;
-    }
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.7rem; }
+    .faq-item { background: var(--white); border-radius: 4px; border: 1px solid var(--warm); overflow: hidden; }
     .faq-question {
       padding: 1.2rem 1.5rem; cursor: pointer;
       display: flex; align-items: center; justify-content: space-between;
-      font-weight: 500; font-size: 0.95rem; color: var(--forest);
-      user-select: none;
+      font-weight: 500; font-size: 0.92rem; color: var(--forest); user-select: none; gap: 1rem;
     }
-    .faq-question::after { content: '+'; font-size: 1.3rem; color: var(--gold); transition: transform 0.2s; }
-    .faq-item.open .faq-question::after { transform: rotate(45deg); }
-    .faq-answer {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s;
-      font-size: 0.88rem; color: #5a4a38; line-height: 1.75;
-      padding: 0 1.5rem;
-    }
-    .faq-item.open .faq-answer { max-height: 300px; padding: 0 1.5rem 1.2rem; }
+    .faq-icon { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(200,149,46,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--gold); font-size: 1rem; transition: transform 0.3s; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; font-size: 0.87rem; color: var(--muted); line-height: 1.8; padding: 0 1.5rem; }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 0 1.5rem 1.3rem; }
 
     /* ── FOOTER ── */
-    footer {
-      background: var(--deep);
-      padding: 4rem 2rem 2rem;
-    }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1100px; margin: 0 auto; }
-    .footer-brand { }
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300;
-      color: var(--gold-lt); margin-bottom: 0.8rem; display: block;
-    }
-    .footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 240px; }
-    .footer-social { display: flex; gap: 0.8rem; margin-top: 1.2rem; }
-    .social-btn {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem;
-      transition: background 0.2s, color 0.2s;
-    }
+    footer { background: var(--ink); padding: 4.5rem 2rem 2.5rem; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 3rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .footer-brand { max-width: 280px; }
+    .footer-logo { font-family: 'Cormorant', serif; font-size: 1.6rem; font-weight: 400; color: var(--cream); display: block; margin-bottom: 0.8rem; }
+    .footer-logo em { color: var(--gold-lt); font-style: italic; }
+    .footer-tagline { font-size: 0.83rem; color: rgba(250,246,238,0.35); line-height: 1.8; }
+    .footer-social { display: flex; gap: 0.7rem; margin-top: 1.4rem; }
+    .social-btn { width: 34px; height: 34px; border-radius: 50%; background: rgba(250,246,238,0.06); display: flex; align-items: center; justify-content: center; color: rgba(250,246,238,0.5); text-decoration: none; font-size: 0.8rem; transition: background 0.2s, color 0.2s; }
     .social-btn:hover { background: var(--gold); color: var(--deep); }
-    .footer-col h5 {
-      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
-      color: rgba(255,255,255,0.4); margin-bottom: 1rem;
-    }
+    .footer-col h5 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250,246,238,0.3); margin-bottom: 1.1rem; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-    .footer-col li a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-col li a { color: rgba(250,246,238,0.5); text-decoration: none; font-size: 0.83rem; transition: color 0.2s; }
     .footer-col li a:hover { color: var(--gold-lt); }
-    .footer-bottom {
-      max-width: 1100px; margin: 3rem auto 0;
-      padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08);
-      display: flex; align-items: center; justify-content: space-between;
-      font-size: 0.78rem; color: rgba(255,255,255,0.3);
-    }
-    .footer-aol {
-      display: flex; align-items: center; gap: 0.5rem;
-      color: rgba(255,255,255,0.4); font-size: 0.78rem;
-    }
-    .aol-badge {
-      background: rgba(255,255,255,0.08); border-radius: 4px;
-      padding: 0.2rem 0.6rem; font-size: 0.7rem; color: var(--gold);
-    }
+    .footer-bottom { padding-top: 2rem; border-top: 1px solid rgba(250,246,238,0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-copy { font-size: 0.75rem; color: rgba(250,246,238,0.2); }
+    .footer-aol { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: rgba(250,246,238,0.25); }
+    .aol-badge { background: rgba(250,246,238,0.06); border-radius: 2px; padding: 0.18rem 0.55rem; font-size: 0.68rem; color: var(--gold); }
 
-    /* ── USP SECTION ── */
-    .usp-section {
-      background: linear-gradient(160deg, var(--deep) 0%, var(--forest) 100%);
-      padding: 6rem 2rem;
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 9999;
+      display: flex; align-items: center; gap: 0.55rem;
+      background: #25D366; color: #fff;
+      padding: 0.72rem 1.3rem; border-radius: 50px;
+      text-decoration: none; font-size: 0.82rem; font-weight: 600;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .usp-section .section-label { color: var(--gold); }
-    .usp-section .section-title { color: var(--white); }
-    .usp-section .section-title em { color: var(--gold-lt); }
-    .usp-intro {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
-      font-style: italic; color: rgba(255,255,255,0.65);
-      max-width: 560px; margin: 0 auto 3.5rem; text-align: center; line-height: 1.8;
-    }
-    .usp-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1.5px; background: rgba(201,150,58,0.15);
-      border: 1px solid rgba(201,150,58,0.15); border-radius: 16px; overflow: hidden;
-    }
-    .usp-card {
-      background: rgba(13,34,24,0.7);
-      padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1rem;
-      transition: background 0.3s;
-    }
-    .usp-card:hover { background: rgba(26,51,40,0.9); }
-    .usp-icon { font-size: 2rem; }
-    .usp-title {
-      font-family: 'Playfair Display', serif; font-size: 1.15rem;
-      font-weight: 400; font-style: italic; color: var(--gold-lt);
-      line-height: 1.3;
-    }
-    .usp-body {
-      font-size: 0.875rem; color: rgba(255,255,255,0.62);
-      line-height: 1.8;
-    }
-    @media (max-width: 960px) { .usp-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .usp-grid { grid-template-columns: 1fr; } }
+    .wa-float:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(37,211,102,0.5); color: #fff; }
+    .wa-float svg { flex-shrink: 0; }
+    @media (max-width: 600px) { .wa-float .wa-label { display: none; } .wa-float { padding: 0.75rem; border-radius: 50%; } }
 
-    /* ── FEATURED COURSE ── */
-    .featured-course {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0; border-radius: 20px; overflow: hidden;
-      margin-bottom: 3rem;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
-      border: 1px solid rgba(201,150,58,0.15);
-    }
-    .featured-course-img {
-      position: relative; min-height: 420px;
-    }
-    .featured-course-img img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-    }
-    .featured-badge {
-      position: absolute; top: 1.4rem; left: 1.4rem;
-      background: var(--gold); color: var(--deep);
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 30px;
-    }
-    .featured-course-body {
-      background: var(--deep); padding: 3rem 2.5rem;
-      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
-    }
-    .featured-eyebrow {
-      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
-      color: var(--gold); text-transform: uppercase;
-    }
-    .featured-title {
-      font-family: 'Playfair Display', serif; font-size: 1.9rem;
-      font-weight: 400; color: var(--white); line-height: 1.2;
-    }
-    .featured-location {
-      font-size: 0.85rem; color: rgba(255,255,255,0.55);
-    }
-    .featured-desc {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.08rem;
-      font-style: italic; color: rgba(255,255,255,0.75); line-height: 1.8;
-    }
-    .featured-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .ftag {
-      background: rgba(201,150,58,0.12); border: 1px solid rgba(201,150,58,0.25);
-      color: var(--gold-lt); font-size: 0.75rem; padding: 0.3rem 0.8rem;
-      border-radius: 20px; letter-spacing: 0.04em;
-    }
-    .featured-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;
-      padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .featured-seats { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
-    .featured-seats strong { color: var(--gold-lt); }
-    @media (max-width: 860px) {
-      .featured-course { grid-template-columns: 1fr; }
-      .featured-course-img { min-height: 260px; }
-      .featured-course-body { padding: 2rem 1.5rem; }
-    }
-
-    /* ── INNER JOURNEY ── */
-    .journey-section { background: var(--ivory); }
-    .journey-steps {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 0; margin: 3.5rem 0 2rem;
-      border: 1px solid rgba(201,150,58,0.15); border-radius: 16px;
-      overflow: hidden;
-    }
-    .journey-step {
-      padding: 2.4rem 1.8rem;
-      border-right: 1px solid rgba(201,150,58,0.12);
-      position: relative;
-    }
-    .journey-step:last-child { border-right: none; }
-    .journey-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.2rem; font-weight: 600;
-      color: rgba(201,150,58,0.18); line-height: 1;
-      margin-bottom: 0.6rem;
-    }
-    .journey-day {
-      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem;
-    }
-    .journey-title {
-      font-family: 'Playfair Display', serif; font-size: 1.2rem;
-      font-weight: 400; color: var(--forest); margin-bottom: 0.9rem;
-      font-style: italic;
-    }
-    .journey-desc {
-      font-size: 0.88rem; color: #6a5a48; line-height: 1.75;
-    }
-    .journey-note {
-      text-align: center; padding: 1rem 0 0.5rem;
-    }
-    .journey-note p {
-      font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: 1rem; color: var(--muted);
-    }
-    @media (max-width: 960px) {
-      .journey-steps { grid-template-columns: 1fr 1fr; }
-      .journey-step:nth-child(2) { border-right: none; }
-      .journey-step:nth-child(1),
-      .journey-step:nth-child(2) { border-bottom: 1px solid rgba(201,150,58,0.12); }
-    }
-    @media (max-width: 600px) {
-      .journey-steps { grid-template-columns: 1fr; }
-      .journey-step { border-right: none; border-bottom: 1px solid rgba(201,150,58,0.12); }
-      .journey-step:last-child { border-bottom: none; }
-    }
-
-    /* ── ANIMATIONS ── */
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .about-grid, .lead-form-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-badge { display: none; }
-      .numbers-grid { grid-template-columns: repeat(2, 1fr); }
-      .testimonials-grid { grid-template-columns: 1fr 1fr; }
-      .past-courses-row { grid-template-columns: 1fr 1fr; }
-      .places-grid { grid-template-columns: 1fr 1fr; }
-      .place-card.tall { grid-row: span 1; }
-      .place-card.tall .place-thumb { min-height: 240px; }
-      .process-steps { grid-template-columns: repeat(2, 1fr); }
-      .process-steps::before { display: none; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      section { padding: 5rem 1.5rem; }
+      .usp { padding: 5rem 1.5rem; }
+      .premium { padding: 5rem 1.5rem; }
+      .form-section { padding: 5rem 1.5rem; }
     }
     @media (max-width: 600px) {
       section { padding: 4rem 1.2rem; }
-      .courses-grid { grid-template-columns: 1fr; }
-      .testimonials-grid, .past-courses-row { grid-template-columns: 1fr; }
-      .places-grid { grid-template-columns: 1fr; }
-      .numbers-grid { grid-template-columns: repeat(2, 1fr); }
-      .process-steps { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
-      .trust-bar { gap: 1.2rem; }
-      .trust-divider { display: none; }
-    }
-
-    /* ── STICKY URGENCY BAR ── */
-    /* ── WHATSAPP FLOAT ── */
-    .wa-float {
-      position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 9999;
-      display: flex; align-items: center; gap: 0.6rem;
-      background: #25D366; color: #fff;
-      padding: 0.72rem 1.3rem; border-radius: 50px;
-      text-decoration: none; font-size: 0.85rem; font-weight: 600;
-      box-shadow: 0 4px 18px rgba(37,211,102,0.45);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .wa-float:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(37,211,102,0.55); color: #fff; }
-    .wa-float svg { flex-shrink: 0; }
-    @media (max-width: 600px) {
-      .wa-float { bottom: 1.2rem; right: 1.2rem; padding: 0.65rem 1rem; font-size: 0.8rem; }
-      .wa-float .wa-label { display: none; }
-      .wa-float { padding: 0.75rem; border-radius: 50%; }
+      nav { height: 60px; }
+      .hero { padding: 5rem 1.5rem 4rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- NAV -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">Escape <span>Within</span></a>
-    <a href="#register" class="nav-cta">Reserve Now</a>
+    <a href="#" class="nav-logo">Escape <em>Within</em></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#upcoming">Programs</a></li>
+      <li><a href="#sacred-india">Sacred India</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#register" class="btn-nav">Reserve Seat</a>
     <div class="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
@@ -871,117 +514,133 @@
 
   <!-- HERO -->
   <section class="hero" id="home">
-    <div class="hero-light"></div>
-    <div class="hero-light-core"></div>
+    <div class="hero-bg"></div>
+    <div class="hero-vignette"></div>
+    <div class="hero-glow"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">Destination Advanced Meditation Programs</div>
-      <h1>A soulful expedition<br/><em>to nothingness.</em></h1>
+      <h1>A soulful expedition<br/><em>into stillness.</em></h1>
       <p class="hero-sub">
-Stillness is not something you create —<br/>
-        it is what remains when everything falls away.
+        Stillness is not something you create —<br/>
+        it is what remains when everything else falls away.
       </p>
       <div class="hero-actions">
-        <a href="#upcoming" class="btn-primary">See Upcoming Programs</a>
-        <a href="#register" class="btn-outline">Reserve Your Seat</a>
+        <a href="#upcoming" class="btn-primary">See Upcoming Programs →</a>
+        <a href="#register" class="btn-outline-light">Reserve Your Seat</a>
       </div>
-    </div>
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
+      <p class="hero-note">
+        <span class="pulse"></span>
+        Art of Living Certified · Small Groups · Volunteer-led with Love
+      </p>
     </div>
   </section>
 
   <!-- TRUST BAR -->
   <div class="trust-bar">
     <div class="trust-item">
-      <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       Art of Living Certified Programs
     </div>
-    <div class="trust-divider"></div>
     <div class="trust-item">
-      <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
-      Spiritual Destinations All Over India
+      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+      Sacred Destinations Across India
     </div>
-    <div class="trust-divider"></div>
     <div class="trust-item">
-      <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197"/></svg>
+      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197"/></svg>
       Small Groups · Deep Experience
     </div>
-    <div class="trust-divider"></div>
     <div class="trust-item">
-      <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
       Volunteer-led with Heart
     </div>
   </div>
 
-  <!-- GURUDEV & AMP -->
+  <!-- ABOUT — GURUDEV & AMP -->
   <section class="about" id="about">
     <div class="container">
       <div class="about-grid">
-        <div class="about-visual">
-          <div class="about-img-main">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Sri_Sri_Ravi_Shankar_-_new.jpg"
-              alt="Gurudev Sri Sri Ravishankar"
-              loading="lazy"
-              style="object-position: center top;"
-            />
-          </div>
+        <div class="about-visual reveal">
+          <img
+            class="about-img"
+            src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Sri_Sri_Ravi_Shankar_-_new.jpg"
+            alt="Gurudev Sri Sri Ravishankar"
+            loading="lazy"
+          />
           <div class="about-badge">
             <span class="num">180+</span>
             <span class="lbl">Countries · Art of Living</span>
           </div>
         </div>
-        <div class="about-text reveal">
-          <div class="section-header">
-            <p class="section-label">Rooted in Gurudev's Wisdom</p>
-            <h2 class="section-title">The Advanced<br/><em>Meditation Program</em></h2>
+        <div class="about-body reveal">
+          <div class="sec-header">
+            <p class="sec-label">Rooted in Gurudev's Wisdom</p>
+            <h2 class="sec-title">The Advanced<br/><em>Meditation Program</em></h2>
+            <div class="rule"></div>
           </div>
           <p>
             <strong>Gurudev Sri Sri Ravishankar</strong> — spiritual master and founder of the Art of Living Foundation — has brought the ancient science of breath, meditation, and silence to over 500 million people across 180 countries. His teachings are the living root of everything we offer.
           </p>
           <p>
-            The <strong>Advanced Meditation Program</strong> is his most powerful offering — a structured immersion into Sudarshan Kriya, extended silence, and guided inner inquiry. Escape Within brings this program to India's most sacred natural sanctuaries, held within a small circle of sincere seekers, with every detail taken care of. This is the depth most seekers have spent years looking for.
+            The <strong>Advanced Meditation Program</strong> is his most powerful offering — a structured immersion into Sudarshan Kriya, extended silence, and guided inner inquiry. Escape Within brings this program to India's most sacred natural sanctuaries, held within a small circle of sincere seekers, with every detail taken care of.
           </p>
+          <div class="about-pillars">
+            <div class="pillar">
+              <div class="pillar-icon">🤫</div>
+              <div>
+                <h4>Sacred Silence</h4>
+                <p>Active, guided unwinding — not just quiet. The deepest rest most participants have ever known.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">🌿</div>
+              <div>
+                <h4>Nature as Teacher</h4>
+                <p>Ancient forests, sacred rivers, mist-covered highlands. The land itself holds your practice.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">🙏</div>
+              <div>
+                <h4>Sangha — Spiritual Community</h4>
+                <p>A small circle of sincere seekers. Bonds formed in shared silence often last a lifetime.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- USP — WHY THIS IS UNLIKE ANYTHING ELSE -->
-  <section class="usp-section" id="why">
+  <!-- USP -->
+  <section class="usp" id="why">
     <div class="container">
-      <div class="section-header center reveal">
-        <p class="section-label">Our Unique Offering</p>
-        <h2 class="section-title">Where silence meets<br/><em>the sacred</em></h2>
-        <p class="usp-intro">This is not a wellness package. It is a rare convergence — ancient practice, living nature, and a group of souls who genuinely mean it.</p>
+      <div class="sec-header center reveal">
+        <p class="sec-label">Our Unique Offering</p>
+        <h2 class="sec-title">Where silence meets<br/><em>the sacred</em></h2>
+        <div class="rule center"></div>
+        <p class="sec-sub">This is not a wellness package. It is a rare convergence — ancient practice, living nature, and souls who genuinely mean it.</p>
       </div>
       <div class="usp-grid">
-
         <div class="usp-card reveal">
           <div class="usp-icon">🤫</div>
           <h3 class="usp-title">Sacred Silence</h3>
-          <p class="usp-body">Not just quiet — an active, guided unwinding of the mind. Silence held in nature activates layers of peace that even years of daily practice rarely touch. Participants consistently describe it as the deepest rest of their lives.</p>
+          <p class="usp-body">Not just quiet — an active, guided unwinding of the mind. Silence held in nature activates layers of peace that even years of daily practice rarely touch.</p>
         </div>
-
         <div class="usp-card reveal">
           <div class="usp-icon">🌿</div>
           <h3 class="usp-title">Nature as the Teacher</h3>
-          <p class="usp-body">Ancient forests, sacred rivers, mist-covered highlands. Every location is chosen because the land itself holds stillness. Nature doesn't just surround the practice — it enters it. You feel the difference from the first breath.</p>
+          <p class="usp-body">Ancient forests, sacred rivers, mist-covered highlands. Every location is chosen because the land itself holds stillness. Nature enters the practice from the first breath.</p>
         </div>
-
         <div class="usp-card reveal">
           <div class="usp-icon">🕉</div>
           <h3 class="usp-title">Living Spiritual Traditions</h3>
-          <p class="usp-body">Rooted in Gurudev Sri Sri Ravishankar's most advanced techniques — Sudarshan Kriya, Yoga Nidra. Practices that carry thousands of years of wisdom, offered at the sacred destinations they were always meant for.</p>
+          <p class="usp-body">Rooted in Gurudev's most advanced techniques — Sudarshan Kriya, Yoga Nidra. Practices carrying thousands of years of wisdom, at the sacred destinations they were meant for.</p>
         </div>
-
         <div class="usp-card reveal">
           <div class="usp-icon">🙏</div>
-          <h3 class="usp-title">Be Part of a Spiritual Community</h3>
-          <p class="usp-body">You are not alone on this path. Every retreat brings together a small circle of sincere seekers — people who have felt the same pull, asked the same questions, and chosen to go deeper. The bonds formed in shared silence often last a lifetime.</p>
+          <h3 class="usp-title">Spiritual Community</h3>
+          <p class="usp-body">You are not alone on this path. Every retreat brings a small circle of sincere seekers. People who have felt the same pull, asked the same questions, chosen to go deeper.</p>
         </div>
-
       </div>
     </div>
   </section>
@@ -989,38 +648,43 @@ Stillness is not something you create —<br/>
   <!-- UPCOMING COURSES -->
   <section class="upcoming" id="upcoming">
     <div class="container">
-      <div class="section-header center reveal">
-        <p class="section-label">Upcoming Programs</p>
-        <h2 class="section-title">Your next <em>inner journey</em></h2>
-        <p class="section-sub">Small groups. Immersive settings. Guided by experienced Art of Living teachers and volunteers.</p>
+      <div class="sec-header center reveal">
+        <p class="sec-label">Upcoming Programs</p>
+        <h2 class="sec-title">Your next <em>inner journey</em></h2>
+        <div class="rule center"></div>
+        <p class="sec-sub">Small groups. Immersive settings. Guided by experienced Art of Living teachers and volunteers.</p>
       </div>
 
       <!-- FEATURED NEXT PROGRAM -->
-      <div class="featured-course reveal">
-        <div class="featured-course-img">
+      <div class="feat-card reveal">
+        <div class="feat-img">
           <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kerala_backwaters.jpg?width=1200" alt="Alleppey Kerala backwaters" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1200&q=80';this.onerror=null;"/>
-          <div class="featured-badge">Next Program</div>
+          <div class="feat-badge">Next Program</div>
+          <div class="feat-urgency">
+            <span class="urgency-dot"></span>
+            <span>Only 12 seats — filling fast</span>
+          </div>
         </div>
-        <div class="featured-course-body">
-          <p class="featured-eyebrow">📅 August 8 – 11, 2026 &nbsp;·&nbsp; 3 Nights</p>
-          <h2 class="featured-title">Backwaters Stillness Program</h2>
-          <p class="featured-location">📍 Alleppey, Kerala — Houseboat Silence</p>
-          <p class="featured-desc">Silence on water. Kerala's legendary backwaters — coconut groves drifting past, open skies at dusk, and the gentle sound of the river holding your practice. A unique 3-night immersion unlike any retreat you have been on before.</p>
-          <div class="featured-tags">
+        <div class="feat-body">
+          <p class="feat-eyebrow">📅 August 8 – 11, 2026 &nbsp;·&nbsp; 3 Nights</p>
+          <h2 class="feat-title">Backwaters Stillness Program</h2>
+          <p class="feat-location">📍 Alleppey, Kerala — Houseboat Silence</p>
+          <p class="feat-desc">Silence on water. Kerala's legendary backwaters — coconut groves drifting past, open skies at dusk, and the gentle sound of the river holding your practice.</p>
+          <div class="feat-tags">
             <span class="ftag">🌿 Nature Immersion</span>
             <span class="ftag">🤫 Silence Practice</span>
             <span class="ftag">🪷 Guided Kriya</span>
             <span class="ftag">🍽 Sattvic Meals</span>
           </div>
-          <div class="featured-footer">
-            <div class="featured-seats">Only <strong>12 seats</strong> — filling fast</div>
-            <a href="#register" class="btn-primary">Reserve Your Seat</a>
+          <div class="feat-footer">
+            <div class="feat-seats">Only <strong>12 seats</strong> available</div>
+            <a href="#register" class="btn-primary">Reserve Your Seat →</a>
           </div>
         </div>
       </div>
 
+      <!-- COURSE CARDS -->
       <div class="courses-grid">
-
         <div class="course-card reveal">
           <div class="course-img">
             <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80" alt="Wayanad tropical rainforest" loading="lazy"/>
@@ -1064,7 +728,7 @@ Stillness is not something you create —<br/>
             <p class="course-date">📅 November 21–25, 2026</p>
             <h3 class="course-name">Varkala Cliff Retreat</h3>
             <p class="course-location">📍 Varkala, Kerala — Sacred Sea Cliffs</p>
-            <p class="course-desc">Practice at one of Kerala's most spiritually charged coastlines. Sunrise meditations on the cliff with the Arabian Sea below, evening kirtan, and deep Nada Yoga.</p>
+            <p class="course-desc">Practice at Kerala's most spiritually charged coastline. Sunrise meditations on the cliff with the Arabian Sea below, evening kirtan, and deep Nada Yoga.</p>
             <div class="course-footer">
               <p class="course-seats">Only <strong>6 seats</strong> left</p>
               <a href="#register" class="btn-register">Register Now</a>
@@ -1073,13 +737,13 @@ Stillness is not something you create —<br/>
         </div>
 
         <div class="course-card reveal">
-          <div class="course-img" style="background: linear-gradient(135deg, #1a3328, #4a7a5e); display:flex; align-items:center; justify-content:center;">
+          <div class="course-img" style="background: linear-gradient(135deg, var(--forest), var(--moss)); display:flex; align-items:center; justify-content:center;">
             <span style="font-size:3rem">🌙</span>
           </div>
           <div class="course-body">
             <p class="course-date">📅 Coming Soon — Winter 2026</p>
             <h3 class="course-name">Winter Solstice Silence</h3>
-            <p class="course-location">📍 Location: TBA (North Kerala Highlands)</p>
+            <p class="course-location">📍 North Kerala Highlands — Location TBA</p>
             <p class="course-desc">Our annual flagship 7-day winter retreat. The longest silence. The deepest dive. Register your interest to get first access when dates are confirmed.</p>
             <div class="course-footer">
               <p class="course-seats">Early interest open</p>
@@ -1087,18 +751,18 @@ Stillness is not something you create —<br/>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- THE INNER JOURNEY -->
-  <section class="journey-section" id="journey">
+  <section class="journey" id="journey">
     <div class="container">
-      <div class="section-header center reveal">
-        <p class="section-label">The Inner Journey</p>
-        <h2 class="section-title">What happens when<br/><em>you go quiet</em></h2>
-        <p class="section-sub" style="max-width:520px; margin:0 auto;">Most people have never given themselves more than a moment of real silence. Here is what unfolds when you finally do.</p>
+      <div class="sec-header center reveal">
+        <p class="sec-label">The Inner Journey</p>
+        <h2 class="sec-title">What happens when<br/><em>you go quiet</em></h2>
+        <div class="rule center"></div>
+        <p class="sec-sub">Most people have never given themselves more than a moment of real silence. Here is what unfolds when you finally do.</p>
       </div>
       <div class="journey-steps">
         <div class="journey-step reveal">
@@ -1117,7 +781,7 @@ Stillness is not something you create —<br/>
           <div class="journey-num">3</div>
           <div class="journey-day">Days Four &amp; Five</div>
           <h3 class="journey-title">The Opening</h3>
-          <p class="journey-desc">Meditation goes deeper than it ever has at home. Not because you are doing something different. Because everything else has stopped. This is what you came for.</p>
+          <p class="journey-desc">Meditation goes deeper than it ever has at home. Not because you are doing something different — because everything else has stopped. This is what you came for.</p>
         </div>
         <div class="journey-step reveal">
           <div class="journey-num">4</div>
@@ -1126,38 +790,35 @@ Stillness is not something you create —<br/>
           <p class="journey-desc">You come back to the same world, the same people. But something has shifted at the root. The silence comes with you — and that changes everything.</p>
         </div>
       </div>
-      <div class="journey-note reveal">
-        <p>— Every participant's journey is unique. These are the patterns we have witnessed, again and again, across retreats.</p>
-      </div>
+      <p class="journey-note reveal">— Every participant's journey is unique. These are the patterns we have witnessed, again and again, across retreats.</p>
     </div>
   </section>
 
   <!-- PREMIUM SPIRITUAL JOURNEYS -->
-  <section class="premium-journeys" id="sacred-india">
+  <section class="premium" id="sacred-india">
     <div class="container">
-      <div class="section-header center reveal">
-        <p class="section-label">Sacred India · Premium Journeys</p>
-        <h2 class="section-title">Beyond Kerala —<br/><em>All of India Awaits</em></h2>
-        <p class="section-sub">For the sincere seeker ready to go further. Curated silence immersions and pilgrimages at India's most spiritually charged destinations — Himalayan peaks, ancient temples, river banks that have held seekers for millennia.</p>
+      <div class="sec-header center reveal">
+        <p class="sec-label">Sacred India · Premium Journeys</p>
+        <h2 class="sec-title">Beyond Kerala —<br/><em>All of India Awaits</em></h2>
+        <div class="rule center"></div>
+        <p class="sec-sub">For the sincere seeker ready to go further. Curated silence immersions and pilgrimages at India's most spiritually charged destinations.</p>
       </div>
-      <div class="premium-badge-row reveal">
+      <div class="badge-row reveal">
         <span class="premium-badge">✦ Exclusive Small Groups</span>
         <span class="premium-badge">✦ Guided by Senior Teachers</span>
         <span class="premium-badge">✦ All-inclusive</span>
         <span class="premium-badge">✦ 5–10 Days</span>
       </div>
       <div class="premium-grid">
-
-        <!-- Rishikesh -->
-        <div class="premium-card featured reveal">
+        <div class="premium-card feat reveal">
           <div class="premium-img">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Laxman_Jhula_bridge_Rishikesh.jpg?width=800" alt="Rishikesh Ganges Himalayas" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80';this.onerror=null;"/>
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Laxman_Jhula_bridge_Rishikesh.jpg?width=800" alt="Rishikesh" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80';this.onerror=null;"/>
           </div>
           <span class="premium-pill">Flagship</span>
           <div class="premium-overlay">
             <p class="premium-state">Uttarakhand · Himalayan Foothills</p>
             <h3 class="premium-name">Rishikesh</h3>
-            <p class="premium-tagline">The Yoga Capital of the World — where the Ganges descends from the Himalayas and silence is the oldest tradition.</p>
+            <p class="premium-tagline">Where the Ganges descends from the Himalayas and silence is the oldest tradition.</p>
             <div class="premium-details">
               <span class="premium-detail">🏔 330m altitude</span>
               <span class="premium-detail">🕉 Ganga aarti at dawn</span>
@@ -1165,13 +826,12 @@ Stillness is not something you create —<br/>
             </div>
             <div class="premium-actions">
               <a href="#register" class="btn-interest">Express Interest</a>
-              <span class="premium-availability">Dates · Oct / Feb</span>
+              <span class="premium-avail">Oct / Feb</span>
             </div>
           </div>
         </div>
 
-        <!-- Thiruvannamalai -->
-        <div class="premium-card featured reveal">
+        <div class="premium-card feat reveal">
           <div class="premium-img">
             <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Arunachala_from_Sri_Ramana_Ashram.jpg?width=800" alt="Thiruvannamalai Arunachala" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&q=80';this.onerror=null;"/>
           </div>
@@ -1179,7 +839,7 @@ Stillness is not something you create —<br/>
           <div class="premium-overlay">
             <p class="premium-state">Tamil Nadu · South India</p>
             <h3 class="premium-name">Thiruvannamalai</h3>
-            <p class="premium-tagline">Arunachala — the sacred red mountain Ramana Maharshi called the Guru. Circumambulation at dawn. Silence that reaches deep.</p>
+            <p class="premium-tagline">The sacred red mountain Ramana Maharshi called the Guru. Silence that reaches deep.</p>
             <div class="premium-details">
               <span class="premium-detail">🔥 Sacred Arunachala fire</span>
               <span class="premium-detail">🚶 Girivalam parikrama</span>
@@ -1187,15 +847,14 @@ Stillness is not something you create —<br/>
             </div>
             <div class="premium-actions">
               <a href="#register" class="btn-interest">Express Interest</a>
-              <span class="premium-availability">Dates · Nov / Jan</span>
+              <span class="premium-avail">Nov / Jan</span>
             </div>
           </div>
         </div>
 
-        <!-- Bodh Gaya — wide card -->
         <div class="premium-card wide reveal">
           <div class="premium-img">
-            <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1000&q=80" alt="Bodh Gaya Mahabodhi Temple" loading="lazy"/>
+            <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1000&q=80" alt="Bodh Gaya" loading="lazy"/>
           </div>
           <span class="premium-pill">Sacred</span>
           <div class="premium-overlay">
@@ -1206,19 +865,17 @@ Stillness is not something you create —<br/>
               <span class="premium-detail">🌳 Bodhi Tree sanctuary</span>
               <span class="premium-detail">🪷 Mahabodhi Temple</span>
               <span class="premium-detail">📅 6 days</span>
-              <span class="premium-detail">🌡 Best: Oct–Feb</span>
             </div>
             <div class="premium-actions">
               <a href="#register" class="btn-interest">Express Interest</a>
-              <span class="premium-availability">Winter dates · TBA</span>
+              <span class="premium-avail">Winter · TBA</span>
             </div>
           </div>
         </div>
 
-        <!-- Joshimath -->
-        <div class="premium-card featured reveal">
+        <div class="premium-card feat reveal">
           <div class="premium-img">
-            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Joshimath Himalayas high altitude" loading="lazy"/>
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Joshimath Himalayas" loading="lazy"/>
           </div>
           <span class="premium-pill">High Altitude</span>
           <div class="premium-overlay">
@@ -1232,15 +889,14 @@ Stillness is not something you create —<br/>
             </div>
             <div class="premium-actions">
               <a href="#register" class="btn-interest">Express Interest</a>
-              <span class="premium-availability">Dates · May / Sep</span>
+              <span class="premium-avail">May / Sep</span>
             </div>
           </div>
         </div>
 
-        <!-- Varanasi -->
-        <div class="premium-card featured reveal">
+        <div class="premium-card feat reveal">
           <div class="premium-img">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Varanasi_Ghats.jpg?width=800" alt="Varanasi Ganges ghats" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&q=80';this.onerror=null;"/>
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Varanasi_Ghats.jpg?width=800" alt="Varanasi" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&q=80';this.onerror=null;"/>
           </div>
           <span class="premium-pill new">Upcoming</span>
           <div class="premium-overlay">
@@ -1254,24 +910,22 @@ Stillness is not something you create —<br/>
             </div>
             <div class="premium-actions">
               <a href="#register" class="btn-interest">Express Interest</a>
-              <span class="premium-availability">Dates · Nov / Dec</span>
+              <span class="premium-avail">Nov / Dec</span>
             </div>
           </div>
         </div>
 
-        <!-- Rameswaram / More CTA -->
-        <div class="premium-card reveal" style="background: linear-gradient(135deg, rgba(26,51,40,0.95), rgba(13,34,24,0.98)); border: 1px solid rgba(201,150,58,0.2); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:2rem; min-height:400px;">
-          <div style="font-size:2.5rem; margin-bottom:1.2rem;">🕉</div>
-          <p style="font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem;">Also Exploring</p>
-          <h3 style="font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--white); line-height:1.4; margin-bottom:1rem; font-weight:400;">
+        <div class="premium-card reveal" style="background: linear-gradient(135deg, rgba(27,56,37,0.95), rgba(12,29,20,0.98)); border: 1px solid rgba(200,149,46,0.15); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:2rem; min-height:400px;">
+          <div style="font-size:2.2rem; margin-bottom:1.2rem;">🕉</div>
+          <p style="font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem;">Also Exploring</p>
+          <h3 style="font-family:'Cormorant',serif; font-size:1.25rem; font-weight:300; color:var(--cream); line-height:1.45; margin-bottom:1rem;">
             Rameswaram · Haridwar<br/>Spiti Valley · Auroville<br/>Mysore · Coimbatore
           </h3>
-          <p style="font-size:0.82rem; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:1.5rem; max-width:220px;">
+          <p style="font-size:0.82rem; color:rgba(250,246,238,0.4); line-height:1.75; margin-bottom:1.5rem; max-width:220px;">
             More sacred journeys are being planned. Register your interest and tell us where you feel called.
           </p>
           <a href="#register" class="btn-interest">Tell Us Your Dream Destination</a>
         </div>
-
       </div>
     </div>
   </section>
@@ -1279,102 +933,89 @@ Stillness is not something you create —<br/>
   <!-- NUMBERS -->
   <div class="numbers reveal">
     <div class="container">
-      <div class="numbers-grid">
+      <div class="numbers-inner">
         <div class="num-item">
-          <div class="num-value">500+</div>
-          <div class="num-label">Seekers Hosted</div>
+          <div class="num-val">500+</div>
+          <div class="num-lbl">Seekers Hosted</div>
         </div>
         <div class="num-item">
-          <div class="num-value">18</div>
-          <div class="num-label">Retreats Completed</div>
+          <div class="num-val">18</div>
+          <div class="num-lbl">Retreats Completed</div>
         </div>
         <div class="num-item">
-          <div class="num-value">8</div>
-          <div class="num-label">Sacred Locations</div>
+          <div class="num-val">8</div>
+          <div class="num-lbl">Sacred Locations</div>
         </div>
         <div class="num-item">
-          <div class="num-value">4.9★</div>
-          <div class="num-label">Avg. Participant Rating</div>
+          <div class="num-val">4.9★</div>
+          <div class="num-lbl">Avg. Participant Rating</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- PAST COURSES + TESTIMONIALS -->
+  <!-- TESTIMONIALS -->
   <section class="testimonials" id="stories">
     <div class="container">
-      <div class="section-header center reveal">
-        <p class="section-label">Voices from Within</p>
-        <h2 class="section-title">What seekers <em>experienced</em></h2>
-        <p class="section-sub">Every retreat leaves a mark. Here's what participants shared after returning to their daily lives.</p>
+      <div class="sec-header center reveal">
+        <p class="sec-label">Voices from Within</p>
+        <h2 class="sec-title">What seekers <em>experienced</em></h2>
+        <div class="rule center"></div>
+        <p class="sec-sub">Every retreat leaves a mark. Here's what participants shared after returning to their daily lives.</p>
       </div>
-
-
-      <div class="testimonials-grid">
+      <div class="testi-grid">
         <div class="testi-card reveal">
           <span class="testi-course">Wayanad Immersion</span>
+          <div class="testi-rule"></div>
           <p class="testi-quote">I've done multiple meditation programs, but Escape Within hit differently. Something about meditating at dawn in that ancient forest — I found a silence inside me I didn't know existed.</p>
           <div class="testi-author">
             <div class="testi-avatar">R</div>
-            <div>
-              <p class="testi-name">Rohini Nair</p>
-              <p class="testi-place">Software Lead · Bangalore</p>
-            </div>
+            <div><p class="testi-name">Rohini Nair</p><p class="testi-place">Software Lead · Bangalore</p></div>
           </div>
         </div>
         <div class="testi-card reveal">
           <span class="testi-course">Backwaters Program</span>
+          <div class="testi-rule"></div>
           <p class="testi-quote">Floating on the backwaters in silence, watching the sun set behind coconut palms — it felt like time stopped. Three days that changed six months of my inner work. Absolutely transformative.</p>
           <div class="testi-author">
             <div class="testi-avatar">A</div>
-            <div>
-              <p class="testi-name">Arjun Menon</p>
-              <p class="testi-place">Entrepreneur · Kochi</p>
-            </div>
+            <div><p class="testi-name">Arjun Menon</p><p class="testi-place">Entrepreneur · Kochi</p></div>
           </div>
         </div>
         <div class="testi-card reveal">
           <span class="testi-course">Wayanad Immersion</span>
+          <div class="testi-rule"></div>
           <p class="testi-quote">The volunteers run this with such pure intention — no commercialism, just genuine love for the practice. I've never felt safer going so deep. Already registered for the next one.</p>
           <div class="testi-author">
             <div class="testi-avatar">P</div>
-            <div>
-              <p class="testi-name">Priya Suresh</p>
-              <p class="testi-place">Doctor · Chennai</p>
-            </div>
+            <div><p class="testi-name">Priya Suresh</p><p class="testi-place">Doctor · Chennai</p></div>
           </div>
         </div>
         <div class="testi-card reveal">
           <span class="testi-course">Varkala Retreat</span>
+          <div class="testi-rule"></div>
           <p class="testi-quote">Meditating on the cliff at sunrise with the sound of waves — I cried for no reason and felt completely fine. These people know how to hold sacred space. A gift to Kerala.</p>
           <div class="testi-author">
             <div class="testi-avatar">S</div>
-            <div>
-              <p class="testi-name">Sreeja Kumar</p>
-              <p class="testi-place">Teacher · Trivandrum</p>
-            </div>
+            <div><p class="testi-name">Sreeja Kumar</p><p class="testi-place">Teacher · Trivandrum</p></div>
           </div>
         </div>
         <div class="testi-card reveal">
           <span class="testi-course">Coorg Retreat</span>
+          <div class="testi-rule"></div>
           <p class="testi-quote">As someone who's been doing Sudarshan Kriya for years, I needed something deeper. Escape Within gave me that container. The coffee forests, the silence, the sangha — perfect synergy.</p>
           <div class="testi-author">
             <div class="testi-avatar">V</div>
-            <div>
-              <p class="testi-name">Vivek Pillai</p>
-              <p class="testi-place">Architect · Mumbai</p>
-            </div>
+            <div><p class="testi-name">Vivek Pillai</p><p class="testi-place">Architect · Mumbai</p></div>
           </div>
         </div>
         <div class="testi-card reveal">
           <span class="testi-course">Wayanad Immersion</span>
+          <div class="testi-rule"></div>
           <p class="testi-quote">I was sceptical — how different can a retreat be? Very. The forest setting, the thoughtful sequencing of practices, the volunteers' sincerity. I went in tired. I came back alive.</p>
           <div class="testi-author">
             <div class="testi-avatar">L</div>
-            <div>
-              <p class="testi-name">Lakshmi Iyer</p>
-              <p class="testi-place">Finance · Coimbatore</p>
-            </div>
+            <div><p class="testi-name">Lakshmi Iyer</p><p class="testi-place">Finance · Coimbatore</p></div>
           </div>
         </div>
       </div>
@@ -1382,26 +1023,28 @@ Stillness is not something you create —<br/>
   </section>
 
   <!-- PROCESS -->
-  <section class="process">
+  <section class="process" id="process">
     <div class="container">
-      <div class="section-header center reveal">
-        <p class="section-label">How It Works</p>
-        <h2 class="section-title">Your path to the <em>retreat</em></h2>
+      <div class="sec-header center reveal">
+        <p class="sec-label">How It Works</p>
+        <h2 class="sec-title">Your path to the <em>retreat</em></h2>
+        <div class="rule center"></div>
       </div>
       <div class="process-steps">
+        <div class="process-line"></div>
         <div class="step reveal">
           <div class="step-num">1</div>
           <h4>Register Interest</h4>
-          <p>Fill the form below with your preferred dates and location. We'll confirm your eligibility (prior Art of Living course required).</p>
+          <p>Fill the form below with your preferred dates and location. We confirm your eligibility — prior Art of Living course required.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">2</div>
           <h4>Personal Connect</h4>
-          <p>A volunteer calls you to understand your practice background and answer questions. This helps us ensure the right fit.</p>
+          <p>A volunteer calls you to understand your practice background and answer questions. This ensures the right fit for everyone.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">3</div>
-          <h4>Confirm & Prepare</h4>
+          <h4>Confirm &amp; Prepare</h4>
           <p>Seat confirmed with a minimal deposit. We send a pre-retreat guide with what to bring, eat, and set as intention.</p>
         </div>
         <div class="step reveal">
@@ -1414,22 +1057,23 @@ Stillness is not something you create —<br/>
   </section>
 
   <!-- REGISTRATION FORM -->
-  <section class="lead-form-section" id="register">
+  <section class="form-section" id="register">
     <div class="container">
-      <div class="lead-form-grid">
-        <div class="lead-text reveal">
-          <p class="section-label">Reserve Your Place</p>
-          <h2 class="section-title">Ready to go<br/><em>deeper?</em></h2>
-          <p class="section-sub">Drop your details and we'll reach out within 24 hours. Spaces are intentionally small — once they fill, they fill.</p>
-          <div class="lead-features">
-            <p class="lead-feat">Open to anyone who has completed at least one Art of Living course</p>
-            <p class="lead-feat">Sattvic vegetarian meals and accommodation included</p>
-            <p class="lead-feat">Complete digital detox supported — bring only your presence</p>
-            <p class="lead-feat">Flexible cancellation up to 10 days before the program</p>
-            <p class="lead-feat">Volunteer-led — contribution-based model, transparent costing</p>
+      <div class="form-grid">
+        <div class="form-text reveal">
+          <p class="sec-label" style="color:var(--gold)">Reserve Your Place</p>
+          <h2 class="sec-title" style="color:var(--cream)">Ready to go<br/><em style="color:var(--gold-lt)">deeper?</em></h2>
+          <div class="rule" style="background:rgba(200,149,46,0.3)"></div>
+          <p class="sec-sub" style="color:rgba(250,246,238,0.48)">Drop your details and we'll reach out within 24 hours. Spaces are intentionally small — once they fill, they fill.</p>
+          <div class="form-feats">
+            <p class="form-feat">Open to anyone who has completed at least one Art of Living course</p>
+            <p class="form-feat">Sattvic vegetarian meals and accommodation included</p>
+            <p class="form-feat">Complete digital detox supported — bring only your presence</p>
+            <p class="form-feat">Flexible cancellation up to 10 days before the program</p>
+            <p class="form-feat">Volunteer-led — contribution-based model, fully transparent costing</p>
           </div>
         </div>
-        <div class="form-card reveal">
+        <div class="form-box reveal">
           <h3>Begin your journey</h3>
           <p class="form-sub">We'll confirm your spot within 24 hours.</p>
           <form onsubmit="handleSubmit(event)">
@@ -1488,37 +1132,38 @@ Stillness is not something you create —<br/>
   <!-- FAQ -->
   <section class="faq" id="faq">
     <div class="container">
-      <div class="section-header center reveal">
-        <p class="section-label">Common Questions</p>
-        <h2 class="section-title">Everything you need<br/><em>to know</em></h2>
+      <div class="sec-header center reveal">
+        <p class="sec-label">Common Questions</p>
+        <h2 class="sec-title">Everything you need<br/><em>to know</em></h2>
+        <div class="rule center"></div>
       </div>
       <div class="faq-list">
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">Do I need prior meditation experience?</div>
+          <div class="faq-question" onclick="toggleFaq(this)">Do I need prior meditation experience? <span class="faq-icon">+</span></div>
           <div class="faq-answer">Yes — these are advanced programs. You should have completed at least one Art of Living course (Happiness Program / Part 1 or equivalent). This ensures everyone in the group has a shared foundation and the retreat can go deep without needing to teach basics.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">What does "silence retreat" actually mean?</div>
+          <div class="faq-question" onclick="toggleFaq(this)">What does "silence retreat" actually mean? <span class="faq-icon">+</span></div>
           <div class="faq-answer">During most of the retreat, participants maintain noble silence — no speaking, no phones, no reading, no writing. This isn't a restriction; it's a gift. When you stop talking, a deeper conversation with yourself becomes possible. Facilitators are available for essential communication.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">What is the cost of the retreats?</div>
+          <div class="faq-question" onclick="toggleFaq(this)">What is the cost of the retreats? <span class="faq-icon">+</span></div>
           <div class="faq-answer">We follow a contribution-based model with a recommended amount that covers accommodation, sattvic meals, and logistics. No one is turned away for financial reasons — if cost is a concern, please mention it during our call. All amounts are fully transparent.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">Are these retreats affiliated with Art of Living Foundation?</div>
+          <div class="faq-question" onclick="toggleFaq(this)">Are these retreats affiliated with Art of Living Foundation? <span class="faq-icon">+</span></div>
           <div class="faq-answer">We are a group of Art of Living volunteers who organise these programs independently with the spirit of seva. The programs draw from Art of Living teachings and practices. Please confirm current affiliation status with us directly if this is important for your decision.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">What should I bring?</div>
+          <div class="faq-question" onclick="toggleFaq(this)">What should I bring? <span class="faq-icon">+</span></div>
           <div class="faq-answer">Comfortable, loose, natural-fibre clothing (white or light colours preferred), a personal yoga mat if you have one, any personal medications, and most importantly — an open heart. We'll send a complete checklist after you register. Leave your laptop at home.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">Can I join if I have health conditions?</div>
+          <div class="faq-question" onclick="toggleFaq(this)">Can I join if I have health conditions? <span class="faq-icon">+</span></div>
           <div class="faq-answer">Please mention any physical or mental health conditions when you register. Our volunteer team will review and advise. Some conditions may require a doctor's clearance; we'll guide you through this process with care and confidentiality.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">How do I travel to these locations?</div>
+          <div class="faq-question" onclick="toggleFaq(this)">How do I travel to these locations? <span class="faq-icon">+</span></div>
           <div class="faq-answer">All our locations are accessible by public or private transport. We share detailed travel guidance after confirmation, and often coordinate group transport from nearby railway stations or airports. Kerala's connectivity is excellent.</div>
         </div>
       </div>
@@ -1527,55 +1172,78 @@ Stillness is not something you create —<br/>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <span class="footer-logo">Escape <em style="font-style:italic">Within</em></span>
-        <p class="footer-tagline">Advanced silence programs in India's most sacred natural sanctuaries. Volunteer-led with love, set in the lush heart of Kerala.</p>
-        <div class="footer-social">
-          <a href="#" class="social-btn" aria-label="Instagram">&#x1F4F8;</a>
-          <a href="#" class="social-btn" aria-label="WhatsApp">&#x1F4AC;</a>
-          <a href="#" class="social-btn" aria-label="YouTube">&#x25B6;</a>
-          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-logo">Escape <em>Within</em></span>
+          <p class="footer-tagline">Advanced silence programs in India's most sacred natural sanctuaries. Volunteer-led with love, set in the lush heart of Kerala.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Instagram">📸</a>
+            <a href="https://wa.me/918113013556" class="social-btn" aria-label="WhatsApp">💬</a>
+            <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+            <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Programs</h5>
+          <ul>
+            <li><a href="#upcoming">Upcoming Retreats</a></li>
+            <li><a href="#sacred-india">Sacred India Journeys</a></li>
+            <li><a href="#stories">Past Programs</a></li>
+            <li><a href="#register">Register Now</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Information</h5>
+          <ul>
+            <li><a href="#about">About Gurudev &amp; AMP</a></li>
+            <li><a href="#journey">The Inner Journey</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#why">Why Escape Within</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="https://wa.me/918113013556">WhatsApp Us</a></li>
+            <li><a href="#register">Send Enquiry</a></li>
+            <li><a href="funnel.html">Quick Register</a></li>
+          </ul>
         </div>
       </div>
-      <div class="footer-col">
-        <h5>Programs</h5>
-        <ul>
-          <li><a href="#upcoming">Upcoming Retreats</a></li>
-          <li><a href="#places">Destinations</a></li>
-          <li><a href="#stories">Past Programs</a></li>
-          <li><a href="#register">Register</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Escape Within. All rights reserved.</span>
-      <div class="footer-aol">
-        Organised with ❤️ by
-        <span class="aol-badge">Art of Living Volunteers</span>
-        · Kerala, India
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 Escape Within. All rights reserved.</span>
+        <div class="footer-aol">
+          Organised with ❤️ by
+          <span class="aol-badge">Art of Living Volunteers</span>
+          · Kerala, India
+        </div>
       </div>
     </div>
   </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/918113013556?text=Hi%20%F0%9F%99%8F%20I%E2%80%99m%20interested%20in%20the%20Escape%20Within%20meditation%20retreats.%20Can%20you%20share%20more%20details%3F"
+     class="wa-float" target="_blank" rel="noopener noreferrer">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+    <span class="wa-label">Chat on WhatsApp</span>
+  </a>
 
   <script>
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(el => observer.observe(el));
 
-    // Stagger children
-    document.querySelectorAll('.courses-grid, .testimonials-grid, .past-courses-row, .places-grid').forEach(grid => {
-      grid.querySelectorAll('.reveal').forEach((el, i) => {
-        el.style.transitionDelay = `${i * 0.08}s`;
-      });
+    // Stagger grid children
+    document.querySelectorAll('.courses-grid, .testi-grid, .usp-grid, .premium-grid').forEach(grid => {
+      grid.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = `${i * 0.08}s`; });
     });
 
     // FAQ toggle
@@ -1589,21 +1257,18 @@ Stillness is not something you create —<br/>
     // Mobile menu
     function toggleMenu() {
       const links = document.querySelector('.nav-links');
-      const cta = document.querySelector('.nav-cta');
-      if (links) {
-        links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-        links.style.flexDirection = 'column';
-        links.style.position = 'absolute';
-        links.style.top = '60px';
-        links.style.left = '0'; links.style.right = '0';
-        links.style.background = 'rgba(10,28,18,0.98)';
-        links.style.padding = '1.5rem 2rem';
-        links.style.gap = '1rem';
-        links.style.zIndex = '200';
-      }
+      if (!links) return;
+      const isVisible = links.style.display === 'flex';
+      links.style.display = isVisible ? 'none' : 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '68px'; links.style.left = '0'; links.style.right = '0';
+      links.style.background = 'rgba(7,16,10,0.98)';
+      links.style.padding = '1.5rem 2rem'; links.style.gap = '1.2rem';
+      links.style.zIndex = '300'; links.style.borderBottom = '1px solid rgba(200,149,46,0.12)';
     }
 
-    // Form submit
+    // Form submit → WhatsApp
     function handleSubmit(e) {
       e.preventDefault();
       const f = e.target;
@@ -1621,26 +1286,12 @@ Stillness is not something you create —<br/>
       btn.disabled = true;
     }
 
-    // Navbar scroll effect
+    // Navbar scroll
     window.addEventListener('scroll', () => {
       const nav = document.getElementById('navbar');
-      if (window.scrollY > 60) {
-        nav.style.background = 'rgba(5,18,12,0.98)';
-      } else {
-        nav.style.background = 'rgba(10,28,20,0.92)';
-      }
+      nav.style.background = window.scrollY > 60 ? 'rgba(5,12,8,0.99)' : 'rgba(7,16,10,0.96)';
     });
   </script>
-
-  <!-- WHATSAPP FLOAT BUTTON -->
-  <!-- Replace +91XXXXXXXXXX with your actual WhatsApp number (country code + number, no spaces or +) -->
-  <a href="https://wa.me/918113013556?text=Hi%20%F0%9F%99%8F%20I%E2%80%99m%20interested%20in%20the%20Escape%20Within%20meditation%20retreats.%20Can%20you%20share%20more%20details%3F"
-     class="wa-float" target="_blank" rel="noopener noreferrer">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-    </svg>
-    <span class="wa-label">Chat on WhatsApp</span>
-  </a>
 
 </body>
 </html>
